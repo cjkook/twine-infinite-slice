@@ -1,0 +1,150 @@
+<tw-storydata name="Infinite Slice" startnode="1" creator="Twine" creator-version="2.3.5" ifid="240EC73B-0F6F-4231-BE83-1C6C5D35BC3A" zoom="1" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">* {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+body {
+	background: #f7f4ef;
+}
+
+h1,
+h4 {
+    transform: scale(.9, 1.3);
+    /* font-family: 'Dorsa', sans-serif; */
+    font-weight: normal;
+    width: 90%;
+    margin: auto;
+    margin-top: 1%;
+}
+
+.bg-box {
+    position: fixed;
+    z-index: -1;
+    width: 101%;
+    margin-left: -1%;
+    border-radius: 800px;
+}
+
+#story {
+	background: white;
+  	margin-top: 10vh;
+  	padding: 3vh;
+  	width: 80%;
+  	border-radius: 0 10px 50px 0;
+}
+
+#background {
+  	position: fixed;
+  	left: -5vw;
+  	top: -5vh;
+  	z-index: -10;
+	height: 110vh;
+  	width: 110vw;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">//window.addEventListener("load", this.makeBackground);
+let url =
+    "https://coolors.co/palette/fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a";
+
+function makePage() {
+    
+}
+
+window.createPalette = (url) => {
+		let lastSlash = url.lastIndexOf("/");
+    let palette_str = url.slice(lastSlash + 1);
+    let arr = palette_str.split("-");
+
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = "#" + arr[i];
+    }
+
+    return arr;
+}
+
+
+window.makeBackground = (time=600) => {
+	if(!document.getElementById("background")){
+		$('<div id="background"></div>').prependTo($('#story'));
+	}
+	
+	$('#background').css("background","white")
+	let bodyLength = 0;
+    let palette = createPalette(url);
+    let body = document.getElementById('background');
+    body.style.background = palette[Math.floor(Math.random(palette.length))];
+
+    for (let i = 0; i <= palette.length - 1; i++) {
+        let box = document.createElement("div");
+        box.style.background = palette[i];
+
+        box.className = "bg-box";
+        let height = (Math.random() * window.innerHeight) / palette.length - 1;
+        bodyLength += height;
+        box.style.height = height + "px";
+        box.style.bottom = bodyLength + "px";
+        box.style.left = (Math.random() * window.innerWidth - window.innerWidth / 2) + "px";
+        body.appendChild(box);
+
+        if (i === palette.length - 1 && bodyLength < window.innerHeight) {
+            i = 0;
+        }
+    }
+}
+
+window.getDayName = (num) => {
+	let dayName = window.dayList[num % 6];
+	
+	return dayName;
+}
+	
+window.dayList = ['first','second','3','4','5','6','7'];
+
+window.getTimePalette = [
+	{
+  name: "moir",
+  colors: ["#a49f4f", "#d4501e", "#f7c558", "#ebbaa6"],
+  stroke: "#161716",
+  background: "#f7f4ef"
+},
+]
+</script><tw-passagedata pid="1" name="Game Info Page" tags="" position="100.5,99" size="100,100">[[Day One]]
+
+it is &lt;&lt;print getDayName(0)&gt;&gt;
+
+&lt;&lt;set $time = 600&gt;&gt;
+
+&lt;&lt;set $dayOne = {
+	isTrue: true,
+	special: &quot;nlasdh&quot;
+}&gt;&gt;
+
+&lt;&lt;print $dayOne.isTrue&gt;&gt;
+&lt;&lt;print $dayOne.special&gt;&gt;
+
+&lt;&lt;script&gt;&gt;
+makeBackground(State.getVar(&#39;$time&#39;));
+document.getElementById(&quot;ui-bar&quot;).style.visibility = &quot;hidden&quot;;
+document.getElementById(&quot;story&quot;).style.marginLeft = &quot;0em&quot;;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Day One" tags="" position="99.5,299" size="100,100">[[Piezo Room]]
+
+&lt;&lt;script&gt;&gt;
+// access story variables via pure JS
+console.log(State.getVar(&quot;$dayOne&quot;))
+
+
+&lt;&lt;/script&gt;&gt;
+Nice. What</tw-passagedata><tw-passagedata pid="3" name="Piezo Room" tags="" position="99.5,449" size="100,100">[[Dresser]]
+[[Under the mattress]]
+[[Sleep]]
+[[Hallway]]</tw-passagedata><tw-passagedata pid="4" name="Dresser" tags="" position="301.5,301" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="5" name="Hallway" tags="" position="500.5,604" size="100,100">[[Garbunkle Room]]
+[[Stacia Room]]
+[[Lobby]]</tw-passagedata><tw-passagedata pid="6" name="Garbunkle Room" tags="" position="700.5,500" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="7" name="Stacia Room" tags="" position="700.5,301" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="8" name="Lobby" tags="" position="99.5,801" size="100,100">[[Kitchen]]
+[[Alleyway]]</tw-passagedata><tw-passagedata pid="9" name="Kitchen" tags="" position="498.5,799" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="10" name="Alleyway" tags="" position="101.5,1198" size="100,100">&lt;&lt;if $dayOne.isTrue === true&gt;&gt;
+[[The Chooch]]
+&lt;&lt;elseif $day === 1&gt;&gt;
+[[the second day]]
+&lt;&lt;else&gt;&gt;
+[[Market]]
+[[Plaza]]
+[[Club]]
+&lt;&lt;/if&gt;&gt;
+[[]]</tw-passagedata><tw-passagedata pid="11" name="The Chooch" tags="" position="498,1112" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="12" name="the second day" tags="" position="501,1000" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="13" name="Market" tags="" position="849,1454" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="14" name="Plaza" tags="" position="102.5,1452" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="15" name="Club" tags="" position="504.5,1452" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="16" name="Under the mattress" tags="" position="421.5,299" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="17" name="Sleep" tags="" position="229.5,446" size="100,100">[[Sleep Confirm-&gt;Piezo Room]]</tw-passagedata></tw-storydata>
+

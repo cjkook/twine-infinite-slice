@@ -1,0 +1,11 @@
+city -
+
+
+forest -
+
+
+neighborhood - 
+
+
+
+interior - 
