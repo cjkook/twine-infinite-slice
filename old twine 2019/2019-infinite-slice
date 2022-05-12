@@ -1,0 +1,347 @@
+<tw-storydata name="Infinite Slice " startnode="26" creator="Twine" creator-version="2.3.5" ifid="E8BF0A89-A323-48BE-AB1D-2E979D501665" zoom="1" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">.hidden {
+	display: none;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">if (window.hasOwnProperty("storyFormat")) {
+	// Change this to the path where the HTML file is
+	// located if you want to run this from inside Twine.
+	setup.Path = "C:\Users\cjkoa\Google Drive\cjko.ART\cjko.Twine\Infinite Slice/";  // Running inside Twine application
+} else { 
+	setup.Path = "";  // Running in a browser
+}
+setup.ImagePath = setup.Path + "images/";
+setup.SoundPath = setup.Path + "sounds/";</script><tw-passagedata pid="1" name="What is his name?" tags="protagonist" position="200,350" size="100,100">A Narrow Life\
+&lt;&lt;audio &quot;test&quot; volume 0.5 loop play&gt;&gt;\
+&lt;hr&gt;
+&lt;img src=&quot;C:\Users\cjkoa\Google Drive\cjko.ART\cjko.Twine\Infinite Slice\images\chapter 1\bedroom_day_01.png&quot; width=&quot;300px&quot; hspace=&quot;20&quot; align=&quot;left&quot;&gt;
+A narrow slit of sunlight breaks across the bedsheet as the first rays of sunlight dip into the room.  The intrusion lands squarely upon the face of a man whom lies precariously asleep. 
+
+&lt;&lt;click &quot;What does the room look like?&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#protagonistRoomDesc&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;
+&lt;div id=&quot;protagonistRoomDesc&quot; class=&quot;hidden&quot;&gt;If there is one word to describe the conditions in which the man lived it would be oblong.  It takes the shape of a narrow pill, with the door at one end and the man&#39;s bed at the other.  The room was about twenty paces long but the width of the space was the dimension of a queen-sized bed, which is what the man lies on now.  Due to this fact, there is no room for an end table on either side of the bed.  In fact, the only other furniture to be found in the room is a chair at the foot of the bed.
+
+Each of the long walls on either side of the room is sparse in its decoration.  The same could be said of the wall with the door, which is mostly taken up by the door itself.  To the left of the bed is a door that leads to a bathroom. There is such little space between the door and the bed that the man is immediately in the bathroom upon exiting the bed from that side. On the final narrow wall is the room&#39;s only window. Outside of this window there is a large neon sign which is currently turned off, though it is still hot from the recently excited chemicals within it.  The room is never dark.&lt;/div&gt;
+&lt;&lt;click &quot;What does the man on the bed look like?&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#protagonistDesc&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;
+&lt;div id=&quot;protagonistDesc&quot; class=&quot;hidden&quot;&gt;His lower body lies half concealed by the sheet while his upper extremities approach the lower limits of the mattress.  Both are covered in dozens of what one might call poorly poorly executed tattoo work.  &lt;img src=&quot;C:\Users\cjkoa\Google Drive\cjko.ART\cjko.Twine\Infinite Slice\images\chapter 1\player_inBed.png&quot; width=&quot;300px&quot; hspace=&quot;20&quot; vspace=&quot;20&quot; align=&quot;right&quot;&gt;
+
+His head hangs slightly off the edge. &lt;/div&gt;\
+
+Momentarily, the man will be stirred from sleep by the sunlight on his face.  When that moment arrives there will be a transient flash of confusion as his mind catches up to the bright, loud, sensuous stimuli of waking life. Soon after, he will become cognizant that he has returned to his bedroom.
+
+
+
+&lt;hr&gt;
+What do you think his name is?   &lt;&lt;textbox &quot;$name&quot; &quot;&quot;&gt;&gt;\
+&lt;&lt;script&gt;&gt;
+postdisplay[&quot;textboxMaxlength&quot;] = function (taskName) {
+	/* Limit textbox input elements to 12 characters. */
+	$(&quot;.macro-textbox&quot;).attr(&quot;maxlength&quot;, 12);
+
+	/* Make this a single-use task.*/
+	delete postdisplay[taskName];
+};
+&lt;&lt;/script&gt;&gt;\
+\
+[[⦻|nameConfirm]]</tw-passagedata><tw-passagedata pid="2" name="StoryBanner" tags="" position="200,100" size="100,100">&lt;img src=&quot;https://twinery.org/homepage/img/logo.svg&quot; width=&quot;64&quot; height=&quot;64&quot;&gt;</tw-passagedata><tw-passagedata pid="3" name="StorySubtitle" tags="" position="280,102" size="100,100">Chapter 1
+----</tw-passagedata><tw-passagedata pid="4" name="StoryAuthor" tags="" position="400,100" size="100,100">By Corey J. Kothenbeutel</tw-passagedata><tw-passagedata pid="5" name="StoryCaption" tags="" position="500,100" size="100,100">Its a story about pizza, existence, robots, and mind-altering substances.
+
+
+Audio Enable</tw-passagedata><tw-passagedata pid="6" name="StoryMenu" tags="" position="580,88" size="100,100">[[Inventory]]
+&lt;&lt;link &quot;Schedule&quot;&gt;&gt;…&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="StoryShare" tags="" position="700,100" size="100,100"></tw-passagedata><tw-passagedata pid="8" name="nameConfirm" tags="" position="325,350" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+\&lt;&lt;set $name to $name.toUpperFirst()&gt;&gt;
+$name, huh?
+
+[[Yes.|So that&#39;s his name]]
+[[No.|changeProtagonistName]]</tw-passagedata><tw-passagedata pid="9" name="Narrow Life" tags="" position="200,625" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+&lt;&lt;set $ch1_isWindowOpen = &#39;false&#39;&gt;&gt;\
+&lt;&lt;set $ch1_isDressed = &#39;false&#39;&gt;&gt;\
+&lt;&lt;set $ch1_isDrunk = &#39;false&#39;&gt;&gt;\
+&lt;&lt;set $ch1_goBathroom = &#39;false&#39;&gt;&gt;\
+$name lives above a narrow slice shop in a narrow room carving out a narrow slice of life.  Narrow prospects in a narrow city keep him leashed close to home. 
+
+&lt;&lt;click &quot;Narrow slice shop?&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#narrowSliceShopDesc&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;
+&lt;div id=&quot;narrowSliceShopDesc&quot; class=&quot;hidden&quot;&gt;Immediately below the room in which $name dozes is the pizzeria that he runs.  The dimensions of the entire shop are the same as $name&#39;s room.&lt;/div&gt;
+&lt;&lt;click &quot;Narrow city?&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#narrowCityDesc&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;
+&lt;div id=&quot;narrowCityDesc&quot; class=&quot;hidden&quot;&gt;Crossing the city horizontally takes maybe an hour by foot.  Crossing it vertically will loop you around back to here.&lt;/div&gt;\
+
+The narrow light from the sun patiently widens and dances toward $name&#39;s eyes. If his snoring doesn&#39;t wake up, then the harsh quality of artificial sunlight will certainly do the trick.
+
+Are there any further questions you would like answered before we proceed?
+
+[[Yes.|Oh Sorry, He&#39;s Awake]]
+[[No.|Oh Great, He&#39;s Awake]]</tw-passagedata><tw-passagedata pid="10" name="changeProtagonistName" tags="" position="450,350" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+Well, what do you think his name is?   &lt;&lt;textbox &quot;$name&quot; &quot;&quot;&gt;&gt;\
+&lt;&lt;script&gt;&gt;
+postdisplay[&quot;textboxMaxlength&quot;] = function (taskName) {
+	/* Limit textbox input elements to 12 characters. */
+	$(&quot;.macro-textbox&quot;).attr(&quot;maxlength&quot;, 12);
+
+	/* Make this a single-use task.*/
+	delete postdisplay[taskName];
+};
+&lt;&lt;/script&gt;&gt;\
+\
+[[⦻|nameConfirm]]</tw-passagedata><tw-passagedata pid="11" name="So that&#39;s his name" tags="" position="200,500" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+$name. I can see it. It certainly lacks elegance but its clear that so does he.
+
+[[next|Narrow Life]]</tw-passagedata><tw-passagedata pid="12" name="Oh Sorry, He&#39;s Awake" tags="" position="200,750" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+What would you like to--Oh I am sorry, $name appears to have wandered back into the realm of the conscious.  Let&#39;s check in on what he is doing.
+
+[[Okay.|Our Hero Awakens]]</tw-passagedata><tw-passagedata pid="13" name="Oh Great, He&#39;s Awake" tags="" position="325,750" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+Fantastic.  It looks like he is opening his eyes now.
+
+[[Okay.|Our Hero Awakens]]</tw-passagedata><tw-passagedata pid="14" name="Our Hero Awakens" tags="" position="200,875" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+The incoming light causes $name to shift his head.  His breathing pattern synches to a new rythme as if a new conductor assumes control of the engine. As soon as $name&#39;s eyes open they begin to dart around the room as he processes the incoming environmental and contextual information that his native senses provide him. $name yawns and closes his eyes again.
+
+$name attempts to return to sleep for another five minutes but eventually concedes to the raylets of light that are seeping through the frame of the giant, unlit neon sign outside of his window.  He sits up in his bed and begins to process his options for his next step into the today&#39;s tasks.
+
+What does he do first?\
+\
+
+&lt;&lt;if $ch1_isWindowOpen is &#39;false&#39;&gt;&gt;[[He opens his window.]]
+&lt;&lt;else&gt;&gt;[[He closes his window.]]\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if $ch1_isDressed is &#39;false&#39;&gt;&gt;[[He gets dressed.]]&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $ch1_goBathroom is &#39;false&#39;&gt;&gt;[[He goes to the bathroom.]]&lt;&lt;/if&gt;&gt;
+[[He goes back to sleep.]]
+&lt;&lt;if $ch1_isDrunk is &#39;false&#39;&gt;&gt;[[He looks around for something to drink.]]&lt;&lt;/if&gt;&gt;
+[[He goes downstairs.]]
+
+</tw-passagedata><tw-passagedata pid="15" name="He goes back to sleep." tags="" position="475,900" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+He isn&#39;t going to be able to go back to sleep.  You know this.  I know this.  He knows this.  
+
+As we all come to the same realization, what does $name do next?
+&lt;&lt;if $ch1_isWindowOpen is &#39;false&#39;&gt;&gt;[[He opens his window.]]
+&lt;&lt;else&gt;&gt;[[He closes his window.]]\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if $ch1_isDressed is &#39;false&#39;&gt;&gt;[[He gets dressed.]]&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $ch1_goBathroom is &#39;false&#39;&gt;&gt;[[He goes to the bathroom.]]&lt;&lt;/if&gt;&gt;
+[[He goes back to sleep.]]
+&lt;&lt;if $ch1_isDrunk is &#39;false&#39;&gt;&gt;[[He looks around for something to drink.]]&lt;&lt;/if&gt;&gt;
+[[He goes downstairs.]]</tw-passagedata><tw-passagedata pid="16" name="He opens his window." tags="" position="180,1025" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+&lt;&lt;set $ch1_isWindowOpen = &#39;true&#39;&gt;&gt;\
+Getting to his knees, he reaches and slides the main pane of the window into its open position. The ambiance of the city spills into the room and the heat of the sun intensifies slightly on $name&#39;s face.  The air is warm and the scent of last night&#39;s rain is mixing with the odor of the alley below.
+
+It&#39;s been raining for the past few days but the rainy season should have ended by now.  $name probably thinks that means the weather will stay like this. At least for another week.
+
+&lt;&lt;click &quot;Why just another week?&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#narrowWeatherDesc&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;
+&lt;div id=&quot;narrowWeatherDesc&quot; class=&quot;hidden&quot;&gt;Faulty atmosphere keeps the seasons narrow too, often encumbering $name with a monthly cold.  Whether or not the cold is truly induced by the changing seasons or by the predictable whiskey binge is up to the beholder.&lt;/div&gt;
+
+And now?
+&lt;&lt;if $ch1_isWindowOpen is &#39;false&#39;&gt;&gt;[[He opens his window.]]
+&lt;&lt;else&gt;&gt;[[He closes his window.]]\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if $ch1_isDressed is &#39;false&#39;&gt;&gt;[[He gets dressed.]]&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $ch1_goBathroom is &#39;false&#39;&gt;&gt;[[He goes to the bathroom.]]&lt;&lt;/if&gt;&gt;
+[[He goes back to sleep.]]
+&lt;&lt;if $ch1_isDrunk is &#39;false&#39;&gt;&gt;[[He looks around for something to drink.]]&lt;&lt;/if&gt;&gt;
+[[He goes downstairs.]]</tw-passagedata><tw-passagedata pid="17" name="He gets dressed." tags="" position="475,1150" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+&lt;&lt;set $ch1_isDressed = &#39;true&#39;&gt;&gt;\
+Without leaving the bed, $name reaches to the floor and retrieves his clothes.  Lazily, he puts the wrinkled garments over his naked body, one by one.
+
+What&#39;s next?
+&lt;&lt;if $ch1_isWindowOpen is &#39;false&#39;&gt;&gt;[[He opens his window.]]
+&lt;&lt;else&gt;&gt;[[He closes his window.]]\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if $ch1_isDressed is &#39;false&#39;&gt;&gt;[[He gets dressed.]]&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $ch1_goBathroom is &#39;false&#39;&gt;&gt;[[He goes to the bathroom.]]&lt;&lt;/if&gt;&gt;
+[[He goes back to sleep.]]
+&lt;&lt;if $ch1_isDrunk is &#39;false&#39;&gt;&gt;[[He looks around for something to drink.]]&lt;&lt;/if&gt;&gt;
+[[He goes downstairs.]]</tw-passagedata><tw-passagedata pid="18" name="He goes to the bathroom." tags="" position="475,775" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+&lt;&lt;set ch1_goBathroom yo &#39;true&#39;&gt;&gt;/
+Sliding his feet to the edge of his bed and dipping them down to the floor, $name steps into the bathroom, the door of which is located conveniently at the edge of his bed.
+
+Before making use of the facilities, he squints and peers at himself in the mirror.  $name has a fascination with his own appearance.  After concluding that what he sees is acceptable, he unleashes a night&#39;s worth of urine into the toilet as he sways on the tiles.  
+
+Next, he washes and dries his hands.  There is no soap but that doesn&#39;t hinder his endeavor. He gives himself another once over before diving back into bedsheets.
+
+So?  What now?
+&lt;&lt;if $ch1_isWindowOpen is &#39;false&#39;&gt;&gt;[[He opens his window.]]
+&lt;&lt;else&gt;&gt;[[He closes his window.]]\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if $ch1_isDressed is &#39;false&#39;&gt;&gt;[[He gets dressed.]]&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $ch1_goBathroom is &#39;false&#39;&gt;&gt;[[He goes to the bathroom.]]&lt;&lt;/if&gt;&gt;
+[[He goes back to sleep.]]
+&lt;&lt;if $ch1_isDrunk is &#39;false&#39;&gt;&gt;[[He looks around for something to drink.]]&lt;&lt;/if&gt;&gt;
+[[He goes downstairs.]]</tw-passagedata><tw-passagedata pid="19" name="He looks around for something to drink." tags="" position="475,1025" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+&lt;&lt;set $ch1_isDrunk = &#39;true&#39;&gt;&gt;\
+&quot;Where are you now...?&quot; $name mumbles to himself as he shifts the sheets around to search for something in his bed.  At last, he comes up with a bottle of whiskey, its contents mostly depleted.  The bottle had been full the night previous, but this was one type of activity that $name couldn&#39;t allow to remain unfinished. $name pulled on the bottle like desert heat sucking dew from the arms of cacti. When he finished he smacked his lips, closed his eyes and smiled, savoring the burn of the firey liquid.
+
+Many would say the act was unbecoming of any decent member of society, but $name seemed quite pleased with himself.  
+
+Where does he go from here?
+&lt;&lt;if $ch1_isWindowOpen is &#39;false&#39;&gt;&gt;[[He opens his window.]]
+&lt;&lt;else&gt;&gt;[[He closes his window.]]\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if $ch1_isDressed is &#39;false&#39;&gt;&gt;[[He gets dressed.]]&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $ch1_goBathroom is &#39;false&#39;&gt;&gt;[[He goes to the bathroom.]]&lt;&lt;/if&gt;&gt;
+[[He goes back to sleep.]]
+&lt;&lt;if $ch1_isDrunk is &#39;false&#39;&gt;&gt;[[He looks around for something to drink.]]&lt;&lt;/if&gt;&gt;
+[[He goes downstairs.]]
+</tw-passagedata><tw-passagedata pid="20" name="He closes his window." tags="" position="80,1025" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+&lt;&lt;set $ch1_isWindowOpen = &#39;false&#39;&gt;&gt;\
+Whether it was the noise outside, the stench below, or the terrible view, $name slides the window shut again.
+
+What&#39;s next?
+&lt;&lt;if $ch1_isWindowOpen is &#39;false&#39;&gt;&gt;[[He opens his window.]]
+&lt;&lt;else&gt;&gt;[[He closes his window.]]\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if $ch1_isDressed is &#39;false&#39;&gt;&gt;[[He gets dressed.]]&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $ch1_goBathroom is &#39;false&#39;&gt;&gt;[[He goes to the bathroom.]]&lt;&lt;/if&gt;&gt;
+[[He goes back to sleep.]]
+&lt;&lt;if $ch1_isDrunk is &#39;false&#39;&gt;&gt;[[He looks around for something to drink.]]&lt;&lt;/if&gt;&gt;
+[[He goes downstairs.]]</tw-passagedata><tw-passagedata pid="21" name="He goes downstairs." tags="" position="200,1175" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+-end music
+-end cityscape music if window open
+-play footstep audio
+$name exits his room into the shared stairwell of the building. It is not quite midday, but all of his neighbors are guaranteed to be at work right now, so $name doesn&#39;t bother with a tactful approach to the volume of his footsteps.
+
+Upon reaching the floor below, $name punches in the keycode for a blank door leading to the rear of his pizzeria.  The keycode is 2189.
+
+&lt;&lt;click &quot;What does the place look like?&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#narrowSliceShopDesc2&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;
+&lt;div id=&quot;narrowSliceShopDesc2&quot; class=&quot;hidden&quot;&gt;It occupies the same dimensions as his room above. The door in which $name enters leads immediately to the kitchen area.  After the small oven and even smaller prep area, there is only room for one person to stand in the kitchen.  Where the window and bed would be in his room, instead is the front door and a lone table with two chairs.  The middle area of the restaurant has a narrow countertop with nothing on it.  This is where someone would stand if they were taking an order from a customer.
+
+The decorum of the room is equally as drab as his habitation above, but adds the greasy odor of old pizza.  Outside of the front door lies a shared alleyway.  The alleyway happens to be a shortcut in the neighborhood, so it is travelled by pedestrians frequently and the sounds of the city are easily audible throughout the space.&lt;/div&gt;
+&lt;&lt;click &quot;Narrow city?&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#narrowCityDesc&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;
+&lt;div id=&quot;narrowCityDesc&quot; class=&quot;hidden&quot;&gt;Crossing the city horizontally takes maybe an hour by foot.  Crossing it vertically will loop you around back to here.&lt;/div&gt;\
+
+[[$name approaches the counter and pulls out a pen and paper.|Shopping List]]
+
+</tw-passagedata><tw-passagedata pid="22" name="ch1_windowOpenAgain" tags="" position="300,1025" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+&lt;&lt;set $ch1_isWindowOpen = &#39;true&#39;&gt;&gt;\
+He opens the window yet again. He is truly indecisive at this moment.
+
+
+&lt;&lt;if $ch1_isWindowOpen is &#39;false&#39;&gt;&gt;[[He opens his window.]]
+&lt;&lt;else&gt;&gt;[[He closes his window.]]
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if $ch1_isDressed is &#39;false&#39;&gt;&gt;[[He gets dressed.]]&lt;&lt;/if&gt;&gt;
+[[He goes to the bathroom.]]
+[[He goes back to sleep.]]
+&lt;&lt;if $ch1_isDrunk is &#39;false&#39;&gt;&gt;[[He looks around for something to drink.]]&lt;&lt;/if&gt;&gt;
+[[He goes downstairs.]]</tw-passagedata><tw-passagedata pid="23" name="Inventory" tags="" position="600,375" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="24" name="Audio" tags="" position="800,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="25" name="StoryInit" tags="" position="0,100" size="100,100">&lt;&lt;cacheaudio &quot;test&quot; &quot;audio/test.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;test2&quot; &quot;audio/test_2.mp3&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="SPLASH" tags="" position="200,225" size="100,100">A Narrow Life\
+&lt;hr&gt;
+This is a splash page.
+
+- enable audio
+- you can close the side bar at the top left.
+- email cjko dot audio at gmail dot com
+
+[[Start.|What is his name?]]</tw-passagedata><tw-passagedata pid="27" name="Shopping List" tags="" position="200,1325" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+$name likes the tactile feel of making a list.  Using a persa was fine for this task, but $name&#39;s persa had suffered some damage a long time ago.
+
+&lt;&lt;click &quot;What does the place look like?&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#persaDesc1&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;
+&lt;div id=&quot;persaDesc1&quot; class=&quot;hidden&quot;&gt;A persa is a personal data management system.  Most people will use a persa for accessing databases, scheduling, entertainment, and for communication.  Nearly everyone is issued a persa from an early stage in life and will use it for practically every facet of daily life from thereafter. Persas can undergo expensive modifications and upgrades, should the person choose to do so.&lt;/div&gt;\
+\
+This morning, $name is making a list of ingredients he needs to buy at the market in order to make pizza dough.  $name scrawls it out like so:
+&lt;ul&gt;
+&lt;li&gt;yeast&lt;/li&gt;
+&lt;li&gt;sugar&lt;/li&gt;
+&lt;li&gt;salt&lt;/li&gt;
+&lt;li&gt;oil&lt;/li&gt;
+&lt;li&gt;milk&lt;/li&gt;
+&lt;/ul&gt;
+\
+Pondering, $name stares at the list knowing it is missing something.  When making pizza dough, what else could one possibly need? $name bit the end of his pen and looked at the cracked ceiling for a moment. 
+
+It was in the middle of this thought that $name 
+[[hears a noise from the front door.]]
+[[decides that the answer would come to him on his walk to the market.]]</tw-passagedata><tw-passagedata pid="28" name="hears a noise from the front door." tags="" position="200,1500" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+A familiar voice echos in the alley and $name knows that it is his delivery man. $name has clearly forgotten his delivery of produce arrives today. 
+
+&lt;&lt;if $ch1_isDressed is &#39;true&#39;&gt;&gt;\
+$name slips the nearly completed list into the pocket of his jeans and puts a pair of torn, red sneakers on.\
+&lt;&lt;else&gt;&gt;\
+$name tucks the list into the waistband of his underwear and puts his ragged, red sneakers on. 
+\
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $ch1_isDressed is &#39;true&#39;&gt;&gt;\
+A quick skip across the tiny dining area has $name opening the door for his old friend.\
+&lt;&lt;else&gt;&gt;\
+Clearly not bashful, $name strides across the narrow dining area and answers the door wearing nothing more than his synthetic cotton boxer briefs. He opens the door for the entire world to see.\
+\
+&lt;&lt;/if&gt;&gt;
+
+$name beholds the visage of [[The Chooch.]]</tw-passagedata><tw-passagedata pid="29" name="decides that the answer would come to him on his walk to the market." tags="" position="400,1500" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+&lt;&lt;if $ch1_isDressed is &#39;true&#39;&gt;&gt;\
+$name slips the nearly completed list into the pocket of his jeans and puts a pair of torn, red sneakers on.\
+&lt;&lt;else&gt;&gt;\
+$name tucks the list into the waistband of his underwear and puts his ragged, red sneakers on. 
+\
+&lt;&lt;/if&gt;&gt;\
+
+Sliding the front door open, he gazes out into the alleyway.
+
+&lt;&lt;click &quot;What&#39;s out there?&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#alleyDesc1&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;
+&lt;div id=&quot;alleyDesc1&quot; class=&quot;hidden&quot;&gt;The alleyway is obviously narrow.  It has almost enough space for one lane of traffic. Throughtout both day and night cycles, pedestrians and bystanders are wont to loiter near the various businesses that occupy it. Of these businesses, $name&#39;s pizzeria stands unremarkable with its own small neon sign hanging in the window. The sign simply stated &#39;Pizza&#39;. Despite $name insisting that his business does have a name, there is no evidence to support his argument visible on the storefront.
+
+Across the alley and garnering far more attention from anyone to pass by is the rear entrance of a large club.  Multiple gigantic neon signs stand all over the building, including the three that are present in the alley. One of these neon signs exhibits a woman&#39;s face and claims that &#39;the most beautiful women pass through these doors&#39;. It protrudes out into the alley so far that it nearly touches the window of $name&#39;s second story bedroom and fills the frame of anyone whom looks out of it. 
+
+The asphault is still wet from the rain the night previous.&lt;/div&gt;\
+
+Meaning to lock the door behind him, he steps out with one foot then pivots his body and backs into the alleyway.  As he does so, he is caught offguard as his movement is blocked by a large, squishy yet unyielding object.  The object is a belly and the belly belongs to the body of a man nearly two heads taller than $name.
+
+&quot;Whoa, there now&quot; the man says,\
+&lt;&lt;if $ch1_isDressed is &#39;true&#39;&gt;&gt;\
+&quot;It&#39;s not like you to be meeting me at the door for your delivery.&quot;
+
+$name flips around and squints his eyes in the harsh artificial sunlight, trying to pin a name and face to the familiar voice.  
+&lt;&lt;else&gt;&gt;\
+&quot;Why don&#39;t you leave that to the professionals?&quot; 
+He eyes $name&#39;s nearly naked body and gestures with his head in the direction of the club across the alley.  
+\
+&lt;&lt;/if&gt;&gt;\
+
+$name beholds the visage of [[The Chooch.]]
+</tw-passagedata><tw-passagedata pid="30" name="The Chooch." tags="" position="200,1700" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+-- chooch picture
+&quot;Forget the delivery was coming today? Again?&quot; The Chooch asks.
+
+$name briefly smiles as he decides whether or not to lie to the jolly fellow standing before him. After a second, he opts to not humor The Chooch with trifling excuses.
+
+&quot;I may have completely forgotten,&quot; $name sighs, still grinning. &quot;I feel like you were just here yesterday.&quot;
+
+&quot;Where does the time go? Where does it come from for that matter? Give me a hand, yeah?&quot;
+
+$name takes the crate of goods from the delivery man and stows them inside before returning to the alley.  When he returns The Chooch has lit a cigarette and is taking a leisurely break on a nearby crate and looking at the curvature of the horizon. $name takes a seat next to him, deeming it appropriate to postpone his trip to the market.
+
+&lt;&lt;click &quot;Decribe &#39;The Chooch&#39;.&quot;&gt;&gt;&lt;&lt;toggleclass &quot;#theChoochDesc1&quot; &quot;hidden&quot;&gt;&gt;&lt;&lt;/click&gt;&gt;
+&lt;div id=&quot;theChoochDesc1&quot; class=&quot;hidden&quot;&gt;A crate of various produce and cheese in tot, The Chooch is an unthreatening character wearing a backwards cap. $name His clothes mismatched, his wit unmatched, The Chooch ellicits chuckles from the coldest individuals. 
+
+In tandem with his goofy demeanor, The Chooch harbors an inner wisdom that is highly regarded within the circles he runs in.  Though $name couldn&#39;t always take his sagely advice to heart (nor seriously), he could always appreciate the kind and clever manners in which it was delivered. For its humorous quality or absurd exposition was sublime and almost artistic in nature.&lt;/div&gt;\
+
+For a moment both said nothing. Pleasant weather and comfortable company allowed $name to [[let his mind wander.]]
+
+
+
+</tw-passagedata><tw-passagedata pid="31" name="let his mind wander." tags="" position="200,1850" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+&lt;&lt;if $ch1_isDrunk is &#39;true&#39;&gt;&gt;\
+$name feels the whiskey warming his stomache and extremities.  He is comfortably numb and nothing of note comes to mind.\
+&lt;&lt;else&gt;&gt;\
+Despite a raging headache, $name begins to feel comforted.  Sitting around with his friend, The Chooch, takes him back to years previous, when they both had much more free time.  The two would often sit around like this wasting days at their leisure and without discretion.\
+&lt;&lt;/if&gt;&gt;
+
+[[&quot;Some time you can&#39;t get back.&quot; The words travelled on the tails of smoke.]]</tw-passagedata><tw-passagedata pid="32" name="&quot;Some time you can&#39;t get back.&quot; The words travelled on the tails of smoke." tags="" position="200,2000" size="100,100">A Narrow Life\
+&lt;hr&gt;\
+While $name finds the sentiment poignant, he knew he wasn&#39;t in the mood for the rant that was about to ensue.  
+
+&quot;&quot;</tw-passagedata></tw-storydata>
+
