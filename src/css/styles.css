@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Khand:wght@300&family=Open+Sans:wght@300&family=Press+Start+2P&family=Raleway:wght@100&family=Righteous&display=swap');
+
+* {
+  	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+body {
+  	color: #000000,
+}
+
+h1,
+h4 {
+    transform: scale(.9, 1.3);
+    /* font-family: 'Dorsa', sans-serif; */
+    font-weight: normal;
+    width: 90%;
+    margin: auto;
+    margin-top: 1%;
+}
+
+.bg-box {
+    position: fixed;
+    z-index: -1;
+    width: 101%;
+    margin-left: -1%;
+    border-radius: 800px;
+}
+
+.hint {
+  	font-family: 'Raleway', sans-serif;
+  	font-weight: bold;
+	background: #ECE4DB;
+  	color: #6d6875;
+  	border-radius: 10px;
+  	padding: 2vh;
+  	width: 50%;
+}
+
+.left-chat {
+	border-radius: 25px 25px 25px 3px;
+	background:#D8E2DC;
+  	width:40%;
+  	padding: 1vh;
+  	text-align: right;
+  	color: #6E6E5E;
+}
+
+.right-chat {
+	border-radius: 25px 25px 3px 25px;
+	background:#FEC5BB;
+  	width:40%;
+  	padding: 1vh;
+  	color: #6E6E5E;
+  	margin-left: auto; 
+	margin-right: 0;
+}
+
+.mid-chat {
+	border-radius: 25px;
+	background:#FEC89A;
+  	width:40%;
+  	margin: auto;
+  	padding: 1vh;
+  	text-align: center;
+  	color: #6E6E5E;
+}
+
+.footnote-hr {
+	border: black;
+  	color: blue;
+}
+
+.footnote {
+	color: #d5bdaf;
+  	margin-left: 20%;
+  	/*margin-left: 33%;*/
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#story {
+  	color: black;
+	background: white;
+  	margin-top: 10vh;
+  	padding: 3vh;
+  	width: 80%;
+  	border-radius: 50px 10px 50px 0;
+}
+
+#background {
+  	position: fixed;
+  	left: -5vw;
+  	top: -5vh;
+  	z-index: -10;
+	height: 110vh;
+  	width: 110vw;
+}
+
+#location-text {
+	font-family: 'Khand', sans-serif;
+  	width:20%;
+  	font-size: 32px;
+  	margin-left: 4vw;
+}
+
+#story-title {
+	font-family: 'Khand', sans-serif;
+}
+
+#story-subtitle {
+	font-family: 'Khand', sans-serif;
+}
+
+#menu li a {
+    display: block;
+    padding: 0.25em 0.75em;
+    border: 1px solid transparent;
+    color: #eee;
+    text-transform: none; 
+}

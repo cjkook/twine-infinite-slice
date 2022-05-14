@@ -1,4 +1,4 @@
-const palettes = [
+window.timePalette = [
   // afternoon // HOT DOG?
   {
     name: "moir",
@@ -34,4 +34,4 @@ const palettes = [
     stroke: "#16697A",
     background: "#EDE7E3",
   },
-];
+]

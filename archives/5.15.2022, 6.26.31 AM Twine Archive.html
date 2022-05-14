@@ -1,0 +1,562 @@
+<tw-storydata name="Infinite Slice" startnode="1" creator="Twine" creator-version="2.3.5" ifid="240EC73B-0F6F-4231-BE83-1C6C5D35BC3A" zoom="0.6" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Khand:wght@300&family=Open+Sans:wght@300&family=Press+Start+2P&family=Raleway:wght@100&family=Righteous&display=swap');
+
+* {
+  	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+body {
+  	color: #000000,
+}
+
+h1,
+h4 {
+    transform: scale(.9, 1.3);
+    /* font-family: 'Dorsa', sans-serif; */
+    font-weight: normal;
+    width: 90%;
+    margin: auto;
+    margin-top: 1%;
+}
+
+.bg-box {
+    position: fixed;
+    z-index: -1;
+    width: 101%;
+    margin-left: -1%;
+    border-radius: 800px;
+}
+
+.hint {
+  	font-family: 'Raleway', sans-serif;
+  	font-weight: bold;
+	background: #ECE4DB;
+  	color: #6d6875;
+  	border-radius: 10px;
+  	padding: 2vh;
+  	width: 50%;
+}
+
+.left-chat {
+	border-radius: 25px 25px 25px 3px;
+	background:#D8E2DC;
+  	width:40%;
+  	padding: 1vh;
+  	text-align: right;
+  	color: #6E6E5E;
+}
+
+.right-chat {
+	border-radius: 25px 25px 3px 25px;
+	background:#FEC5BB;
+  	width:40%;
+  	padding: 1vh;
+  	color: #6E6E5E;
+  	margin-left: auto; 
+	margin-right: 0;
+}
+
+.mid-chat {
+	border-radius: 25px;
+	background:#FEC89A;
+  	width:40%;
+  	margin: auto;
+  	padding: 1vh;
+  	text-align: center;
+  	color: #6E6E5E;
+}
+
+.footnote-hr {
+	border: black;
+  	color: blue;
+}
+
+.footnote {
+	color: #d5bdaf;
+  	margin-left: 20%;
+  	/*margin-left: 33%;*/
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#story {
+  	color: black;
+	background: white;
+  	margin-top: 10vh;
+  	padding: 3vh;
+  	width: 80%;
+  	border-radius: 50px 10px 50px 0;
+}
+
+#background {
+  	position: fixed;
+  	left: -5vw;
+  	top: -5vh;
+  	z-index: -10;
+	height: 110vh;
+  	width: 110vw;
+}
+
+#location-text {
+	font-family: 'Khand', sans-serif;
+  	width:20%;
+  	font-size: 32px;
+  	margin-left: 4vw;
+}
+
+#story-title {
+	font-family: 'Khand', sans-serif;
+}
+
+#story-subtitle {
+	font-family: 'Khand', sans-serif;
+}
+
+#menu li a {
+    display: block;
+    padding: 0.25em 0.75em;
+    border: 1px solid transparent;
+    color: #eee;
+    text-transform: none; 
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">let url =
+    "https://coolors.co/palette/fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a";
+
+/* Execute the handler function each time the event triggers. */
+$(document).on(':passagestart', function (ev) {
+	/* JavaScript code */
+	advance();
+});
+
+/* executes when the passage finishes rendering */
+$(document).on(':passagerender', function (ev) {
+	//$(ev.content).append("//At the end of some renderings.//");
+	
+	// update theme
+	createTheme(State.getVar('$timeCount'));
+	// update UI elements
+	update();
+});
+
+// utility function for extracting coolor palettes
+window.createPalette = (url) => {
+		let lastSlash = url.lastIndexOf("/");
+    let palette_str = url.slice(lastSlash + 1);
+    let arr = palette_str.split("-");
+
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = "#" + arr[i];
+    }
+    return arr;
+}
+
+window.advance = (time=0.025, oomph = 0.25) => {
+	let t1 = State.getVar('$timeCount')
+	let t2 = (t1 + time);
+	
+	// advance the calendar
+	if(t2 > 24) {
+		let day = State.getVar('$day');
+		dayEvents[day].isFinished = true;
+		State.setVar('$day', day++);
+		t2 -= 24;
+	}
+	
+	// new time
+	State.setVar('$timeCount', t2)
+	State.setVar('$time', getTime(t2))
+	
+	// handle oomph
+	let piezo = State.getVar('$piezo');
+	piezo.oomph -= oomph;
+	State.setVar('$piezo', piezo)
+	console.log(piezo);
+}
+
+window.update = () => {
+	$('#money').html(`$${State.getVar("$money")}`)
+	$('#location-text').html(`${State.getVar("$location")}`)
+}
+
+window.footnote = (t1, t2 = '',t3 = '') => {
+	if(!document.getElementById("footnote")) {
+		$('<div id="footnote" class="footnote row"></div>').appendTo('#story');
+		$('<hr class="footnote-hr">').prependTo('#footnote');
+		$('<div id="footnote-a" class="column"></span>').appendTo('#footnote');
+		$('<div id="footnote-b" class="column"></span>').appendTo('#footnote');
+		$('<div id="footnote-c" class="column"></span>').appendTo('#footnote');
+	}
+	
+	$('#footnote-a').html(`<em>${t1}</em>`)
+	$('#footnote-b').html(`<em>${t2}</em>`)
+	$('#footnote-c').html(`<em>${t3}</em>`)
+}
+
+window.createTheme = (time=6) => {
+	// empty previous boxes
+	$('#background').empty()
+	
+	// pick palette based on time
+	let timeSelect = 0;
+	if((time >= 5) && (time <=12)) { // morning
+		timeSelect = 2;
+		State.setVar("$timeName","morning");
+	}
+	else if((time >=12)&&(time<=17)) { // afternoon
+		timeSelect = 4;
+		State.setVar("$timeName","afternoon");
+	}
+	else if((time >=17)&&(time<=21)) { // evening
+		timeSelect = 1;
+		State.setVar("$timeName","evening");
+	}
+	else if(((time>=21)&&(time<=24))||time<=5) { // night
+		timeSelect = 3;
+		State.setVar("$timeName","night");
+	}
+		let bodyWidth = 0;
+		let bodyLength = 0;
+    //let palette = createPalette(url);
+		let palette = createPalette(timePalette[timeSelect].url);
+    let body = document.getElementById('background');
+    body.style.background = palette[Math.floor(Math.random(palette.length))];
+		$("#story").css("color", timePalette[timeSelect].stroke);
+		$("#story").css("background", timePalette[timeSelect].background);
+		$(".footnote-hr").css("border", timePalette[timeSelect].stroke);
+		
+    for (let i = 0; i <= palette.length*10 - 1; i++) {
+        let box = document.createElement("div");
+				//let box = document.createElement("span");
+        box.style.background = palette[i];
+				box.className = "bg-box";
+        let height = (Math.random() * window.innerHeight) / (palette.length) - 1;
+				//let height = (Math.random() * window.innerHeight)
+        bodyLength += height;
+        box.style.height = height + "px";
+				//box.style.width = Math.random() * 10;
+        box.style.bottom = bodyLength + "px";
+        box.style.left = (Math.random() * window.innerWidth - window.innerWidth / 2) + "px";
+        body.appendChild(box);
+
+        if (i === palette.length - 1 && bodyLength < window.innerHeight) {
+            i = 0;
+        }
+    }
+}
+
+
+window.getDayName = (num) => {
+	let dayName = window.dayList[num % 6];
+	
+	return dayName;
+}
+
+window.getTime = (t) => {
+	console.log('t is ',t)
+	const hour = Math.floor(t);
+	let min = ((t - hour) * 60).toFixed(0);
+	if(min < 10) min = "0" + min;
+	
+	return `${hour}:${min}`
+}
+	
+window.dayList = ['Monra','Tonra','Wenra','Thumra','Friyaya','Settum','Summet']
+
+window.timePalette = [
+  // afternoon // HOT DOG?
+  {
+    name: "moir",
+    url: "https://coolors.co/a49f4f-d4501e-f7c558-ebbaa6",
+    stroke: "#161716",
+    background: "#f7f4ef",
+  },
+  // sunset // OKAY
+  {
+    name: "cc238",
+    url: "https://coolors.co/553c60-aa7680-ffb0a0-ff8c75-ff6749-fda46d-fbe090",
+    background: "#f5e9de",
+  },
+  // morning
+  {
+    name: "cjko-pink",
+    // fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a
+    url: "https://coolors.co/fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a",
+    stroke: "#161716",
+    background: "#FFE5D9",
+  },
+  // night
+  {
+    name: "floratopia",
+    url: "https://coolors.co/bf4a2b-cd902a-4e4973-a28f98-f5d4bc-f6d8c2",
+    stroke: "#A28F98",
+    background: "#1e1a43",
+  },
+  // afternoon
+  {
+    name: "sherbert afternoon",
+    url: "https://coolors.co/489fb5-82c0cc-b8d4d8-d3dede-ede7e3-f6c787-ffa62b",
+    stroke: "#16697A",
+    background: "#EDE7E3",
+  },
+]
+
+window.gameLength = 7;
+window.dayEvents = (() => {
+	let arr = [];
+	for(let i = 0; i <= gameLength-1; i++) {
+		arr[i] = {
+			isFinished: false,
+		}
+	}
+	return arr;
+})();
+console.log(dayEvents)
+
+/* PAGE INIT */
+// UI bar configuration upload load
+Config.ui.stowBarInitially = true;
+document.getElementById("history-backward").remove();
+document.getElementById("history-forward").remove();
+document.getElementById("menu-item-saves").remove();
+//document.getElementById("menu-item-restart").remove();
+if(!document.getElementById("money")){
+		$('<div id="money"></div>').appendTo($('#ui-bar-body'));
+}
+if(!document.getElementById("oomph")){
+		$('<div id="oomph"></div>').appendTo($('#ui-bar-body'));
+}
+if(!document.getElementById("health")){
+		$('<div id="health"></div>').appendTo($('#ui-bar-body'));
+}
+if(!document.getElementById("background")){
+		$('<div id="background"></div>').prependTo($('#story'));
+}
+if(!document.getElementById("location-text")){
+		$('<div id="location-text"></div>').prependTo($('#story'));
+}
+</script><tw-tag name="script" color="blue"></tw-tag>,<tw-tag name="admin" color="red"></tw-tag><tw-passagedata pid="1" name="Game Info Page" tags="" position="50,25" size="200,200">Hello and thank you for taking some interest in my interactive fiction project, &lt;em&gt;Infinite Slice&lt;/em&gt;.
+
+I spy with my little &lt;&lt;linkappend &quot;eye&quot; t8n&gt;&gt;, a crab rangoon&lt;&lt;/linkappend&gt;&gt;.
+
+&lt;&lt;linkappend &quot;//Infinite Slice//...&quot; t8n&gt;&gt; is an ambitious project that I set out to create for no real purpose other than as a creative outlet. Through the process of creating it I practiced in a handful of artistic and technical disciplines. 
+
+The story itself was written entirely by me and was actually started as another interactive fiction project back in 2018 when I was living in Taipei. Many of the core ideas and narrative aesthetic were influenced by my experience during that time. After returning to the United States in 2019 and the following global pandemic that followed, a few new ideas and themes were added as a result of said pandemic and my own adjustment back into my native culture.
+
+I adapted the story to include a few more elements of game design, web development, and generative art. The artwork and illustrations within the text are procedurally generated by scripts authored by me (unless otherwise noted). Additionally, most of the music included is written and produced by myself (unless otherwise noted).&lt;&lt;/linkappend&gt;&gt;
+
+[[How To Play]]
+
+&lt;&lt;script&gt;&gt;
+//footnote(&#39;&#39;);
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Intro to Cognition" tags="" position="100,550" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+Tucked neatly into a forgettable street, there was an alley.
+Within the forgettable alley, there stood a narrow building. It was old. It was moldy.
+
+A number of haphazard expansions had clearly been made to its foundation and various floors. By looking at expansions one could assume that the chief architect was clearly never the same twice. Each a new color scheme and each a new take on the concept of measurement. While commendably tall on its own, it stood forgettably slotted between other buildings that shared many of its characteristics, though they had their own unique additions.
+
+At the end of the building facing the alley, a narrow slice of bedroom. Some handful of stories up, the bedroom was someone&#39;s slice of the world. As light invaded the slits of his eyelids, a tiny slice of consciousness was injected into the recently slumbering mind. Piezo lay there for a few moments, occupying the often forgotten interrim between sleep and conscious reality. A tiny slice of limbo neatly caressed, physically by his eyelids, and metaphorically by the hint of concrete cognition.
+
+Piezo tried to remain adrift in this state but to no avail. He was awake.
+
+
+[[Piezo Room]]
+
+&lt;&lt;script&gt;&gt;
+window.footnote(&#39;&#39;);
+//document.getElementById(&quot;ui-bar&quot;).style.visibility = &quot;hidden&quot;;
+//document.getElementById(&quot;story&quot;).style.marginLeft = &quot;0em&quot;;
+
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="Piezo Room" tags="" position="125,1025" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+&lt;&lt;if $day == 0&gt;&gt;\
+The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was practically in the doorway. Piles of dirty clothes liter the floor. 
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if $piezo.gear.body != true&gt;&gt;
+	Piezo wondered whether he should throw a shirt on.
+&lt;&lt;elseif $piezo.gear.legs != true&gt;&gt;
+	Piezo wondered whether pants were necessary for today&#39;s agenda.
+&lt;&lt;elseif $piezo.gear.feet != true&gt;&gt;
+	Piezo wondered if shoes might take him where he wanted to go.
+&lt;&lt;/if&gt;&gt;
+[[Dresser]]
+[[Under the mattress]]
+[[Sleep]]
+[[Hallway]]
+[[Window]]
+[[Radio]]
+
+&lt;&lt;run footnote(&#39;&#39;)&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="Dresser" tags="" position="300,1025" size="100,100">
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Hallway" tags="" position="525,1225" size="100,100">[[Go to Garbunkle&#39;s door.-&gt;Garbunkle Room]]
+[[Go to Ling&#39;s door.-&gt;Ling Room]]
+[[Take the stairs down to the lobby.-&gt;Lobby]]
+[[Enter Piezo&#39;s room.-&gt;Piezo Room]]
+
+&lt;&lt;set $location = &#39;Hallway&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Garbunkle Room" tags="" position="700,500" size="100,100">&lt;&lt;set $location = &quot;Garbunkle&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="7" name="Ling Room" tags="" position="700,300" size="100,100">&lt;&lt;set $location = &quot;Ling&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="8" name="Lobby" tags="" position="1250,1125" size="100,100">&lt;&lt;set $location = &quot;Infinite Slice Lobby&quot;&gt;&gt;\
+[[Kitchen]]
+[[Alleyway]]</tw-passagedata><tw-passagedata pid="9" name="Kitchen" tags="" position="125,1675" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="10" name="Alleyway" tags="" position="1600,1625" size="100,100">&lt;&lt;set $location = &quot;Alley Fortuito&quot;&gt;&gt;\
+&lt;&lt;if $dayOne.isTrue === true&gt;&gt;
+[[The Chooch]]
+&lt;&lt;elseif $day === 1&gt;&gt;
+[[the second day]]
+&lt;&lt;else&gt;&gt;
+[[Club]]
+[[Market]]
+[[Plaza]]
+[[TangPingSki&#39;s Door]]
+&lt;&lt;/if&gt;&gt;
+[[]]</tw-passagedata><tw-passagedata pid="11" name="The Chooch" tags="" position="525,1675" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="12" name="the second day" tags="" position="525,1575" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="13" name="Market" tags="" position="2700,1500" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="14" name="Plaza" tags="" position="2700,200" size="100,100">[[Local RNG Temple]]
+[[Train Station]]
+[[Gate]]
+[[Pasta Luego&#39;s]]
+[[Taco The Town]]
+[[Shoyu: A Good Time]]</tw-passagedata><tw-passagedata pid="15" name="TangPingSki&#39;s Door" tags="" position="525,2025" size="100,100">[[Look back down the alleyway.-&gt;Alleyway]]
+[[Enter through the unassuming door.-&gt;TangPingSki&#39;s]]</tw-passagedata><tw-passagedata pid="16" name="Under the mattress" tags="" position="300,775" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
+	Nothing here.
+	[[Piezo sets the mattress back down in frustration.-&gt;Piezo Room]]
+&lt;&lt;else&gt;&gt;
+	There&#39;s a little bit of money for a rainy day. Should Piezo grab it?
+	[[It&#39;s rainy enough.][$money += 237; $foundMattressMoney = true]]
+	[[Not yet.-&gt;Piezo Room]]
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="Sleep" tags="" position="300,900" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="StoryCaption" tags="" position="475,25" size="100,100">
+test</tw-passagedata><tw-passagedata pid="19" name="StorySubtitle" tags="" position="375,25" size="100,100">&lt;em&gt;a culinary misadventure&lt;/em&gt;</tw-passagedata><tw-passagedata pid="20" name="TangPingSki&#39;s" tags="" position="525,2175" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="21" name="Club" tags="" position="825,2025" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="22" name="It&#39;s rainy enough." tags="" position="400,775" size="100,100">[[Back to the room.-&gt;Piezo Room]]
+&lt;&lt;run footnote(&#39;Added $237 to your wallet.&#39;)&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Window" tags="" position="50,1175" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
+The window is open. \
+	&lt;&lt;switch $timeName&gt;&gt;\
+	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\
+	Traffic from the city can be heard loud and clear.\
+	&lt;&lt;case &quot;evening&quot; &quot;night&quot;&gt;&gt;
+	The sounds of various conversations can be heard from below. The alleyway below is quite noisy when the primary sun goes down.
+	&lt;&lt;default&gt;&gt;\
+	It looks like it can be closed.
+	&lt;&lt;/switch&gt;&gt;
+[[Close it.|Window][$piezoRoomWindowOpen = false]]
+&lt;&lt;else&gt;&gt;\
+The window is closed. \
+	&lt;&lt;switch $timeName&gt;&gt;\
+	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\
+	The muted sounds of birds and traffic can be heard outside.\
+	&lt;&lt;case &quot;evening&quot; &quot;night&quot;&gt;&gt;\
+	Despite this fact, the lively alleyway outside can be heard distinctly in this room.
+	&lt;&lt;default&gt;&gt;\
+	It looks like it can be opened.
+	&lt;&lt;/switch&gt;&gt;
+[[Open it.|Window][$piezoRoomWindowOpen = true]]\
+&lt;&lt;/if&gt;&gt;\
+
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Radio" tags="" position="200,1175" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
+
+&lt;&lt;if $piezoRoomRadioOn&gt;&gt;\
+	It&#39;s tuned to a local radio station. There is a song playing.
+	[[Turn if off.|Radio][$piezoRoomRadioOn = false]]
+&lt;&lt;else&gt;&gt;\
+	[[Turn if on.|Radio][$piezoRoomRadioOn = true]]
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;return&gt;&gt;\</tw-passagedata><tw-passagedata pid="25" name="Local RNG Temple" tags="" position="2700,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="26" name="Train Station" tags="" position="2400,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="27" name="Gate" tags="" position="2550,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="28" name="Pasta Luego&#39;s" tags="" position="2800,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="29" name="Taco The Town" tags="" position="2900,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="30" name="Shoyu: A Good Time" tags="" position="3000,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="31" name="How To Play" tags="" position="100,350" size="100,100">There are just a few things to consider when embarking on this short adventure.
+
+&lt;&lt;linkappend &#39;The UI menu...&#39; t8n&gt;&gt; is accessed by clicking on the arrow to the top left of the screen. 
+
+From a gameplay/story perspective, in this menu you may:
+&lt;ul&gt;
+&lt;li&gt;Check your inventory, status, and bank account.&lt;/li&gt;
+&lt;li&gt;Check the in-game date.&lt;/li&gt;
+&lt;li&gt;View your acquired money.&lt;/li&gt;
+&lt;/ul&gt;
+There are also, non-diegetic, settings for:\
+&lt;ul&gt;
+&lt;li&gt;Unmute/mute the audio.&lt;/li&gt;
+&lt;li&gt;View the credits.&lt;/li&gt;
+&lt;li&gt;Contact me.&lt;/li&gt;
+&lt;/ul&gt;&lt;&lt;/linkappend&gt;&gt;
+
+&lt;&lt;linkappend &#39;Time &amp; Oomph...&#39; t8n&gt;&gt; — While misleadingly entitled &lt;em&gt;Infinite Slice&lt;/em&gt;, it is important to note that this story takes place over a finite number of in-game days. During each of these days, the main character will take actions that require both time and energy (oomph). Some actions require more temporal investment and physical expenditure than others. Each new narrative passage also marks the passage time.&lt;&lt;/linkappend&gt;&gt;
+
+&lt;&lt;linkreplace &quot;Occasionally, hints will appear in the text...&quot; t8n&gt;&gt;&lt;div class=&quot;hint&quot;&gt;These hints will look like this.&lt;/div&gt;&lt;&lt;/linkreplace&gt;&gt;
+
+&lt;&lt;linkappend &quot;Chatbox dialogue...&quot; t8n&gt;&gt; — While much of the dialogue will be presented in the traditional sense, occasionally dialogue will presented as chatboxes as seen below.
+
+&lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Piezo&lt;/small&gt;&lt;/em&gt;
+This might be one character&#39;s dialoge.&lt;/div&gt;
+&lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Ling&lt;/small&gt;&lt;/em&gt;
+Hello. This may be another&#39;s.&lt;/div&gt;
+&lt;div class=&quot;mid-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Garbunkle&lt;/small&gt;&lt;/em&gt;
+Whoa! Perhaps even a third!&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt;
+
+&lt;&lt;linkappend &quot;Footnotes/Commentary&quot; t8n&gt;&gt; — Diegetic commentary and character remarks may be found in the footnote area of each passage. Sometimes these will factoids about the current area, other times it will be a character&#39;s remarks about a place or situation, and other times still it may be a bit of conversation overheard. 
+
+Remarks made by important characters will have unique  fonts and colors to decern them from generic comments. 
+&lt;&lt;script&gt;&gt;
+footnote(&#39;Footnotes may contain useful factoids.&#39;,
+&#39;&quot;While not considered polite, eavesdropping can really pay off.&quot;&#39;,
+&#39;&lt;p&gt;&quot;Or even remarks made by important characters!&quot;&lt;/p&gt;[[Intro to Cognition]]&#39;);
+&lt;&lt;/script&gt;&gt;
+&lt;&lt;/linkappend&gt;&gt;
+
+[[Intro to Cognition]]
+
+</tw-passagedata><tw-passagedata pid="32" name="StoryInit" tags="admin" position="275,25" size="100,100">&lt;&lt;set $day = 0&gt;&gt;\
+&lt;&lt;set $timeCount = 23&gt;&gt;\
+&lt;&lt;set $money = 0&gt;&gt;\
+&lt;&lt;set $foundMattressMoney = false&gt;&gt;\
+&lt;&lt;set $location = &#39;Welcome&#39;&gt;&gt;\
+
+&lt;&lt;script&gt;&gt;
+State.setVar(&#39;$gearDB&#39;,[
+	{
+		name: &quot;Infinite Slice t-shirt&quot;,
+		type: &quot;body&quot;
+	},
+	{
+		name: &quot;plain t-shirt&quot;,
+		type: &quot;body&quot;
+	},
+	{
+		name: &quot;greasy ball cap&quot;,
+		type: &quot;head&quot;,
+		cool: -1,
+	},
+	{
+		name: &quot;short shorts&quot;,
+		type: &quot;legs&quot;,
+		cool: 1,
+	},
+	{
+		name: &quot;sneakers&quot;,
+		type: &quot;feet&quot;,
+		comfort: 0.25,
+	},
+	{
+		name: &quot;hiking boots&quot;,
+		comfort: 0.25,
+	}
+])
+State.setVar(&#39;$dresser&#39;,[
+	State.getVar(&#39;$gearDB&#39;)[0],
+	State.getVar(&#39;$gearDB&#39;)[1],
+	State.getVar(&#39;$gearDB&#39;)[2],
+	State.getVar(&#39;$gearDB&#39;)[3],
+])
+State.setVar(&#39;$piezo&#39;,{
+	oomph: 100,
+	gear: {
+		head: null,
+		body: null,
+		legs: null,
+		feet: null,
+		leftHand: null,
+		rightHand: null
+	},
+	foodInventory: [],
+	keyItems: []
+})
+
+
+&lt;&lt;/script&gt;&gt;</tw-passagedata></tw-storydata>
+

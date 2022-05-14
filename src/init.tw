@@ -1,0 +1,36 @@
+:: StoryInit
+<<set $day = 0>>\
+<<set $timeCount = 23>>\
+<<set $money = 0>>\
+<<set $foundMattressMoney = false>>\
+<<set $location = 'Welcome'>>\
+<<set $kitchen = {}>>
+
+<<script>>
+State.setVar('$gearDB',gearDB);
+
+// set items in piezo's dresser
+State.setVar('$dresser',[
+	State.getVar('$gearDB')[0],
+	State.getVar('$gearDB')[1],
+	State.getVar('$gearDB')[2],
+	State.getVar('$gearDB')[3],
+])
+
+// set piezo character object
+State.setVar('$piezo',{
+	oomph: 100,
+	gear: {
+		head: null,
+		body: null,
+		legs: null,
+		feet: null,
+		leftHand: null,
+		rightHand: null
+	},
+	foodInventory: [],
+	keyItems: []
+})
+	
+
+<</script>>

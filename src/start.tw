@@ -1,0 +1,20 @@
+:: StoryTitle
+Infinite Slice
+
+:: StorySubtitle
+<em>a culinary misadventure</em>
+
+:: StoryData
+{
+	"ifid": "DC4FD13F-D5A2-4C2A-96C5-05314D199D7C",
+  "format": "SugarCube",
+  "format-version": "2.30.0",
+  "zoom": 1
+}
+
+:: Start
+oh shit [[Thing]]
+
+:: Thing
+what
+
