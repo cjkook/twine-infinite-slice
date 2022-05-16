@@ -1,0 +1,4 @@
+:: Infinite Slice Kitchen
+<<set $location = 'Infinite Slice Kitchen'>>
+[[Kitchen Radio]]
+[[Exit back to the lobby.->Lobby]]

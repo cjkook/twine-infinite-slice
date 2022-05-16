@@ -1,0 +1,20 @@
+:: Piezo Room
+<<set $location = "Piezo's Room">>\
+<<if $day == 0>>\
+The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was practically in the doorway. Piles of dirty clothes liter the floor. 
+<</if>>\
+<<if $piezo.gear.body != true>>
+	Piezo wondered whether he should throw a shirt on.
+<<elseif $piezo.gear.legs != true>>
+	Piezo wondered whether pants were necessary for today's agenda.
+<<elseif $piezo.gear.feet != true>>
+	Piezo wondered if shoes might take him where he wanted to go.
+<</if>>
+[[Dresser]]
+[[Under the mattress]]
+[[Sleep]]
+[[Hallway]]
+[[Window]]
+[[Radio]]
+
+<<run footnote('')>>

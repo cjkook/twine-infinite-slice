@@ -1,0 +1,8 @@
+:: Lobby
+<<set $location = "Infinite Slice Lobby">>\
+The lobby of <em>Infinite Slice</em> is an interesting use of space. Its furniture includes only a couple of tables with their respective chairs but also sports a couch and coffee table. When the space isn't being used as the business's dining area, it is repurposed as a living room of sorts for the building's residents.
+
+At one end of the space is the front door, which leads to the alley. It is a rather wide double-sided sliding glass door which leads to the alleyway. On the other end is a cash register and countertop. Next to the register is a small black door.
+
+[[Enter the small door to the left of the window.->Infinite Slice Kitchen]]
+[[Go out the sliding door.->Alleyway]]

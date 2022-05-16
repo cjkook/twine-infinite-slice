@@ -1,0 +1,26 @@
+:: Window
+<<if $piezoRoomWindowOpen>>\
+The window is open. \
+	<<switch $timeName>>\
+	<<case "morning" "afternoon">>\
+	Traffic from the city can be heard loud and clear.\
+	<<case "evening" "night">>
+	The sounds of various conversations can be heard from below. The alleyway below is quite noisy when the primary sun goes down.
+	<<default>>\
+	It looks like it can be closed.
+	<</switch>>
+[[Close it.|Window][$piezoRoomWindowOpen = false]]
+<<else>>\
+The window is closed. \
+	<<switch $timeName>>\
+	<<case "morning" "afternoon">>\
+	The muted sounds of birds and traffic can be heard outside.\
+	<<case "evening" "night">>\
+	Despite this fact, the lively alleyway outside can be heard distinctly in this room.
+	<<default>>\
+	It looks like it can be opened.
+	<</switch>>
+[[Open it.|Window][$piezoRoomWindowOpen = true]]\
+<</if>>\
+
+<<return>>

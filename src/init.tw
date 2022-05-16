@@ -1,12 +1,25 @@
 :: StoryInit
 <<set $day = 0>>\
-<<set $timeCount = 23>>\
+<<set $timeCount = 6>>\
 <<set $money = 0>>\
 <<set $foundMattressMoney = false>>\
 <<set $location = 'Welcome'>>\
+<<set $locations = []>>
 <<set $kitchen = {}>>
+<<set $characters = {}>>
+<<set $dayEvents = []>>
 
 <<script>>
+// set day events
+State.setVar("$dayEvents", makeDayEvents())
+
+// set locations
+State.setVar("$locations", locations)
+
+// set character objects
+State.setVar("$characters", characters)
+
+// set gear database
 State.setVar('$gearDB',gearDB);
 
 // set items in piezo's dresser

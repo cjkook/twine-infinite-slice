@@ -1,0 +1,13 @@
+:: Under the mattress
+<<if $foundMattressMoney>>
+	Nothing here.
+	[[Piezo sets the mattress back down in frustration.->Piezo Room]]
+<<else>>
+	There's a little bit of money for a rainy day. Should Piezo grab it?
+	[[It's rainy enough.][$money += 237; $foundMattressMoney = true]]
+	[[Not yet.->Piezo Room]]
+<</if>>
+
+:: It's rainy enough.
+[[Back to the room.->Piezo Room]]
+<<run footnote("Added $237 to Piezo's wallet.")>>

@@ -1,0 +1,10 @@
+:: Radio
+There isn't much to this radio. The time is <<= $time>>.
+
+<<if $piezoRoomRadioOn>>\
+	It's tuned to a local radio station. There is a song playing.
+	[[Turn if off.|Radio][$piezoRoomRadioOn = false]]
+<<else>>\
+	[[Turn if on.|Radio][$piezoRoomRadioOn = true]]
+<</if>>\
+<<return>>\

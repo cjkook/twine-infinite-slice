@@ -1,0 +1,7 @@
+:: Hallway
+<<set $location = 'Hallway'>>\
+[[Go to Garbunkle's door.->Garbunkle Room]]
+[[Go to Ling's door.->Ling Room]]
+[[Take the stairs down to the lobby.->Lobby]]
+[[Enter Piezo's room.->Piezo Room]]
+

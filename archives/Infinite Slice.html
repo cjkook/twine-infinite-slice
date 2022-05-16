@@ -100,88 +100,87 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://DC4FD13F-D5A2-4C2A-96C5-05314D199D7C// --><tw-storydata name="Infinite Slice" startnode="3" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="DC4FD13F-D5A2-4C2A-96C5-05314D199D7C" zoom="1" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Khand:wght@300&family=Open+Sans:wght@300&family=Press+Start+2P&family=Raleway:wght@100&family=Righteous&display=swap");
+	<tw-storydata name="Infinite Slice" startnode="1" creator="Twine" creator-version="2.3.5" ifid="240EC73B-0F6F-4231-BE83-1C6C5D35BC3A" zoom="0.6" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Khand:wght@300&family=Open+Sans:wght@300&family=Press+Start+2P&family=Raleway:wght@100&family=Righteous&display=swap');
 
 * {
-  font-family: "Open Sans Condensed", sans-serif;
+  	font-family: 'Open Sans Condensed', sans-serif;
 }
 
 body {
-  color: #000000;
+  	color: #000000,
 }
 
 h1,
 h4 {
-  transform: scale(0.9, 1.3);
-  /* font-family: 'Dorsa', sans-serif; */
-  font-weight: normal;
-  width: 90%;
-  margin: auto;
-  margin-top: 1%;
+    transform: scale(.9, 1.3);
+    /* font-family: 'Dorsa', sans-serif; */
+    font-weight: normal;
+    width: 90%;
+    margin: auto;
+    margin-top: 1%;
 }
 
 .bg-box {
-  position: fixed;
-  z-index: -1;
-  width: 101%;
-  margin-left: -1%;
-  border-radius: 800px;
+    position: fixed;
+    z-index: -1;
+    width: 101%;
+    margin-left: -1%;
+    border-radius: 800px;
 }
 
 .hint {
-  font-family: "Raleway", sans-serif;
-  font-weight: bold;
-  background: #ece4db;
-  color: #6d6875;
-  border-radius: 10px;
-  padding: 2vh;
-  width: 50%;
+  	font-family: 'Raleway', sans-serif;
+  	font-weight: bold;
+	background: #ECE4DB;
+  	color: #6d6875;
+  	border-radius: 10px;
+  	padding: 2vh;
+  	width: 50%;
 }
 
 .left-chat {
-  border-radius: 25px 25px 25px 3px;
-  background: #d8e2dc;
-  width: 40%;
-  padding: 1vh;
-  text-align: right;
-  color: #6e6e5e;
+	border-radius: 25px 25px 25px 3px;
+	background:#D8E2DC;
+  	width:40%;
+  	padding: 1vh;
+  	text-align: right;
+  	color: #6E6E5E;
 }
 
 .right-chat {
-  border-radius: 25px 25px 3px 25px;
-  background: #fec5bb;
-  width: 40%;
-  padding: 1vh;
-  color: #6e6e5e;
-  margin-left: auto;
-  margin-right: 0;
+	border-radius: 25px 25px 3px 25px;
+	background:#FEC5BB;
+  	width:40%;
+  	padding: 1vh;
+  	color: #6E6E5E;
+  	margin-left: auto; 
+	margin-right: 0;
 }
 
 .mid-chat {
-  border-radius: 25px;
-  background: #fec89a;
-  width: 40%;
-  margin: auto;
-  padding: 1vh;
-  text-align: center;
-  color: #6e6e5e;
+	border-radius: 25px;
+	background:#FEC89A;
+  	width:40%;
+  	margin: auto;
+  	padding: 1vh;
+  	text-align: center;
+  	color: #6E6E5E;
 }
 
 .footnote-hr {
-  border: black;
-  color: blue;
+	border: black;
+  	color: blue;
 }
 
 .footnote {
-  color: #d5bdaf;
-  margin-left: 15%;
-  /*margin-left: 33%;*/
+	color: #d5bdaf;
+  	margin-left: 20%;
+  	/*margin-left: 33%;*/
 }
 
 .column {
   float: left;
-  width: 25.33%;
-  padding: 1vh;
+  width: 33.33%;
 }
 
 /* Clear floats after the columns */
@@ -192,390 +191,236 @@ h4 {
 }
 
 #story {
-  color: black;
-  background: white;
-  margin-top: 10vh;
-  padding: 3vh;
-  width: 80%;
-  border-radius: 50px 10px 50px 0;
+  	color: black;
+	background: white;
+  	margin-top: 10vh;
+  	padding: 3vh;
+  	width: 80%;
+  	border-radius: 50px 10px 50px 0;
 }
 
 #background {
-  position: fixed;
-  left: -5vw;
-  top: -5vh;
-  z-index: -10;
-  height: 110vh;
-  width: 110vw;
+  	position: fixed;
+  	left: -5vw;
+  	top: -5vh;
+  	z-index: -10;
+	height: 110vh;
+  	width: 110vw;
 }
 
 #location-text {
-  font-family: "Khand", sans-serif;
-  width: 20%;
-  font-size: 32px;
-  margin-left: 4vw;
+	font-family: 'Khand', sans-serif;
+  	width:20%;
+  	font-size: 32px;
+  	margin-left: 4vw;
 }
 
 #story-title {
-  font-family: "Khand", sans-serif;
+	font-family: 'Khand', sans-serif;
 }
 
 #story-subtitle {
-  font-family: "Khand", sans-serif;
+	font-family: 'Khand', sans-serif;
 }
 
 #menu li a {
-  display: block;
-  padding: 0.25em 0.75em;
-  border: 1px solid transparent;
-  color: #eee;
-  text-transform: none;
-}
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "DB.js" */
-window.locations = [
-  {
-    name: "Piezo Room",
-    isRadioOn: false,
-    isInterior: true,
-  },
-  {
-    name: "Hallway",
-    isRadioOn: false,
-    isInterior: true,
-  },
-  {
-    name: "Infinite Slice Lobby",
-    isRadioOn: false,
-    isInterior: true,
-  },
-  {
-    name: "Alleyway",
-    isRadioOn: false,
-    isInterior: false,
-  },
-  {
-    name: "Plaza",
-    isRadioOn: false,
-    isInterior: true,
-  },
-  {
-    name: "Kitchen",
-    isRadioOn: false,
-    isInterior: true,
-  },
-];
-
-window.characters = [
-  {
-    name: "Garbunkle",
-    routine: {
-      morning: "Rooftop",
-      afternoon: "Alleyway",
-      evening: "",
-      night: "Kitchen"
-    }
-  },
-  {
-    name: "Ling",
-    routine: {
-      morning: "Ling Room",
-      afternoon: "Infinite Slice Lobby",
-      evening: "",
-      night: "TangPingSki's"
-    }
-  },
-  {
-    name: "Miel",
-    routine: {
-      morning: "",
-      afternoon: "",
-      evening: "Alleyway",
-      night: "Club"
-    }
-  },
-  {
-    name: "Ciccia",
-    routine: {
-      morning: "",
-      afternoon: "",
-      evening: "",
-      night: "Club"
-    }
-  },
-  {
-    name: "Choochi",
-    routine: {
-      morning: "Market",
-      afternoon: "",
-      evening: "",
-      night: "TangPingSki's"
-    }
-  },
-  {
-    name: "Dirty Old Wizard",
-    routine: {
-      morning: "",
-      afternoon: "Alleyway",
-      evening: "Plaza",
-      night: "TangPingSki's"
-    }
-  },
-
-]
-
-window.gearDB = [
-  {
-    name: "Infinite Slice t-shirt",
-    type: "body",
-  },
-  {
-    name: "plain t-shirt",
-    type: "body",
-  },
-  {
-    name: "greasy ball cap",
-    type: "head",
-    cool: -1,
-  },
-  {
-    name: "short shorts",
-    type: "legs",
-    cool: 1,
-  },
-  {
-    name: "sneakers",
-    type: "feet",
-    comfort: 0.25,
-  },
-  {
-    name: "hiking boots",
-    comfort: 0.25,
-  },
-];
-
-window.foodDB = [];
-
-window.kitchenDB = [];
-
-window.dayList = [
-  "Monra",
-  "Tonra",
-  "Wenra",
-  "Thumra",
-  "Friyaya",
-  "Settum",
-  "Summet",
-];
-
-// length of the game
-window.gameLength = 7;
-
-
-/* twine-user-script #2: "functions.js" */
-// utility function for extracting coolor palettes
-window.createPalette = (url) => {
-  let lastSlash = url.lastIndexOf("/");
-  let palette_str = url.slice(lastSlash + 1);
-  let arr = palette_str.split("-");
-
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] = "#" + arr[i];
-  }
-  return arr;
-};
-
-// sets a parameter on an object representing an event
-window.setDayEvent = (i, property = `test`, value = `val`) => {
-  let dayEvents = State.getVar("$dayEvents"); // get story variable
-  dayEvents[i][property] = value;
-
-  // save to story variable
-  State.setVar("$dayEvents", dayEvents);
-};
-
-// check day events.
-window.checkDayEvent = (ev, i = null) => {
-  let dayEvents = State.getVar("$dayEvents"); // get story variable
-
-  //check specific day
-  if (i) {
-    return dayEvents[i][ev];
-  } else {
-    // check all days for event
-    dayEvents.forEach((e) => {
-      if (e[ev]) {
-        return e[ev];
-      }
-    });
-  }
-};
-
-// creates window objects for each day
-window.makeDayEvents = () => {
-  let arr = [];
-  for (let i = 0; i <= gameLength - 1; i++) {
-    arr[i] = {
-      isFinished: false,
-      dayNumber: i + 1,
-      infSliceOpened: false,
-    };
-  }
-  return arr;
-};
-
-
-
-// function to display footnote info
-window.footnote = (t1, t2 = "", t3 = "") => {
-  if (!document.getElementById("footnote")) {
-    $('<div id="footnote" class="footnote row"></div>').appendTo("#story");
-    $('<hr class="footnote-hr">').prependTo("#footnote");
-    $('<div id="footnote-a" class="column"></span>').appendTo("#footnote");
-    $('<div id="footnote-b" class="column"></span>').appendTo("#footnote");
-    $('<div id="footnote-c" class="column"></span>').appendTo("#footnote");
-  }
-
-  $("#footnote-a").html(`<em>${t1}</em>`);
-  $("#footnote-b").html(`<em>${t2}</em>`);
-  $("#footnote-c").html(`<em>${t3}</em>`);
-};
-
-// function to create theme based on time. Also generates time name. Called after passage renders.
-window.createTheme = (t) => {
-  // empty previous boxes
-  $("#background").empty();
-
-  let bodyWidth = 0;
-  let bodyLength = 0;
-  //let palette = createPalette(url);
-  let palette = timePalette.filter((p) => p.name == getTimeName(t));
-  let bg = palette[0].background;
-  let stroke = palette[0].stroke;
-  palette = createPalette(palette[0].url);
-  // let palette = createPalette(timePalette[timeSelect].url);
-  let body = document.getElementById("background");
-  body.style.background = palette[Math.floor(Math.random(palette.length))];
-  $("#story").css("color", stroke);
-  $("#story").css("background", bg);
-  $(".footnote-hr").css("border", stroke);
-
-  for (let i = 0; i <= palette.length * 10 - 1; i++) {
-    let box = document.createElement("div");
-    //let box = document.createElement("span");
-    box.style.background = palette[i];
-    box.className = "bg-box";
-    let height = (Math.random() * window.innerHeight) / palette.length - 1;
-    //let height = (Math.random() * window.innerHeight)
-    bodyLength += height;
-    box.style.height = height + "px";
-    //box.style.width = Math.random() * 10;
-    box.style.bottom = bodyLength + "px";
-    box.style.left =
-      Math.random() * window.innerWidth - window.innerWidth / 2 + "px";
-    body.appendChild(box);
-
-    if (i === palette.length - 1 && bodyLength < window.innerHeight) {
-      i = 0;
-    }
-  }
-};
-
-// RETURNS day name
-window.getDayName = (num) => {
-  let dayName = window.dayList[num % 6];
-
-  return dayName;
-};
-
-window.getTimeName = (time) => {
-  let name = "";
-  if (time >= 5 && time <= 12) {
-    name = "morning";
-    State.setVar("$timeName", name);
-  } else if (time >= 12 && time <= 17) {
-    name = "afternoon";
-    State.setVar("$timeName", name);
-  } else if (time >= 17 && time <= 21) {
-    name = "evening";
-    State.setVar("$timeName", name);
-  } else if ((time >= 21 && time <= 24) || time <= 5) {
-    name = "night";
-    State.setVar("$timeName", name);
-  }
-  return name;
-};
-
-// get human readable time
-window.getClock = (t) => {
-  const hour = Math.floor(t);
-  let min = ((t - hour) * 60).toFixed(0);
-  if (min < 10) min = "0" + min;
-
-  return `${hour}:${min}`;
-};
-
-//check characters in certain location at certain time of day
-window.checkLocationCharacters = (loc, t) => {
-  let chars = State.getVar("$characters") || window.characters;
-  
-  let time = window.getTimeName(t);
-
-  console.log(chars, loc, time)
-  let localChars = chars.filter((c) => c.routine[time] == loc);
-  console.log(localChars);
-};
-checkLocationCharacters("Club",23);
-/* twine-user-script #3: "index.js" */
-let url =
-  "https://coolors.co/palette/fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a";
+    display: block;
+    padding: 0.25em 0.75em;
+    border: 1px solid transparent;
+    color: #eee;
+    text-transform: none; 
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">let url =
+    "https://coolors.co/palette/fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a";
 
 /* Execute the handler function each time the event triggers. */
-$(document).on(":passagestart", function (ev) {
-  /* JavaScript code */
-  window.advance();
+$(document).on(':passagestart', function (ev) {
+	/* JavaScript code */
+	advance();
 });
 
 /* executes when the passage finishes rendering */
-$(document).on(":passagerender", function (ev) {
-  //$(ev.content).append("//At the end of some renderings.//");
-
-  // update theme
-  createTheme(State.getVar("$timeCount"));
-  // update UI elements
-  update();
+$(document).on(':passagerender', function (ev) {
+	//$(ev.content).append("//At the end of some renderings.//");
+	
+	// update theme
+	createTheme(State.getVar('$timeCount'));
+	// update UI elements
+	update();
 });
 
-/* FUNCTIONS */
-// function called to update time/oomph when the passage is advanced
-window.advance = (time = 0.025, oomph = 0.25) => {
-  let t1 = State.getVar("$timeCount");
-  let t2 = t1 + time;
+// utility function for extracting coolor palettes
+window.createPalette = (url) => {
+		let lastSlash = url.lastIndexOf("/");
+    let palette_str = url.slice(lastSlash + 1);
+    let arr = palette_str.split("-");
 
-  // advance the calendar
-  if (t2 > 24) {
-    let day = State.getVar("$day");
-    dayEvents[day].isFinished = true;
-    State.setVar("$day", day++);
-    t2 -= 24;
-  }
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = "#" + arr[i];
+    }
+    return arr;
+}
 
-  // new time
-  State.setVar("$timeCount", t2);
-  State.setVar("$time", getClock(t2));
-  console.log(getClock(t2));
+window.advance = (time=0.025, oomph = 0.25) => {
+	let t1 = State.getVar('$timeCount')
+	let t2 = (t1 + time);
+	
+	// advance the calendar
+	if(t2 > 24) {
+		let day = State.getVar('$day');
+		dayEvents[day].isFinished = true;
+		State.setVar('$day', day++);
+		t2 -= 24;
+	}
+	
+	// new time
+	State.setVar('$timeCount', t2)
+	State.setVar('$time', getTime(t2))
+	
+	// handle oomph
+	let piezo = State.getVar('$piezo');
+	piezo.oomph -= oomph;
+	State.setVar('$piezo', piezo)
+	console.log(piezo);
+}
 
-  // handle oomph
-  let piezo = State.getVar("$piezo");
-  piezo.oomph -= oomph;
-  State.setVar("$piezo", piezo);
-  console.log(piezo);
-};
-
-// function to update UI elements
 window.update = () => {
-  $("#money").html(`$${State.getVar("$money")}`);
-  $("#location-text").html(`${State.getVar("$location")}`);
-};
+	$('#money').html(`$${State.getVar("$money")}`)
+	$('#location-text').html(`${State.getVar("$location")}`)
+}
+
+window.footnote = (t1, t2 = '',t3 = '') => {
+	if(!document.getElementById("footnote")) {
+		$('<div id="footnote" class="footnote row"></div>').appendTo('#story');
+		$('<hr class="footnote-hr">').prependTo('#footnote');
+		$('<div id="footnote-a" class="column"></span>').appendTo('#footnote');
+		$('<div id="footnote-b" class="column"></span>').appendTo('#footnote');
+		$('<div id="footnote-c" class="column"></span>').appendTo('#footnote');
+	}
+	
+	$('#footnote-a').html(`<em>${t1}</em>`)
+	$('#footnote-b').html(`<em>${t2}</em>`)
+	$('#footnote-c').html(`<em>${t3}</em>`)
+}
+
+window.createTheme = (time=6) => {
+	// empty previous boxes
+	$('#background').empty()
+	
+	// pick palette based on time
+	let timeSelect = 0;
+	if((time >= 5) && (time <=12)) { // morning
+		timeSelect = 2;
+		State.setVar("$timeName","morning");
+	}
+	else if((time >=12)&&(time<=17)) { // afternoon
+		timeSelect = 4;
+		State.setVar("$timeName","afternoon");
+	}
+	else if((time >=17)&&(time<=21)) { // evening
+		timeSelect = 1;
+		State.setVar("$timeName","evening");
+	}
+	else if(((time>=21)&&(time<=24))||time<=5) { // night
+		timeSelect = 3;
+		State.setVar("$timeName","night");
+	}
+		let bodyWidth = 0;
+		let bodyLength = 0;
+    //let palette = createPalette(url);
+		let palette = createPalette(timePalette[timeSelect].url);
+    let body = document.getElementById('background');
+    body.style.background = palette[Math.floor(Math.random(palette.length))];
+		$("#story").css("color", timePalette[timeSelect].stroke);
+		$("#story").css("background", timePalette[timeSelect].background);
+		$(".footnote-hr").css("border", timePalette[timeSelect].stroke);
+		
+    for (let i = 0; i <= palette.length*10 - 1; i++) {
+        let box = document.createElement("div");
+				//let box = document.createElement("span");
+        box.style.background = palette[i];
+				box.className = "bg-box";
+        let height = (Math.random() * window.innerHeight) / (palette.length) - 1;
+				//let height = (Math.random() * window.innerHeight)
+        bodyLength += height;
+        box.style.height = height + "px";
+				//box.style.width = Math.random() * 10;
+        box.style.bottom = bodyLength + "px";
+        box.style.left = (Math.random() * window.innerWidth - window.innerWidth / 2) + "px";
+        body.appendChild(box);
+
+        if (i === palette.length - 1 && bodyLength < window.innerHeight) {
+            i = 0;
+        }
+    }
+}
+
+
+window.getDayName = (num) => {
+	let dayName = window.dayList[num % 6];
+	
+	return dayName;
+}
+
+window.getTime = (t) => {
+	console.log('t is ',t)
+	const hour = Math.floor(t);
+	let min = ((t - hour) * 60).toFixed(0);
+	if(min < 10) min = "0" + min;
+	
+	return `${hour}:${min}`
+}
+	
+window.dayList = ['Monra','Tonra','Wenra','Thumra','Friyaya','Settum','Summet']
+
+window.timePalette = [
+  // afternoon // HOT DOG?
+  {
+    name: "moir",
+    url: "https://coolors.co/a49f4f-d4501e-f7c558-ebbaa6",
+    stroke: "#161716",
+    background: "#f7f4ef",
+  },
+  // sunset // OKAY
+  {
+    name: "cc238",
+    url: "https://coolors.co/553c60-aa7680-ffb0a0-ff8c75-ff6749-fda46d-fbe090",
+    background: "#f5e9de",
+  },
+  // morning
+  {
+    name: "cjko-pink",
+    // fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a
+    url: "https://coolors.co/fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a",
+    stroke: "#161716",
+    background: "#FFE5D9",
+  },
+  // night
+  {
+    name: "floratopia",
+    url: "https://coolors.co/bf4a2b-cd902a-4e4973-a28f98-f5d4bc-f6d8c2",
+    stroke: "#A28F98",
+    background: "#1e1a43",
+  },
+  // afternoon
+  {
+    name: "sherbert afternoon",
+    url: "https://coolors.co/489fb5-82c0cc-b8d4d8-d3dede-ede7e3-f6c787-ffa62b",
+    stroke: "#16697A",
+    background: "#EDE7E3",
+  },
+]
+
+window.gameLength = 7;
+window.dayEvents = (() => {
+	let arr = [];
+	for(let i = 0; i <= gameLength-1; i++) {
+		arr[i] = {
+			isFinished: false,
+		}
+	}
+	return arr;
+})();
+console.log(dayEvents)
 
 /* PAGE INIT */
 // UI bar configuration upload load
@@ -584,107 +429,22 @@ document.getElementById("history-backward").remove();
 document.getElementById("history-forward").remove();
 document.getElementById("menu-item-saves").remove();
 //document.getElementById("menu-item-restart").remove();
-if (!document.getElementById("money")) {
-  $('<div id="money"></div>').appendTo($("#ui-bar-body"));
+if(!document.getElementById("money")){
+		$('<div id="money"></div>').appendTo($('#ui-bar-body'));
 }
-if (!document.getElementById("oomph")) {
-  $('<div id="oomph"></div>').appendTo($("#ui-bar-body"));
+if(!document.getElementById("oomph")){
+		$('<div id="oomph"></div>').appendTo($('#ui-bar-body'));
 }
-if (!document.getElementById("health")) {
-  $('<div id="health"></div>').appendTo($("#ui-bar-body"));
+if(!document.getElementById("health")){
+		$('<div id="health"></div>').appendTo($('#ui-bar-body'));
 }
-if (!document.getElementById("background")) {
-  $('<div id="background"></div>').prependTo($("#story"));
+if(!document.getElementById("background")){
+		$('<div id="background"></div>').prependTo($('#story'));
 }
-if (!document.getElementById("location-text")) {
-  $('<div id="location-text"></div>').prependTo($("#story"));
+if(!document.getElementById("location-text")){
+		$('<div id="location-text"></div>').prependTo($('#story'));
 }
-/* twine-user-script #4: "palettes.js" */
-window.timePalette = [
-  // HOT DOG // error
-  {
-    name: "moir",
-    url: "https://coolors.co/a49f4f-d4501e-f7c558-ebbaa6",
-    stroke: "#161716",
-    background: "#f7f4ef",
-  },
-  // morning
-  {
-    name: "morning",
-    // fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a
-    url: "https://coolors.co/fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a",
-    stroke: "#161716",
-    background: "#FFE5D9",
-  },
-  // afternoon
-  {
-    name: "afternoon",
-    url: "https://coolors.co/489fb5-82c0cc-b8d4d8-d3dede-ede7e3-f6c787-ffa62b",
-    stroke: "#16697A",
-    background: "#EDE7E3",
-  },
-  // evening // OKAY
-  {
-    name: "evening",
-    url: "https://coolors.co/553c60-aa7680-ffb0a0-ff8c75-ff6749-fda46d-fbe090",
-    background: "#f5e9de",
-  },
-  // night
-  {
-    name: "night",
-    url: "https://coolors.co/bf4a2b-cd902a-4e4973-a28f98-f5d4bc-f6d8c2",
-    stroke: "#A28F98",
-    background: "#1e1a43",
-  },
-];
-</script><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;set $day = 0&gt;&gt;\
-&lt;&lt;set $timeCount = 6&gt;&gt;\
-&lt;&lt;set $money = 0&gt;&gt;\
-&lt;&lt;set $foundMattressMoney = false&gt;&gt;\
-&lt;&lt;set $location = &#39;Welcome&#39;&gt;&gt;\
-&lt;&lt;set $locations = []&gt;&gt;
-&lt;&lt;set $kitchen = {}&gt;&gt;
-&lt;&lt;set $characters = {}&gt;&gt;
-&lt;&lt;set $dayEvents = []&gt;&gt;
-
-&lt;&lt;script&gt;&gt;
-// set day events
-State.setVar(&quot;$dayEvents&quot;, makeDayEvents())
-
-// set locations
-State.setVar(&quot;$locations&quot;, locations)
-
-// set character objects
-State.setVar(&quot;$characters&quot;, characters)
-
-// set gear database
-State.setVar(&#39;$gearDB&#39;,gearDB);
-
-// set items in piezo&#39;s dresser
-State.setVar(&#39;$dresser&#39;,[
-	State.getVar(&#39;$gearDB&#39;)[0],
-	State.getVar(&#39;$gearDB&#39;)[1],
-	State.getVar(&#39;$gearDB&#39;)[2],
-	State.getVar(&#39;$gearDB&#39;)[3],
-])
-
-// set piezo character object
-State.setVar(&#39;$piezo&#39;,{
-	oomph: 100,
-	gear: {
-		head: null,
-		body: null,
-		legs: null,
-		feet: null,
-		leftHand: null,
-		rightHand: null
-	},
-	foodInventory: [],
-	keyItems: []
-})
-	
-
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StorySubtitle" tags="" position="225,100" size="100,100">&lt;em&gt;a culinary misadventure&lt;/em&gt;</tw-passagedata><tw-passagedata pid="3" name="Start" tags="" position="350,100" size="100,100">Hello and thank you for taking some interest in my interactive fiction project, &lt;em&gt;Infinite Slice&lt;/em&gt;.
+</script><tw-tag name="script" color="blue"></tw-tag>,<tw-tag name="admin" color="red"></tw-tag><tw-passagedata pid="1" name="Game Info Page" tags="" position="50,25" size="200,200">Hello and thank you for taking some interest in my interactive fiction project, &lt;em&gt;Infinite Slice&lt;/em&gt;.
 
 I spy with my little &lt;&lt;linkappend &quot;eye&quot; t8n&gt;&gt;, a crab rangoon&lt;&lt;/linkappend&gt;&gt;.
 
@@ -694,7 +454,114 @@ The story itself was written entirely by me and was actually started as another 
 
 I adapted the story to include a few more elements of game design, web development, and generative art. The artwork and illustrations within the text are procedurally generated by scripts authored by me (unless otherwise noted). Additionally, most of the music included is written and produced by myself (unless otherwise noted).&lt;&lt;/linkappend&gt;&gt;
 
-[[How To Play]]</tw-passagedata><tw-passagedata pid="4" name="How To Play" tags="" position="475,100" size="100,100">There are just a few things to consider when embarking on this short adventure.
+[[How To Play]]
+
+&lt;&lt;script&gt;&gt;
+//footnote(&#39;&#39;);
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Intro to Cognition" tags="" position="100,550" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+Tucked neatly into a forgettable street, there was an alley.
+Within the forgettable alley, there stood a narrow building. It was old. It was moldy.
+
+A number of haphazard expansions had clearly been made to its foundation and various floors. By looking at expansions one could assume that the chief architect was clearly never the same twice. Each a new color scheme and each a new take on the concept of measurement. While commendably tall on its own, it stood forgettably slotted between other buildings that shared many of its characteristics, though they had their own unique additions.
+
+At the end of the building facing the alley, a narrow slice of bedroom. Some handful of stories up, the bedroom was someone&#39;s slice of the world. As light invaded the slits of his eyelids, a tiny slice of consciousness was injected into the recently slumbering mind. Piezo lay there for a few moments, occupying the often forgotten interrim between sleep and conscious reality. A tiny slice of limbo neatly caressed, physically by his eyelids, and metaphorically by the hint of concrete cognition.
+
+Piezo tried to remain adrift in this state but to no avail. He was awake.
+
+
+[[Piezo Room]]
+
+&lt;&lt;script&gt;&gt;
+window.footnote(&#39;&#39;);
+//document.getElementById(&quot;ui-bar&quot;).style.visibility = &quot;hidden&quot;;
+//document.getElementById(&quot;story&quot;).style.marginLeft = &quot;0em&quot;;
+
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="Piezo Room" tags="" position="125,1025" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+&lt;&lt;if $day == 0&gt;&gt;\
+The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was practically in the doorway. Piles of dirty clothes liter the floor. 
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;if $piezo.gear.body != true&gt;&gt;
+	Piezo wondered whether he should throw a shirt on.
+&lt;&lt;elseif $piezo.gear.legs != true&gt;&gt;
+	Piezo wondered whether pants were necessary for today&#39;s agenda.
+&lt;&lt;elseif $piezo.gear.feet != true&gt;&gt;
+	Piezo wondered if shoes might take him where he wanted to go.
+&lt;&lt;/if&gt;&gt;
+[[Dresser]]
+[[Under the mattress]]
+[[Sleep]]
+[[Hallway]]
+[[Window]]
+[[Radio]]
+
+&lt;&lt;run footnote(&#39;&#39;)&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="Dresser" tags="" position="300,1025" size="100,100">
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Hallway" tags="" position="525,1225" size="100,100">[[Go to Garbunkle&#39;s door.-&gt;Garbunkle Room]]
+[[Go to Ling&#39;s door.-&gt;Ling Room]]
+[[Take the stairs down to the lobby.-&gt;Lobby]]
+[[Enter Piezo&#39;s room.-&gt;Piezo Room]]
+
+&lt;&lt;set $location = &#39;Hallway&#39;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Garbunkle Room" tags="" position="700,500" size="100,100">&lt;&lt;set $location = &quot;Garbunkle&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="7" name="Ling Room" tags="" position="700,300" size="100,100">&lt;&lt;set $location = &quot;Ling&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="8" name="Lobby" tags="" position="1250,1125" size="100,100">&lt;&lt;set $location = &quot;Infinite Slice Lobby&quot;&gt;&gt;\
+[[Kitchen]]
+[[Alleyway]]</tw-passagedata><tw-passagedata pid="9" name="Kitchen" tags="" position="125,1675" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="10" name="Alleyway" tags="" position="1600,1625" size="100,100">&lt;&lt;set $location = &quot;Alley Fortuito&quot;&gt;&gt;\
+&lt;&lt;if $dayOne.isTrue === true&gt;&gt;
+[[The Chooch]]
+&lt;&lt;elseif $day === 1&gt;&gt;
+[[the second day]]
+&lt;&lt;else&gt;&gt;
+[[Club]]
+[[Market]]
+[[Plaza]]
+[[TangPingSki&#39;s Door]]
+&lt;&lt;/if&gt;&gt;
+[[]]</tw-passagedata><tw-passagedata pid="11" name="The Chooch" tags="" position="525,1675" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="12" name="the second day" tags="" position="525,1575" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="13" name="Market" tags="" position="2700,1500" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="14" name="Plaza" tags="" position="2700,200" size="100,100">[[Local RNG Temple]]
+[[Train Station]]
+[[Gate]]
+[[Pasta Luego&#39;s]]
+[[Taco The Town]]
+[[Shoyu: A Good Time]]</tw-passagedata><tw-passagedata pid="15" name="TangPingSki&#39;s Door" tags="" position="525,2025" size="100,100">[[Look back down the alleyway.-&gt;Alleyway]]
+[[Enter through the unassuming door.-&gt;TangPingSki&#39;s]]</tw-passagedata><tw-passagedata pid="16" name="Under the mattress" tags="" position="300,775" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
+	Nothing here.
+	[[Piezo sets the mattress back down in frustration.-&gt;Piezo Room]]
+&lt;&lt;else&gt;&gt;
+	There&#39;s a little bit of money for a rainy day. Should Piezo grab it?
+	[[It&#39;s rainy enough.][$money += 237; $foundMattressMoney = true]]
+	[[Not yet.-&gt;Piezo Room]]
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="Sleep" tags="" position="300,900" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="StoryCaption" tags="" position="475,25" size="100,100">
+test</tw-passagedata><tw-passagedata pid="19" name="StorySubtitle" tags="" position="375,25" size="100,100">&lt;em&gt;a culinary misadventure&lt;/em&gt;</tw-passagedata><tw-passagedata pid="20" name="TangPingSki&#39;s" tags="" position="525,2175" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="21" name="Club" tags="" position="825,2025" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="22" name="It&#39;s rainy enough." tags="" position="400,775" size="100,100">[[Back to the room.-&gt;Piezo Room]]
+&lt;&lt;run footnote(&#39;Added $237 to your wallet.&#39;)&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Window" tags="" position="50,1175" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
+The window is open. \
+	&lt;&lt;switch $timeName&gt;&gt;\
+	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\
+	Traffic from the city can be heard loud and clear.\
+	&lt;&lt;case &quot;evening&quot; &quot;night&quot;&gt;&gt;
+	The sounds of various conversations can be heard from below. The alleyway below is quite noisy when the primary sun goes down.
+	&lt;&lt;default&gt;&gt;\
+	It looks like it can be closed.
+	&lt;&lt;/switch&gt;&gt;
+[[Close it.|Window][$piezoRoomWindowOpen = false]]
+&lt;&lt;else&gt;&gt;\
+The window is closed. \
+	&lt;&lt;switch $timeName&gt;&gt;\
+	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\
+	The muted sounds of birds and traffic can be heard outside.\
+	&lt;&lt;case &quot;evening&quot; &quot;night&quot;&gt;&gt;\
+	Despite this fact, the lively alleyway outside can be heard distinctly in this room.
+	&lt;&lt;default&gt;&gt;\
+	It looks like it can be opened.
+	&lt;&lt;/switch&gt;&gt;
+[[Open it.|Window][$piezoRoomWindowOpen = true]]\
+&lt;&lt;/if&gt;&gt;\
+
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Radio" tags="" position="200,1175" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
+
+&lt;&lt;if $piezoRoomRadioOn&gt;&gt;\
+	It&#39;s tuned to a local radio station. There is a song playing.
+	[[Turn if off.|Radio][$piezoRoomRadioOn = false]]
+&lt;&lt;else&gt;&gt;\
+	[[Turn if on.|Radio][$piezoRoomRadioOn = true]]
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;return&gt;&gt;\</tw-passagedata><tw-passagedata pid="25" name="Local RNG Temple" tags="" position="2700,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="26" name="Train Station" tags="" position="2400,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="27" name="Gate" tags="" position="2550,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="28" name="Pasta Luego&#39;s" tags="" position="2800,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="29" name="Taco The Town" tags="" position="2900,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="30" name="Shoyu: A Good Time" tags="" position="3000,350" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="31" name="How To Play" tags="" position="100,350" size="100,100">There are just a few things to consider when embarking on this short adventure.
 
 &lt;&lt;linkappend &#39;The UI menu...&#39; t8n&gt;&gt; is accessed by clicking on the arrow to the top left of the screen. 
 
@@ -730,117 +597,70 @@ Remarks made by important characters will have unique  fonts and colors to decer
 &lt;&lt;script&gt;&gt;
 footnote(&#39;Footnotes may contain useful factoids.&#39;,
 &#39;&quot;While not considered polite, eavesdropping can really pay off.&quot;&#39;,
-&#39;&lt;p&gt;&quot;Or even remarks made by important characters!&quot;&lt;/p&gt;&#39;);
+&#39;&lt;p&gt;&quot;Or even remarks made by important characters!&quot;&lt;/p&gt;[[Intro to Cognition]]&#39;);
 &lt;&lt;/script&gt;&gt;
 &lt;&lt;/linkappend&gt;&gt;
 
-[[Intro to Cognition]]</tw-passagedata><tw-passagedata pid="5" name="Intro to Cognition" tags="" position="600,100" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
-Tucked neatly into a forgettable street, there was an alley.
-Within the forgettable alley, there stood a narrow building. It was old. It was moldy.
+[[Intro to Cognition]]
 
-A number of haphazard expansions had clearly been made to its foundation and various floors. By looking at expansions one could assume that the chief architect was clearly never the same twice. Each a new color scheme and each a new take on the concept of measurement. While commendably tall on its own, it stood forgettably slotted between other buildings that shared many of its characteristics, though they had their own unique additions.
-
-At the end of the building facing the alley, a narrow slice of bedroom. Some handful of stories up, the bedroom was someone&#39;s slice of the world. As light invaded the slits of his eyelids, a tiny slice of consciousness was injected into the recently slumbering mind. Piezo lay there for a few moments, occupying the often forgotten interrim between sleep and conscious reality. A tiny slice of limbo neatly caressed, physically by his eyelids, and metaphorically by the hint of concrete cognition.
-
-Piezo tried to remain adrift in this state but to no avail. He was awake.
-
-
-[[Piezo Room]]
+</tw-passagedata><tw-passagedata pid="32" name="StoryInit" tags="admin" position="275,25" size="100,100">&lt;&lt;set $day = 0&gt;&gt;\
+&lt;&lt;set $timeCount = 23&gt;&gt;\
+&lt;&lt;set $money = 0&gt;&gt;\
+&lt;&lt;set $foundMattressMoney = false&gt;&gt;\
+&lt;&lt;set $location = &#39;Welcome&#39;&gt;&gt;\
 
 &lt;&lt;script&gt;&gt;
-window.footnote(&#39;&#39;);
-//document.getElementById(&quot;ui-bar&quot;).style.visibility = &quot;hidden&quot;;
-//document.getElementById(&quot;story&quot;).style.marginLeft = &quot;0em&quot;;
+State.setVar(&#39;$gearDB&#39;,[
+	{
+		name: &quot;Infinite Slice t-shirt&quot;,
+		type: &quot;body&quot;
+	},
+	{
+		name: &quot;plain t-shirt&quot;,
+		type: &quot;body&quot;
+	},
+	{
+		name: &quot;greasy ball cap&quot;,
+		type: &quot;head&quot;,
+		cool: -1,
+	},
+	{
+		name: &quot;short shorts&quot;,
+		type: &quot;legs&quot;,
+		cool: 1,
+	},
+	{
+		name: &quot;sneakers&quot;,
+		type: &quot;feet&quot;,
+		comfort: 0.25,
+	},
+	{
+		name: &quot;hiking boots&quot;,
+		comfort: 0.25,
+	}
+])
+State.setVar(&#39;$dresser&#39;,[
+	State.getVar(&#39;$gearDB&#39;)[0],
+	State.getVar(&#39;$gearDB&#39;)[1],
+	State.getVar(&#39;$gearDB&#39;)[2],
+	State.getVar(&#39;$gearDB&#39;)[3],
+])
+State.setVar(&#39;$piezo&#39;,{
+	oomph: 100,
+	gear: {
+		head: null,
+		body: null,
+		legs: null,
+		feet: null,
+		leftHand: null,
+		rightHand: null
+	},
+	foodInventory: [],
+	keyItems: []
+})
 
-&lt;&lt;/script&gt;&gt;
 
-&lt;&lt;script&gt;&gt;
-//footnote(&#39;&#39;);
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Meet Choochi" tags="" position="725,100" size="100,100">Hello, Choochi.</tw-passagedata><tw-passagedata pid="7" name="Alleyway" tags="" position="850,100" size="100,100">&lt;&lt;set $location = &quot;Alley Fortuito&quot;&gt;&gt;\
-&lt;&lt;if !$dayEvents[0].isFinished&gt;&gt;
-&lt;&lt;include [[Meet Choochi]]&gt;&gt;
-&lt;&lt;elseif $day === 1&gt;&gt;
-[[the second day]]
-&lt;&lt;else&gt;&gt;
-[[Club]]
-[[Market][$piezo.oomph -= 5; $timeCount += 0.25]]
-[[Plaza][$piezo.oomph -= 5; $timeCount += 0.25]]
-[[TangPingSki&#39;s Door]]
-&lt;&lt;/if&gt;&gt;
-
-
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Garbunkle Room" tags="" position="975,100" size="100,100">&lt;&lt;set $location = &quot;Garbunkle&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="9" name="Hallway" tags="" position="1100,100" size="100,100">&lt;&lt;set $location = &#39;Hallway&#39;&gt;&gt;\
-[[Go to Garbunkle&#39;s door.-&gt;Garbunkle Room]]
-[[Go to Ling&#39;s door.-&gt;Ling Room]]
-[[Take the stairs down to the lobby.-&gt;Lobby]]
-[[Enter Piezo&#39;s room.-&gt;Piezo Room]]</tw-passagedata><tw-passagedata pid="10" name="Ling Room" tags="" position="1225,100" size="100,100">&lt;&lt;set $location = &quot;Ling&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Lobby" tags="" position="100,225" size="100,100">&lt;&lt;set $location = &quot;Infinite Slice Lobby&quot;&gt;&gt;\
-The lobby of &lt;em&gt;Infinite Slice&lt;/em&gt; is an interesting use of space. Its furniture includes only a couple of tables with their respective chairs but also sports a couch and coffee table. When the space isn&#39;t being used as the business&#39;s dining area, it is repurposed as a living room of sorts for the building&#39;s residents.
-
-At one end of the space is the front door, which leads to the alley. It is a rather wide double-sided sliding glass door which leads to the alleyway. On the other end is a cash register and countertop. Next to the register is a small black door.
-
-[[Enter the small door to the left of the window.-&gt;Infinite Slice Kitchen]]
-[[Go out the sliding door.-&gt;Alleyway]]</tw-passagedata><tw-passagedata pid="12" name="Infinite Slice Kitchen" tags="" position="225,225" size="100,100">&lt;&lt;set $location = &#39;Infinite Slice Kitchen&#39;&gt;&gt;
-[[Kitchen Radio]]
-[[Exit back to the lobby.-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="13" name="Dresser" tags="" position="350,225" size="100,100">&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="Piezo Room" tags="" position="475,225" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
-&lt;&lt;if $day == 0&gt;&gt;\
-The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was practically in the doorway. Piles of dirty clothes liter the floor. 
-&lt;&lt;/if&gt;&gt;\
-&lt;&lt;if $piezo.gear.body != true&gt;&gt;
-	Piezo wondered whether he should throw a shirt on.
-&lt;&lt;elseif $piezo.gear.legs != true&gt;&gt;
-	Piezo wondered whether pants were necessary for today&#39;s agenda.
-&lt;&lt;elseif $piezo.gear.feet != true&gt;&gt;
-	Piezo wondered if shoes might take him where he wanted to go.
-&lt;&lt;/if&gt;&gt;
-[[Dresser]]
-[[Under the mattress]]
-[[Sleep]]
-[[Hallway]]
-[[Window]]
-[[Radio]]
-
-&lt;&lt;run footnote(&#39;&#39;)&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="Under the mattress" tags="" position="600,225" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
-	Nothing here.
-	[[Piezo sets the mattress back down in frustration.-&gt;Piezo Room]]
-&lt;&lt;else&gt;&gt;
-	There&#39;s a little bit of money for a rainy day. Should Piezo grab it?
-	[[It&#39;s rainy enough.][$money += 237; $foundMattressMoney = true]]
-	[[Not yet.-&gt;Piezo Room]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="It&#39;s rainy enough." tags="" position="725,225" size="100,100">[[Back to the room.-&gt;Piezo Room]]
-&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="Radio" tags="" position="850,225" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
-
-&lt;&lt;if $piezoRoomRadioOn&gt;&gt;\
-	It&#39;s tuned to a local radio station. There is a song playing.
-	[[Turn if off.|Radio][$piezoRoomRadioOn = false]]
-&lt;&lt;else&gt;&gt;\
-	[[Turn if on.|Radio][$piezoRoomRadioOn = true]]
-&lt;&lt;/if&gt;&gt;\
-&lt;&lt;return&gt;&gt;\</tw-passagedata><tw-passagedata pid="18" name="Sleep" tags="" position="975,225" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="Window" tags="" position="1100,225" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
-The window is open. \
-	&lt;&lt;switch $timeName&gt;&gt;\
-	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\
-	Traffic from the city can be heard loud and clear.\
-	&lt;&lt;case &quot;evening&quot; &quot;night&quot;&gt;&gt;
-	The sounds of various conversations can be heard from below. The alleyway below is quite noisy when the primary sun goes down.
-	&lt;&lt;default&gt;&gt;\
-	It looks like it can be closed.
-	&lt;&lt;/switch&gt;&gt;
-[[Close it.|Window][$piezoRoomWindowOpen = false]]
-&lt;&lt;else&gt;&gt;\
-The window is closed. \
-	&lt;&lt;switch $timeName&gt;&gt;\
-	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\
-	The muted sounds of birds and traffic can be heard outside.\
-	&lt;&lt;case &quot;evening&quot; &quot;night&quot;&gt;&gt;\
-	Despite this fact, the lively alleyway outside can be heard distinctly in this room.
-	&lt;&lt;default&gt;&gt;\
-	It looks like it can be opened.
-	&lt;&lt;/switch&gt;&gt;
-[[Open it.|Window][$piezoRoomWindowOpen = true]]\
-&lt;&lt;/if&gt;&gt;\
-
-&lt;&lt;return&gt;&gt;</tw-passagedata></tw-storydata>
+&lt;&lt;/script&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
 	if(document.documentElement.getAttribute("data-init")==="loading"){!function(window,document,jQuery,undefined){"use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),_slicedToArray=function(){function e(e,t){var r=[],n=!0,a=!1,i=undefined;try{for(var o,s=e[Symbol.iterator]();!(n=(o=s.next()).done)&&(r.push(o.value),!t||r.length!==t);n=!0);}catch(e){a=!0,i=e}finally{try{!n&&s.return&&s.return()}finally{if(a)throw i}}return r}return function(t,r){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,r);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},errorPrologRegExp=/^(?:(?:uncaught\s+(?:exception:\s+)?)?\w*(?:error|exception|_err):\s+)+/i,Alert=function(){function e(e,t,r,n){var a="fatal"===e,i="Apologies! "+(a?"A fatal":"An")+" error has occurred.";i+=a?" Aborting.":" You may be able to continue, but some parts may not work properly.",null==t&&null==r||(i+="\n\nError",null!=t&&(i+=" ["+t+"]"),i+=null!=r?": "+r.replace(errorPrologRegExp,"")+".":": unknown error."),"object"===(void 0===n?"undefined":_typeof(n))&&n.stack&&(i+="\n\nStack Trace:\n"+n.stack),window.alert(i)}function t(t,r,n){e(null,t,r,n)}function r(t,r,n){e("fatal",t,r,n)}return function(e){window.onerror=function(n,a,i,o,s){"complete"===document.readyState?t(null,n,s):(r(null,n,s),window.onerror=e,"function"==typeof window.onerror&&window.onerror.apply(this,arguments))}}(window.onerror),Object.freeze(Object.defineProperties({},{error:{value:t},fatal:{value:r}}))}(),Patterns=function(){var e=function(){var e=new Map([[" ","\\u0020"],["\f","\\f"],["\n","\\n"],["\r","\\r"],["\t","\\t"],["\v","\\v"],[" ","\\u00a0"],[" ","\\u1680"],["᠎","\\u180e"],[" ","\\u2000"],[" ","\\u2001"],[" ","\\u2002"],[" ","\\u2003"],[" ","\\u2004"],[" ","\\u2005"],[" ","\\u2006"],[" ","\\u2007"],[" ","\\u2008"],[" ","\\u2009"],[" ","\\u200a"],["\u2028","\\u2028"],["\u2029","\\u2029"],[" ","\\u202f"],[" ","\\u205f"],["　","\\u3000"],["\ufeff","\\ufeff"]]),t=/^\s$/,r="";return e.forEach(function(e,n){t.test(n)||(r+=e)}),r?"[\\s"+r+"]":"\\s"}(),t="\\s"===e?"\\S":e.replace(/^\[/,"[^"),r="[0-9A-Z_a-z\\-\\u00c0-\\u00d6\\u00d8-\\u00f6\\u00f8-\\u00ff\\u0150\\u0170\\u0151\\u0171]",n=r.replace("\\-",""),a=function(){return"("+r+"+)\\(([^\\)\\|\\n]+)\\):|("+r+"+):([^;\\|\\n]+);|((?:\\."+r+"+)+);|((?:#"+r+"+)+);"}();return Object.freeze({space:e,spaceNoTerminator:"[\\u0020\\f\\t\\v\\u00a0\\u1680\\u180e\\u2000-\\u200a\\u202f\\u205f\\u3000\\ufeff]",lineTerminator:"[\\n\\r\\u2028\\u2029]",notSpace:t,anyChar:"(?:.|[\\n\\r\\u2028\\u2029])",anyLetter:r,anyLetterStrict:n,identifierFirstChar:"[$A-Z_a-z]",identifierNextChar:"[$0-9A-Z_a-z]",identifier:"[$A-Z_a-z][$0-9A-Z_a-z]*",variableSigil:"[$_]",variable:"[$_][$A-Z_a-z][$0-9A-Z_a-z]*",macroName:"[A-Za-z][\\w-]*|[=-]",templateName:"[A-Za-z][\\w-]*",cssImage:"\\[[<>]?[Ii][Mm][Gg]\\[(?:\\s|\\S)*?\\]\\]+",inlineCss:a,url:"(?:file|https?|mailto|ftp|javascript|irc|news|data):[^\\s'\"]+"})}();!function(){!function(e){if(e&&e.prototype&&null==e.prototype.firstElementChild){var t=Node.ELEMENT_NODE;Object.defineProperty(e.prototype,"firstElementChild",{get:function(){for(var e=this.childNodes,r=0;r<e.length;++r){var n=e[r];if(n.nodeType===t)return n}return null}})}}(window.Node||window.Element)}(),function(){function e(e,t){var r=Number.parseInt(e,10)||0;if(r<1)return"";var n=void 0===t?"":String(t);for(""===n&&(n=" ");n.length<r;){var a=n.length,i=r-a;n+=a>i?n.slice(0,i):n}return n.length>r&&(n=n.slice(0,r)),n}var t=function(){function e(e,n){var a=String(e);if(!a)return a;switch(n){case"start":return t.test(a)?a.replace(t,""):a;case"end":return r.test(a)?a.replace(r,""):a;default:throw new Error('_trimString called with incorrect where parameter value: "'+n+'"')}}var t=new RegExp("^"+Patterns.space+Patterns.space+"*"),r=new RegExp(""+Patterns.space+Patterns.space+"*$");return e}();Array.prototype.flat||Object.defineProperty(Array.prototype,"flat",{configurable:!0,writable:!0,value:function(){function e(){if(null==this)throw new TypeError("Array.prototype.flat called on null or undefined");var t=0===arguments.length?1:Number(arguments[0])||0;return t<1?Array.prototype.slice.call(this):Array.prototype.reduce.call(this,function(r,n){return n instanceof Array?r.push.apply(r,_toConsumableArray(e.call(n,t-1))):r.push(n),r},[])}return e}()}),Array.prototype.flatMap||Object.defineProperty(Array.prototype,"flatMap",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatMap called on null or undefined");return Array.prototype.map.apply(this,arguments).flat()}}),Array.prototype.includes||Object.defineProperty(Array.prototype,"includes",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includes called on null or undefined");if(0===arguments.length)return!1;var e=this.length>>>0;if(0===e)return!1;var t=arguments[0],r=Number(arguments[1])||0;for(r<0&&(r=Math.max(0,e+r));r<e;++r){var n=this[r];if(n===t||n!==n&&t!==t)return!0}return!1}}),Object.entries||Object.defineProperty(Object,"entries",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.entries object parameter must be an object");return Object.keys(e).map(function(t){return[t,e[t]]})}}),Object.fromEntries||Object.defineProperty(Object,"fromEntries",{configurable:!0,writable:!0,value:function(e){return Array.from(e).reduce(function(e,t){if(Object(t)!==t)throw new TypeError("Object.fromEntries iterable parameter must yield objects");return t[0]in e?Object.defineProperty(e,t[0],{configurable:!0,enumerable:!0,writable:!0,value:t[1]}):e[t[0]]=t[1],e},{})}}),Object.getOwnPropertyDescriptors||Object.defineProperty(Object,"getOwnPropertyDescriptors",{configurable:!0,writable:!0,value:function(e){if(null==e)throw new TypeError("Object.getOwnPropertyDescriptors object parameter is null or undefined");var t=Object(e);return Reflect.ownKeys(t).reduce(function(e,r){var n=Object.getOwnPropertyDescriptor(t,r);return void 0!==n&&(r in e?Object.defineProperty(e,r,{configurable:!0,enumerable:!0,writable:!0,value:n}):e[r]=n),e},{})}}),Object.values||Object.defineProperty(Object,"values",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.values object parameter must be an object");return Object.keys(e).map(function(t){return e[t]})}}),String.prototype.padStart||Object.defineProperty(String.prototype,"padStart",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padStart called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:e(i-a,r)+n}}),String.prototype.padEnd||Object.defineProperty(String.prototype,"padEnd",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padEnd called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:n+e(i-a,r)}}),String.prototype.trimStart||Object.defineProperty(String.prototype,"trimStart",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimStart called on null or undefined");return t(this,"start")}}),String.prototype.trimLeft||Object.defineProperty(String.prototype,"trimLeft",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimLeft called on null or undefined");return t(this,"start")}}),String.prototype.trimEnd||Object.defineProperty(String.prototype,"trimEnd",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimEnd called on null or undefined");return t(this,"end")}}),String.prototype.trimRight||Object.defineProperty(String.prototype,"trimRight",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimRight called on null or undefined");return t(this,"end")}})}(),function(){function _random(){var e=void 0,t=void 0;switch(arguments.length){case 0:throw new Error("_random called with insufficient parameters");case 1:e=0,t=arguments[0];break;default:e=arguments[0],t=arguments[1]}if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.floor(_nativeMathRandom()*(t-e+1))+e}function _randomIndex(e,t){var r=void 0,n=void 0;switch(t.length){case 1:r=0,n=e-1;break;case 2:r=0,n=Math.trunc(t[1]);break;default:r=Math.trunc(t[1]),n=Math.trunc(t[2])}return Number.isNaN(r)?r=0:!Number.isFinite(r)||r>=e?r=e-1:r<0&&(r=e+r)<0&&(r=0),Number.isNaN(n)?n=0:!Number.isFinite(n)||n>=e?n=e-1:n<0&&(n=e+n)<0&&(n=e-1),_random(r,n)}function _getCodePointStartAndEnd(e,t){var r=e.charCodeAt(t);if(Number.isNaN(r))return{char:"",start:-1,end:-1};if(r<55296||r>57343)return{char:e.charAt(t),start:t,end:t};if(r>=55296&&r<=56319){var n=t+1;if(n>=e.length)throw new Error("high surrogate without trailing low surrogate");var a=e.charCodeAt(n);if(a<56320||a>57343)throw new Error("high surrogate without trailing low surrogate");return{char:e.charAt(t)+e.charAt(n),start:t,end:n}}if(0===t)throw new Error("low surrogate without leading high surrogate");var i=t-1,o=e.charCodeAt(i);if(o<55296||o>56319)throw new Error("low surrogate without leading high surrogate");return{char:e.charAt(i)+e.charAt(t),start:i,end:t}}var _nativeMathRandom=Math.random;Object.defineProperty(Array,"random",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e||!Object.prototype.hasOwnProperty.call(e,"length"))throw new TypeError("Array.random array parameter must be an array or array-lke object");var t=e.length>>>0;if(0!==t){return e[0===arguments.length?_random(0,t-1):_randomIndex(t,Array.prototype.slice.call(arguments,1))]}}}),Object.defineProperty(Array.prototype,"concatUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.concatUnique called on null or undefined");var e=Array.from(this);if(0===arguments.length)return e;var t=Array.prototype.reduce.call(arguments,function(e,t){return e.concat(t)},[]),r=t.length;if(0===r)return e;for(var n=Array.prototype.indexOf,a=Array.prototype.push,i=0;i<r;++i){var o=t[i];-1===n.call(e,o)&&a.call(e,o)}return e}}),Object.defineProperty(Array.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.count called on null or undefined");for(var e=Array.prototype.indexOf,t=arguments[0],r=Number(arguments[1])||0,n=0;-1!==(r=e.call(this,t,r));)++n,++r;return n}}),Object.defineProperty(Array.prototype,"delete",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.delete called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.concat.apply([],arguments),r=t.length,n=[],a=0;a<e;++a)for(var i=this[a],o=0;o<r;++o){var s=t[o];if(i===s||i!==i&&s!==s){n.push(a);break}}for(var u=[],l=0,c=n.length;l<c;++l)u[l]=this[n[l]];for(var d=Array.prototype.splice,f=n.length-1;f>=0;--f)d.call(this,n[f],1);return u}}),Object.defineProperty(Array.prototype,"deleteAt",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.deleteAt called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.splice,r=[].concat(_toConsumableArray(new Set(Array.prototype.concat.apply([],arguments).map(function(t){return t<0?Math.max(0,e+t):t})).values())),n=[].concat(_toConsumableArray(r)).sort(function(e,t){return t-e}),a=[],i=0,o=r.length;i<o;++i)a[i]=this[r[i]];for(var s=0,u=n.length;s<u;++s)t.call(this,n[s],1);return a}}),Object.defineProperty(Array.prototype,"deleteWith",{configurable:!0,writable:!0,value:function(e,t){if(null==this)throw new TypeError("Array.prototype.deleteWith called on null or undefined");if("function"!=typeof e)throw new Error("Array.prototype.deleteWith predicate parameter must be a function");var r=this.length>>>0;if(0===r)return[];for(var n=Array.prototype.splice,a=[],i=[],o=0;o<r;++o)e.call(t,this[o],o,this)&&(i.push(this[o]),a.push(o));for(var s=a.length-1;s>=0;--s)n.call(this,a[s],1);return i}}),Object.defineProperty(Array.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.first called on null or undefined");if(0!=this.length>>>0)return this[0]}}),Object.defineProperty(Array.prototype,"includesAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAll called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAll.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(!Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!1;return!0}}),Object.defineProperty(Array.prototype,"includesAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAny called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAny.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!0;return!1}}),Object.defineProperty(Array.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.last called on null or undefined");var e=this.length>>>0;if(0!==e)return this[e-1]}}),Object.defineProperty(Array.prototype,"pluck",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pluck called on null or undefined");var e=this.length>>>0;if(0!==e){var t=0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)));return Array.prototype.splice.call(this,t,1)[0]}}}),Object.defineProperty(Array.prototype,"pluckMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.pluckMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.pluckMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=Array.prototype.splice,a=[],i=t-1;do{a.push(n.call(this,_random(0,i--),1)[0])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"pushUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pushUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.push,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Array.prototype,"random",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.random called on null or undefined");var e=this.length>>>0;if(0!==e){return this[0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)))]}}}),Object.defineProperty(Array.prototype,"randomMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.randomMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.randomMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=new Map,a=[],i=t-1;do{var o=void 0;do{o=_random(0,i)}while(n.has(o));n.set(o,!0),a.push(this[o])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"shuffle",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.shuffle called on null or undefined");var e=this.length>>>0;if(0===e)return this;for(var t=e-1;t>0;--t){var r=Math.floor(_nativeMathRandom()*(t+1));if(t!==r){var n=this[t];this[t]=this[r],this[r]=n}}return this}}),Object.defineProperty(Array.prototype,"unshiftUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.unshiftUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.unshift,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Function.prototype,"partial",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Function.prototype.partial called on null or undefined");var e=Array.prototype.slice,t=this,r=e.call(arguments,0);return function(){for(var n=[],a=0,i=0;i<r.length;++i)n.push(r[i]===undefined?arguments[a++]:r[i]);return t.apply(this,n.concat(e.call(arguments,a)))}}}),Object.defineProperty(Math,"clamp",{configurable:!0,writable:!0,value:function(e,t,r){var n=Number(e);return Number.isNaN(n)?NaN:n.clamp(t,r)}}),Object.defineProperty(Math,"easeInOut",{configurable:!0,writable:!0,value:function(e){return 1-(Math.cos(Number(e)*Math.PI)+1)/2}}),Object.defineProperty(Number.prototype,"clamp",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Number.prototype.clamp called on null or undefined");if(2!==arguments.length)throw new Error("Number.prototype.clamp called with an incorrect number of parameters");var e=Number(arguments[0]),t=Number(arguments[1]);if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.min(Math.max(this,e),t)}}),RegExp.escape||function(){var e=/[\\^$*+?.()|[\]{}]/g,t=new RegExp(e.source);Object.defineProperty(RegExp,"escape",{configurable:!0,writable:!0,value:function(r){var n=String(r);return n&&t.test(n)?n.replace(e,"\\$&"):n}})}(),function(){var e=/{(\d+)(?:,([+-]?\d+))?}/g,t=new RegExp(e.source);Object.defineProperty(String,"format",{configurable:!0,writable:!0,value:function(r){function n(e,t,r){if(!t)return e;var n=Math.abs(t)-e.length;if(n<1)return e;var a=String(r).repeat(n);return t<0?e+a:a+e}if(arguments.length<2)return 0===arguments.length?"":r;var a=2===arguments.length&&Array.isArray(arguments[1])?[].concat(_toConsumableArray(arguments[1])):Array.prototype.slice.call(arguments,1);return 0===a.length?r:t.test(r)?(e.lastIndex=0,r.replace(e,function(e,t,r){var i=a[t];if(null==i)return"";for(;"function"==typeof i;)i=i();switch(void 0===i?"undefined":_typeof(i)){case"string":break;case"object":i=JSON.stringify(i);break;default:i=String(i)}return n(i,r?Number.parseInt(r,10):0," ")})):r}})}(),Object.defineProperty(String.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.contains called on null or undefined");return-1!==String.prototype.indexOf.apply(this,arguments)}}),Object.defineProperty(String.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.count called on null or undefined");var e=String(arguments[0]||"");if(""===e)return 0;for(var t=String.prototype.indexOf,r=e.length,n=Number(arguments[1])||0,a=0;-1!==(n=t.call(this,e,n));)++a,n+=r;return a}}),Object.defineProperty(String.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.first called on null or undefined");return _getCodePointStartAndEnd(String(this),0).char}}),Object.defineProperty(String.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.last called on null or undefined");var e=String(this);return _getCodePointStartAndEnd(e,e.length-1).char}}),Object.defineProperty(String.prototype,"splice",{configurable:!0,writable:!0,value:function(e,t,r){if(null==this)throw new TypeError("String.prototype.splice called on null or undefined");var n=this.length>>>0;if(0===n)return"";var a=Number(e);Number.isSafeInteger(a)?a<0&&(a+=n)<0&&(a=0):a=0,a>n&&(a=n);var i=Number(t);(!Number.isSafeInteger(i)||i<0)&&(i=0);var o=this.slice(0,a);return void 0!==r&&(o+=r),a+i<n&&(o+=this.slice(a+i)),o}}),Object.defineProperty(String.prototype,"splitOrEmpty",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.splitOrEmpty called on null or undefined");return""===String(this)?[]:String.prototype.split.apply(this,arguments)}}),Object.defineProperty(String.prototype,"toLocaleUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toLocaleUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toLocaleUpperCase()+e.slice(n+1)}}),Object.defineProperty(String.prototype,"toUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toUpperCase()+e.slice(n+1)}}),Object.defineProperty(Date.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:date)",this.toISOString()]}}),Object.defineProperty(Function.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)","("+this.toString()+")"]}}),Object.defineProperty(Map.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:map)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(RegExp.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)",this.toString()]}}),Object.defineProperty(Set.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:set)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(JSON,"reviveWrapper",{configurable:!0,writable:!0,value:function(e,t){if("string"!=typeof e)throw new TypeError("JSON.reviveWrapper code parameter must be a string");return["(revive:eval)",[e,t]]}}),Object.defineProperty(JSON,"_real_parse",{value:JSON.parse}),Object.defineProperty(JSON,"parse",{configurable:!0,writable:!0,value:function value(text,reviver){return JSON._real_parse(text,function(key,val){var value=val;if(Array.isArray(value)&&2===value.length)switch(value[0]){case"(revive:set)":value=new Set(value[1]);break;case"(revive:map)":value=new Map(value[1]);break;case"(revive:date)":value=new Date(value[1]);break;case"(revive:eval)":try{if(Array.isArray(value[1])){var $ReviveData$=value[1][1];value=eval(value[1][0])}else value=eval(value[1])}catch(e){}}else if("string"==typeof value&&"@@revive@@"===value.slice(0,10))try{value=eval(value.slice(10))}catch(e){}if("function"==typeof reviver)try{value=reviver(key,value)}catch(e){}return value})}}),Object.defineProperty(Array.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.contains called on null or undefined");return Array.prototype.includes.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAll called on null or undefined");return Array.prototype.includesAll.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAny called on null or undefined");return Array.prototype.includesAny.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"flatten",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatten called on null or undefined");return Array.prototype.flat.call(this,1/0)}}),Object.defineProperty(String.prototype,"readBracketedList",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.readBracketedList called on null or undefined");for(var e=new RegExp("(?:\\[\\[((?:\\s|\\S)*?)\\]\\])|([^\"'\\s]\\S*)","gm"),t=[],r=void 0;null!==(r=e.exec(this));)r[1]?t.push(r[1]):r[2]&&t.push(r[2]);return t}})}();var Browser=function(){var e=navigator.userAgent.toLowerCase(),t=e.includes("windows phone"),r=Object.freeze({Android:!t&&e.includes("android"),BlackBerry:/blackberry|bb10/.test(e),iOS:!t&&/ip(?:hone|ad|od)/.test(e),Opera:!t&&("object"===_typeof(window.operamini)||e.includes("opera mini")),Windows:t||/iemobile|wpdesktop/.test(e),any:function(){return r.Android||r.BlackBerry||r.iOS||r.Opera||r.Windows}}),n=!r.Windows&&!/khtml|trident|edge/.test(e)&&e.includes("gecko"),a=!e.includes("opera")&&/msie|trident/.test(e),i=a?function(){var t=/(?:msie\s+|rv:)(\d+\.\d)/.exec(e);return t?Number(t[1]):0}():null,o=e.includes("opera")||e.includes(" opr/"),s=o?function(){var t=new RegExp((/khtml|chrome/.test(e)?"opr":"version")+"\\/(\\d+\\.\\d+)"),r=t.exec(e);return r?Number(r[1]):0}():null,u=e.includes("vivaldi");return Object.freeze({userAgent:e,isMobile:r,isGecko:n,isIE:a,ieVersion:i,isOpera:o,operaVersion:s,isVivaldi:u})}(),Has=function(){var e=function(){try{return"function"==typeof document.createElement("audio").canPlayType}catch(e){}return!1}(),t=e&&function(){try{var e=document.createElement("audio").play();return e.catch(function(){}),e instanceof Promise}catch(e){}return!1}(),r=function(){try{return"Blob"in window&&"File"in window&&"FileList"in window&&"FileReader"in window&&!Browser.isMobile.any()&&(!Browser.isOpera||Browser.operaVersion>=15)}catch(e){}return!1}(),n=function(){try{return"geolocation"in navigator&&"function"==typeof navigator.geolocation.getCurrentPosition&&"function"==typeof navigator.geolocation.watchPosition}catch(e){}return!1}(),a=function(){try{return"MutationObserver"in window&&"function"==typeof window.MutationObserver}catch(e){}return!1}(),i=function(){try{return"performance"in window&&"function"==typeof window.performance.now}catch(e){}return!1}(),o=function(){try{return"ontouchstart"in window||!!window.DocumentTouch&&document instanceof window.DocumentTouch||!!navigator.maxTouchPoints||!!navigator.msMaxTouchPoints}catch(e){}return!1}(),s=function(){try{for(var e=new Map([["transition","transitionend"],["MSTransition","msTransitionEnd"],["WebkitTransition","webkitTransitionEnd"],["MozTransition","transitionend"]]),t=[].concat(_toConsumableArray(e.keys())),r=document.createElement("div"),n=0;n<t.length;++n)if(r.style[t[n]]!==undefined)return e.get(t[n])}catch(e){}return!1}();return Object.freeze({audio:e,audioPromise:t,fileAPI:r,geolocation:n,mutationObserver:a,performance:i,touch:o,transitionEndEvent:s})}(),Visibility=function(){function e(){return Boolean(r&&document[r.hiddenProperty])}function t(){return r&&document[r.stateProperty]||"visible"}var r=function(){try{return Object.freeze([{hiddenProperty:"hidden",stateProperty:"visibilityState",changeEvent:"visibilitychange"},{hiddenProperty:"webkitHidden",stateProperty:"webkitVisibilityState",changeEvent:"webkitvisibilitychange"},{hiddenProperty:"mozHidden",stateProperty:"mozVisibilityState",changeEvent:"mozvisibilitychange"},{hiddenProperty:"msHidden",stateProperty:"msVisibilityState",changeEvent:"msvisibilitychange"}].find(function(e){return e.hiddenProperty in document}))}catch(e){}return null}();return Object.freeze(Object.defineProperties({},{isHidden:{value:e},state:{value:t},hiddenProperty:{value:r.hiddenProperty},stateProperty:{value:r.stateProperty},changeEvent:{value:r.changeEvent}}))}(),_ref3=function(){function e(t){if("object"!==(void 0===t?"undefined":_typeof(t))||null===t)return t;if(t instanceof String)return String(t);if(t instanceof Number)return Number(t);if(t instanceof Boolean)return Boolean(t);if("function"==typeof t.clone)return t.clone(!0);if(t.nodeType&&"function"==typeof t.cloneNode)return t.cloneNode(!0);var r=void 0;return t instanceof Array?r=new Array(t.length):t instanceof Date?r=new Date(t.getTime()):t instanceof Map?(r=new Map,t.forEach(function(t,n){return r.set(n,e(t))})):t instanceof RegExp?r=new RegExp(t):t instanceof Set?(r=new Set,t.forEach(function(t){return r.add(e(t))})):r=Object.create(Object.getPrototypeOf(t)),Object.keys(t).forEach(function(n){return r[n]=e(t[n])}),r}function t(e){for(var t=document.createDocumentFragment(),r=document.createElement("p"),n=void 0;null!==(n=e.firstChild);){if(n.nodeType===Node.ELEMENT_NODE){switch(n.nodeName.toUpperCase()){case"BR":if(null!==n.nextSibling&&n.nextSibling.nodeType===Node.ELEMENT_NODE&&"BR"===n.nextSibling.nodeName.toUpperCase()){e.removeChild(n.nextSibling),e.removeChild(n),t.appendChild(r),r=document.createElement("p");continue}if(!r.hasChildNodes()){e.removeChild(n);continue}break;case"ADDRESS":case"ARTICLE":case"ASIDE":case"BLOCKQUOTE":case"CENTER":case"DIV":case"DL":case"FIGURE":case"FOOTER":case"FORM":case"H1":case"H2":case"H3":case"H4":case"H5":case"H6":case"HEADER":case"HR":case"MAIN":case"NAV":case"OL":case"P":case"PRE":case"SECTION":case"TABLE":case"UL":r.hasChildNodes()&&(t.appendChild(r),r=document.createElement("p")),t.appendChild(n);continue}}r.appendChild(n)}r.hasChildNodes()&&t.appendChild(r),e.appendChild(t)}function r(){try{return document.activeElement||null}catch(e){return null}}function n(e,t,r){var n="object"===(void 0===e?"undefined":_typeof(e))?e:document.getElementById(e);if(null==n)return null;var a=Array.isArray(t)?t:[t];jQuery(n).empty();for(var i=0,o=a.length;i<o;++i)if(Story.has(a[i]))return new Wikifier(n,Story.get(a[i]).processText().trim()),n;if(null!=r){var s=String(r).trim();""!==s&&new Wikifier(n,s)}return n}function a(e,t,r){var n=jQuery(document.createElement("div")),a=jQuery(document.createElement("button")),i=jQuery(document.createElement("pre")),o=L10n.get("errorTitle")+": "+(t||"unknown error");return a.addClass("error-toggle").ariaClick({label:L10n.get("errorToggle")},function(){a.hasClass("enabled")?(a.removeClass("enabled"),i.attr({"aria-hidden":!0,hidden:"hidden"})):(a.addClass("enabled"),i.removeAttr("aria-hidden hidden"))}).appendTo(n),jQuery(document.createElement("span")).addClass("error").text(o).appendTo(n),jQuery(document.createElement("code")).text(r).appendTo(i),i.addClass("error-source").attr({"aria-hidden":!0,hidden:"hidden"}).appendTo(n),n.addClass("error-view").appendTo(e),console.warn(o+"\n\t"+r.replace(/\n/g,"\n\t")),!1}function i(e,t){var r=i;switch(void 0===e?"undefined":_typeof(e)){case"number":if(Number.isNaN(e))return t;break;case"object":if(null===e)return t;if(Array.isArray(e))return e.map(function(e){return r(e,t)}).join(", ");if(e instanceof Set)return[].concat(_toConsumableArray(e)).map(function(e){return r(e,t)}).join(", ");if(e instanceof Map){return"{ "+[].concat(_toConsumableArray(e)).map(function(e){var n=_slicedToArray(e,2),a=n[0],i=n[1];return r(a,t)+" → "+r(i,t)}).join(", ")+" }"}return e instanceof Date?e.toLocaleString():"function"==typeof e.toString?e.toString():Object.prototype.toString.call(e);case"function":case"undefined":return t}return String(e)}return Object.freeze(Object.defineProperties({},{clone:{value:e},convertBreaks:{value:t},safeActiveElement:{value:r},setPageElement:{value:n},throwError:{value:a},toStringOrDefault:{value:i}}))
