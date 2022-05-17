@@ -38,8 +38,8 @@ window.characters = [
       morning: "Rooftop",
       afternoon: "Alleyway",
       evening: "",
-      night: "Kitchen"
-    }
+      night: "Kitchen",
+    },
   },
   {
     name: "Ling",
@@ -47,8 +47,8 @@ window.characters = [
       morning: "Ling Room",
       afternoon: "Infinite Slice Lobby",
       evening: "",
-      night: "TangPingSki's"
-    }
+      night: "TangPingSki's",
+    },
   },
   {
     name: "Miel",
@@ -56,8 +56,8 @@ window.characters = [
       morning: "",
       afternoon: "",
       evening: "Alleyway",
-      night: "Club"
-    }
+      night: "Club",
+    },
   },
   {
     name: "Ciccia",
@@ -65,8 +65,8 @@ window.characters = [
       morning: "",
       afternoon: "",
       evening: "",
-      night: "Club"
-    }
+      night: "Club",
+    },
   },
   {
     name: "Choochi",
@@ -74,8 +74,8 @@ window.characters = [
       morning: "Market",
       afternoon: "",
       evening: "",
-      night: "TangPingSki's"
-    }
+      night: "TangPingSki's",
+    },
   },
   {
     name: "Dirty Old Wizard",
@@ -83,11 +83,19 @@ window.characters = [
       morning: "",
       afternoon: "Alleyway",
       evening: "Plaza",
-      night: "TangPingSki's"
-    }
+      night: "TangPingSki's",
+    },
   },
-
-]
+  {
+    name: "Filop",
+    routine: {
+      morning: "Blue Real Fake Estate",
+      afternoon: "Blue Real Fake Estate",
+      evening: "",
+      night: "",
+    },
+  },
+];
 
 window.gearDB = [
   {
@@ -119,7 +127,83 @@ window.gearDB = [
   },
 ];
 
-window.foodDB = [];
+window.foodItems = [
+  {
+    name: "flour",
+    price: 50,
+    type: "base",
+  },
+  {
+    name: "tomatoes",
+    price: 30,
+    type: "raw",
+  },
+  {
+    name: "tomato sauce",
+    price: 80,
+    type: "processed",
+  },
+  {
+    name: "yeast",
+    price: 30,
+    type: "base",
+  },
+  {
+    name: "pizza dough",
+    ingredients: ["flour", "yeast"],
+    price: 100,
+    type: "processed",
+  },
+  {
+    name: "cheese",
+    price: 100,
+    type: "processed",
+  },
+  {
+    name: "hot peppers",
+    price: 45,
+    type: "raw",
+  },
+  {
+    name: "broccoli",
+    price: 25,
+    type: "raw",
+  },
+  {
+    name: "olives",
+    price: 65,
+    type: "raw",
+  },
+  {
+    name: "onions",
+    price: 35,
+    type: "raw",
+  },
+];
+
+window.dishes = [
+  {
+    name: "cheese pizza",
+    ingredients: ["cheese", "tomato sauce", "pizza dough"],
+    price: 200,
+    type: "final",
+    wow: 0.2,
+  },
+  {
+    name: "mushroom pizza",
+    ingredients: ["cheese", "tomato sauce", "pizza dough", "mushrooms"],
+    price: 240,
+    type: "final",
+    wow: 0.22,
+  },
+  {
+    name: "grilled tomatoes",
+    ingredients: ["tomatoes"],
+    price: 80,
+    type: "final",
+    wow: 0.05,
+  },
+];
 
 window.kitchenDB = [];
 
@@ -135,5 +219,3 @@ window.dayList = [
 
 // length of the game
 window.gameLength = 7;
-
-

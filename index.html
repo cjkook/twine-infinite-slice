@@ -100,14 +100,14 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://DC4FD13F-D5A2-4C2A-96C5-05314D199D7C// --><tw-storydata name="Infinite Slice" startnode="3" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="DC4FD13F-D5A2-4C2A-96C5-05314D199D7C" zoom="1" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Khand:wght@300&family=Open+Sans:wght@300&family=Press+Start+2P&family=Raleway:wght@100&family=Righteous&display=swap");
+	<!-- UUID://DC4FD13F-D5A2-4C2A-96C5-05314D199D7C// --><tw-storydata name="Infinite Slice" startnode="4" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="DC4FD13F-D5A2-4C2A-96C5-05314D199D7C" zoom="1" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Khand:wght@300&family=Open+Sans:wght@300&family=Press+Start+2P&family=Raleway:wght@100&family=Righteous&display=swap");
 
 * {
   font-family: "Open Sans Condensed", sans-serif;
 }
 
 body {
-  color: #000000;
+  color: #eee;
 }
 
 h1,
@@ -118,6 +118,22 @@ h4 {
   width: 90%;
   margin: auto;
   margin-top: 1%;
+}
+
+figure {
+  border: 1px #cccccc solid;
+  padding: 4px;
+  margin: auto;
+  background-color: #ece4db;
+}
+
+figcaption {
+  /* background-color: black; */
+  /* color: white; */
+  font-style: italic;
+  line-height: 1;
+  padding: 2px;
+  text-align: center;
 }
 
 .bg-box {
@@ -182,6 +198,8 @@ h4 {
   float: left;
   width: 25.33%;
   padding: 1vh;
+  /* may have to remove for footnote edits */
+  /* margin: auto;  */
 }
 
 /* Clear floats after the columns */
@@ -191,12 +209,41 @@ h4 {
   clear: both;
 }
 
+.banner {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+  height: 12vh;
+  object-fit: cover;
+  object-position: 10% -60px;
+  border-radius: 20px;
+  /* object-fit: contain; */
+}
+
+.polaroid-img {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  height: 337px;
+  object-fit: cover;
+  object-position: 100% 600;
+  /* object-fit: contain; */
+}
+
+.polaroid {
+  width: fit-content;
+  border: 1px #cccccc solid;
+  padding: 3px;
+  margin: 1.5vh;
+  background-color: #ece4db;
+}
+
 #story {
   color: black;
   background: white;
   margin-top: 10vh;
   padding: 3vh;
-  width: 80%;
+  /* width: 80%; */
   border-radius: 50px 10px 50px 0;
 }
 
@@ -211,7 +258,7 @@ h4 {
 
 #location-text {
   font-family: "Khand", sans-serif;
-  width: 20%;
+  width: 40%;
   font-size: 32px;
   margin-left: 4vw;
 }
@@ -230,6 +277,17 @@ h4 {
   border: 1px solid transparent;
   color: #eee;
   text-transform: none;
+}
+
+#ui-bar {
+  background-color: #222222e0;
+  border-right: 1px solid #444;
+  text-align: center;
+}
+
+#story-author {
+  margin-top: 1em;
+  font-weight: 100;
 }
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "DB.js" */
 window.locations = [
@@ -272,8 +330,8 @@ window.characters = [
       morning: "Rooftop",
       afternoon: "Alleyway",
       evening: "",
-      night: "Kitchen"
-    }
+      night: "Kitchen",
+    },
   },
   {
     name: "Ling",
@@ -281,8 +339,8 @@ window.characters = [
       morning: "Ling Room",
       afternoon: "Infinite Slice Lobby",
       evening: "",
-      night: "TangPingSki's"
-    }
+      night: "TangPingSki's",
+    },
   },
   {
     name: "Miel",
@@ -290,8 +348,8 @@ window.characters = [
       morning: "",
       afternoon: "",
       evening: "Alleyway",
-      night: "Club"
-    }
+      night: "Club",
+    },
   },
   {
     name: "Ciccia",
@@ -299,8 +357,8 @@ window.characters = [
       morning: "",
       afternoon: "",
       evening: "",
-      night: "Club"
-    }
+      night: "Club",
+    },
   },
   {
     name: "Choochi",
@@ -308,8 +366,8 @@ window.characters = [
       morning: "Market",
       afternoon: "",
       evening: "",
-      night: "TangPingSki's"
-    }
+      night: "TangPingSki's",
+    },
   },
   {
     name: "Dirty Old Wizard",
@@ -317,11 +375,19 @@ window.characters = [
       morning: "",
       afternoon: "Alleyway",
       evening: "Plaza",
-      night: "TangPingSki's"
-    }
+      night: "TangPingSki's",
+    },
   },
-
-]
+  {
+    name: "Filop",
+    routine: {
+      morning: "Blue Real Fake Estate",
+      afternoon: "Blue Real Fake Estate",
+      evening: "",
+      night: "",
+    },
+  },
+];
 
 window.gearDB = [
   {
@@ -353,7 +419,83 @@ window.gearDB = [
   },
 ];
 
-window.foodDB = [];
+window.foodItems = [
+  {
+    name: "flour",
+    price: 50,
+    type: "base",
+  },
+  {
+    name: "tomatoes",
+    price: 30,
+    type: "raw",
+  },
+  {
+    name: "tomato sauce",
+    price: 80,
+    type: "processed",
+  },
+  {
+    name: "yeast",
+    price: 30,
+    type: "base",
+  },
+  {
+    name: "pizza dough",
+    ingredients: ["flour", "yeast"],
+    price: 100,
+    type: "processed",
+  },
+  {
+    name: "cheese",
+    price: 100,
+    type: "processed",
+  },
+  {
+    name: "hot peppers",
+    price: 45,
+    type: "raw",
+  },
+  {
+    name: "broccoli",
+    price: 25,
+    type: "raw",
+  },
+  {
+    name: "olives",
+    price: 65,
+    type: "raw",
+  },
+  {
+    name: "onions",
+    price: 35,
+    type: "raw",
+  },
+];
+
+window.dishes = [
+  {
+    name: "cheese pizza",
+    ingredients: ["cheese", "tomato sauce", "pizza dough"],
+    price: 200,
+    type: "final",
+    wow: 0.2,
+  },
+  {
+    name: "mushroom pizza",
+    ingredients: ["cheese", "tomato sauce", "pizza dough", "mushrooms"],
+    price: 240,
+    type: "final",
+    wow: 0.22,
+  },
+  {
+    name: "grilled tomatoes",
+    ingredients: ["tomatoes"],
+    price: 80,
+    type: "final",
+    wow: 0.05,
+  },
+];
 
 window.kitchenDB = [];
 
@@ -369,8 +511,6 @@ window.dayList = [
 
 // length of the game
 window.gameLength = 7;
-
-
 /* twine-user-script #2: "functions.js" */
 // utility function for extracting coolor palettes
 window.createPalette = (url) => {
@@ -684,17 +824,25 @@ State.setVar(&#39;$piezo&#39;,{
 })
 	
 
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StorySubtitle" tags="" position="225,100" size="100,100">&lt;em&gt;a culinary misadventure&lt;/em&gt;</tw-passagedata><tw-passagedata pid="3" name="Start" tags="" position="350,100" size="100,100">Hello and thank you for taking some interest in my interactive fiction project, &lt;em&gt;Infinite Slice&lt;/em&gt;.
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StorySubtitle" tags="" position="225,100" size="100,100">&lt;em&gt;a culinary misadventure&lt;/em&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryAuthor" tags="" position="350,100" size="100,100">by Corey J. Kothenbeutel</tw-passagedata><tw-passagedata pid="4" name="Start" tags="" position="475,100" size="100,100">Hello and thank you for taking some interest in my interactive fiction project, &lt;em&gt;Infinite Slice&lt;/em&gt;.
 
-I spy with my little &lt;&lt;linkappend &quot;eye&quot; t8n&gt;&gt;, a crab rangoon&lt;&lt;/linkappend&gt;&gt;.
+&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/genericBanner_01.png?alt=media&amp;token=db3f2aed-69b7-4804-a842-360ff7c9397f&quot;&gt;
 
 &lt;&lt;linkappend &quot;//Infinite Slice//...&quot; t8n&gt;&gt; is an ambitious project that I set out to create for no real purpose other than as a creative outlet. Through the process of creating it I practiced in a handful of artistic and technical disciplines. 
 
 The story itself was written entirely by me and was actually started as another interactive fiction project back in 2018 when I was living in Taipei. Many of the core ideas and narrative aesthetic were influenced by my experience during that time. After returning to the United States in 2019 and the following global pandemic that followed, a few new ideas and themes were added as a result of said pandemic and my own adjustment back into my native culture.
 
-I adapted the story to include a few more elements of game design, web development, and generative art. The artwork and illustrations within the text are procedurally generated by scripts authored by me (unless otherwise noted). Additionally, most of the music included is written and produced by myself (unless otherwise noted).&lt;&lt;/linkappend&gt;&gt;
+I adapted the story to include a few more elements of game design, web development, and generative art. The artwork and illustrations within the text are procedurally generated by scripts authored by me (unless otherwise noted). Additionally, most of the music included is written and produced by myself (unless otherwise noted).
 
-[[How To Play]]</tw-passagedata><tw-passagedata pid="4" name="How To Play" tags="" position="475,100" size="100,100">There are just a few things to consider when embarking on this short adventure.
+&lt;figure class=&quot;polaroid&quot; style=&quot;margin: auto;&quot;&gt;&lt;img class=&quot;polaroid-img&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/meStylized2.png?alt=media&amp;token=d6f044dc-2494-4bc3-a7da-0188ec863b52&quot;&gt;&lt;figcaption&gt;the author&lt;/figcaption&gt;&lt;/figure&gt;&lt;&lt;/linkappend&gt;&gt;\
+&lt;&lt;script&gt;&gt;
+// window.footnote(&#39;test&#39;,&#39;test&#39;);
+//document.getElementById(&quot;ui-bar&quot;).style.visibility = &quot;hidden&quot;;
+//document.getElementById(&quot;story&quot;).style.marginLeft = &quot;0em&quot;;
+
+&lt;&lt;/script&gt;&gt;
+
+[[How To Play]]</tw-passagedata><tw-passagedata pid="5" name="How To Play" tags="" position="600,100" size="100,100">There are just a few things to consider when embarking on this short adventure.
 
 &lt;&lt;linkappend &#39;The UI menu...&#39; t8n&gt;&gt; is accessed by clicking on the arrow to the top left of the screen. 
 
@@ -734,7 +882,7 @@ footnote(&#39;Footnotes may contain useful factoids.&#39;,
 &lt;&lt;/script&gt;&gt;
 &lt;&lt;/linkappend&gt;&gt;
 
-[[Intro to Cognition]]</tw-passagedata><tw-passagedata pid="5" name="Intro to Cognition" tags="" position="600,100" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+[[Intro to Cognition]]</tw-passagedata><tw-passagedata pid="6" name="Intro to Cognition" tags="" position="725,100" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
 Tucked neatly into a forgettable street, there was an alley.
 Within the forgettable alley, there stood a narrow building. It was old. It was moldy.
 
@@ -748,40 +896,38 @@ Piezo tried to remain adrift in this state but to no avail. He was awake.
 [[Piezo Room]]
 
 &lt;&lt;script&gt;&gt;
-window.footnote(&#39;&#39;);
-//document.getElementById(&quot;ui-bar&quot;).style.visibility = &quot;hidden&quot;;
-//document.getElementById(&quot;story&quot;).style.marginLeft = &quot;0em&quot;;
-
-&lt;&lt;/script&gt;&gt;
-
-&lt;&lt;script&gt;&gt;
 //footnote(&#39;&#39;);
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Meet Choochi" tags="" position="725,100" size="100,100">Hello, Choochi.</tw-passagedata><tw-passagedata pid="7" name="Alleyway" tags="" position="850,100" size="100,100">&lt;&lt;set $location = &quot;Alley Fortuito&quot;&gt;&gt;\
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Meet Choochi" tags="" position="850,100" size="100,100">Hello, Choochi.</tw-passagedata><tw-passagedata pid="8" name="Alleyway" tags="" position="975,100" size="100,100">&lt;&lt;set $location = &quot;Alley Fortuito&quot;&gt;&gt;\
 &lt;&lt;if !$dayEvents[0].isFinished&gt;&gt;
 &lt;&lt;include [[Meet Choochi]]&gt;&gt;
+[[Club Entrance]]
 &lt;&lt;elseif $day === 1&gt;&gt;
 [[the second day]]
 &lt;&lt;else&gt;&gt;
-[[Club]]
+[[Club Entrance]]
 [[Market][$piezo.oomph -= 5; $timeCount += 0.25]]
 [[Plaza][$piezo.oomph -= 5; $timeCount += 0.25]]
 [[TangPingSki&#39;s Door]]
 &lt;&lt;/if&gt;&gt;
 
 
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Garbunkle Room" tags="" position="975,100" size="100,100">&lt;&lt;set $location = &quot;Garbunkle&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="9" name="Hallway" tags="" position="1100,100" size="100,100">&lt;&lt;set $location = &#39;Hallway&#39;&gt;&gt;\
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="Club Entrance" tags="" position="1100,100" size="100,100">[[Club Interior]]
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="Club Interior" tags="" position="1225,100" size="100,100">&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/clubBanner_01.png?alt=media&amp;token=49c68948-16c4-44e1-9fb1-ed1772018789&quot;&gt;
+
+[[Exit to Fortuito Alley-&gt;Alleyway]]</tw-passagedata><tw-passagedata pid="11" name="Garbunkle Room" tags="" position="100,225" size="100,100">&lt;&lt;set $location = &quot;Garbunkle&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="12" name="Hallway" tags="" position="225,225" size="100,100">&lt;&lt;set $location = &#39;Hallway&#39;&gt;&gt;\
 [[Go to Garbunkle&#39;s door.-&gt;Garbunkle Room]]
 [[Go to Ling&#39;s door.-&gt;Ling Room]]
 [[Take the stairs down to the lobby.-&gt;Lobby]]
-[[Enter Piezo&#39;s room.-&gt;Piezo Room]]</tw-passagedata><tw-passagedata pid="10" name="Ling Room" tags="" position="1225,100" size="100,100">&lt;&lt;set $location = &quot;Ling&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="11" name="Lobby" tags="" position="100,225" size="100,100">&lt;&lt;set $location = &quot;Infinite Slice Lobby&quot;&gt;&gt;\
+[[Enter Piezo&#39;s room.-&gt;Piezo Room]]</tw-passagedata><tw-passagedata pid="13" name="Ling Room" tags="" position="350,225" size="100,100">&lt;&lt;set $location = &quot;Ling&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="14" name="Lobby" tags="" position="475,225" size="100,100">&lt;&lt;set $location = &quot;Infinite Slice Lobby&quot;&gt;&gt;\
 The lobby of &lt;em&gt;Infinite Slice&lt;/em&gt; is an interesting use of space. Its furniture includes only a couple of tables with their respective chairs but also sports a couch and coffee table. When the space isn&#39;t being used as the business&#39;s dining area, it is repurposed as a living room of sorts for the building&#39;s residents.
 
 At one end of the space is the front door, which leads to the alley. It is a rather wide double-sided sliding glass door which leads to the alleyway. On the other end is a cash register and countertop. Next to the register is a small black door.
 
 [[Enter the small door to the left of the window.-&gt;Infinite Slice Kitchen]]
-[[Go out the sliding door.-&gt;Alleyway]]</tw-passagedata><tw-passagedata pid="12" name="Infinite Slice Kitchen" tags="" position="225,225" size="100,100">&lt;&lt;set $location = &#39;Infinite Slice Kitchen&#39;&gt;&gt;
+[[Go out the sliding door.-&gt;Alleyway]]</tw-passagedata><tw-passagedata pid="15" name="Infinite Slice Kitchen" tags="" position="600,225" size="100,100">&lt;&lt;set $location = &#39;Infinite Slice Kitchen&#39;&gt;&gt;
 [[Kitchen Radio]]
-[[Exit back to the lobby.-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="13" name="Dresser" tags="" position="350,225" size="100,100">&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="Piezo Room" tags="" position="475,225" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+[[Exit back to the lobby.-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="16" name="Dresser" tags="" position="725,225" size="100,100">&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="Piezo Room" tags="" position="850,225" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+&lt;figure class=&quot;polaroid column&quot;&gt;&lt;img class=&quot;polaroid-img&quot; style=&quot;&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/piezoPoster_04.png?alt=media&amp;token=cfa7ae96-4c91-49c0-bca4-2bccaedbe0b0&quot;&gt;&lt;figcaption&gt;Poster on Piezo&#39;s wall.&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;&lt;if $day == 0&gt;&gt;\
 The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was practically in the doorway. Piles of dirty clothes liter the floor. 
 &lt;&lt;/if&gt;&gt;\
@@ -799,15 +945,15 @@ The narrow room had only just enough room to fit a bed into it. In fact, when Pi
 [[Window]]
 [[Radio]]
 
-&lt;&lt;run footnote(&#39;&#39;)&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="Under the mattress" tags="" position="600,225" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
+&lt;&lt;run footnote(&#39;&#39;)&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="Under the mattress" tags="" position="975,225" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
 	Nothing here.
 	[[Piezo sets the mattress back down in frustration.-&gt;Piezo Room]]
 &lt;&lt;else&gt;&gt;
 	There&#39;s a little bit of money for a rainy day. Should Piezo grab it?
 	[[It&#39;s rainy enough.][$money += 237; $foundMattressMoney = true]]
 	[[Not yet.-&gt;Piezo Room]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="It&#39;s rainy enough." tags="" position="725,225" size="100,100">[[Back to the room.-&gt;Piezo Room]]
-&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="Radio" tags="" position="850,225" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="It&#39;s rainy enough." tags="" position="1100,225" size="100,100">[[Back to the room.-&gt;Piezo Room]]
+&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Radio" tags="" position="1225,225" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
 
 &lt;&lt;if $piezoRoomRadioOn&gt;&gt;\
 	It&#39;s tuned to a local radio station. There is a song playing.
@@ -815,8 +961,8 @@ The narrow room had only just enough room to fit a bed into it. In fact, when Pi
 &lt;&lt;else&gt;&gt;\
 	[[Turn if on.|Radio][$piezoRoomRadioOn = true]]
 &lt;&lt;/if&gt;&gt;\
-&lt;&lt;return&gt;&gt;\</tw-passagedata><tw-passagedata pid="18" name="Sleep" tags="" position="975,225" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="Window" tags="" position="1100,225" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
+&lt;&lt;return&gt;&gt;\</tw-passagedata><tw-passagedata pid="21" name="Sleep" tags="" position="100,350" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Window" tags="" position="225,350" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
 The window is open. \
 	&lt;&lt;switch $timeName&gt;&gt;\
 	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\

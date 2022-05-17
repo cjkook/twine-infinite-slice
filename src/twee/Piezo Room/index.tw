@@ -1,5 +1,6 @@
 :: Piezo Room
 <<set $location = "Piezo's Room">>\
+<figure class="polaroid column"><img class="polaroid-img" style="" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/piezoPoster_04.png?alt=media&token=cfa7ae96-4c91-49c0-bca4-2bccaedbe0b0"><figcaption>Poster on Piezo's wall.</figcaption></figure>
 <<if $day == 0>>\
 The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was practically in the doorway. Piles of dirty clothes liter the floor. 
 <</if>>\

@@ -2,10 +2,11 @@
 <<set $location = "Alley Fortuito">>\
 <<if !$dayEvents[0].isFinished>>
 <<include [[Meet Choochi]]>>
+[[Club Entrance]]
 <<elseif $day === 1>>
 [[the second day]]
 <<else>>
-[[Club]]
+[[Club Entrance]]
 [[Market][$piezo.oomph -= 5; $timeCount += 0.25]]
 [[Plaza][$piezo.oomph -= 5; $timeCount += 0.25]]
 [[TangPingSki's Door]]
