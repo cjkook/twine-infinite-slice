@@ -1,0 +1,7 @@
+:: Garbunkle Door
+Garbunkle's door is brown and non-descript. Dust acculumation on the doorknob indicates it hasn't been opened in a while.
+
+<<return>>
+<<script>>
+footnote(`It was highly unlikely that Garbunkle would be found in his room, given his lack of needing sleep.`);
+<</script>>\

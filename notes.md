@@ -29,4 +29,8 @@ name = ''
 
 Alley Fortuito - the name of the alley on which infinite slice is located. Famous as a party spot and late night hang.
 
+Fortuito 144 - the club in alley fortuito.
+
+Tangpingski's - dive bar in the alley
+
 Blue Real Fake Estate - filop's real estate company

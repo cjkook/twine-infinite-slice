@@ -88,13 +88,15 @@ figcaption {
 
 .footnote {
   color: #d5bdaf;
-  margin-left: 15%;
-  /*margin-left: 33%;*/
+  /* margin: 0 auto; */
+  /* max-width: 80em; */
+  /* margin-left: 15em; */
+  justify-content: space-between;
 }
 
 .column {
   float: left;
-  width: 25.33%;
+  width: 30.33%;
   padding: 1vh;
   /* may have to remove for footnote edits */
   /* margin: auto;  */
@@ -113,7 +115,7 @@ figcaption {
   padding: 5px;
   height: 12vh;
   object-fit: cover;
-  object-position: 10% -60px;
+  object-position: 10% -190px;
   border-radius: 20px;
   /* object-fit: contain; */
 }
@@ -186,4 +188,19 @@ figcaption {
 #story-author {
   margin-top: 1em;
   font-weight: 100;
+}
+
+#health[value] {
+  color: red;
+  background-color: red;
+}
+
+#equipment {
+  text-align: right;
+  color: #cccccc;
+}
+
+#inventory {
+  text-align: right;
+  color: #cccccc;
 }

@@ -1,7 +1,32 @@
 :: Hallway
 <<set $location = 'Hallway'>>\
-[[Go to Garbunkle's door.->Garbunkle Room]]
-[[Go to Ling's door.->Ling Room]]
-[[Take the stairs down to the lobby.->Lobby]]
+<<script>>
+updateLocation(State.getVar("$location"))
+<</script>>\
+<img class="banner" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/hallwayStairs_01.png?alt=media&token=de3e42ee-12d0-4938-abe5-ed921927fb45">\
+On this floor, there are three doors:
+[[Go to Garbunkle's door.->Garbunkle Door]]
+[[Go to Ling's door.->Ling Door]]
 [[Enter Piezo's room.->Piezo Room]]
 
+Additionally, there are two sets of stairs:
+[[Take the stairs down to the lobby.->Lobby]]
+<<if hasVisited("Rooftop Garden") === false>>\
+[[Take the stairs leading up.->First Venture to the Garden]]
+<<else>>\
+[[Go to the rooftop garden.|Rooftop Garden][$timeCount += 0.10]]
+<</if>>\
+\
+<<script>>
+footnote(`Most of this building is residential but the bottom floor is the location of Piezo's hole in the wall pizzeria, <em>Infinite Slice.</em>`,` `,` `)
+<</script>>
+
+
+
+
+:: First Venture to the Garden
+[[Rooftop Garden]]
+
+<<script>>
+footnote(`Most of this building is residential but the first floor is the location of Piezo's hole in the wall pizzeria, <em>Infinite Slice.</em>`,`A layer of mildew cakes the walls of this drab stairway.`,` `)
+<</script>>

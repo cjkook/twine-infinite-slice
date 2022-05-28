@@ -3,31 +3,44 @@ window.locations = [
     name: "Piezo Room",
     isRadioOn: false,
     isInterior: true,
+    isClean: false,
+    visits: 0
   },
   {
     name: "Hallway",
     isRadioOn: false,
     isInterior: true,
+    visits: 0
   },
   {
     name: "Infinite Slice Lobby",
     isRadioOn: false,
     isInterior: true,
+    visits: 0
   },
   {
-    name: "Alleyway",
+    name: "Alleyway Fortuito",
     isRadioOn: false,
     isInterior: false,
+    visits: 0
   },
   {
     name: "Plaza",
     isRadioOn: false,
     isInterior: true,
+    visits: 0
   },
   {
-    name: "Kitchen",
+    name: "Fortuito 144",
+    isRadioOn: true,
+    isInterior: true,
+    visits: 0
+  },
+  {
+    name: "Rooftop Garden",
     isRadioOn: false,
     isInterior: true,
+    visits: 0
   },
 ];
 
@@ -35,8 +48,8 @@ window.characters = [
   {
     name: "Garbunkle",
     routine: {
-      morning: "Rooftop",
-      afternoon: "Alleyway",
+      morning: "Rooftop Garden",
+      afternoon: "Alleyway Fortuito",
       evening: "",
       night: "Kitchen",
     },
@@ -55,8 +68,8 @@ window.characters = [
     routine: {
       morning: "",
       afternoon: "",
-      evening: "Alleyway",
-      night: "Club",
+      evening: "Alleyway Fortuito",
+      night: "Fortuito 144",
     },
   },
   {
@@ -65,7 +78,7 @@ window.characters = [
       morning: "",
       afternoon: "",
       evening: "",
-      night: "Club",
+      night: "Fortuito 144",
     },
   },
   {
@@ -81,7 +94,7 @@ window.characters = [
     name: "Dirty Old Wizard",
     routine: {
       morning: "",
-      afternoon: "Alleyway",
+      afternoon: "Alleyway Fortuito",
       evening: "Plaza",
       night: "TangPingSki's",
     },
@@ -95,31 +108,49 @@ window.characters = [
       night: "",
     },
   },
+  {
+    name: "Astropholeus",
+    routine: {
+      morning: "",
+      afternoon: "",
+      evening: "",
+      night: "Fortuito 144",
+    },
+  },
 ];
 
 window.gearDB = [
   {
     name: "Infinite Slice t-shirt",
     type: "body",
+    description: "This Infinite Slice t-shirt belongs to a limited edition of one."
   },
   {
     name: "plain t-shirt",
     type: "body",
+    description: "Turns out plain t-shirts have nothing to do with aviation."
   },
   {
     name: "greasy ball cap",
     type: "head",
     cool: -1,
+    description: "A ball cap keeps hair out of your eyes, but doesn't stop it from being slimy."
   },
   {
     name: "short shorts",
     type: "legs",
     cool: 1,
+    description: `"Massive sex appeal in these shorts."  - Piezo`
   },
   {
     name: "sneakers",
     type: "feet",
     comfort: 0.25,
+  },
+  {
+    name: "old sneakers",
+    type: "feet",
+    description: "Not an attractive set of kicks."
   },
   {
     name: "hiking boots",

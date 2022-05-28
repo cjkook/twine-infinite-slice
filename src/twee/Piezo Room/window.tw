@@ -20,7 +20,12 @@ The window is closed. \
 	<<default>>\
 	It looks like it can be opened.
 	<</switch>>
-[[Open it.|Window][$piezoRoomWindowOpen = true]]\
+[[Open it|Window][$piezoRoomWindowOpen = true]]\
 <</if>>\
 
 <<return>>
+<<script>>
+footnote(`The window runs nearly the entire length of the room.  When it is open, Piezo can sit on his bed and dangle his legs out the window.`,
+State.getVar('$piezoRoomWindowOpen') ? `"Fresh air feels nice."`: ``,
+`Piezo's apartment isn't too high up but it can still get quite hot in here.`)
+<</script>>

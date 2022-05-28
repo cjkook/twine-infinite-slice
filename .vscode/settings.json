@@ -1,4 +1,12 @@
 {
   "twee3LanguageTools.storyformat.current": "sugarcube-2",
-  "twee3LanguageTools.passage.list": true
+  "twee3LanguageTools.passage.list": true,
+  "cSpell.customDictionaries": {
+    "custom-dictionary-workspace": {
+      "name": "custom-dictionary-workspace",
+      "path": "${workspaceFolder:twine-infinite-slice}/.cspell/custom-dictionary-workspace.txt",
+      "addWords": true,
+      "scope": "workspace"
+    }
+  }
 }

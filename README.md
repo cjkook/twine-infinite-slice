@@ -1,5 +1,6 @@
 # twine-infinite-slice
-
+use this to live edit -
+tweego -w src -o index.html
 ## Credits
 Thanks to https://github.com/kgolid/chromotome for some great palettes that inspired the design for the many themes in Infinite Slice.
 Thanks to Sayama & Takawa on OpenProcessing.org. 

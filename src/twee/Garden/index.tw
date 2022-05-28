@@ -1,0 +1,11 @@
+:: Rooftop Garden
+<<set $location = 'Rooftop Garden'>>\
+<<script>>
+updateLocation(State.getVar("$location"))
+<</script>>\
+[[Head back down to the resident floor.|Hallway][$timeCount +=.10]]
+[[Descend to the first floor lobby.|Lobby][$timeCount +=.12]]
+
+<<script>>
+footnote(`"It's not much, I'll admit, but having a little patch of nature only a few stories up isn't terrible."<br><br>-Piezo`,`"My own personal tanning salon."<br><br>-Ling`,` `)
+<</script>>

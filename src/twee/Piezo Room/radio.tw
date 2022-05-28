@@ -1,10 +1,15 @@
 :: Radio
 There isn't much to this radio. The time is <<= $time>>.
 
-<<if $piezoRoomRadioOn>>\
+<<if $piezoRoomRadioOn>>
 	It's tuned to a local radio station. There is a song playing.
-	[[Turn if off.|Radio][$piezoRoomRadioOn = false]]
+
+	[[Turn it off.|Radio][$piezoRoomRadioOn = false]]
 <<else>>\
-	[[Turn if on.|Radio][$piezoRoomRadioOn = true]]
+	[[Turn it on.|Radio][$piezoRoomRadioOn = true]]
 <</if>>\
 <<return>>\
+
+<<script>>
+footnote(` `,`Piezo bought this radio years ago. What it lacks in features it makes up for in looking like junk.`,`"The clock works, so I can't get rid of it!"`)
+<</script>>\

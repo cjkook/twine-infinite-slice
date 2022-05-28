@@ -14,13 +14,13 @@
 State.setVar("$dayEvents", makeDayEvents())
 
 // set locations
-State.setVar("$locations", locations)
+State.setVar("$locations", locations) // DB
 
 // set character objects
-State.setVar("$characters", characters)
+State.setVar("$characters", characters) // DB
 
-// set gear database
-State.setVar('$gearDB',gearDB);
+// set gear database 
+State.setVar('$gearDB',gearDB); // DB
 
 // set items in piezo's dresser
 State.setVar('$dresser',[
@@ -28,6 +28,7 @@ State.setVar('$dresser',[
 	State.getVar('$gearDB')[1],
 	State.getVar('$gearDB')[2],
 	State.getVar('$gearDB')[3],
+	State.getVar('$gearDB')[5],
 ])
 
 // set piezo character object

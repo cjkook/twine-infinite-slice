@@ -1,3 +1,4 @@
 :: Sleep
 [[Sleep For three hours->Piezo Room][$timeCount += 3]]
+[[Sleep For twenty four hours->Piezo Room][$timeCount += 24]]
 <<return>>

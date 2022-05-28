@@ -1,0 +1,19 @@
+:: Ling Door
+Ling's door is bright pink and stands as the only beacon of color in the otherwise neutral hallway. A few of her jackets hang just to the side of the doorframe. 
+
+<<switch $timeName>>\
+	<<case "morning">>\
+  <<set _f1 = `"Ling is definitely sleeping.  I'd better be quiet."`>>\
+	The door is closed.
+	<<case "evening" "night">>\
+  <<set _f1 = "Ling doesn't have a regular job so she is usually out freelancing around this time.">>\
+	The door is ajar but Piezo can't hear anyone inside. 
+	<<default>>\
+  <<set _f1 = " ">>\
+  The door is closed.
+	<</switch>>
+<<return>>
+
+<<script>>
+footnote(temporary().f1);
+<</script>>\

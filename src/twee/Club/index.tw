@@ -1,9 +1,47 @@
 :: Club Entrance
 
 [[Club Interior]]
-<<return>>
+[[Turn back to the alleyway.->Alleyway]]
 
 :: Club Interior
-<img class="banner" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/clubBanner_01.png?alt=media&token=49c68948-16c4-44e1-9fb1-ed1772018789">
+<<set $location = "Fortuito 144">>\
+<<script>>
+updateLocation(State.getVar("$location"))
+<</script>>\
+<img class="banner" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/clubBanner_01.png?alt=media&token=49c68948-16c4-44e1-9fb1-ed1772018789">\
 
-[[Exit to Fortuito Alley->Alleyway]]
+The interior of Fortuito 144 is dark, loud, and always moving. Although the ambient lighting is almost non-existent, the lasers and lights and holograpic projections provide some amount of light to allow someone to make their way through the crowd, which is usually dense. 
+
+The music is always on the cutting edge of new trends in production and aesthetic. Sharp, wet synthesizers cut through brooding basslines. Dancers and performers rotate in and out on poles, ropes, and miniature stages on the main room's periphery. Wearing either nothing or clothed in something that Miel once described as "an extra shoe lace from my locker", the performers' naked, painted bodies are electric as the lights tag them.
+
+[[Club bar]]
+[[Imi shrine]]
+[[Dance floor]]
+
+[[Exit to Alley Fortuito->Alleyway]]\
+<<script>> footnote(`Digital and physical smoke mixed with the lighting to make a holographic haze above the ever-shifting crowd.`,`Holding around 200 people at a time, the club is nearly always at maximum capacity from when it opens in the late evening until when it closes in the early morning.`,`"Where is the after party? Let's keep this moving."<br><br>- club patron`)
+<</script>>
+
+:: Club bar
+<<return>>
+:: Imi shrine
+<img class="banner" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/clubBanner_02.png?alt=media&token=7b4e010f-c2cf-41fc-9fa7-2d6b1854ba5a">\
+Imi, the goddess of admiration and vanity, has a shrine devoted to her tucked away in a back corner of the club. It is customary for visitors to the club to take pictures with their friends here.
+
+Physically, the shrine was only slightly taller than Piezo, but the offerings left by patrons of the deity made the space occupied seem more imposing. Ribbons, empty beers, beads, candles, and underwear clutter the area.
+
+<<return>>\
+<<script>> footnote(`"I was here last weekend with Feng Li. You know, the photographer from Verv? Yeah, I know him from my shoot last cycle."<br><br> - Ciccia`,`Imi - though a minor deity in local religion writ large, at Fortuito 144, her worship is casually observed due to her superficial aesthetic. The club owners seem to like the reckless attitudes inspired by the irreverance, self-indulgence, and carefree lifestyle of her devotees.`,`Piezo can't help but admire the form of the goddess depicted in the shrine.`)
+<</script>>
+:: Dance floor
+<img class="banner" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/clubBanner_03.png?alt=media&token=d871258b-6056-44d4-b12f-6b46f9a8878c">\
+The music grows louder as Piezo approaches the dance floor. It soon envelopes his immediate auditory surroundings. He can no longer converse and soon loses himself to the music for a time.
+
+Looking around, he doesn't see a familiar face nearby. 
+
+[[Keep dancing.|Dance floor][$timeCount += 0.15]]
+
+<<return>>\
+<<script>> 
+footnote(`While the legendary club, <em>Fortuito 144,</em> is open for nearly twelve hours at a time on any given day, the locals that frequent the place could easily party for twice that.`,` `,` `)
+<</script>>

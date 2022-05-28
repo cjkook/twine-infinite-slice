@@ -190,13 +190,15 @@ figcaption {
 
 .footnote {
   color: #d5bdaf;
-  margin-left: 15%;
-  /*margin-left: 33%;*/
+  /* margin: 0 auto; */
+  /* max-width: 80em; */
+  /* margin-left: 15em; */
+  justify-content: space-between;
 }
 
 .column {
   float: left;
-  width: 25.33%;
+  width: 30.33%;
   padding: 1vh;
   /* may have to remove for footnote edits */
   /* margin: auto;  */
@@ -215,7 +217,7 @@ figcaption {
   padding: 5px;
   height: 12vh;
   object-fit: cover;
-  object-position: 10% -60px;
+  object-position: 10% -190px;
   border-radius: 20px;
   /* object-fit: contain; */
 }
@@ -289,37 +291,64 @@ figcaption {
   margin-top: 1em;
   font-weight: 100;
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "DB.js" */
+
+#health[value] {
+  color: red;
+  background-color: red;
+}
+
+#equipment {
+  text-align: right;
+  color: #cccccc;
+}
+
+#inventory {
+  text-align: right;
+  color: #cccccc;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "DB.js" */
 window.locations = [
   {
     name: "Piezo Room",
     isRadioOn: false,
     isInterior: true,
+    isClean: false,
+    visits: 0
   },
   {
     name: "Hallway",
     isRadioOn: false,
     isInterior: true,
+    visits: 0
   },
   {
     name: "Infinite Slice Lobby",
     isRadioOn: false,
     isInterior: true,
+    visits: 0
   },
   {
-    name: "Alleyway",
+    name: "Alleyway Fortuito",
     isRadioOn: false,
     isInterior: false,
+    visits: 0
   },
   {
     name: "Plaza",
     isRadioOn: false,
     isInterior: true,
+    visits: 0
   },
   {
-    name: "Kitchen",
+    name: "Fortuito 144",
+    isRadioOn: true,
+    isInterior: true,
+    visits: 0
+  },
+  {
+    name: "Rooftop Garden",
     isRadioOn: false,
     isInterior: true,
+    visits: 0
   },
 ];
 
@@ -327,8 +356,8 @@ window.characters = [
   {
     name: "Garbunkle",
     routine: {
-      morning: "Rooftop",
-      afternoon: "Alleyway",
+      morning: "Rooftop Garden",
+      afternoon: "Alleyway Fortuito",
       evening: "",
       night: "Kitchen",
     },
@@ -347,8 +376,8 @@ window.characters = [
     routine: {
       morning: "",
       afternoon: "",
-      evening: "Alleyway",
-      night: "Club",
+      evening: "Alleyway Fortuito",
+      night: "Fortuito 144",
     },
   },
   {
@@ -357,7 +386,7 @@ window.characters = [
       morning: "",
       afternoon: "",
       evening: "",
-      night: "Club",
+      night: "Fortuito 144",
     },
   },
   {
@@ -373,7 +402,7 @@ window.characters = [
     name: "Dirty Old Wizard",
     routine: {
       morning: "",
-      afternoon: "Alleyway",
+      afternoon: "Alleyway Fortuito",
       evening: "Plaza",
       night: "TangPingSki's",
     },
@@ -387,31 +416,49 @@ window.characters = [
       night: "",
     },
   },
+  {
+    name: "Astropholeus",
+    routine: {
+      morning: "",
+      afternoon: "",
+      evening: "",
+      night: "Fortuito 144",
+    },
+  },
 ];
 
 window.gearDB = [
   {
     name: "Infinite Slice t-shirt",
     type: "body",
+    description: "This Infinite Slice t-shirt belongs to a limited edition of one."
   },
   {
     name: "plain t-shirt",
     type: "body",
+    description: "Turns out plain t-shirts have nothing to do with aviation."
   },
   {
     name: "greasy ball cap",
     type: "head",
     cool: -1,
+    description: "A ball cap keeps hair out of your eyes, but doesn't stop it from being slimy."
   },
   {
     name: "short shorts",
     type: "legs",
     cool: 1,
+    description: `"Massive sex appeal in these shorts."  - Piezo`
   },
   {
     name: "sneakers",
     type: "feet",
     comfort: 0.25,
+  },
+  {
+    name: "old sneakers",
+    type: "feet",
+    description: "Not an attractive set of kicks."
   },
   {
     name: "hiking boots",
@@ -525,7 +572,7 @@ window.createPalette = (url) => {
 };
 
 // sets a parameter on an object representing an event
-window.setDayEvent = (i, property = `test`, value = `val`) => {
+window.setDayEvent = (i, property = `test`, value = null) => {
   let dayEvents = State.getVar("$dayEvents"); // get story variable
   dayEvents[i][property] = value;
 
@@ -558,15 +605,14 @@ window.makeDayEvents = () => {
       isFinished: false,
       dayNumber: i + 1,
       infSliceOpened: false,
+      dayName: dayList[i%6]
     };
   }
   return arr;
 };
 
-
-
 // function to display footnote info
-window.footnote = (t1, t2 = "", t3 = "") => {
+window.footnote = (t1, t2 = " ", t3 = " ") => {
   if (!document.getElementById("footnote")) {
     $('<div id="footnote" class="footnote row"></div>').appendTo("#story");
     $('<hr class="footnote-hr">').prependTo("#footnote");
@@ -575,9 +621,9 @@ window.footnote = (t1, t2 = "", t3 = "") => {
     $('<div id="footnote-c" class="column"></span>').appendTo("#footnote");
   }
 
-  $("#footnote-a").html(`<em>${t1}</em>`);
-  $("#footnote-b").html(`<em>${t2}</em>`);
-  $("#footnote-c").html(`<em>${t3}</em>`);
+  if (t1) $("#footnote-a").html(`<em>${t1}</em>`);
+  if (t2) $("#footnote-b").html(`<em>${t2}</em>`);
+  if (t3) $("#footnote-c").html(`<em>${t3}</em>`);
 };
 
 // function to create theme based on time. Also generates time name. Called after passage renders.
@@ -645,6 +691,52 @@ window.getTimeName = (time) => {
   return name;
 };
 
+// add gear to equipment, return
+window.setGear = (gear, inv) => {
+  let player = State.getVar("$piezo");
+  let dresser = State.getVar("$dresser");
+  let inventory = State.getVar(inv);
+  let type = gear.type;
+  let hintText = " ";
+
+  // check if player already wearing the item
+  if (player.gear[type]) {
+    hintText = `Piezo replaces ${player.gear[type].name}.  It can be found again in his dresser.`;
+    dresser.push(player.gear[type]);
+    player.gear[type] = gear;
+  }
+  // otherwise add gear to player object
+  else {
+    player.gear[type] = gear;
+  }
+
+  // remove item from chest
+  inventory.splice(
+    inventory.findIndex((i) => {
+      return i.name === gear.name;
+    }),
+    1
+  );
+
+  // update gear section
+  let gearText = `equipment<hr>`;
+  for (const property in player.gear) {
+    if (player.gear[property]) {
+      gearText += `<p>${player.gear[property].name}</p>`;
+    }
+  }
+  $("#equipment").html(gearText);
+
+  // update story variables
+  console.log(player);
+  State.setVar("$piezo", player);
+  State.setVar("$dresser", dresser);
+  State.setVar(inv, inventory);
+
+  // display notifications
+  footnote(gear.description, hintText);
+};
+
 // get human readable time
 window.getClock = (t) => {
   const hour = Math.floor(t);
@@ -657,14 +749,40 @@ window.getClock = (t) => {
 //check characters in certain location at certain time of day
 window.checkLocationCharacters = (loc, t) => {
   let chars = State.getVar("$characters") || window.characters;
-  
   let time = window.getTimeName(t);
 
-  console.log(chars, loc, time)
+  // console.log(chars, loc, time)
   let localChars = chars.filter((c) => c.routine[time] == loc);
   console.log(localChars);
 };
-checkLocationCharacters("Club",23);
+checkLocationCharacters("Fortuito 144", 23);
+
+window.updateLocation = (loc, property = null, val = null) => {
+  let locations = State.getVar("$locations") || window.locations;
+  let index = locations.findIndex((l) => l.name == loc);
+
+  // add if new location
+  if (index < 0) {
+    locations.push({
+      name: loc,
+      visits: 0,
+    });
+    index = locations.findIndex((l) => l.name == loc);
+  }
+
+  // update object
+  if (!property) {
+    locations[index].visits++;
+  } else {
+    locations[index][property] = val;
+  }
+
+  // update story variable
+  State.setVar("$locations", locations);
+  State.setVar("$locIndex", index);
+};
+
+updateLocation("Fortuito 1445");
 /* twine-user-script #3: "index.js" */
 let url =
   "https://coolors.co/palette/fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a";
@@ -693,9 +811,17 @@ window.advance = (time = 0.025, oomph = 0.25) => {
 
   // advance the calendar
   if (t2 > 24) {
+    let dayEvents = State.getVar("$dayEvents")
     let day = State.getVar("$day");
+    console.log(day)
+    day++
     dayEvents[day].isFinished = true;
-    State.setVar("$day", day++);
+
+    // update story variables
+    State.setVar("$day", day);
+    State.setVar("$dayEvents", dayEvents)
+    console.log(dayEvents[day].dayName)
+    console.log(day)
     t2 -= 24;
   }
 
@@ -715,6 +841,7 @@ window.advance = (time = 0.025, oomph = 0.25) => {
 window.update = () => {
   $("#money").html(`$${State.getVar("$money")}`);
   $("#location-text").html(`${State.getVar("$location")}`);
+  $("#oomph").val(State.getVar("$piezo").oomph);
 };
 
 /* PAGE INIT */
@@ -727,11 +854,24 @@ document.getElementById("menu-item-saves").remove();
 if (!document.getElementById("money")) {
   $('<div id="money"></div>').appendTo($("#ui-bar-body"));
 }
+
 if (!document.getElementById("oomph")) {
-  $('<div id="oomph"></div>').appendTo($("#ui-bar-body"));
+  $(`<label for="oomph">oomph</label>
+  <progress id="oomph" value="100" max="100"></progress>`).appendTo(
+    $("#ui-bar-body")
+  );
 }
 if (!document.getElementById("health")) {
-  $('<div id="health"></div>').appendTo($("#ui-bar-body"));
+  $(`<label for="health">health</label>
+  <progress id="health" value="50" max="100"></progress>`).appendTo(
+    $("#ui-bar-body")
+  );
+}
+if(!document.getElementById("inventory")) {
+  $(`<div id="inventory">inventory<hr></div>`).appendTo("#ui-bar-body")
+}
+if(!document.getElementById("equipment")) {
+  $(`<div id="equipment">equipment<hr></div>`).appendTo("#ui-bar-body")
 }
 if (!document.getElementById("background")) {
   $('<div id="background"></div>').prependTo($("#story"));
@@ -792,13 +932,13 @@ window.timePalette = [
 State.setVar(&quot;$dayEvents&quot;, makeDayEvents())
 
 // set locations
-State.setVar(&quot;$locations&quot;, locations)
+State.setVar(&quot;$locations&quot;, locations) // DB
 
 // set character objects
-State.setVar(&quot;$characters&quot;, characters)
+State.setVar(&quot;$characters&quot;, characters) // DB
 
-// set gear database
-State.setVar(&#39;$gearDB&#39;,gearDB);
+// set gear database 
+State.setVar(&#39;$gearDB&#39;,gearDB); // DB
 
 // set items in piezo&#39;s dresser
 State.setVar(&#39;$dresser&#39;,[
@@ -806,6 +946,7 @@ State.setVar(&#39;$dresser&#39;,[
 	State.getVar(&#39;$gearDB&#39;)[1],
 	State.getVar(&#39;$gearDB&#39;)[2],
 	State.getVar(&#39;$gearDB&#39;)[3],
+	State.getVar(&#39;$gearDB&#39;)[5],
 ])
 
 // set piezo character object
@@ -824,24 +965,19 @@ State.setVar(&#39;$piezo&#39;,{
 })
 	
 
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StorySubtitle" tags="" position="225,100" size="100,100">&lt;em&gt;a culinary misadventure&lt;/em&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryAuthor" tags="" position="350,100" size="100,100">by Corey J. Kothenbeutel</tw-passagedata><tw-passagedata pid="4" name="Start" tags="" position="475,100" size="100,100">Hello and thank you for taking some interest in my interactive fiction project, &lt;em&gt;Infinite Slice&lt;/em&gt;.
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StorySubtitle" tags="" position="225,100" size="100,100">&lt;em&gt;a culinary misadventure&lt;/em&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryAuthor" tags="" position="350,100" size="100,100">by Corey J. Kothenbeutel</tw-passagedata><tw-passagedata pid="4" name="Start" tags="" position="475,100" size="100,100">&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/slice_06.png?alt=media&amp;token=a0bd8784-886d-417b-aa17-a37aa305481e&quot;&gt;\
 
-&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/genericBanner_01.png?alt=media&amp;token=db3f2aed-69b7-4804-a842-360ff7c9397f&quot;&gt;
+Hello and thank you for taking some interest in my interactive fiction project, &lt;em&gt;Infinite Slice&lt;/em&gt;.
 
 &lt;&lt;linkappend &quot;//Infinite Slice//...&quot; t8n&gt;&gt; is an ambitious project that I set out to create for no real purpose other than as a creative outlet. Through the process of creating it I practiced in a handful of artistic and technical disciplines. 
 
-The story itself was written entirely by me and was actually started as another interactive fiction project back in 2018 when I was living in Taipei. Many of the core ideas and narrative aesthetic were influenced by my experience during that time. After returning to the United States in 2019 and the following global pandemic that followed, a few new ideas and themes were added as a result of said pandemic and my own adjustment back into my native culture.
+&lt;figure class=&quot;polaroid&quot; style=&quot;margin: auto;&quot;&gt;&lt;img class=&quot;polaroid-img&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/slice_03.png?alt=media&amp;token=4e282bee-74df-4cb1-9403-29cc02510ea6&quot;&gt;&lt;figcaption&gt;the author&lt;/figcaption&gt;&lt;/figure&gt;
+The story itself was actually started as another interactive fiction project back in 2018 when I was living in Taipei. Many of the core ideas and narrative aesthetic were influenced by my experience during that time. After returning to the United States in 2019 and the following global pandemic that followed, a few new ideas and themes were added as a result of said pandemic and my own adjustment back into my native culture.
 
 I adapted the story to include a few more elements of game design, web development, and generative art. The artwork and illustrations within the text are procedurally generated by scripts authored by me (unless otherwise noted). Additionally, most of the music included is written and produced by myself (unless otherwise noted).
 
 &lt;figure class=&quot;polaroid&quot; style=&quot;margin: auto;&quot;&gt;&lt;img class=&quot;polaroid-img&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/meStylized2.png?alt=media&amp;token=d6f044dc-2494-4bc3-a7da-0188ec863b52&quot;&gt;&lt;figcaption&gt;the author&lt;/figcaption&gt;&lt;/figure&gt;&lt;&lt;/linkappend&gt;&gt;\
-&lt;&lt;script&gt;&gt;
-// window.footnote(&#39;test&#39;,&#39;test&#39;);
-//document.getElementById(&quot;ui-bar&quot;).style.visibility = &quot;hidden&quot;;
-//document.getElementById(&quot;story&quot;).style.marginLeft = &quot;0em&quot;;
-
-&lt;&lt;/script&gt;&gt;
-
+&lt;hr&gt;
 [[How To Play]]</tw-passagedata><tw-passagedata pid="5" name="How To Play" tags="" position="600,100" size="100,100">There are just a few things to consider when embarking on this short adventure.
 
 &lt;&lt;linkappend &#39;The UI menu...&#39; t8n&gt;&gt; is accessed by clicking on the arrow to the top left of the screen. 
@@ -882,7 +1018,7 @@ footnote(&#39;Footnotes may contain useful factoids.&#39;,
 &lt;&lt;/script&gt;&gt;
 &lt;&lt;/linkappend&gt;&gt;
 
-[[Intro to Cognition]]</tw-passagedata><tw-passagedata pid="6" name="Intro to Cognition" tags="" position="725,100" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+[[START-&gt;Intro to Cognition]]</tw-passagedata><tw-passagedata pid="6" name="Intro to Cognition" tags="" position="725,100" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
 Tucked neatly into a forgettable street, there was an alley.
 Within the forgettable alley, there stood a narrow building. It was old. It was moldy.
 
@@ -893,11 +1029,16 @@ At the end of the building facing the alley, a narrow slice of bedroom. Some han
 Piezo tried to remain adrift in this state but to no avail. He was awake.
 
 
-[[Piezo Room]]
+[[Get out of bed.-&gt;Piezo Room]]
 
 &lt;&lt;script&gt;&gt;
-//footnote(&#39;&#39;);
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Meet Choochi" tags="" position="850,100" size="100,100">Hello, Choochi.</tw-passagedata><tw-passagedata pid="8" name="Alleyway" tags="" position="975,100" size="100,100">&lt;&lt;set $location = &quot;Alley Fortuito&quot;&gt;&gt;\
+footnote(` `,` `,` `)
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Meet Choochi" tags="" position="850,100" size="100,100">Hello, Choochi.
+
+[[bug hunter -&gt; Lobby]]</tw-passagedata><tw-passagedata pid="8" name="Alleyway" tags="" position="975,100" size="100,100">&lt;&lt;set $location = &quot;Alley Fortuito&quot;&gt;&gt;\
+&lt;&lt;script&gt;&gt;
+updateLocation(State.getVar(&quot;$location&quot;))
+&lt;&lt;/script&gt;&gt;\
 &lt;&lt;if !$dayEvents[0].isFinished&gt;&gt;
 &lt;&lt;include [[Meet Choochi]]&gt;&gt;
 [[Club Entrance]]
@@ -912,30 +1053,175 @@ Piezo tried to remain adrift in this state but to no avail. He was awake.
 
 
 &lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="Club Entrance" tags="" position="1100,100" size="100,100">[[Club Interior]]
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="Club Interior" tags="" position="1225,100" size="100,100">&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/clubBanner_01.png?alt=media&amp;token=49c68948-16c4-44e1-9fb1-ed1772018789&quot;&gt;
+[[Turn back to the alleyway.-&gt;Alleyway]]</tw-passagedata><tw-passagedata pid="10" name="Club Interior" tags="" position="1225,100" size="100,100">&lt;&lt;set $location = &quot;Fortuito 144&quot;&gt;&gt;\
+&lt;&lt;script&gt;&gt;
+updateLocation(State.getVar(&quot;$location&quot;))
+&lt;&lt;/script&gt;&gt;\
+&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/clubBanner_01.png?alt=media&amp;token=49c68948-16c4-44e1-9fb1-ed1772018789&quot;&gt;\
 
-[[Exit to Fortuito Alley-&gt;Alleyway]]</tw-passagedata><tw-passagedata pid="11" name="Garbunkle Room" tags="" position="100,225" size="100,100">&lt;&lt;set $location = &quot;Garbunkle&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="12" name="Hallway" tags="" position="225,225" size="100,100">&lt;&lt;set $location = &#39;Hallway&#39;&gt;&gt;\
-[[Go to Garbunkle&#39;s door.-&gt;Garbunkle Room]]
-[[Go to Ling&#39;s door.-&gt;Ling Room]]
+The interior of Fortuito 144 is dark, loud, and always moving. Although the ambient lighting is almost non-existent, the lasers and lights and holograpic projections provide some amount of light to allow someone to make their way through the crowd, which is usually dense. 
+
+The music is always on the cutting edge of new trends in production and aesthetic. Sharp, wet synthesizers cut through brooding basslines. Dancers and performers rotate in and out on poles, ropes, and miniature stages on the main room&#39;s periphery. Wearing either nothing or clothed in something that Miel once described as &quot;an extra shoe lace from my locker&quot;, the performers&#39; naked, painted bodies are electric as the lights tag them.
+
+[[Club bar]]
+[[Imi shrine]]
+[[Dance floor]]
+
+[[Exit to Alley Fortuito-&gt;Alleyway]]\
+&lt;&lt;script&gt;&gt; footnote(`Digital and physical smoke mixed with the lighting to make a holographic haze above the ever-shifting crowd.`,`Holding around 200 people at a time, the club is nearly always at maximum capacity from when it opens in the late evening until when it closes in the early morning.`,`&quot;Where is the after party? Let&#39;s keep this moving.&quot;&lt;br&gt;&lt;br&gt;- club patron`)
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="Club bar" tags="" position="100,225" size="100,100">&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Imi shrine" tags="" position="225,225" size="100,100">&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/clubBanner_02.png?alt=media&amp;token=7b4e010f-c2cf-41fc-9fa7-2d6b1854ba5a&quot;&gt;\
+Imi, the goddess of admiration and vanity, has a shrine devoted to her tucked away in a back corner of the club. It is customary for visitors to the club to take pictures with their friends here.
+
+Physically, the shrine was only slightly taller than Piezo, but the offerings left by patrons of the deity made the space occupied seem more imposing. Ribbons, empty beers, beads, candles, and underwear clutter the area.
+
+&lt;&lt;return&gt;&gt;\
+&lt;&lt;script&gt;&gt; footnote(`&quot;I was here last weekend with Feng Li. You know, the photographer from Verv? Yeah, I know him from my shoot last cycle.&quot;&lt;br&gt;&lt;br&gt; - Ciccia`,`Imi - though a minor deity in local religion writ large, at Fortuito 144, her worship is casually observed due to her superficial aesthetic. The club owners seem to like the reckless attitudes inspired by the irreverance, self-indulgence, and carefree lifestyle of her devotees.`,`Piezo can&#39;t help but admire the form of the goddess depicted in the shrine.`)
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="Dance floor" tags="" position="350,225" size="100,100">&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/clubBanner_03.png?alt=media&amp;token=d871258b-6056-44d4-b12f-6b46f9a8878c&quot;&gt;\
+The music grows louder as Piezo approaches the dance floor. It soon envelopes his immediate auditory surroundings. He can no longer converse and soon loses himself to the music for a time.
+
+Looking around, he doesn&#39;t see a familiar face nearby. 
+
+[[Keep dancing.|Dance floor][$timeCount += 0.15]]
+
+&lt;&lt;return&gt;&gt;\
+&lt;&lt;script&gt;&gt; 
+footnote(`While the legendary club, &lt;em&gt;Fortuito 144,&lt;/em&gt; is open for nearly twelve hours at a time on any given day, the locals that frequent the place could easily party for twice that.`,` `,` `)
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="Rooftop Garden" tags="" position="475,225" size="100,100">&lt;&lt;set $location = &#39;Rooftop Garden&#39;&gt;&gt;\
+&lt;&lt;script&gt;&gt;
+updateLocation(State.getVar(&quot;$location&quot;))
+&lt;&lt;/script&gt;&gt;\
+[[Head back down to the resident floor.|Hallway][$timeCount +=.10]]
+[[Descend to the first floor lobby.|Lobby][$timeCount +=.12]]
+
+&lt;&lt;script&gt;&gt;
+footnote(`&quot;It&#39;s not much, I&#39;ll admit, but having a little patch of nature only a few stories up isn&#39;t terrible.&quot;&lt;br&gt;&lt;br&gt;-Piezo`,`&quot;My own personal tanning salon.&quot;&lt;br&gt;&lt;br&gt;-Ling`,` `)
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="Garbunkle Door" tags="" position="600,225" size="100,100">Garbunkle&#39;s door is brown and non-descript. Dust acculumation on the doorknob indicates it hasn&#39;t been opened in a while.
+
+&lt;&lt;return&gt;&gt;
+&lt;&lt;script&gt;&gt;
+footnote(`It was highly unlikely that Garbunkle would be found in his room, given his lack of needing sleep.`);
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="16" name="Hallway" tags="" position="725,225" size="100,100">&lt;&lt;set $location = &#39;Hallway&#39;&gt;&gt;\
+&lt;&lt;script&gt;&gt;
+updateLocation(State.getVar(&quot;$location&quot;))
+&lt;&lt;/script&gt;&gt;\
+&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/hallwayStairs_01.png?alt=media&amp;token=de3e42ee-12d0-4938-abe5-ed921927fb45&quot;&gt;\
+On this floor, there are three doors:
+[[Go to Garbunkle&#39;s door.-&gt;Garbunkle Door]]
+[[Go to Ling&#39;s door.-&gt;Ling Door]]
+[[Enter Piezo&#39;s room.-&gt;Piezo Room]]
+
+Additionally, there are two sets of stairs:
 [[Take the stairs down to the lobby.-&gt;Lobby]]
-[[Enter Piezo&#39;s room.-&gt;Piezo Room]]</tw-passagedata><tw-passagedata pid="13" name="Ling Room" tags="" position="350,225" size="100,100">&lt;&lt;set $location = &quot;Ling&#39;s Room&quot;&gt;&gt;\</tw-passagedata><tw-passagedata pid="14" name="Lobby" tags="" position="475,225" size="100,100">&lt;&lt;set $location = &quot;Infinite Slice Lobby&quot;&gt;&gt;\
-The lobby of &lt;em&gt;Infinite Slice&lt;/em&gt; is an interesting use of space. Its furniture includes only a couple of tables with their respective chairs but also sports a couch and coffee table. When the space isn&#39;t being used as the business&#39;s dining area, it is repurposed as a living room of sorts for the building&#39;s residents.
+&lt;&lt;if hasVisited(&quot;Rooftop Garden&quot;) === false&gt;&gt;\
+[[Take the stairs leading up.-&gt;First Venture to the Garden]]
+&lt;&lt;else&gt;&gt;\
+[[Go to the rooftop garden.|Rooftop Garden][$timeCount += 0.10]]
+&lt;&lt;/if&gt;&gt;\
+\
+&lt;&lt;script&gt;&gt;
+footnote(`Most of this building is residential but the bottom floor is the location of Piezo&#39;s hole in the wall pizzeria, &lt;em&gt;Infinite Slice.&lt;/em&gt;`,` `,` `)
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="First Venture to the Garden" tags="" position="850,225" size="100,100">[[Rooftop Garden]]
 
-At one end of the space is the front door, which leads to the alley. It is a rather wide double-sided sliding glass door which leads to the alleyway. On the other end is a cash register and countertop. Next to the register is a small black door.
+&lt;&lt;script&gt;&gt;
+footnote(`Most of this building is residential but the first floor is the location of Piezo&#39;s hole in the wall pizzeria, &lt;em&gt;Infinite Slice.&lt;/em&gt;`,`A layer of mildew cakes the walls of this drab stairway.`,` `)
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="Ling Door" tags="" position="975,225" size="100,100">Ling&#39;s door is bright pink and stands as the only beacon of color in the otherwise neutral hallway. A few of her jackets hang just to the side of the doorframe. 
+
+&lt;&lt;switch $timeName&gt;&gt;\
+	&lt;&lt;case &quot;morning&quot;&gt;&gt;\
+  &lt;&lt;set _f1 = `&quot;Ling is definitely sleeping.  I&#39;d better be quiet.&quot;`&gt;&gt;\
+	The door is closed.
+	&lt;&lt;case &quot;evening&quot; &quot;night&quot;&gt;&gt;\
+  &lt;&lt;set _f1 = &quot;Ling doesn&#39;t have a regular job so she is usually out freelancing around this time.&quot;&gt;&gt;\
+	The door is ajar but Piezo can&#39;t hear anyone inside. 
+	&lt;&lt;default&gt;&gt;\
+  &lt;&lt;set _f1 = &quot; &quot;&gt;&gt;\
+  The door is closed.
+	&lt;&lt;/switch&gt;&gt;
+&lt;&lt;return&gt;&gt;
+
+&lt;&lt;script&gt;&gt;
+footnote(temporary().f1);
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="19" name="Lobby" tags="" position="1100,225" size="100,100">&lt;&lt;set $location = &quot;Infinite Slice Lobby&quot;&gt;&gt;\
+&lt;&lt;script&gt;&gt;
+updateLocation(State.getVar(&quot;$location&quot;))
+&lt;&lt;/script&gt;&gt;\
+The lobby of &lt;em&gt;Infinite Slice&lt;/em&gt; is an interesting use of space. Its furniture includes only a couple of tables with their respective chairs but also sports a couch and coffee table. When the space isn&#39;t being used as the business&#39;s dining area, it is repurposed as a living room of sorts for the building&#39;s residents.  
+
+Like the rest of the building, the lobby is in mild disrepair: dirt in the grout between the floor tiles, chipped paint on all the trim, and discoloration abound.
+
+At one end of the space is the front door, which leads to the alley. It is a rather wide double-sided sliding glass door which leads to the alleyway. On the other end is the kitchen window with a cash register and countertop immediately in front of it.  Next to the window is a small black door.
 
 [[Enter the small door to the left of the window.-&gt;Infinite Slice Kitchen]]
-[[Go out the sliding door.-&gt;Alleyway]]</tw-passagedata><tw-passagedata pid="15" name="Infinite Slice Kitchen" tags="" position="600,225" size="100,100">&lt;&lt;set $location = &#39;Infinite Slice Kitchen&#39;&gt;&gt;
-[[Kitchen Radio]]
-[[Exit back to the lobby.-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="16" name="Dresser" tags="" position="725,225" size="100,100">&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="Piezo Room" tags="" position="850,225" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+[[Go out the sliding door.-&gt;Alleyway]]
+[[Go back upstairs. -&gt; Hallway]]</tw-passagedata><tw-passagedata pid="20" name="Infinite Slice Kitchen" tags="" position="1225,225" size="100,100">&lt;&lt;set $location = &#39;Infinite Slice Kitchen&#39;&gt;&gt;\
+&lt;&lt;script&gt;&gt;
+updateLocation(State.getVar(&quot;$location&quot;))
+footnote(`Though Ling, Garbunkle, and the girls from Fortuito would occasionally come and help Piezo during service as delivery drivers or cashiers, there was only enough room in the kitchen for one.`,`Monotonous work.`,` `);
+&lt;&lt;/script&gt;&gt;\
+Working space was at a premium in the kitchen of &lt;em&gt;Infinite Slice&lt;/em&gt;. A rather large pizza oven claimed the lion&#39;s share of the space. When it was fired up the entire kitchen was a sweatbox. Just below the kitchen window was a small work space for topping slices before being served. Piezo&#39;s knife lay on the cutting board. &lt;&lt;linkreplace &quot;A handwritten note is next to it.&quot; t8n&gt;&gt;&lt;div class=&quot;note&quot;&gt;
+Choochi dropoff today. Maybe pepperoni tonite? Easy classic.&lt;/div&gt;&lt;&lt;/linkreplace&gt;&gt;
+
+Along the back wall was a storage shelf. &lt;&lt;linkappend &quot;There is no refrigerator.&quot; t8n&gt;&gt;&lt;div class=&quot;hint&quot;&gt;Ingredients will have to be either used or discarded each day.&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt;\
+
+
+A small interface panel on the wall controls the [[audio system-&gt;Kitchen Radio]].
+
+&lt;&lt;switch $timeName&gt;&gt;\
+	&lt;&lt;case &quot;afternoon&quot;&gt;&gt;\
+  It&#39;s go time.
+	&lt;&lt;default&gt;&gt;\
+  Piezo will need to start prepping in the afternoon if he is to open this &lt;&lt;linkappend &quot;evening.&quot; t8n&gt;&gt;&lt;div class=&quot;hint&quot;&gt;Due to the amount of prep work involved in opening the shop, Piezo needs to start in the afternoon if he wants to serve any food that evening. If he chooses to open, a significant amount of time will pass and oomph will be consumed. In return, variable amounts of money will be acquired based on the type of food served.&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt;\
+	&lt;&lt;/switch&gt;&gt;
+
+[[Exit back to the lobby-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="21" name="Kitchen Radio" tags="" position="100,350" size="100,100">The kitchen radio was something Piezo spared no expense to obtain when he opened Infinite Slice. Though it would fail to compete with the sound system across the alley at Fortuito 144, it was plenty loud for the restaurant and a few pedestrians just outside.\
+
+&lt;&lt;if $kitchenRadioOn&gt;&gt;
+	Faint clicks reverberate off the kitchen&#39;s reflective walls as the speakers receive power. The room begins humming with the sound of music. 
+
+	[[Turn it off.|Kitchen Radio][$kitchenRadioOn = false]]
+&lt;&lt;else&gt;&gt;\
+	[[Turn it on.|Kitchen Radio][$kitchenRadioOn = true]]
+&lt;&lt;/if&gt;&gt;\
+
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Dresser" tags="" position="225,350" size="100,100">&lt;&lt;script&gt;&gt;
+
+&lt;&lt;/script&gt;&gt;
+&lt;&lt;if $dresser.length &lt; 1&gt;&gt;&gt;\
+The dresser appears empty.  Laundry day must be looming.
+&lt;&lt;else&gt;&gt;
+After a moment opening the limited number of drawers available, Piezo concludes there are the following in the dresser:
+&lt;&lt;for _i, _item range $dresser&gt;&gt;\
+&lt;&lt;capture _item&gt;&gt;\
+&lt;&lt;linkreplace _item.name&gt;&gt;\
+Piezo puts on the _item.name.\
+&lt;&lt;script&gt;&gt;
+setGear(temporary().item,&#39;$dresser&#39;);
+
+&lt;&lt;/script&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/capture&gt;&gt;
+&lt;&lt;/for&gt;&gt;\
+&lt;&lt;/if&gt;&gt;\
+&lt;&lt;return&gt;&gt;
+&lt;&lt;script&gt;&gt;
+footnote(`Piezo had always kept a minimal amount of clothes that he would rotate through at least a couple times before washing.  He hated doing laundry.`,` `, ` `);
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="23" name="Piezo Room" tags="" position="350,350" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+&lt;&lt;script&gt;&gt;
+updateLocation(State.getVar(&quot;$location&quot;))
+&lt;&lt;/script&gt;&gt;\
 &lt;figure class=&quot;polaroid column&quot;&gt;&lt;img class=&quot;polaroid-img&quot; style=&quot;&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/piezoPoster_04.png?alt=media&amp;token=cfa7ae96-4c91-49c0-bca4-2bccaedbe0b0&quot;&gt;&lt;figcaption&gt;Poster on Piezo&#39;s wall.&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;&lt;if $day == 0&gt;&gt;\
-The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was practically in the doorway. Piles of dirty clothes liter the floor. 
+The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was brushing against the doorway. Piles of dirty clothes liter the floor. \
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;if $locations[$locIndex].visits &gt; 3&gt;&gt;\
+		Same old room. Not getting any less cramped. 
+	&lt;&lt;else&gt;&gt;
+	&lt;&lt;/if&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
-&lt;&lt;if $piezo.gear.body != true&gt;&gt;
+&lt;&lt;if $piezo.gear.body === null&gt;&gt;
 	Piezo wondered whether he should throw a shirt on.
-&lt;&lt;elseif $piezo.gear.legs != true&gt;&gt;
-	Piezo wondered whether pants were necessary for today&#39;s agenda.
-&lt;&lt;elseif $piezo.gear.feet != true&gt;&gt;
+&lt;&lt;elseif $piezo.gear.legs === null&gt;&gt;
+	Piezo wondered whether some sort of lower garment would be necessary for today&#39;s agenda.
+&lt;&lt;elseif $piezo.gear.feet === null&gt;&gt;
 	Piezo wondered if shoes might take him where he wanted to go.
 &lt;&lt;/if&gt;&gt;
 [[Dresser]]
@@ -945,24 +1231,32 @@ The narrow room had only just enough room to fit a bed into it. In fact, when Pi
 [[Window]]
 [[Radio]]
 
-&lt;&lt;run footnote(&#39;&#39;)&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="Under the mattress" tags="" position="975,225" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
+&lt;&lt;script&gt;&gt;
+footnote(`&quot;If I put something away, how will I ever find it!?&quot;`,`The smell isn&#39;t too bad right now.`,` `)
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="24" name="Under the mattress" tags="" position="475,350" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
 	Nothing here.
 	[[Piezo sets the mattress back down in frustration.-&gt;Piezo Room]]
 &lt;&lt;else&gt;&gt;
 	There&#39;s a little bit of money for a rainy day. Should Piezo grab it?
 	[[It&#39;s rainy enough.][$money += 237; $foundMattressMoney = true]]
 	[[Not yet.-&gt;Piezo Room]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="It&#39;s rainy enough." tags="" position="1100,225" size="100,100">[[Back to the room.-&gt;Piezo Room]]
-&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Radio" tags="" position="1225,225" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="It&#39;s rainy enough." tags="" position="600,350" size="100,100">[[Back to the room.-&gt;Piezo Room]]
+&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="Radio" tags="" position="725,350" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
 
-&lt;&lt;if $piezoRoomRadioOn&gt;&gt;\
+&lt;&lt;if $piezoRoomRadioOn&gt;&gt;
 	It&#39;s tuned to a local radio station. There is a song playing.
-	[[Turn if off.|Radio][$piezoRoomRadioOn = false]]
+
+	[[Turn it off.|Radio][$piezoRoomRadioOn = false]]
 &lt;&lt;else&gt;&gt;\
-	[[Turn if on.|Radio][$piezoRoomRadioOn = true]]
+	[[Turn it on.|Radio][$piezoRoomRadioOn = true]]
 &lt;&lt;/if&gt;&gt;\
-&lt;&lt;return&gt;&gt;\</tw-passagedata><tw-passagedata pid="21" name="Sleep" tags="" position="100,350" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Window" tags="" position="225,350" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
+&lt;&lt;return&gt;&gt;\
+
+&lt;&lt;script&gt;&gt;
+footnote(` `,`Piezo bought this radio years ago. What it lacks in features it makes up for in looking like junk.`,`&quot;The clock works, so I can&#39;t get rid of it!&quot;`)
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="27" name="Sleep" tags="" position="850,350" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
+[[Sleep For twenty four hours-&gt;Piezo Room][$timeCount += 24]]
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Window" tags="" position="975,350" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
 The window is open. \
 	&lt;&lt;switch $timeName&gt;&gt;\
 	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\
@@ -983,10 +1277,15 @@ The window is closed. \
 	&lt;&lt;default&gt;&gt;\
 	It looks like it can be opened.
 	&lt;&lt;/switch&gt;&gt;
-[[Open it.|Window][$piezoRoomWindowOpen = true]]\
+[[Open it|Window][$piezoRoomWindowOpen = true]]\
 &lt;&lt;/if&gt;&gt;\
 
-&lt;&lt;return&gt;&gt;</tw-passagedata></tw-storydata>
+&lt;&lt;return&gt;&gt;
+&lt;&lt;script&gt;&gt;
+footnote(`The window runs nearly the entire length of the room.  When it is open, Piezo can sit on his bed and dangle his legs out the window.`,
+State.getVar(&#39;$piezoRoomWindowOpen&#39;) ? `&quot;Fresh air feels nice.&quot;`: ``,
+`Piezo&#39;s apartment isn&#39;t too high up but it can still get quite hot in here.`)
+&lt;&lt;/script&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
 	if(document.documentElement.getAttribute("data-init")==="loading"){!function(window,document,jQuery,undefined){"use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),_slicedToArray=function(){function e(e,t){var r=[],n=!0,a=!1,i=undefined;try{for(var o,s=e[Symbol.iterator]();!(n=(o=s.next()).done)&&(r.push(o.value),!t||r.length!==t);n=!0);}catch(e){a=!0,i=e}finally{try{!n&&s.return&&s.return()}finally{if(a)throw i}}return r}return function(t,r){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,r);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},errorPrologRegExp=/^(?:(?:uncaught\s+(?:exception:\s+)?)?\w*(?:error|exception|_err):\s+)+/i,Alert=function(){function e(e,t,r,n){var a="fatal"===e,i="Apologies! "+(a?"A fatal":"An")+" error has occurred.";i+=a?" Aborting.":" You may be able to continue, but some parts may not work properly.",null==t&&null==r||(i+="\n\nError",null!=t&&(i+=" ["+t+"]"),i+=null!=r?": "+r.replace(errorPrologRegExp,"")+".":": unknown error."),"object"===(void 0===n?"undefined":_typeof(n))&&n.stack&&(i+="\n\nStack Trace:\n"+n.stack),window.alert(i)}function t(t,r,n){e(null,t,r,n)}function r(t,r,n){e("fatal",t,r,n)}return function(e){window.onerror=function(n,a,i,o,s){"complete"===document.readyState?t(null,n,s):(r(null,n,s),window.onerror=e,"function"==typeof window.onerror&&window.onerror.apply(this,arguments))}}(window.onerror),Object.freeze(Object.defineProperties({},{error:{value:t},fatal:{value:r}}))}(),Patterns=function(){var e=function(){var e=new Map([[" ","\\u0020"],["\f","\\f"],["\n","\\n"],["\r","\\r"],["\t","\\t"],["\v","\\v"],[" ","\\u00a0"],[" ","\\u1680"],["᠎","\\u180e"],[" ","\\u2000"],[" ","\\u2001"],[" ","\\u2002"],[" ","\\u2003"],[" ","\\u2004"],[" ","\\u2005"],[" ","\\u2006"],[" ","\\u2007"],[" ","\\u2008"],[" ","\\u2009"],[" ","\\u200a"],["\u2028","\\u2028"],["\u2029","\\u2029"],[" ","\\u202f"],[" ","\\u205f"],["　","\\u3000"],["\ufeff","\\ufeff"]]),t=/^\s$/,r="";return e.forEach(function(e,n){t.test(n)||(r+=e)}),r?"[\\s"+r+"]":"\\s"}(),t="\\s"===e?"\\S":e.replace(/^\[/,"[^"),r="[0-9A-Z_a-z\\-\\u00c0-\\u00d6\\u00d8-\\u00f6\\u00f8-\\u00ff\\u0150\\u0170\\u0151\\u0171]",n=r.replace("\\-",""),a=function(){return"("+r+"+)\\(([^\\)\\|\\n]+)\\):|("+r+"+):([^;\\|\\n]+);|((?:\\."+r+"+)+);|((?:#"+r+"+)+);"}();return Object.freeze({space:e,spaceNoTerminator:"[\\u0020\\f\\t\\v\\u00a0\\u1680\\u180e\\u2000-\\u200a\\u202f\\u205f\\u3000\\ufeff]",lineTerminator:"[\\n\\r\\u2028\\u2029]",notSpace:t,anyChar:"(?:.|[\\n\\r\\u2028\\u2029])",anyLetter:r,anyLetterStrict:n,identifierFirstChar:"[$A-Z_a-z]",identifierNextChar:"[$0-9A-Z_a-z]",identifier:"[$A-Z_a-z][$0-9A-Z_a-z]*",variableSigil:"[$_]",variable:"[$_][$A-Z_a-z][$0-9A-Z_a-z]*",macroName:"[A-Za-z][\\w-]*|[=-]",templateName:"[A-Za-z][\\w-]*",cssImage:"\\[[<>]?[Ii][Mm][Gg]\\[(?:\\s|\\S)*?\\]\\]+",inlineCss:a,url:"(?:file|https?|mailto|ftp|javascript|irc|news|data):[^\\s'\"]+"})}();!function(){!function(e){if(e&&e.prototype&&null==e.prototype.firstElementChild){var t=Node.ELEMENT_NODE;Object.defineProperty(e.prototype,"firstElementChild",{get:function(){for(var e=this.childNodes,r=0;r<e.length;++r){var n=e[r];if(n.nodeType===t)return n}return null}})}}(window.Node||window.Element)}(),function(){function e(e,t){var r=Number.parseInt(e,10)||0;if(r<1)return"";var n=void 0===t?"":String(t);for(""===n&&(n=" ");n.length<r;){var a=n.length,i=r-a;n+=a>i?n.slice(0,i):n}return n.length>r&&(n=n.slice(0,r)),n}var t=function(){function e(e,n){var a=String(e);if(!a)return a;switch(n){case"start":return t.test(a)?a.replace(t,""):a;case"end":return r.test(a)?a.replace(r,""):a;default:throw new Error('_trimString called with incorrect where parameter value: "'+n+'"')}}var t=new RegExp("^"+Patterns.space+Patterns.space+"*"),r=new RegExp(""+Patterns.space+Patterns.space+"*$");return e}();Array.prototype.flat||Object.defineProperty(Array.prototype,"flat",{configurable:!0,writable:!0,value:function(){function e(){if(null==this)throw new TypeError("Array.prototype.flat called on null or undefined");var t=0===arguments.length?1:Number(arguments[0])||0;return t<1?Array.prototype.slice.call(this):Array.prototype.reduce.call(this,function(r,n){return n instanceof Array?r.push.apply(r,_toConsumableArray(e.call(n,t-1))):r.push(n),r},[])}return e}()}),Array.prototype.flatMap||Object.defineProperty(Array.prototype,"flatMap",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatMap called on null or undefined");return Array.prototype.map.apply(this,arguments).flat()}}),Array.prototype.includes||Object.defineProperty(Array.prototype,"includes",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includes called on null or undefined");if(0===arguments.length)return!1;var e=this.length>>>0;if(0===e)return!1;var t=arguments[0],r=Number(arguments[1])||0;for(r<0&&(r=Math.max(0,e+r));r<e;++r){var n=this[r];if(n===t||n!==n&&t!==t)return!0}return!1}}),Object.entries||Object.defineProperty(Object,"entries",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.entries object parameter must be an object");return Object.keys(e).map(function(t){return[t,e[t]]})}}),Object.fromEntries||Object.defineProperty(Object,"fromEntries",{configurable:!0,writable:!0,value:function(e){return Array.from(e).reduce(function(e,t){if(Object(t)!==t)throw new TypeError("Object.fromEntries iterable parameter must yield objects");return t[0]in e?Object.defineProperty(e,t[0],{configurable:!0,enumerable:!0,writable:!0,value:t[1]}):e[t[0]]=t[1],e},{})}}),Object.getOwnPropertyDescriptors||Object.defineProperty(Object,"getOwnPropertyDescriptors",{configurable:!0,writable:!0,value:function(e){if(null==e)throw new TypeError("Object.getOwnPropertyDescriptors object parameter is null or undefined");var t=Object(e);return Reflect.ownKeys(t).reduce(function(e,r){var n=Object.getOwnPropertyDescriptor(t,r);return void 0!==n&&(r in e?Object.defineProperty(e,r,{configurable:!0,enumerable:!0,writable:!0,value:n}):e[r]=n),e},{})}}),Object.values||Object.defineProperty(Object,"values",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.values object parameter must be an object");return Object.keys(e).map(function(t){return e[t]})}}),String.prototype.padStart||Object.defineProperty(String.prototype,"padStart",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padStart called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:e(i-a,r)+n}}),String.prototype.padEnd||Object.defineProperty(String.prototype,"padEnd",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padEnd called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:n+e(i-a,r)}}),String.prototype.trimStart||Object.defineProperty(String.prototype,"trimStart",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimStart called on null or undefined");return t(this,"start")}}),String.prototype.trimLeft||Object.defineProperty(String.prototype,"trimLeft",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimLeft called on null or undefined");return t(this,"start")}}),String.prototype.trimEnd||Object.defineProperty(String.prototype,"trimEnd",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimEnd called on null or undefined");return t(this,"end")}}),String.prototype.trimRight||Object.defineProperty(String.prototype,"trimRight",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimRight called on null or undefined");return t(this,"end")}})}(),function(){function _random(){var e=void 0,t=void 0;switch(arguments.length){case 0:throw new Error("_random called with insufficient parameters");case 1:e=0,t=arguments[0];break;default:e=arguments[0],t=arguments[1]}if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.floor(_nativeMathRandom()*(t-e+1))+e}function _randomIndex(e,t){var r=void 0,n=void 0;switch(t.length){case 1:r=0,n=e-1;break;case 2:r=0,n=Math.trunc(t[1]);break;default:r=Math.trunc(t[1]),n=Math.trunc(t[2])}return Number.isNaN(r)?r=0:!Number.isFinite(r)||r>=e?r=e-1:r<0&&(r=e+r)<0&&(r=0),Number.isNaN(n)?n=0:!Number.isFinite(n)||n>=e?n=e-1:n<0&&(n=e+n)<0&&(n=e-1),_random(r,n)}function _getCodePointStartAndEnd(e,t){var r=e.charCodeAt(t);if(Number.isNaN(r))return{char:"",start:-1,end:-1};if(r<55296||r>57343)return{char:e.charAt(t),start:t,end:t};if(r>=55296&&r<=56319){var n=t+1;if(n>=e.length)throw new Error("high surrogate without trailing low surrogate");var a=e.charCodeAt(n);if(a<56320||a>57343)throw new Error("high surrogate without trailing low surrogate");return{char:e.charAt(t)+e.charAt(n),start:t,end:n}}if(0===t)throw new Error("low surrogate without leading high surrogate");var i=t-1,o=e.charCodeAt(i);if(o<55296||o>56319)throw new Error("low surrogate without leading high surrogate");return{char:e.charAt(i)+e.charAt(t),start:i,end:t}}var _nativeMathRandom=Math.random;Object.defineProperty(Array,"random",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e||!Object.prototype.hasOwnProperty.call(e,"length"))throw new TypeError("Array.random array parameter must be an array or array-lke object");var t=e.length>>>0;if(0!==t){return e[0===arguments.length?_random(0,t-1):_randomIndex(t,Array.prototype.slice.call(arguments,1))]}}}),Object.defineProperty(Array.prototype,"concatUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.concatUnique called on null or undefined");var e=Array.from(this);if(0===arguments.length)return e;var t=Array.prototype.reduce.call(arguments,function(e,t){return e.concat(t)},[]),r=t.length;if(0===r)return e;for(var n=Array.prototype.indexOf,a=Array.prototype.push,i=0;i<r;++i){var o=t[i];-1===n.call(e,o)&&a.call(e,o)}return e}}),Object.defineProperty(Array.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.count called on null or undefined");for(var e=Array.prototype.indexOf,t=arguments[0],r=Number(arguments[1])||0,n=0;-1!==(r=e.call(this,t,r));)++n,++r;return n}}),Object.defineProperty(Array.prototype,"delete",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.delete called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.concat.apply([],arguments),r=t.length,n=[],a=0;a<e;++a)for(var i=this[a],o=0;o<r;++o){var s=t[o];if(i===s||i!==i&&s!==s){n.push(a);break}}for(var u=[],l=0,c=n.length;l<c;++l)u[l]=this[n[l]];for(var d=Array.prototype.splice,f=n.length-1;f>=0;--f)d.call(this,n[f],1);return u}}),Object.defineProperty(Array.prototype,"deleteAt",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.deleteAt called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.splice,r=[].concat(_toConsumableArray(new Set(Array.prototype.concat.apply([],arguments).map(function(t){return t<0?Math.max(0,e+t):t})).values())),n=[].concat(_toConsumableArray(r)).sort(function(e,t){return t-e}),a=[],i=0,o=r.length;i<o;++i)a[i]=this[r[i]];for(var s=0,u=n.length;s<u;++s)t.call(this,n[s],1);return a}}),Object.defineProperty(Array.prototype,"deleteWith",{configurable:!0,writable:!0,value:function(e,t){if(null==this)throw new TypeError("Array.prototype.deleteWith called on null or undefined");if("function"!=typeof e)throw new Error("Array.prototype.deleteWith predicate parameter must be a function");var r=this.length>>>0;if(0===r)return[];for(var n=Array.prototype.splice,a=[],i=[],o=0;o<r;++o)e.call(t,this[o],o,this)&&(i.push(this[o]),a.push(o));for(var s=a.length-1;s>=0;--s)n.call(this,a[s],1);return i}}),Object.defineProperty(Array.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.first called on null or undefined");if(0!=this.length>>>0)return this[0]}}),Object.defineProperty(Array.prototype,"includesAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAll called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAll.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(!Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!1;return!0}}),Object.defineProperty(Array.prototype,"includesAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAny called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAny.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!0;return!1}}),Object.defineProperty(Array.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.last called on null or undefined");var e=this.length>>>0;if(0!==e)return this[e-1]}}),Object.defineProperty(Array.prototype,"pluck",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pluck called on null or undefined");var e=this.length>>>0;if(0!==e){var t=0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)));return Array.prototype.splice.call(this,t,1)[0]}}}),Object.defineProperty(Array.prototype,"pluckMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.pluckMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.pluckMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=Array.prototype.splice,a=[],i=t-1;do{a.push(n.call(this,_random(0,i--),1)[0])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"pushUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pushUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.push,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Array.prototype,"random",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.random called on null or undefined");var e=this.length>>>0;if(0!==e){return this[0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)))]}}}),Object.defineProperty(Array.prototype,"randomMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.randomMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.randomMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=new Map,a=[],i=t-1;do{var o=void 0;do{o=_random(0,i)}while(n.has(o));n.set(o,!0),a.push(this[o])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"shuffle",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.shuffle called on null or undefined");var e=this.length>>>0;if(0===e)return this;for(var t=e-1;t>0;--t){var r=Math.floor(_nativeMathRandom()*(t+1));if(t!==r){var n=this[t];this[t]=this[r],this[r]=n}}return this}}),Object.defineProperty(Array.prototype,"unshiftUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.unshiftUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.unshift,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Function.prototype,"partial",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Function.prototype.partial called on null or undefined");var e=Array.prototype.slice,t=this,r=e.call(arguments,0);return function(){for(var n=[],a=0,i=0;i<r.length;++i)n.push(r[i]===undefined?arguments[a++]:r[i]);return t.apply(this,n.concat(e.call(arguments,a)))}}}),Object.defineProperty(Math,"clamp",{configurable:!0,writable:!0,value:function(e,t,r){var n=Number(e);return Number.isNaN(n)?NaN:n.clamp(t,r)}}),Object.defineProperty(Math,"easeInOut",{configurable:!0,writable:!0,value:function(e){return 1-(Math.cos(Number(e)*Math.PI)+1)/2}}),Object.defineProperty(Number.prototype,"clamp",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Number.prototype.clamp called on null or undefined");if(2!==arguments.length)throw new Error("Number.prototype.clamp called with an incorrect number of parameters");var e=Number(arguments[0]),t=Number(arguments[1]);if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.min(Math.max(this,e),t)}}),RegExp.escape||function(){var e=/[\\^$*+?.()|[\]{}]/g,t=new RegExp(e.source);Object.defineProperty(RegExp,"escape",{configurable:!0,writable:!0,value:function(r){var n=String(r);return n&&t.test(n)?n.replace(e,"\\$&"):n}})}(),function(){var e=/{(\d+)(?:,([+-]?\d+))?}/g,t=new RegExp(e.source);Object.defineProperty(String,"format",{configurable:!0,writable:!0,value:function(r){function n(e,t,r){if(!t)return e;var n=Math.abs(t)-e.length;if(n<1)return e;var a=String(r).repeat(n);return t<0?e+a:a+e}if(arguments.length<2)return 0===arguments.length?"":r;var a=2===arguments.length&&Array.isArray(arguments[1])?[].concat(_toConsumableArray(arguments[1])):Array.prototype.slice.call(arguments,1);return 0===a.length?r:t.test(r)?(e.lastIndex=0,r.replace(e,function(e,t,r){var i=a[t];if(null==i)return"";for(;"function"==typeof i;)i=i();switch(void 0===i?"undefined":_typeof(i)){case"string":break;case"object":i=JSON.stringify(i);break;default:i=String(i)}return n(i,r?Number.parseInt(r,10):0," ")})):r}})}(),Object.defineProperty(String.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.contains called on null or undefined");return-1!==String.prototype.indexOf.apply(this,arguments)}}),Object.defineProperty(String.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.count called on null or undefined");var e=String(arguments[0]||"");if(""===e)return 0;for(var t=String.prototype.indexOf,r=e.length,n=Number(arguments[1])||0,a=0;-1!==(n=t.call(this,e,n));)++a,n+=r;return a}}),Object.defineProperty(String.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.first called on null or undefined");return _getCodePointStartAndEnd(String(this),0).char}}),Object.defineProperty(String.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.last called on null or undefined");var e=String(this);return _getCodePointStartAndEnd(e,e.length-1).char}}),Object.defineProperty(String.prototype,"splice",{configurable:!0,writable:!0,value:function(e,t,r){if(null==this)throw new TypeError("String.prototype.splice called on null or undefined");var n=this.length>>>0;if(0===n)return"";var a=Number(e);Number.isSafeInteger(a)?a<0&&(a+=n)<0&&(a=0):a=0,a>n&&(a=n);var i=Number(t);(!Number.isSafeInteger(i)||i<0)&&(i=0);var o=this.slice(0,a);return void 0!==r&&(o+=r),a+i<n&&(o+=this.slice(a+i)),o}}),Object.defineProperty(String.prototype,"splitOrEmpty",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.splitOrEmpty called on null or undefined");return""===String(this)?[]:String.prototype.split.apply(this,arguments)}}),Object.defineProperty(String.prototype,"toLocaleUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toLocaleUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toLocaleUpperCase()+e.slice(n+1)}}),Object.defineProperty(String.prototype,"toUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toUpperCase()+e.slice(n+1)}}),Object.defineProperty(Date.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:date)",this.toISOString()]}}),Object.defineProperty(Function.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)","("+this.toString()+")"]}}),Object.defineProperty(Map.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:map)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(RegExp.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)",this.toString()]}}),Object.defineProperty(Set.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:set)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(JSON,"reviveWrapper",{configurable:!0,writable:!0,value:function(e,t){if("string"!=typeof e)throw new TypeError("JSON.reviveWrapper code parameter must be a string");return["(revive:eval)",[e,t]]}}),Object.defineProperty(JSON,"_real_parse",{value:JSON.parse}),Object.defineProperty(JSON,"parse",{configurable:!0,writable:!0,value:function value(text,reviver){return JSON._real_parse(text,function(key,val){var value=val;if(Array.isArray(value)&&2===value.length)switch(value[0]){case"(revive:set)":value=new Set(value[1]);break;case"(revive:map)":value=new Map(value[1]);break;case"(revive:date)":value=new Date(value[1]);break;case"(revive:eval)":try{if(Array.isArray(value[1])){var $ReviveData$=value[1][1];value=eval(value[1][0])}else value=eval(value[1])}catch(e){}}else if("string"==typeof value&&"@@revive@@"===value.slice(0,10))try{value=eval(value.slice(10))}catch(e){}if("function"==typeof reviver)try{value=reviver(key,value)}catch(e){}return value})}}),Object.defineProperty(Array.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.contains called on null or undefined");return Array.prototype.includes.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAll called on null or undefined");return Array.prototype.includesAll.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAny called on null or undefined");return Array.prototype.includesAny.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"flatten",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatten called on null or undefined");return Array.prototype.flat.call(this,1/0)}}),Object.defineProperty(String.prototype,"readBracketedList",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.readBracketedList called on null or undefined");for(var e=new RegExp("(?:\\[\\[((?:\\s|\\S)*?)\\]\\])|([^\"'\\s]\\S*)","gm"),t=[],r=void 0;null!==(r=e.exec(this));)r[1]?t.push(r[1]):r[2]&&t.push(r[2]);return t}})}();var Browser=function(){var e=navigator.userAgent.toLowerCase(),t=e.includes("windows phone"),r=Object.freeze({Android:!t&&e.includes("android"),BlackBerry:/blackberry|bb10/.test(e),iOS:!t&&/ip(?:hone|ad|od)/.test(e),Opera:!t&&("object"===_typeof(window.operamini)||e.includes("opera mini")),Windows:t||/iemobile|wpdesktop/.test(e),any:function(){return r.Android||r.BlackBerry||r.iOS||r.Opera||r.Windows}}),n=!r.Windows&&!/khtml|trident|edge/.test(e)&&e.includes("gecko"),a=!e.includes("opera")&&/msie|trident/.test(e),i=a?function(){var t=/(?:msie\s+|rv:)(\d+\.\d)/.exec(e);return t?Number(t[1]):0}():null,o=e.includes("opera")||e.includes(" opr/"),s=o?function(){var t=new RegExp((/khtml|chrome/.test(e)?"opr":"version")+"\\/(\\d+\\.\\d+)"),r=t.exec(e);return r?Number(r[1]):0}():null,u=e.includes("vivaldi");return Object.freeze({userAgent:e,isMobile:r,isGecko:n,isIE:a,ieVersion:i,isOpera:o,operaVersion:s,isVivaldi:u})}(),Has=function(){var e=function(){try{return"function"==typeof document.createElement("audio").canPlayType}catch(e){}return!1}(),t=e&&function(){try{var e=document.createElement("audio").play();return e.catch(function(){}),e instanceof Promise}catch(e){}return!1}(),r=function(){try{return"Blob"in window&&"File"in window&&"FileList"in window&&"FileReader"in window&&!Browser.isMobile.any()&&(!Browser.isOpera||Browser.operaVersion>=15)}catch(e){}return!1}(),n=function(){try{return"geolocation"in navigator&&"function"==typeof navigator.geolocation.getCurrentPosition&&"function"==typeof navigator.geolocation.watchPosition}catch(e){}return!1}(),a=function(){try{return"MutationObserver"in window&&"function"==typeof window.MutationObserver}catch(e){}return!1}(),i=function(){try{return"performance"in window&&"function"==typeof window.performance.now}catch(e){}return!1}(),o=function(){try{return"ontouchstart"in window||!!window.DocumentTouch&&document instanceof window.DocumentTouch||!!navigator.maxTouchPoints||!!navigator.msMaxTouchPoints}catch(e){}return!1}(),s=function(){try{for(var e=new Map([["transition","transitionend"],["MSTransition","msTransitionEnd"],["WebkitTransition","webkitTransitionEnd"],["MozTransition","transitionend"]]),t=[].concat(_toConsumableArray(e.keys())),r=document.createElement("div"),n=0;n<t.length;++n)if(r.style[t[n]]!==undefined)return e.get(t[n])}catch(e){}return!1}();return Object.freeze({audio:e,audioPromise:t,fileAPI:r,geolocation:n,mutationObserver:a,performance:i,touch:o,transitionEndEvent:s})}(),Visibility=function(){function e(){return Boolean(r&&document[r.hiddenProperty])}function t(){return r&&document[r.stateProperty]||"visible"}var r=function(){try{return Object.freeze([{hiddenProperty:"hidden",stateProperty:"visibilityState",changeEvent:"visibilitychange"},{hiddenProperty:"webkitHidden",stateProperty:"webkitVisibilityState",changeEvent:"webkitvisibilitychange"},{hiddenProperty:"mozHidden",stateProperty:"mozVisibilityState",changeEvent:"mozvisibilitychange"},{hiddenProperty:"msHidden",stateProperty:"msVisibilityState",changeEvent:"msvisibilitychange"}].find(function(e){return e.hiddenProperty in document}))}catch(e){}return null}();return Object.freeze(Object.defineProperties({},{isHidden:{value:e},state:{value:t},hiddenProperty:{value:r.hiddenProperty},stateProperty:{value:r.stateProperty},changeEvent:{value:r.changeEvent}}))}(),_ref3=function(){function e(t){if("object"!==(void 0===t?"undefined":_typeof(t))||null===t)return t;if(t instanceof String)return String(t);if(t instanceof Number)return Number(t);if(t instanceof Boolean)return Boolean(t);if("function"==typeof t.clone)return t.clone(!0);if(t.nodeType&&"function"==typeof t.cloneNode)return t.cloneNode(!0);var r=void 0;return t instanceof Array?r=new Array(t.length):t instanceof Date?r=new Date(t.getTime()):t instanceof Map?(r=new Map,t.forEach(function(t,n){return r.set(n,e(t))})):t instanceof RegExp?r=new RegExp(t):t instanceof Set?(r=new Set,t.forEach(function(t){return r.add(e(t))})):r=Object.create(Object.getPrototypeOf(t)),Object.keys(t).forEach(function(n){return r[n]=e(t[n])}),r}function t(e){for(var t=document.createDocumentFragment(),r=document.createElement("p"),n=void 0;null!==(n=e.firstChild);){if(n.nodeType===Node.ELEMENT_NODE){switch(n.nodeName.toUpperCase()){case"BR":if(null!==n.nextSibling&&n.nextSibling.nodeType===Node.ELEMENT_NODE&&"BR"===n.nextSibling.nodeName.toUpperCase()){e.removeChild(n.nextSibling),e.removeChild(n),t.appendChild(r),r=document.createElement("p");continue}if(!r.hasChildNodes()){e.removeChild(n);continue}break;case"ADDRESS":case"ARTICLE":case"ASIDE":case"BLOCKQUOTE":case"CENTER":case"DIV":case"DL":case"FIGURE":case"FOOTER":case"FORM":case"H1":case"H2":case"H3":case"H4":case"H5":case"H6":case"HEADER":case"HR":case"MAIN":case"NAV":case"OL":case"P":case"PRE":case"SECTION":case"TABLE":case"UL":r.hasChildNodes()&&(t.appendChild(r),r=document.createElement("p")),t.appendChild(n);continue}}r.appendChild(n)}r.hasChildNodes()&&t.appendChild(r),e.appendChild(t)}function r(){try{return document.activeElement||null}catch(e){return null}}function n(e,t,r){var n="object"===(void 0===e?"undefined":_typeof(e))?e:document.getElementById(e);if(null==n)return null;var a=Array.isArray(t)?t:[t];jQuery(n).empty();for(var i=0,o=a.length;i<o;++i)if(Story.has(a[i]))return new Wikifier(n,Story.get(a[i]).processText().trim()),n;if(null!=r){var s=String(r).trim();""!==s&&new Wikifier(n,s)}return n}function a(e,t,r){var n=jQuery(document.createElement("div")),a=jQuery(document.createElement("button")),i=jQuery(document.createElement("pre")),o=L10n.get("errorTitle")+": "+(t||"unknown error");return a.addClass("error-toggle").ariaClick({label:L10n.get("errorToggle")},function(){a.hasClass("enabled")?(a.removeClass("enabled"),i.attr({"aria-hidden":!0,hidden:"hidden"})):(a.addClass("enabled"),i.removeAttr("aria-hidden hidden"))}).appendTo(n),jQuery(document.createElement("span")).addClass("error").text(o).appendTo(n),jQuery(document.createElement("code")).text(r).appendTo(i),i.addClass("error-source").attr({"aria-hidden":!0,hidden:"hidden"}).appendTo(n),n.addClass("error-view").appendTo(e),console.warn(o+"\n\t"+r.replace(/\n/g,"\n\t")),!1}function i(e,t){var r=i;switch(void 0===e?"undefined":_typeof(e)){case"number":if(Number.isNaN(e))return t;break;case"object":if(null===e)return t;if(Array.isArray(e))return e.map(function(e){return r(e,t)}).join(", ");if(e instanceof Set)return[].concat(_toConsumableArray(e)).map(function(e){return r(e,t)}).join(", ");if(e instanceof Map){return"{ "+[].concat(_toConsumableArray(e)).map(function(e){var n=_slicedToArray(e,2),a=n[0],i=n[1];return r(a,t)+" → "+r(i,t)}).join(", ")+" }"}return e instanceof Date?e.toLocaleString():"function"==typeof e.toString?e.toString():Object.prototype.toString.call(e);case"function":case"undefined":return t}return String(e)}return Object.freeze(Object.defineProperties({},{clone:{value:e},convertBreaks:{value:t},safeActiveElement:{value:r},setPageElement:{value:n},throwError:{value:a},toStringOrDefault:{value:i}}))

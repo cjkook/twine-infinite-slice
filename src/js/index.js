@@ -25,9 +25,17 @@ window.advance = (time = 0.025, oomph = 0.25) => {
 
   // advance the calendar
   if (t2 > 24) {
+    let dayEvents = State.getVar("$dayEvents")
     let day = State.getVar("$day");
+    console.log(day)
+    day++
     dayEvents[day].isFinished = true;
-    State.setVar("$day", day++);
+
+    // update story variables
+    State.setVar("$day", day);
+    State.setVar("$dayEvents", dayEvents)
+    console.log(dayEvents[day].dayName)
+    console.log(day)
     t2 -= 24;
   }
 
@@ -47,6 +55,7 @@ window.advance = (time = 0.025, oomph = 0.25) => {
 window.update = () => {
   $("#money").html(`$${State.getVar("$money")}`);
   $("#location-text").html(`${State.getVar("$location")}`);
+  $("#oomph").val(State.getVar("$piezo").oomph);
 };
 
 /* PAGE INIT */
@@ -59,11 +68,24 @@ document.getElementById("menu-item-saves").remove();
 if (!document.getElementById("money")) {
   $('<div id="money"></div>').appendTo($("#ui-bar-body"));
 }
+
 if (!document.getElementById("oomph")) {
-  $('<div id="oomph"></div>').appendTo($("#ui-bar-body"));
+  $(`<label for="oomph">oomph</label>
+  <progress id="oomph" value="100" max="100"></progress>`).appendTo(
+    $("#ui-bar-body")
+  );
 }
 if (!document.getElementById("health")) {
-  $('<div id="health"></div>').appendTo($("#ui-bar-body"));
+  $(`<label for="health">health</label>
+  <progress id="health" value="50" max="100"></progress>`).appendTo(
+    $("#ui-bar-body")
+  );
+}
+if(!document.getElementById("inventory")) {
+  $(`<div id="inventory">inventory<hr></div>`).appendTo("#ui-bar-body")
+}
+if(!document.getElementById("equipment")) {
+  $(`<div id="equipment">equipment<hr></div>`).appendTo("#ui-bar-body")
 }
 if (!document.getElementById("background")) {
   $('<div id="background"></div>').prependTo($("#story"));

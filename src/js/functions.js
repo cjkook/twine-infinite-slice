@@ -11,7 +11,7 @@ window.createPalette = (url) => {
 };
 
 // sets a parameter on an object representing an event
-window.setDayEvent = (i, property = `test`, value = `val`) => {
+window.setDayEvent = (i, property = `test`, value = null) => {
   let dayEvents = State.getVar("$dayEvents"); // get story variable
   dayEvents[i][property] = value;
 
@@ -44,15 +44,14 @@ window.makeDayEvents = () => {
       isFinished: false,
       dayNumber: i + 1,
       infSliceOpened: false,
+      dayName: dayList[i%6]
     };
   }
   return arr;
 };
 
-
-
 // function to display footnote info
-window.footnote = (t1, t2 = "", t3 = "") => {
+window.footnote = (t1, t2 = " ", t3 = " ") => {
   if (!document.getElementById("footnote")) {
     $('<div id="footnote" class="footnote row"></div>').appendTo("#story");
     $('<hr class="footnote-hr">').prependTo("#footnote");
@@ -61,9 +60,9 @@ window.footnote = (t1, t2 = "", t3 = "") => {
     $('<div id="footnote-c" class="column"></span>').appendTo("#footnote");
   }
 
-  $("#footnote-a").html(`<em>${t1}</em>`);
-  $("#footnote-b").html(`<em>${t2}</em>`);
-  $("#footnote-c").html(`<em>${t3}</em>`);
+  if (t1) $("#footnote-a").html(`<em>${t1}</em>`);
+  if (t2) $("#footnote-b").html(`<em>${t2}</em>`);
+  if (t3) $("#footnote-c").html(`<em>${t3}</em>`);
 };
 
 // function to create theme based on time. Also generates time name. Called after passage renders.
@@ -131,6 +130,52 @@ window.getTimeName = (time) => {
   return name;
 };
 
+// add gear to equipment, return
+window.setGear = (gear, inv) => {
+  let player = State.getVar("$piezo");
+  let dresser = State.getVar("$dresser");
+  let inventory = State.getVar(inv);
+  let type = gear.type;
+  let hintText = " ";
+
+  // check if player already wearing the item
+  if (player.gear[type]) {
+    hintText = `Piezo replaces ${player.gear[type].name}.  It can be found again in his dresser.`;
+    dresser.push(player.gear[type]);
+    player.gear[type] = gear;
+  }
+  // otherwise add gear to player object
+  else {
+    player.gear[type] = gear;
+  }
+
+  // remove item from chest
+  inventory.splice(
+    inventory.findIndex((i) => {
+      return i.name === gear.name;
+    }),
+    1
+  );
+
+  // update gear section
+  let gearText = `equipment<hr>`;
+  for (const property in player.gear) {
+    if (player.gear[property]) {
+      gearText += `<p>${player.gear[property].name}</p>`;
+    }
+  }
+  $("#equipment").html(gearText);
+
+  // update story variables
+  console.log(player);
+  State.setVar("$piezo", player);
+  State.setVar("$dresser", dresser);
+  State.setVar(inv, inventory);
+
+  // display notifications
+  footnote(gear.description, hintText);
+};
+
 // get human readable time
 window.getClock = (t) => {
   const hour = Math.floor(t);
@@ -143,11 +188,37 @@ window.getClock = (t) => {
 //check characters in certain location at certain time of day
 window.checkLocationCharacters = (loc, t) => {
   let chars = State.getVar("$characters") || window.characters;
-  
   let time = window.getTimeName(t);
 
-  console.log(chars, loc, time)
+  // console.log(chars, loc, time)
   let localChars = chars.filter((c) => c.routine[time] == loc);
   console.log(localChars);
 };
-checkLocationCharacters("Club",23);
+checkLocationCharacters("Fortuito 144", 23);
+
+window.updateLocation = (loc, property = null, val = null) => {
+  let locations = State.getVar("$locations") || window.locations;
+  let index = locations.findIndex((l) => l.name == loc);
+
+  // add if new location
+  if (index < 0) {
+    locations.push({
+      name: loc,
+      visits: 0,
+    });
+    index = locations.findIndex((l) => l.name == loc);
+  }
+
+  // update object
+  if (!property) {
+    locations[index].visits++;
+  } else {
+    locations[index][property] = val;
+  }
+
+  // update story variable
+  State.setVar("$locations", locations);
+  State.setVar("$locIndex", index);
+};
+
+updateLocation("Fortuito 1445");
