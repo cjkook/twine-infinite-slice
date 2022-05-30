@@ -1,0 +1,122 @@
+:: Ling Afternoon Lobby
+<<switch $dayEvents[$day].dayName>>
+  <<case "Monra">>
+    Her top is a micro bikini bra that barely covers her nipples. Her bottom appears to be a high thigh thong from a different set. 
+  <<case "Tonra">>
+    Today Ling is sporting a tube top and a pair of booty shorts. She sits cross-legged with each arm on her knees. 
+    <<run footnote(`"Does she thing she is meditating? I know she's just thinking about food."`)>>
+  <<case "Wenra">>
+    Ling wears a teal, long-sleeved sweater crop top and some pink cotton panties. She slurps her bowl of ramen and sweats profusely in the afternoon heat.
+  <<case "Thumra">>
+    Ling stands up to greet Piezo as he approaches. She has some gym shorts on and a bikini top. She shifts her weight to one side and puts her hand on hip. 
+
+    "Hey, Piezo."\
+
+    <<run footnote(`"You're not fooling me. I know you didn't go to the gym."`)>>
+  <<case "Friyaya">>
+    <<run footnote(`"She's actually wearing this in front of me. She really just doesn't give a fugg."`)>>\
+    Ling's small, dark nipples peak out of her red mesh crop top, seemingly taunting Piezo into looking at them. 
+    
+    She holds a book and is facing away from Piezo so he can stare uninterrupted, if he so chooses.
+
+    CHANGE TO CHOICE
+    <<linkreplace "Look just a little while longer">>
+      <<run footnote(`"This is bold, even for her."`)>>\
+      Even though the room was, as a whole, very stuffy and hot, being in front of the fan had caused Lings nipples to poke through the mesh tank top. While her hair blew about wildly, her nipples had almost locked her shirt in place. They really were great nipples, Piezo thought to himself.
+    <</linkreplace>>
+    <<linkreplace "Probably shouldn't stare">>
+
+    <</linkreplace>>
+  <<case "Settum" "Summet">>
+    Ling's hair and an ugly gray sweater cover her face and upper body as she lies face down on the sofa, a bucket immediately under her face. 
+<</switch>>
+
+<<linkreplace "Talk to her">>
+
+<</linkreplace>>
+[[Do something else->Lobby]]
+
+:: Ling Afternoon First
+<<run footnote(`"Ling is so carefree it's impressive. Too bad she's such a bum."`)>>
+The woman before Piezo had golden blonde hair and almond skin. Her hair was done up in a careless top knot that left much of its length hanging on the side of her head. 
+
+As much as her hair and skin contrasted, her blue eyes added another level of juxtaposition to her overall look. They sit meekly in the middle of a face that time seemed to have given a free pass to. She appeared much younger than her age. 
+
+Ling hovers between misery and satisfaction as the cool breeze from the fan blows beads of sweat back and forth across her face. The temperature in the building is unbearable during the day. She wears only a bra and underwear and is not ashamed to be seen so exposed. Her attention doesn't seem to be on anything in particular, just the brief relief provided by moving air.
+
+With her eyes half closed, she seems to notice Piezo approach. She speaks without seeming to fully open her eyes.
+<<if $piezo.gear.legs === null>>\
+<div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
+Couldn't be bothered with pants either, huh?</div>\
+<<else>>
+<div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
+Oh, hey.</div>\
+<</if>>
+<<linkreplace "Continue">>\
+  <div class="left-chat">
+  What's shakin'? Did you hear about there's another driftbit this week?</div>\
+  <div class="right-chat"><em><small>Piezo</small></em>
+  Another? What's this one called?</div>\
+  <<linkreplace "Continue">>\
+    <<script>> 
+    footnote(`Floating islands, coloquially called 'driftbits', occasionally cross paths with Cycus.`, `When driftbits do happen by, Cycus locals will make trips over to the isle. Sometimes to exploit the natural resources, sometimes just as a quick getaway.`);<</script>>\
+    <div class="left-chat">
+    Just some strip of green. Can't recall the name. Might be worth a hop over for some variety, ya know?</div>
+    <div class="left-chat">
+    Think you'll open up shop tonight? I could use the cash.</div>\
+    <div class="right-chat">
+    I probably should. Not a whole lot of money on my end either.</div>\
+    <<linkreplace "Continue">>
+      <div class="right-chat">
+      Anything going on tonight?</div>\
+      <<linkreplace "Continue">>
+        <<switch $dayEvents[$day].dayName>>
+        <<case "Monra" "Tonra">>
+        <div class="left-chat">
+        I dunno. Drink at TangPingSki's? It's $dayEvents[$day].dayName, so...meh.</div>\
+        <<case "Wenra" "Thumra">>
+        <div class="left-chat">
+        That new girl is gonna be dancing over at Fortuito. Ya know, Ciccia's friend? The cute one? Might be kinda fun after we close up here.</div>\
+        <<case "Friyaya" "Settum" "Summet">>
+        <div class="left-chat">
+        It's the fuggin' weekend baby! You know I'm going out.</div>\
+        <</switch>>
+
+        <<linkreplace "Continue">>
+          Ling rolls over on the sofa and cocks her head to look at Piezo. Her bra barely covered her nipples and each breast dropping to rest on the sides of her ribcage. Her underwear was no more modest on the front than on the back. This pair was riding very high on her thigh, approaching even abdomen level.
+
+          Piezo was no stranger to his scantily-clad friend's behavior nor attire, but he couldn't deny this stirred something in him briefly. 
+
+          Ling seemed to notice this pause and opened her eyes to look at him.
+
+          <<linkreplace "Continue">>
+            <div class="left-chat">
+              Haha! Piezo, you perv!</div>\
+              <<linkreplace "Continue">>
+                <<run footnote(`Ling, while not a dancer at the club herself, maintained very close bonds with the dancers at the club, <em>Fortuito 144</em>.`, `"I know I'd be good at it. It's just not something I am interested in right now." - Ling`);>>
+                <div class="right-chat">
+                Looking good, girl! You get that underwear from the girls at Fortuito? When you gonna start dancing there?</div>\
+                <<linkreplace "Continue">>
+                  <div class="left-chat">
+                  In your dreams!</div>\
+                  <<linkreplace "Continue">>
+                    <div class="right-chat">
+                      C'mon! You know I'd come watch...with admissions comped.</div>\
+                    <<linkreplace "Continue">>
+                      The two ended their exchange with smiles. Piezo really enjoyed Ling's company. She always knew where the good parties were and how to have a good time. 
+                      <<set $lingAfternoonFirst = true>>
+                      [[Return->Lobby]]
+                    <</linkreplace>>
+                  <</linkreplace>>
+                  
+                <</linkreplace>>
+              <</linkreplace>>
+          <</linkreplace>>
+        <</linkreplace>>
+      <</linkreplace>>
+    <</linkreplace>>
+  <</linkreplace>>
+<</linkreplace>>
+
+
+

@@ -8,8 +8,8 @@
 6 - Summet
 
 CHARACTERS
-miel - honey
-ciccia - honey
+miel - honey, new to dancing
+ciccia - honey, old pro
 
 Filop Jean-Cristov - Slimey landlord. Piezo has to get money to pay him.
 

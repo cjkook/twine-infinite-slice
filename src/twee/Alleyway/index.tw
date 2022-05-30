@@ -15,5 +15,3 @@ updateLocation(State.getVar("$location"))
 [[TangPingSki's Door]]
 <</if>>
 
-
-<<return>>

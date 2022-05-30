@@ -55,9 +55,9 @@ window.footnote = (t1, t2 = " ", t3 = " ") => {
   if (!document.getElementById("footnote")) {
     $('<div id="footnote" class="footnote row"></div>').appendTo("#story");
     $('<hr class="footnote-hr">').prependTo("#footnote");
-    $('<div id="footnote-a" class="column"></span>').appendTo("#footnote");
-    $('<div id="footnote-b" class="column"></span>').appendTo("#footnote");
-    $('<div id="footnote-c" class="column"></span>').appendTo("#footnote");
+    $('<div id="footnote-a" class="column w3-rest"></span>').appendTo("#footnote");
+    $('<div id="footnote-b" class="column w3-rest"></span>').appendTo("#footnote");
+    $('<div id="footnote-c" class="column w3-rest"></span>').appendTo("#footnote");
   }
 
   if (t1) $("#footnote-a").html(`<em>${t1}</em>`);

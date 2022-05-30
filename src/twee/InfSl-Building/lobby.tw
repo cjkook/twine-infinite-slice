@@ -3,12 +3,54 @@
 <<script>>
 updateLocation(State.getVar("$location"))
 <</script>>\
-The lobby of <em>Infinite Slice</em> is an interesting use of space. Its furniture includes only a couple of tables with their respective chairs but also sports a couch and coffee table. When the space isn't being used as the business's dining area, it is repurposed as a living room of sorts for the building's residents.  
+<<set _f1 = ``>>\
+<<set _f2 = ``>>\
+The lobby of <em>Infinite Slice</em> is an interesting use of space. Its furniture includes only a couple of tables with their respective chairs but also sports a couch and coffee table. When the space isn't being used as the business's dining area, it is repurposed as a living room of sorts for the building's residents.  The personal belongings of the residents are strown about haphazardly, sometimes even during service.
+
+<<switch $timeName>>\
+	<<case "morning">>\
+  <<set _f1 = ``>>\
+	The lobby is empty.
+  <<case "afternoon">>\
+  <<set _f1 = `The room \is sticky with the day's heat.`>>\
+    The room's main fan is turned on with Ling directly in front of it.\
+    <<if $lingAfternoonFirst != true>> 
+    [[Approach her.->Ling Afternoon First]]
+    <<else>>
+    [[Approach her.->Ling Afternoon Lobby]]
+    <</if>>
+	<<case "evening">>\
+  <<set _f1 = `"Should I give the people what they want?"`>>\
+	There is a group congregating outside hoping <em>Infinite Slice</em> will open.
+	<<case "night">>\
+  <<if $dayEvent[$day].infSliceOpened>>
+  <<set _f1 = "The place is trashed after an evening of service.">>\
+  <<set _f2 = `"Garbunkle insists on cleaning up after a busy night. It's in his nature, I guess."`>>\
+  Garbunkle is mopping the floor.
+  <<else>>
+  
+  The lobby is just like it was this morning: empty.
+  <</if>>
+  
+	<</switch>>\
 
 Like the rest of the building, the lobby is in mild disrepair: dirt in the grout between the floor tiles, chipped paint on all the trim, and discoloration abound.
 
-At one end of the space is the front door, which leads to the alley. It is a rather wide double-sided sliding glass door which leads to the alleyway. On the other end is the kitchen window with a cash register and countertop immediately in front of it.  Next to the window is a small black door.
+At one end of the room is the front door leading to the alley. It is a rather wide double-sided sliding glass door which serves both as the entrance to the pizzeria but also as the building's back door which many of the residents use to access their flats. On the other end is the kitchen window with a cash register and countertop immediately in front of it.  Next to the window is a small black door. <<linkreplace "A menu hangs over the register.">>
+
+<div class="polaroid" style="padding: 5px;"><em>Fresh recipes each day! 
+Prices and ingredients may vary. 
+
+NO MODS! IF YOU DON'T LIKE THE FOOD, 
+EAT SOMEWHERE ELSE! 
+ - MANAGEMENT</em></div>
+<</linkreplace>>
+
 
 [[Enter the small door to the left of the window.->Infinite Slice Kitchen]]
 [[Go out the sliding door.->Alleyway]]
 [[Go back upstairs. -> Hallway]]
+
+<<script>>
+footnote(temporary().f1,temporary().f2)
+<</script>>\

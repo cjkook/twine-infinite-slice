@@ -616,9 +616,9 @@ window.footnote = (t1, t2 = " ", t3 = " ") => {
   if (!document.getElementById("footnote")) {
     $('<div id="footnote" class="footnote row"></div>').appendTo("#story");
     $('<hr class="footnote-hr">').prependTo("#footnote");
-    $('<div id="footnote-a" class="column"></span>').appendTo("#footnote");
-    $('<div id="footnote-b" class="column"></span>').appendTo("#footnote");
-    $('<div id="footnote-c" class="column"></span>').appendTo("#footnote");
+    $('<div id="footnote-a" class="column w3-rest"></span>').appendTo("#footnote");
+    $('<div id="footnote-b" class="column w3-rest"></span>').appendTo("#footnote");
+    $('<div id="footnote-c" class="column w3-rest"></span>').appendTo("#footnote");
   }
 
   if (t1) $("#footnote-a").html(`<em>${t1}</em>`);
@@ -1049,10 +1049,7 @@ updateLocation(State.getVar(&quot;$location&quot;))
 [[Market][$piezo.oomph -= 5; $timeCount += 0.25]]
 [[Plaza][$piezo.oomph -= 5; $timeCount += 0.25]]
 [[TangPingSki&#39;s Door]]
-&lt;&lt;/if&gt;&gt;
-
-
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="Club Entrance" tags="" position="1100,100" size="100,100">[[Club Interior]]
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="Club Entrance" tags="" position="1100,100" size="100,100">[[Club Interior]]
 [[Turn back to the alleyway.-&gt;Alleyway]]</tw-passagedata><tw-passagedata pid="10" name="Club Interior" tags="" position="1225,100" size="100,100">&lt;&lt;set $location = &quot;Fortuito 144&quot;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
@@ -1095,12 +1092,126 @@ updateLocation(State.getVar(&quot;$location&quot;))
 
 &lt;&lt;script&gt;&gt;
 footnote(`&quot;It&#39;s not much, I&#39;ll admit, but having a little patch of nature only a few stories up isn&#39;t terrible.&quot;&lt;br&gt;&lt;br&gt;-Piezo`,`&quot;My own personal tanning salon.&quot;&lt;br&gt;&lt;br&gt;-Ling`,` `)
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="Garbunkle Door" tags="" position="600,225" size="100,100">Garbunkle&#39;s door is brown and non-descript. Dust acculumation on the doorknob indicates it hasn&#39;t been opened in a while.
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="Ling Afternoon Lobby" tags="" position="600,225" size="100,100">&lt;&lt;switch $dayEvents[$day].dayName&gt;&gt;
+  &lt;&lt;case &quot;Monra&quot;&gt;&gt;
+    Her top is a micro bikini bra that barely covers her nipples. Her bottom appears to be a high thigh thong from a different set. 
+  &lt;&lt;case &quot;Tonra&quot;&gt;&gt;
+    Today Ling is sporting a tube top and a pair of booty shorts. She sits cross-legged with each arm on her knees. 
+    &lt;&lt;run footnote(`&quot;Does she thing she is meditating? I know she&#39;s just thinking about food.&quot;`)&gt;&gt;
+  &lt;&lt;case &quot;Wenra&quot;&gt;&gt;
+    Ling wears a teal, long-sleeved sweater crop top and some pink cotton panties. She slurps her bowl of ramen and sweats profusely in the afternoon heat.
+  &lt;&lt;case &quot;Thumra&quot;&gt;&gt;
+    Ling stands up to greet Piezo as he approaches. She has some gym shorts on and a bikini top. She shifts her weight to one side and puts her hand on hip. 
+
+    &quot;Hey, Piezo.&quot;\
+
+    &lt;&lt;run footnote(`&quot;You&#39;re not fooling me. I know you didn&#39;t go to the gym.&quot;`)&gt;&gt;
+  &lt;&lt;case &quot;Friyaya&quot;&gt;&gt;
+    &lt;&lt;run footnote(`&quot;She&#39;s actually wearing this in front of me. She really just doesn&#39;t give a fugg.&quot;`)&gt;&gt;\
+    Ling&#39;s small, dark nipples peak out of her red mesh crop top, seemingly taunting Piezo into looking at them. 
+    
+    She holds a book and is facing away from Piezo so he can stare uninterrupted, if he so chooses.
+
+    CHANGE TO CHOICE
+    &lt;&lt;linkreplace &quot;Look just a little while longer&quot;&gt;&gt;
+      &lt;&lt;run footnote(`&quot;This is bold, even for her.&quot;`)&gt;&gt;\
+      Even though the room was, as a whole, very stuffy and hot, being in front of the fan had caused Lings nipples to poke through the mesh tank top. While her hair blew about wildly, her nipples had almost locked her shirt in place. They really were great nipples, Piezo thought to himself.
+    &lt;&lt;/linkreplace&gt;&gt;
+    &lt;&lt;linkreplace &quot;Probably shouldn&#39;t stare&quot;&gt;&gt;
+
+    &lt;&lt;/linkreplace&gt;&gt;
+  &lt;&lt;case &quot;Settum&quot; &quot;Summet&quot;&gt;&gt;
+    Ling&#39;s hair and an ugly gray sweater cover her face and upper body as she lies face down on the sofa, a bucket immediately under her face. 
+&lt;&lt;/switch&gt;&gt;
+
+&lt;&lt;linkreplace &quot;Talk to her&quot;&gt;&gt;
+
+&lt;&lt;/linkreplace&gt;&gt;
+[[Do something else-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="16" name="Ling Afternoon First" tags="" position="725,225" size="100,100">&lt;&lt;run footnote(`&quot;Ling is so carefree it&#39;s impressive. Too bad she&#39;s such a bum.&quot;`)&gt;&gt;
+The woman before Piezo had golden blonde hair and almond skin. Her hair was done up in a careless top knot that left much of its length hanging on the side of her head. 
+
+As much as her hair and skin contrasted, her blue eyes added another level of juxtaposition to her overall look. They sit meekly in the middle of a face that time seemed to have given a free pass to. She appeared much younger than her age. 
+
+Ling hovers between misery and satisfaction as the cool breeze from the fan blows beads of sweat back and forth across her face. The temperature in the building is unbearable during the day. She wears only a bra and underwear and is not ashamed to be seen so exposed. Her attention doesn&#39;t seem to be on anything in particular, just the brief relief provided by moving air.
+
+With her eyes half closed, she seems to notice Piezo approach. She speaks without seeming to fully open her eyes.
+&lt;&lt;if $piezo.gear.legs === null&gt;&gt;\
+&lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+Couldn&#39;t be bothered with pants either, huh?&lt;/div&gt;\
+&lt;&lt;else&gt;&gt;
+&lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+Oh, hey.&lt;/div&gt;\
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;linkreplace &quot;Continue&quot;&gt;&gt;\
+  &lt;div class=&quot;left-chat&quot;&gt;
+  What&#39;s shakin&#39;? Did you hear about there&#39;s another driftbit this week?&lt;/div&gt;\
+  &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
+  Another? What&#39;s this one called?&lt;/div&gt;\
+  &lt;&lt;linkreplace &quot;Continue&quot;&gt;&gt;\
+    &lt;&lt;script&gt;&gt; 
+    footnote(`Floating islands, coloquially called &#39;driftbits&#39;, occasionally cross paths with Cycus.`, `When driftbits do happen by, Cycus locals will make trips over to the isle. Sometimes to exploit the natural resources, sometimes just as a quick getaway.`);&lt;&lt;/script&gt;&gt;\
+    &lt;div class=&quot;left-chat&quot;&gt;
+    Just some strip of green. Can&#39;t recall the name. Might be worth a hop over for some variety, ya know?&lt;/div&gt;
+    &lt;div class=&quot;left-chat&quot;&gt;
+    Think you&#39;ll open up shop tonight? I could use the cash.&lt;/div&gt;\
+    &lt;div class=&quot;right-chat&quot;&gt;
+    I probably should. Not a whole lot of money on my end either.&lt;/div&gt;\
+    &lt;&lt;linkreplace &quot;Continue&quot;&gt;&gt;
+      &lt;div class=&quot;right-chat&quot;&gt;
+      Anything going on tonight?&lt;/div&gt;\
+      &lt;&lt;linkreplace &quot;Continue&quot;&gt;&gt;
+        &lt;&lt;switch $dayEvents[$day].dayName&gt;&gt;
+        &lt;&lt;case &quot;Monra&quot; &quot;Tonra&quot;&gt;&gt;
+        &lt;div class=&quot;left-chat&quot;&gt;
+        I dunno. Drink at TangPingSki&#39;s? It&#39;s $dayEvents[$day].dayName, so...meh.&lt;/div&gt;\
+        &lt;&lt;case &quot;Wenra&quot; &quot;Thumra&quot;&gt;&gt;
+        &lt;div class=&quot;left-chat&quot;&gt;
+        That new girl is gonna be dancing over at Fortuito. Ya know, Ciccia&#39;s friend? The cute one? Might be kinda fun after we close up here.&lt;/div&gt;\
+        &lt;&lt;case &quot;Friyaya&quot; &quot;Settum&quot; &quot;Summet&quot;&gt;&gt;
+        &lt;div class=&quot;left-chat&quot;&gt;
+        It&#39;s the fuggin&#39; weekend baby! You know I&#39;m going out.&lt;/div&gt;\
+        &lt;&lt;/switch&gt;&gt;
+
+        &lt;&lt;linkreplace &quot;Continue&quot;&gt;&gt;
+          Ling rolls over on the sofa and cocks her head to look at Piezo. Her bra barely covered her nipples and each breast dropping to rest on the sides of her ribcage. Her underwear was no more modest on the front than on the back. This pair was riding very high on her thigh, approaching even abdomen level.
+
+          Piezo was no stranger to his scantily-clad friend&#39;s behavior nor attire, but he couldn&#39;t deny this stirred something in him briefly. 
+
+          Ling seemed to notice this pause and opened her eyes to look at him.
+
+          &lt;&lt;linkreplace &quot;Continue&quot;&gt;&gt;
+            &lt;div class=&quot;left-chat&quot;&gt;
+              Haha! Piezo, you perv!&lt;/div&gt;\
+              &lt;&lt;linkreplace &quot;Continue&quot;&gt;&gt;
+                &lt;&lt;run footnote(`Ling, while not a dancer at the club herself, maintained very close bonds with the dancers at the club, &lt;em&gt;Fortuito 144&lt;/em&gt;.`, `&quot;I know I&#39;d be good at it. It&#39;s just not something I am interested in right now.&quot; - Ling`);&gt;&gt;
+                &lt;div class=&quot;right-chat&quot;&gt;
+                Looking good, girl! You get that underwear from the girls at Fortuito? When you gonna start dancing there?&lt;/div&gt;\
+                &lt;&lt;linkreplace &quot;Continue&quot;&gt;&gt;
+                  &lt;div class=&quot;left-chat&quot;&gt;
+                  In your dreams!&lt;/div&gt;\
+                  &lt;&lt;linkreplace &quot;Continue&quot;&gt;&gt;
+                    &lt;div class=&quot;right-chat&quot;&gt;
+                      C&#39;mon! You know I&#39;d come watch...with admissions comped.&lt;/div&gt;\
+                    &lt;&lt;linkreplace &quot;Continue&quot;&gt;&gt;
+                      The two ended their exchange with smiles. Piezo really enjoyed Ling&#39;s company. She always knew where the good parties were and how to have a good time. 
+                      &lt;&lt;set $lingAfternoonFirst = true&gt;&gt;
+                      [[Return-&gt;Lobby]]
+                    &lt;&lt;/linkreplace&gt;&gt;
+                  &lt;&lt;/linkreplace&gt;&gt;
+                  
+                &lt;&lt;/linkreplace&gt;&gt;
+              &lt;&lt;/linkreplace&gt;&gt;
+          &lt;&lt;/linkreplace&gt;&gt;
+        &lt;&lt;/linkreplace&gt;&gt;
+      &lt;&lt;/linkreplace&gt;&gt;
+    &lt;&lt;/linkreplace&gt;&gt;
+  &lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="Garbunkle Door" tags="" position="850,225" size="100,100">Garbunkle&#39;s door is brown and non-descript. Dust acculumation on the doorknob indicates it hasn&#39;t been opened in a while.
 
 &lt;&lt;return&gt;&gt;
 &lt;&lt;script&gt;&gt;
 footnote(`It was highly unlikely that Garbunkle would be found in his room, given his lack of needing sleep.`);
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="16" name="Hallway" tags="" position="725,225" size="100,100">&lt;&lt;set $location = &#39;Hallway&#39;&gt;&gt;\
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="18" name="Hallway" tags="" position="975,225" size="100,100">&lt;&lt;set $location = &#39;Hallway&#39;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
@@ -1120,11 +1231,11 @@ Additionally, there are two sets of stairs:
 \
 &lt;&lt;script&gt;&gt;
 footnote(`Most of this building is residential but the bottom floor is the location of Piezo&#39;s hole in the wall pizzeria, &lt;em&gt;Infinite Slice.&lt;/em&gt;`,` `,` `)
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="First Venture to the Garden" tags="" position="850,225" size="100,100">[[Rooftop Garden]]
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="First Venture to the Garden" tags="" position="1100,225" size="100,100">[[Rooftop Garden]]
 
 &lt;&lt;script&gt;&gt;
 footnote(`Most of this building is residential but the first floor is the location of Piezo&#39;s hole in the wall pizzeria, &lt;em&gt;Infinite Slice.&lt;/em&gt;`,`A layer of mildew cakes the walls of this drab stairway.`,` `)
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="Ling Door" tags="" position="975,225" size="100,100">Ling&#39;s door is bright pink and stands as the only beacon of color in the otherwise neutral hallway. A few of her jackets hang just to the side of the doorframe. 
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Ling Door" tags="" position="1225,225" size="100,100">Ling&#39;s door is bright pink and stands as the only beacon of color in the otherwise neutral hallway. A few of her jackets hang just to the side of the doorframe. 
 
 &lt;&lt;switch $timeName&gt;&gt;\
 	&lt;&lt;case &quot;morning&quot;&gt;&gt;\
@@ -1141,19 +1252,61 @@ footnote(`Most of this building is residential but the first floor is the locati
 
 &lt;&lt;script&gt;&gt;
 footnote(temporary().f1);
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="19" name="Lobby" tags="" position="1100,225" size="100,100">&lt;&lt;set $location = &quot;Infinite Slice Lobby&quot;&gt;&gt;\
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="21" name="Lobby" tags="" position="100,350" size="100,100">&lt;&lt;set $location = &quot;Infinite Slice Lobby&quot;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
-The lobby of &lt;em&gt;Infinite Slice&lt;/em&gt; is an interesting use of space. Its furniture includes only a couple of tables with their respective chairs but also sports a couch and coffee table. When the space isn&#39;t being used as the business&#39;s dining area, it is repurposed as a living room of sorts for the building&#39;s residents.  
+&lt;&lt;set _f1 = ``&gt;&gt;\
+&lt;&lt;set _f2 = ``&gt;&gt;\
+The lobby of &lt;em&gt;Infinite Slice&lt;/em&gt; is an interesting use of space. Its furniture includes only a couple of tables with their respective chairs but also sports a couch and coffee table. When the space isn&#39;t being used as the business&#39;s dining area, it is repurposed as a living room of sorts for the building&#39;s residents.  The personal belongings of the residents are strown about haphazardly, sometimes even during service.
+
+&lt;&lt;switch $timeName&gt;&gt;\
+	&lt;&lt;case &quot;morning&quot;&gt;&gt;\
+  &lt;&lt;set _f1 = ``&gt;&gt;\
+	The lobby is empty.
+  &lt;&lt;case &quot;afternoon&quot;&gt;&gt;\
+  &lt;&lt;set _f1 = `The room \is sticky with the day&#39;s heat.`&gt;&gt;\
+    The room&#39;s main fan is turned on with Ling directly in front of it.\
+    &lt;&lt;if $lingAfternoonFirst != true&gt;&gt; 
+    [[Approach her.-&gt;Ling Afternoon First]]
+    &lt;&lt;else&gt;&gt;
+    [[Approach her.-&gt;Ling Afternoon Lobby]]
+    &lt;&lt;/if&gt;&gt;
+	&lt;&lt;case &quot;evening&quot;&gt;&gt;\
+  &lt;&lt;set _f1 = `&quot;Should I give the people what they want?&quot;`&gt;&gt;\
+	There is a group congregating outside hoping &lt;em&gt;Infinite Slice&lt;/em&gt; will open.
+	&lt;&lt;case &quot;night&quot;&gt;&gt;\
+  &lt;&lt;if $dayEvent[$day].infSliceOpened&gt;&gt;
+  &lt;&lt;set _f1 = &quot;The place is trashed after an evening of service.&quot;&gt;&gt;\
+  &lt;&lt;set _f2 = `&quot;Garbunkle insists on cleaning up after a busy night. It&#39;s in his nature, I guess.&quot;`&gt;&gt;\
+  Garbunkle is mopping the floor.
+  &lt;&lt;else&gt;&gt;
+  
+  The lobby is just like it was this morning: empty.
+  &lt;&lt;/if&gt;&gt;
+  
+	&lt;&lt;/switch&gt;&gt;\
 
 Like the rest of the building, the lobby is in mild disrepair: dirt in the grout between the floor tiles, chipped paint on all the trim, and discoloration abound.
 
-At one end of the space is the front door, which leads to the alley. It is a rather wide double-sided sliding glass door which leads to the alleyway. On the other end is the kitchen window with a cash register and countertop immediately in front of it.  Next to the window is a small black door.
+At one end of the room is the front door leading to the alley. It is a rather wide double-sided sliding glass door which serves both as the entrance to the pizzeria but also as the building&#39;s back door which many of the residents use to access their flats. On the other end is the kitchen window with a cash register and countertop immediately in front of it.  Next to the window is a small black door. &lt;&lt;linkreplace &quot;A menu hangs over the register.&quot;&gt;&gt;
+
+&lt;div class=&quot;polaroid&quot; style=&quot;padding: 5px;&quot;&gt;&lt;em&gt;Fresh recipes each day! 
+Prices and ingredients may vary. 
+
+NO MODS! IF YOU DON&#39;T LIKE THE FOOD, 
+EAT SOMEWHERE ELSE! 
+ - MANAGEMENT&lt;/em&gt;&lt;/div&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+
 
 [[Enter the small door to the left of the window.-&gt;Infinite Slice Kitchen]]
 [[Go out the sliding door.-&gt;Alleyway]]
-[[Go back upstairs. -&gt; Hallway]]</tw-passagedata><tw-passagedata pid="20" name="Infinite Slice Kitchen" tags="" position="1225,225" size="100,100">&lt;&lt;set $location = &#39;Infinite Slice Kitchen&#39;&gt;&gt;\
+[[Go back upstairs. -&gt; Hallway]]
+
+&lt;&lt;script&gt;&gt;
+footnote(temporary().f1,temporary().f2)
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="22" name="Infinite Slice Kitchen" tags="" position="225,350" size="100,100">&lt;&lt;set $location = &#39;Infinite Slice Kitchen&#39;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 footnote(`Though Ling, Garbunkle, and the girls from Fortuito would occasionally come and help Piezo during service as delivery drivers or cashiers, there was only enough room in the kitchen for one.`,`Monotonous work.`,` `);
@@ -1173,7 +1326,7 @@ A small interface panel on the wall controls the [[audio system-&gt;Kitchen Radi
   Piezo will need to start prepping in the afternoon if he is to open this &lt;&lt;linkappend &quot;evening.&quot; t8n&gt;&gt;&lt;div class=&quot;hint&quot;&gt;Due to the amount of prep work involved in opening the shop, Piezo needs to start in the afternoon if he wants to serve any food that evening. If he chooses to open, a significant amount of time will pass and oomph will be consumed. In return, variable amounts of money will be acquired based on the type of food served.&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt;\
 	&lt;&lt;/switch&gt;&gt;
 
-[[Exit back to the lobby-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="21" name="Kitchen Radio" tags="" position="100,350" size="100,100">The kitchen radio was something Piezo spared no expense to obtain when he opened Infinite Slice. Though it would fail to compete with the sound system across the alley at Fortuito 144, it was plenty loud for the restaurant and a few pedestrians just outside.\
+[[Exit back to the lobby-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="23" name="Kitchen Radio" tags="" position="350,350" size="100,100">The kitchen radio was something Piezo spared no expense to obtain when he opened Infinite Slice. Though it would fail to compete with the sound system across the alley at Fortuito 144, it was plenty loud for the restaurant and a few pedestrians just outside.\
 
 &lt;&lt;if $kitchenRadioOn&gt;&gt;
 	Faint clicks reverberate off the kitchen&#39;s reflective walls as the speakers receive power. The room begins humming with the sound of music. 
@@ -1183,7 +1336,7 @@ A small interface panel on the wall controls the [[audio system-&gt;Kitchen Radi
 	[[Turn it on.|Kitchen Radio][$kitchenRadioOn = true]]
 &lt;&lt;/if&gt;&gt;\
 
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Dresser" tags="" position="225,350" size="100,100">&lt;&lt;script&gt;&gt;
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Dresser" tags="" position="475,350" size="100,100">&lt;&lt;script&gt;&gt;
 
 &lt;&lt;/script&gt;&gt;
 &lt;&lt;if $dresser.length &lt; 1&gt;&gt;&gt;\
@@ -1204,7 +1357,7 @@ setGear(temporary().item,&#39;$dresser&#39;);
 &lt;&lt;return&gt;&gt;
 &lt;&lt;script&gt;&gt;
 footnote(`Piezo had always kept a minimal amount of clothes that he would rotate through at least a couple times before washing.  He hated doing laundry.`,` `, ` `);
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="23" name="Piezo Room" tags="" position="350,350" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="25" name="Piezo Room" tags="" position="600,350" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
@@ -1233,15 +1386,15 @@ The narrow room had only just enough room to fit a bed into it. In fact, when Pi
 
 &lt;&lt;script&gt;&gt;
 footnote(`&quot;If I put something away, how will I ever find it!?&quot;`,`The smell isn&#39;t too bad right now.`,` `)
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="24" name="Under the mattress" tags="" position="475,350" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="26" name="Under the mattress" tags="" position="725,350" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
 	Nothing here.
 	[[Piezo sets the mattress back down in frustration.-&gt;Piezo Room]]
 &lt;&lt;else&gt;&gt;
 	There&#39;s a little bit of money for a rainy day. Should Piezo grab it?
 	[[It&#39;s rainy enough.][$money += 237; $foundMattressMoney = true]]
 	[[Not yet.-&gt;Piezo Room]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="It&#39;s rainy enough." tags="" position="600,350" size="100,100">[[Back to the room.-&gt;Piezo Room]]
-&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="Radio" tags="" position="725,350" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="It&#39;s rainy enough." tags="" position="850,350" size="100,100">[[Back to the room.-&gt;Piezo Room]]
+&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Radio" tags="" position="975,350" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
 
 &lt;&lt;if $piezoRoomRadioOn&gt;&gt;
 	It&#39;s tuned to a local radio station. There is a song playing.
@@ -1254,9 +1407,9 @@ footnote(`&quot;If I put something away, how will I ever find it!?&quot;`,`The s
 
 &lt;&lt;script&gt;&gt;
 footnote(` `,`Piezo bought this radio years ago. What it lacks in features it makes up for in looking like junk.`,`&quot;The clock works, so I can&#39;t get rid of it!&quot;`)
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="27" name="Sleep" tags="" position="850,350" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="29" name="Sleep" tags="" position="1100,350" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
 [[Sleep For twenty four hours-&gt;Piezo Room][$timeCount += 24]]
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Window" tags="" position="975,350" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="Window" tags="" position="1225,350" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
 The window is open. \
 	&lt;&lt;switch $timeName&gt;&gt;\
 	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\
