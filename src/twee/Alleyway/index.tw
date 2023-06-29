@@ -3,15 +3,14 @@
 <<script>>
 updateLocation(State.getVar("$location"))
 <</script>>\
-<<if !$dayEvents[0].isFinished>>
+<<if !$dayEvents[0].isFinished && !$choochMet>>
 <<include [[Meet Choochi]]>>
-[[Club Entrance]]
 <<elseif $day === 1>>
 [[the second day]]
 <<else>>
-[[Club Entrance]]
-[[Market][$piezo.oomph -= 5; $timeCount += 0.25]]
-[[Plaza][$piezo.oomph -= 5; $timeCount += 0.25]]
-[[TangPingSki's Door]]
+There are a couple places of note in the alleyway, namely <em>Infinite Slice</em>, <em>TangPingSki's</em>, and of course, the alley's namesake, <em>Fortuito 144.</em>
+[[Check out Fortuito 144.->Club Entrance]]
+[[Head to TangPingSki's.->TangPingSki's Door]]
+[[Go to Infinite Slice->Lobby]]
 <</if>>
 

@@ -1,5 +1,112 @@
 :: Meet Choochi
-Hello, Choochi.
+<<script>> 
+    footnote(`A legend in the Cycus restuarant scene. Choochi 'The Choochi' Geomeo \is a long time friend, associate and patron to the businesses of Alley Fortuito, Piezo's shop being no exception.`);<</script>>\
+Piezo steps into the alleyway and turns to lock the door behind him. As he does so, the rumble of a truck approaching catches his ear. He knows this sound. The creaking of old steel and a steam-propelled locamotion means the arrival of the local delivery man.
 
+The old truck pulls forward and stops in front of <em>Infinite Slice.</em> It takes up nearly the entire alleyway and the steam coming from its engine obscures what isn't already obstructed. Piezo hears the door open and slam, a handful of footsteps creep along the back of the truck, and then there is the metallic sound of the cargo door sliding up the rear. In the next moment, a large, colorful man emerges from the wet, grey steam carrying a wooden box. The man is <<linkappend "Choochi." t8n>>
+
+He wears a top hat and a patchwork of an apron that appears to be fabricated from the scraps of aprons that had failed before it. Each patch a different color and texture than the one before. His eyes are shielded behind round sunglasses and his grin carries a handrolled cigarette.<</linkappend>>
+
+He wipes the moisture from his forehead and <<linkappend "sets the box down." t8n>>
+<<if $sawKitchenNoteDayOne>>
+Piezo discerns that this must be the delivery noted in the kitchen. 
+<<else>>
+There's usually only one reason Choochi would show up at <em>Infinite Slice</em> during the day and that would be to drop off some ingredients for the night's service.
+<</if>>
+<</linkappend>>
+
+<<if $piezo.gear.legs === null>>\
+<div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
+For fugg's sake, there's always a fifty percent chance I show up here and you can't've even been troubled to put some fuggin' clothes on, eh?</div>\
+<<else>>
+<div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
+Ar-Engi smiles today, Piezo! Look at this cheese! </div>\
+<</if>>
+
+[[Continue->Meet Choochi 2]]
+
+:: Meet Choochi 2
+Choochi pulls a rather large knife from his belt and cuts the cord securing the top of the box. He pulls the lid off to show Piezo its <<linkappend "contents." t8n>>
+There are a half dozen blocks of cheese inside. Specks of spices and herbs are mixed into the marvelous dairy slabs. It looks quite appetizing all on its own.<</linkappend>>
+<div class="right-chat"><em><small>Piezo</small></em>
+  Not bad. Where did you get this batch?</div>\
+<<linkreplace "Continue" t8n>>
+  <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
+  A shipment came into the warehouse late last night before I closed up. Stuff looked a lot better than my current stock. Thought you would appreciate it.</div>\
+  <<linkreplace "Continue" t8n>>
+    <div class="right-chat"><em><small>Piezo</small></em>
+    Definitely a step above what I usually get. I guess this is reason enough to open tonight, huh? This cheese is gonna be a hit.</div>\
+    <<linkreplace "Continue" t8n>>
+      <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
+        No doubt. You know I'll be in to give it a whirl.</div>\
+        <<linkreplace "Continue" t8n>>
+          Choochi's cigarette has been exstinguished by the copious amount of steam emanating from the truck. Upon noticing this fact after he unsuccessfully attempts to puff from the small tube, he walks around the front of the truck and turns off the engine. He sparks the cigarette again and comes back to [[continue speaking->Meet Choochi 3]] with Piezo.
+        <</linkreplace>>
+    <</linkreplace>>
+  <</linkreplace>>
+<</linkreplace>>
+
+:: Meet Choochi 3
+He puffs with a certain admiration of the tobacco before asking of Piezo:
+
+<<script>> 
+    footnote(` `);<</script>>\
+<div class="left-chat">
+Whatcha thinkin' for tonight? Got any insider info for me?</div>\
+<<linkreplace "Continue" t8n>>
+  <div class="right-chat"><em><small>Piezo</small></em>
+  Something simple. Something classic. Something timeless...</div>\
+  <<linkreplace "Continue" t8n>>
+    <div class="left-chat">
+    ...</div>\
+    <<linkreplace "Continue" t8n>>
+      <div class="right-chat"><em><small>Piezo</small></em>
+      ...</div>\
+      <<linkreplace "Continue" t8n>>
+        <div class="mid-chat"><em><small>Together</small></em>
+        Pepperoni!</div>
+        [[Continue->Meet Choochi 4]]
+      <</linkreplace>>
+    <</linkreplace>>
+  <</linkreplace>>
+<</linkreplace>>
+
+
+:: Meet Choochi 4
+The two laugh. Choochi had always transmitted on the same wavelength as Piezo and found him easy to get along with. In fact, many people found Choochi easy to get along with.
+
+Choochi replaces the lid to the box and reties the cord. He passes the box to Piezo.
+<<script>> 
+    addFood("herbed cheese")
+    footnote(`Herbed cheese added to inventory.`);<</script>>\
+<div class="left-chat">
+Well, the expensive bit is out of the way. The cheese is on the house today if you can manage to save me a slice later. What else do you need to source?</div>\
+
+<<linkreplace "Continue" t8n>>
+  <div class="right-chat">
+  I've got nothing so far. I still need sauce, dough, and pepperonis.</div>\
+  <<linkreplace "Continue" t8n>>
+    <div class="left-chat">
+    I know I don't need to explain to you that the cheapest solution is to gather and produce the ingredients yourself, but if you're in a time crunch, all those things are usually available in Gaewonda market.</div>
+    <<script>> 
+    footnote(`Gaewonda Plaza is the cultural, commercial, and geographic center of Cycus. All the best shopping, bars, and entertainment are in that neighborhood. It's also where one can find the busiest market in the city.`);<</script>>\
+    <<linkreplace "Continue" t8n>>
+      <div class="left-chat">
+      Remember the recipe for dough?</div>
+      <<linkreplace "Continue" t8n>>
+        <div class="right-chat">
+          Only shidd I can bother to remember most days. Flour, water, yeast.</div>\
+          <<linkreplace "Continue" t8n>>
+            <div class="left-chat">
+              And tha' sauce?</div>\
+              <<linkreplace "Continue" t8n>>
+                <div class="right-chat">
+                  Mashed tomas and spices, baby!</div>\
+                <</linkreplace>>
+          <</linkreplace>>
+      <</linkreplace>>
+    <</linkreplace>>
+  <</linkreplace>>
+<</linkreplace>>
 [[bug hunter -> Lobby]]
   

@@ -43,6 +43,7 @@ State.setVar('$piezo',{
 		rightHand: null
 	},
 	foodInventory: [],
+	inventory: [],
 	keyItems: []
 })
 	

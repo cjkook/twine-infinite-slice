@@ -8,6 +8,7 @@ body {
   color: #eee;
 }
 
+
 h1,
 h4 {
   transform: scale(0.9, 1.3);
@@ -34,6 +35,13 @@ figcaption {
   text-align: center;
 }
 
+.passage {
+  line-height: 1.25;
+  padding-top: 0.5em;
+  color: #4a4a4a;
+
+}
+
 .bg-box {
   position: fixed;
   z-index: -1;
@@ -43,6 +51,9 @@ figcaption {
 }
 
 .hint {
+  margin: auto;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
   font-family: "Raleway", sans-serif;
   font-weight: bold;
   background: #ece4db;
@@ -52,6 +63,13 @@ figcaption {
   width: 50%;
 }
 
+.hint:before {
+  padding: 1em;
+}
+
+.left-chat:before {
+  padding: 0.5em;
+}
 .left-chat {
   border-radius: 25px 25px 25px 3px;
   background: #d8e2dc;
@@ -61,6 +79,9 @@ figcaption {
   color: #6e6e5e;
 }
 
+.right-chat:before {
+  padding: 0.5em;
+}
 .right-chat {
   border-radius: 25px 25px 3px 25px;
   background: #fec5bb;
@@ -71,6 +92,9 @@ figcaption {
   margin-right: 0;
 }
 
+.mid-chat:before {
+  padding: 0.5em;
+}
 .mid-chat {
   border-radius: 25px;
   background: #fec89a;
@@ -82,16 +106,15 @@ figcaption {
 }
 
 .footnote-hr {
-  border: black;
-  color: blue;
+  background-color: #666666;
 }
 
 .footnote {
   color: #d5bdaf;
-  /* margin: 0 auto; */
-  /* max-width: 80em; */
-  /* margin-left: 15em; */
-  justify-content: space-between;
+  max-width: 54em;
+  margin-left: 15em;
+  padding: 2em;
+  /* justify-content: space-between; */
 }
 
 .column {
@@ -139,7 +162,7 @@ figcaption {
 }
 
 #story {
-  color: black;
+  color: #141414;
   background: white;
   margin-top: 10vh;
   padding: 3vh;

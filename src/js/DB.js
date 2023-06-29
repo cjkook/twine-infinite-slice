@@ -160,6 +160,11 @@ window.gearDB = [
 
 window.foodItems = [
   {
+    name: "water",
+    price: 10,
+    type: "base",
+  },
+  {
     name: "flour",
     price: 50,
     type: "base",
@@ -181,7 +186,7 @@ window.foodItems = [
   },
   {
     name: "pizza dough",
-    ingredients: ["flour", "yeast"],
+    ingredients: ["flour", "yeast", "water"],
     price: 100,
     type: "processed",
   },

@@ -21,7 +21,7 @@ The lobby of <em>Infinite Slice</em> is an interesting use of space. Its furnitu
     <</if>>
 	<<case "evening">>\
   <<set _f1 = `"Should I give the people what they want?"`>>\
-	There is a group congregating outside hoping <em>Infinite Slice</em> will open.
+	There is a group congregating in the alleyway outside hoping <em>Infinite Slice</em> will open this evening. "It's never a guarantee," Piezo has warned them.
 	<<case "night">>\
   <<if $dayEvent[$day].infSliceOpened>>
   <<set _f1 = "The place is trashed after an evening of service.">>\
@@ -36,9 +36,9 @@ The lobby of <em>Infinite Slice</em> is an interesting use of space. Its furnitu
 
 Like the rest of the building, the lobby is in mild disrepair: dirt in the grout between the floor tiles, chipped paint on all the trim, and discoloration abound.
 
-At one end of the room is the front door leading to the alley. It is a rather wide double-sided sliding glass door which serves both as the entrance to the pizzeria but also as the building's back door which many of the residents use to access their flats. On the other end is the kitchen window with a cash register and countertop immediately in front of it.  Next to the window is a small black door. <<linkreplace "A menu hangs over the register.">>
+At one end of the room is a sliding door. It is a double wide door that serves both as the entrance to the pizzeria but also as the building's back door which many of the residents use to access their flats. On the other end is the kitchen window with a cash register and countertop immediately in front of it.  Next to the window is a small black door. <<linkreplace "A menu hangs over the register.">>
 
-<div class="polaroid" style="padding: 5px;"><em>Fresh recipes each day! 
+<div class="polaroid note" style="padding: 5px;"><em>Fresh recipes each day! 
 Prices and ingredients may vary. 
 
 NO MODS! IF YOU DON'T LIKE THE FOOD, 
