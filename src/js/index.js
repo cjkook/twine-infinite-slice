@@ -64,7 +64,7 @@ window.update = () => {
 /* PAGE INIT */
 // UI bar configuration upload load
 // Config.ui.stowBarInitially = true;
-document.getElementById("history-backward").remove();
+// document.getElementById("history-backward").remove();
 document.getElementById("history-forward").remove();
 document.getElementById("menu-item-saves").remove();
 //document.getElementById("menu-item-restart").remove();

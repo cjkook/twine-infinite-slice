@@ -9,15 +9,25 @@ He wears a top hat and a patchwork of an apron that appears to be fabricated fro
 
 He wipes the moisture from his forehead and <<linkappend "sets the box down." t8n>>
 <<if $sawKitchenNoteDayOne>>
-Piezo discerns that this must be the delivery noted in the kitchen. 
+<div class="hint">Piezo discerns that this must be the delivery noted in the kitchen.</div> 
 <<else>>
-There's usually only one reason Choochi would show up at <em>Infinite Slice</em> during the day and that would be to drop off some ingredients for the night's service.
+<div class="hint">There's usually only one reason Choochi would show up at <em>Infinite Slice</em> during the day--to drop off ingredients for the night's service.</div>
 <</if>>
 <</linkappend>>
 
 <<if $piezo.gear.legs === null>>\
 <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
 For fugg's sake, there's always a fifty percent chance I show up here and you can't've even been troubled to put some fuggin' clothes on, eh?</div>\
+  <<linkreplace "Continue" t8n>>
+    <div class="right-chat"><em><small>Piezo</small></em>
+    ...Oh, yeah...I suppose it would be decent of me to throw some clothes on at some point...</div>\
+    <<linkreplace "Continue" t8n>>
+      <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
+        Ya think?</div>\ 
+
+      Choochi shakes his head and chuckles to himself. His easy-going nature and his own personal level off aloofness seems to forgive the transgression.
+    <</linkreplace>>
+  <</linkreplace>>
 <<else>>
 <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
 Ar-Engi smiles today, Piezo! Look at this cheese! </div>\
@@ -27,7 +37,7 @@ Ar-Engi smiles today, Piezo! Look at this cheese! </div>\
 
 :: Meet Choochi 2
 Choochi pulls a rather large knife from his belt and cuts the cord securing the top of the box. He pulls the lid off to show Piezo its <<linkappend "contents." t8n>>
-There are a half dozen blocks of cheese inside. Specks of spices and herbs are mixed into the marvelous dairy slabs. It looks quite appetizing all on its own.<</linkappend>>
+<div class="hint">There are a half dozen blocks of cheese inside. Specks of spices and herbs are mixed into the marvelous dairy slabs. It looks quite appetizing all on its own.</div><</linkappend>>
 <div class="right-chat"><em><small>Piezo</small></em>
   Not bad. Where did you get this batch?</div>\
 <<linkreplace "Continue" t8n>>
@@ -51,13 +61,13 @@ He puffs with a certain admiration of the tobacco before asking of Piezo:
 
 <<script>> 
     footnote(` `);<</script>>\
-<div class="left-chat">
+<div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
 Whatcha thinkin' for tonight? Got any insider info for me?</div>\
 <<linkreplace "Continue" t8n>>
   <div class="right-chat"><em><small>Piezo</small></em>
   Something simple. Something classic. Something timeless...</div>\
   <<linkreplace "Continue" t8n>>
-    <div class="left-chat">
+    <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
     ...</div>\
     <<linkreplace "Continue" t8n>>
       <div class="right-chat"><em><small>Piezo</small></em>
@@ -79,29 +89,31 @@ Choochi replaces the lid to the box and reties the cord. He passes the box to Pi
 <<script>> 
     addFood("herbed cheese")
     footnote(`Herbed cheese added to inventory.`);<</script>>\
-<div class="left-chat">
+<div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
 Well, the expensive bit is out of the way. The cheese is on the house today if you can manage to save me a slice later. What else do you need to source?</div>\
 
 <<linkreplace "Continue" t8n>>
-  <div class="right-chat">
-  I've got nothing so far. I still need sauce, dough, and pepperonis.</div>\
+  <div class="right-chat"><em><small>Piezo</small></em>
+  I've got nothing so far. I still need sauce, dough, and pepperoni.</div>\
   <<linkreplace "Continue" t8n>>
-    <div class="left-chat">
+    <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
     I know I don't need to explain to you that the cheapest solution is to gather and produce the ingredients yourself, but if you're in a time crunch, all those things are usually available in Gaewonda market.</div>
     <<script>> 
     footnote(`Gaewonda Plaza is the cultural, commercial, and geographic center of Cycus. All the best shopping, bars, and entertainment are in that neighborhood. It's also where one can find the busiest market in the city.`);<</script>>\
     <<linkreplace "Continue" t8n>>
-      <div class="left-chat">
+      <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
       Remember the recipe for dough?</div>
       <<linkreplace "Continue" t8n>>
-        <div class="right-chat">
+        <div class="right-chat"><em><small>Piezo</small></em>
           Only shidd I can bother to remember most days. Flour, water, yeast.</div>\
           <<linkreplace "Continue" t8n>>
-            <div class="left-chat">
+            <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
               And tha' sauce?</div>\
               <<linkreplace "Continue" t8n>>
                 <div class="right-chat">
                   Mashed tomas and spices, baby!</div>\
+
+                  <<set $choochMet = true>>
                 <</linkreplace>>
           <</linkreplace>>
       <</linkreplace>>

@@ -1,4 +1,9 @@
+
+/* font import */
 @import url("https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Khand:wght@300&family=Open+Sans:wght@300&family=Press+Start+2P&family=Raleway:wght@100&family=Righteous&display=swap");
+
+/* Piezo handwriting font */
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
 * {
   font-family: "Open Sans Condensed", sans-serif;
@@ -7,7 +12,6 @@
 body {
   color: #eee;
 }
-
 
 h1,
 h4 {
@@ -35,11 +39,15 @@ figcaption {
   text-align: center;
 }
 
+.passages {
+  height: fit-content;
+}
+
 .passage {
   line-height: 1.25;
   padding-top: 0.5em;
   color: #4a4a4a;
-
+  height: fit-content;
 }
 
 .bg-box {
@@ -107,14 +115,19 @@ figcaption {
 
 .footnote-hr {
   background-color: #666666;
+  border: #666666 !important;
 }
 
 .footnote {
   color: #d5bdaf;
+  margin: auto;
   max-width: 54em;
-  margin-left: 15em;
   padding: 2em;
   /* justify-content: space-between; */
+}
+
+.note {
+  font-family: "Rock Salt";
 }
 
 .column {

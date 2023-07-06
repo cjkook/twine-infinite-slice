@@ -100,7 +100,12 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://DC4FD13F-D5A2-4C2A-96C5-05314D199D7C// --><tw-storydata name="Infinite Slice" startnode="4" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="DC4FD13F-D5A2-4C2A-96C5-05314D199D7C" zoom="1" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Khand:wght@300&family=Open+Sans:wght@300&family=Press+Start+2P&family=Raleway:wght@100&family=Righteous&display=swap");
+	<!-- UUID://DC4FD13F-D5A2-4C2A-96C5-05314D199D7C// --><tw-storydata name="Infinite Slice" startnode="4" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="DC4FD13F-D5A2-4C2A-96C5-05314D199D7C" zoom="1" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+/* font import */
+@import url("https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Khand:wght@300&family=Open+Sans:wght@300&family=Press+Start+2P&family=Raleway:wght@100&family=Righteous&display=swap");
+
+/* Piezo handwriting font */
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
 * {
   font-family: "Open Sans Condensed", sans-serif;
@@ -109,7 +114,6 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 body {
   color: #eee;
 }
-
 
 h1,
 h4 {
@@ -137,11 +141,15 @@ figcaption {
   text-align: center;
 }
 
+.passages {
+  height: fit-content;
+}
+
 .passage {
   line-height: 1.25;
   padding-top: 0.5em;
   color: #4a4a4a;
-
+  height: fit-content;
 }
 
 .bg-box {
@@ -209,14 +217,19 @@ figcaption {
 
 .footnote-hr {
   background-color: #666666;
+  border: #666666 !important;
 }
 
 .footnote {
   color: #d5bdaf;
+  margin: auto;
   max-width: 54em;
-  margin-left: 15em;
   padding: 2em;
   /* justify-content: space-between; */
+}
+
+.note {
+  font-family: "Rock Salt";
 }
 
 .column {
@@ -907,7 +920,7 @@ window.update = () => {
 /* PAGE INIT */
 // UI bar configuration upload load
 // Config.ui.stowBarInitially = true;
-document.getElementById("history-backward").remove();
+// document.getElementById("history-backward").remove();
 document.getElementById("history-forward").remove();
 document.getElementById("menu-item-saves").remove();
 //document.getElementById("menu-item-restart").remove();
@@ -1093,7 +1106,7 @@ Piezo tried to remain adrift in this state but to no avail. He was awake.
 [[Get out of bed.-&gt;Piezo Room]]
 
 &lt;&lt;script&gt;&gt;
-addFood(&quot;trash&quot;)
+addFood(&quot;belly lint&quot;)
 footnote(` `,` `,` `)
 &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Meet Choochi" tags="" position="850,100" size="100,100">&lt;&lt;script&gt;&gt; 
     footnote(`A legend in the Cycus restuarant scene. Choochi &#39;The Choochi&#39; Geomeo \is a long time friend, associate and patron to the businesses of Alley Fortuito, Piezo&#39;s shop being no exception.`);&lt;&lt;/script&gt;&gt;\
@@ -1105,22 +1118,32 @@ He wears a top hat and a patchwork of an apron that appears to be fabricated fro
 
 He wipes the moisture from his forehead and &lt;&lt;linkappend &quot;sets the box down.&quot; t8n&gt;&gt;
 &lt;&lt;if $sawKitchenNoteDayOne&gt;&gt;
-Piezo discerns that this must be the delivery noted in the kitchen. 
+&lt;div class=&quot;hint&quot;&gt;Piezo discerns that this must be the delivery noted in the kitchen.&lt;/div&gt; 
 &lt;&lt;else&gt;&gt;
-There&#39;s usually only one reason Choochi would show up at &lt;em&gt;Infinite Slice&lt;/em&gt; during the day and that would be to drop off some ingredients for the night&#39;s service.
+&lt;div class=&quot;hint&quot;&gt;There&#39;s usually only one reason Choochi would show up at &lt;em&gt;Infinite Slice&lt;/em&gt; during the day--to drop off ingredients for the night&#39;s service.&lt;/div&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/linkappend&gt;&gt;
 
 &lt;&lt;if $piezo.gear.legs === null&gt;&gt;\
 &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
 For fugg&#39;s sake, there&#39;s always a fifty percent chance I show up here and you can&#39;t&#39;ve even been troubled to put some fuggin&#39; clothes on, eh?&lt;/div&gt;\
+  &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+    &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
+    ...Oh, yeah...I suppose it would be decent of me to throw some clothes on at some point...&lt;/div&gt;\
+    &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+      &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
+        Ya think?&lt;/div&gt;\ 
+
+      Choochi shakes his head and chuckles to himself. His easy-going nature and his own personal level off aloofness seems to forgive the transgression.
+    &lt;&lt;/linkreplace&gt;&gt;
+  &lt;&lt;/linkreplace&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
 Ar-Engi smiles today, Piezo! Look at this cheese! &lt;/div&gt;\
 &lt;&lt;/if&gt;&gt;
 
 [[Continue-&gt;Meet Choochi 2]]</tw-passagedata><tw-passagedata pid="8" name="Meet Choochi 2" tags="" position="975,100" size="100,100">Choochi pulls a rather large knife from his belt and cuts the cord securing the top of the box. He pulls the lid off to show Piezo its &lt;&lt;linkappend &quot;contents.&quot; t8n&gt;&gt;
-There are a half dozen blocks of cheese inside. Specks of spices and herbs are mixed into the marvelous dairy slabs. It looks quite appetizing all on its own.&lt;&lt;/linkappend&gt;&gt;
+&lt;div class=&quot;hint&quot;&gt;There are a half dozen blocks of cheese inside. Specks of spices and herbs are mixed into the marvelous dairy slabs. It looks quite appetizing all on its own.&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt;
 &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
   Not bad. Where did you get this batch?&lt;/div&gt;\
 &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
@@ -1141,13 +1164,13 @@ There are a half dozen blocks of cheese inside. Specks of spices and herbs are m
 
 &lt;&lt;script&gt;&gt; 
     footnote(` `);&lt;&lt;/script&gt;&gt;\
-&lt;div class=&quot;left-chat&quot;&gt;
+&lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
 Whatcha thinkin&#39; for tonight? Got any insider info for me?&lt;/div&gt;\
 &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
   &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
   Something simple. Something classic. Something timeless...&lt;/div&gt;\
   &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-    &lt;div class=&quot;left-chat&quot;&gt;
+    &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
     ...&lt;/div&gt;\
     &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
       &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
@@ -1165,29 +1188,31 @@ Choochi replaces the lid to the box and reties the cord. He passes the box to Pi
 &lt;&lt;script&gt;&gt; 
     addFood(&quot;herbed cheese&quot;)
     footnote(`Herbed cheese added to inventory.`);&lt;&lt;/script&gt;&gt;\
-&lt;div class=&quot;left-chat&quot;&gt;
+&lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
 Well, the expensive bit is out of the way. The cheese is on the house today if you can manage to save me a slice later. What else do you need to source?&lt;/div&gt;\
 
 &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-  &lt;div class=&quot;right-chat&quot;&gt;
-  I&#39;ve got nothing so far. I still need sauce, dough, and pepperonis.&lt;/div&gt;\
+  &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
+  I&#39;ve got nothing so far. I still need sauce, dough, and pepperoni.&lt;/div&gt;\
   &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-    &lt;div class=&quot;left-chat&quot;&gt;
+    &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
     I know I don&#39;t need to explain to you that the cheapest solution is to gather and produce the ingredients yourself, but if you&#39;re in a time crunch, all those things are usually available in Gaewonda market.&lt;/div&gt;
     &lt;&lt;script&gt;&gt; 
     footnote(`Gaewonda Plaza is the cultural, commercial, and geographic center of Cycus. All the best shopping, bars, and entertainment are in that neighborhood. It&#39;s also where one can find the busiest market in the city.`);&lt;&lt;/script&gt;&gt;\
     &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-      &lt;div class=&quot;left-chat&quot;&gt;
+      &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
       Remember the recipe for dough?&lt;/div&gt;
       &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-        &lt;div class=&quot;right-chat&quot;&gt;
+        &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
           Only shidd I can bother to remember most days. Flour, water, yeast.&lt;/div&gt;\
           &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-            &lt;div class=&quot;left-chat&quot;&gt;
+            &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
               And tha&#39; sauce?&lt;/div&gt;\
               &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
                 &lt;div class=&quot;right-chat&quot;&gt;
                   Mashed tomas and spices, baby!&lt;/div&gt;\
+
+                  &lt;&lt;set $choochMet = true&gt;&gt;
                 &lt;&lt;/linkreplace&gt;&gt;
           &lt;&lt;/linkreplace&gt;&gt;
       &lt;&lt;/linkreplace&gt;&gt;
@@ -1198,7 +1223,7 @@ Well, the expensive bit is out of the way. The cheese is on the house today if y
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
-&lt;&lt;if !$dayEvents[0].isFinished &amp;&amp; !$choochMet&gt;&gt;
+&lt;&lt;if !$choochMet&gt;&gt;
 &lt;&lt;include [[Meet Choochi]]&gt;&gt;
 &lt;&lt;elseif $day === 1&gt;&gt;
 [[the second day]]

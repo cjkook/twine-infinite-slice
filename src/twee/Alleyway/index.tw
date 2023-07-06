@@ -3,7 +3,7 @@
 <<script>>
 updateLocation(State.getVar("$location"))
 <</script>>\
-<<if !$dayEvents[0].isFinished && !$choochMet>>
+<<if !$choochMet>>
 <<include [[Meet Choochi]]>>
 <<elseif $day === 1>>
 [[the second day]]
