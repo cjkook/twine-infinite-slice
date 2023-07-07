@@ -225,10 +225,12 @@ window.checkLocationCharacters = (loc, t) => {
   console.log(localChars);
 };
 
+// When calling only the location (loc), this function merely updates the player's current location and number of visits. Customized parameters can be added by using the following two arguments
 window.updateLocation = (loc, property = null, val = null) => {
   let locations = State.getVar("$locations") || window.locations;
   let index = locations.findIndex((l) => l.name == loc);
-
+  console.log(locations)
+  console.log(index, property, val)
   // add if new location
   if (index < 0) {
     locations.push({
@@ -242,7 +244,7 @@ window.updateLocation = (loc, property = null, val = null) => {
   if (!property) {
     locations[index].visits++;
   } else {
-    locations[index][property] = val;
+    locations[index]['property'] = val;
   }
 
   // update story variable

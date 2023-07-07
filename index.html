@@ -100,12 +100,11 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://DC4FD13F-D5A2-4C2A-96C5-05314D199D7C// --><tw-storydata name="Infinite Slice" startnode="4" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="DC4FD13F-D5A2-4C2A-96C5-05314D199D7C" zoom="1" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
-/* font import */
+	<!-- UUID://DC4FD13F-D5A2-4C2A-96C5-05314D199D7C// --><tw-storydata name="Infinite Slice" startnode="4" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="DC4FD13F-D5A2-4C2A-96C5-05314D199D7C" zoom="1" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* font import */
 @import url("https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Khand:wght@300&family=Open+Sans:wght@300&family=Press+Start+2P&family=Raleway:wght@100&family=Righteous&display=swap");
 
 /* Piezo handwriting font */
-@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
 
 * {
   font-family: "Open Sans Condensed", sans-serif;
@@ -141,6 +140,11 @@ figcaption {
   text-align: center;
 }
 
+hr {
+  background-color: #666666;
+  border: #666666 !important;
+}
+
 .passages {
   height: fit-content;
 }
@@ -148,7 +152,7 @@ figcaption {
 .passage {
   line-height: 1.25;
   padding-top: 0.5em;
-  color: #4a4a4a;
+  color: #666666;
   height: fit-content;
 }
 
@@ -229,6 +233,9 @@ figcaption {
 }
 
 .note {
+  max-width: 20em;
+  text-align: center;
+  margin: auto;
   font-family: "Rock Salt";
 }
 
@@ -342,6 +349,65 @@ figcaption {
   text-align: right;
   color: #cccccc;
 }
+
+/* hovertip v2.0 - Start */
+.hoverTip {
+  display: inline-block;
+  top: 4px;
+  border-width: 0px;
+  border-bottom: 2px dotted #666666; /* If you want dots under the hoverable text */
+}
+.hoverTipTxt {
+  position: relative;
+  vertical-align: text-bottom;
+  line-height: initial;
+}
+.hoverTipTxt .hoverBox {
+  position: absolute;
+  visibility: hidden;
+}
+.hoverTipTxt:hover .hoverBox,
+.hoverTipTxt:focus .hoverBox {
+  visibility: visible;
+}
+.hoverBox {
+  padding: 3px 10px;
+  width: intrinsic; /* Safari/WebKit uses a non-standard name */
+  width: -webkit-max-content; /* Chrome */
+  width: -moz-max-content; /* Firefox/Gecko */
+  width: max-content;
+  max-width: 330px;
+  line-height: initial;
+  text-align: left;
+  color: #666666;
+  background-color: black;
+  border: #7f7f7f solid 2px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  z-index: 100;
+}
+.hoverTail::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #666666 transparent transparent transparent;
+  z-index: 100;
+}
+.hoverBox a {
+  -webkit-transition-duration: unset;
+  -moz-transition-duration: unset;
+  -o-transition-duration: unset;
+  transition-duration: unset;
+}
+#ui-bar .hoverBox {
+  max-width: 230px;
+}
+/* hovertip v2.0 - End */
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "DB.js" */
 window.locations = [
   {
@@ -828,10 +894,12 @@ window.checkLocationCharacters = (loc, t) => {
   console.log(localChars);
 };
 
+// When calling only the location (loc), this function merely updates the player's current location and number of visits. Customized parameters can be added by using the following two arguments
 window.updateLocation = (loc, property = null, val = null) => {
   let locations = State.getVar("$locations") || window.locations;
   let index = locations.findIndex((l) => l.name == loc);
-
+  console.log(locations)
+  console.log(index, property, val)
   // add if new location
   if (index < 0) {
     locations.push({
@@ -845,7 +913,7 @@ window.updateLocation = (loc, property = null, val = null) => {
   if (!property) {
     locations[index].visits++;
   } else {
-    locations[index][property] = val;
+    locations[index]['property'] = val;
   }
 
   // update story variable
@@ -853,7 +921,8 @@ window.updateLocation = (loc, property = null, val = null) => {
   State.setVar("$locIndex", index);
 };
 
-/* twine-user-script #3: "index.js" */
+/* twine-user-script #3: "glossary.js" */
+/* twine-user-script #4: "index.js" */
 let url =
   "https://coolors.co/palette/fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a";
 
@@ -881,17 +950,17 @@ window.advance = (time = 0.025, oomph = 0.25) => {
 
   // advance the calendar
   if (t2 > 24) {
-    let dayEvents = State.getVar("$dayEvents")
+    let dayEvents = State.getVar("$dayEvents");
     let day = State.getVar("$day");
-    console.log(day)
-    day++
+    console.log(day);
+    day++;
     dayEvents[day].isFinished = true;
 
     // update story variables
     State.setVar("$day", day);
-    State.setVar("$dayEvents", dayEvents)
-    console.log(dayEvents[day].dayName)
-    console.log(day)
+    State.setVar("$dayEvents", dayEvents);
+    console.log(dayEvents[day].dayName);
+    console.log(day);
     t2 -= 24;
   }
 
@@ -913,8 +982,8 @@ window.update = () => {
   $("#location-text").html(`${State.getVar("$location")}`);
   $("#oomph").val(State.getVar("$piezo").oomph);
 
-  let inventory = State.getVar("$inventory")
-  $("#inventory").html()
+  let inventory = State.getVar("$inventory");
+  $("#inventory").html();
 };
 
 /* PAGE INIT */
@@ -940,11 +1009,11 @@ if (!document.getElementById("health")) {
     $("#ui-bar-body")
   );
 }
-if(!document.getElementById("inventory")) {
-  $(`<div id="inventory">inventory<hr></div>`).appendTo("#ui-bar-body")
+if (!document.getElementById("inventory")) {
+  $(`<div id="inventory">inventory<hr></div>`).appendTo("#ui-bar-body");
 }
-if(!document.getElementById("equipment")) {
-  $(`<div id="equipment">equipment<hr></div>`).appendTo("#ui-bar-body")
+if (!document.getElementById("equipment")) {
+  $(`<div id="equipment">equipment<hr></div>`).appendTo("#ui-bar-body");
 }
 if (!document.getElementById("background")) {
   $('<div id="background"></div>').prependTo($("#story"));
@@ -952,7 +1021,156 @@ if (!document.getElementById("background")) {
 if (!document.getElementById("location-text")) {
   $('<div id="location-text"></div>').prependTo($("#story"));
 }
-/* twine-user-script #4: "palettes.js" */
+
+/* HOVERTIP */
+/* hovertip v2.0 - Start */
+window.UpdateHoverTipTxt = function (container) {
+  if (Engine.isIdle()) {
+    clearInterval(HTTIntervalID);
+    if (container === undefined) {
+      container = $(document);
+    } else {
+      container = $(container);
+    }
+    var i,
+      id,
+      top,
+      left,
+      parent,
+      elementList,
+      element,
+      hoverPos,
+      boxPos,
+      zindex;
+    elementList = container.find('span[id^="hoverTipTxt"]');
+    for (i = 0; i < elementList.length; i++) {
+      element = $(elementList[i]);
+      id = elementList[i].id.substring(11);
+      /* Find parent hoverTip item on the page. */
+      parent = $(container).find("#hoverTip" + id);
+      /* Position bottom of hoverTipTxt just above the parent. */
+      top = Math.round(-element.outerHeight() - 6);
+      /* Center hoverTipTxt horizontally over parent. */
+      left = Math.round((parent.outerWidth() - element.outerWidth()) / 2);
+      /* See if the hoverTip is contained by something with a higher z-index. */
+      zindex = element.css("z-index");
+      if (zindex === "auto") {
+        zindex = 0;
+      } else {
+        zindex = parseInt(zindex, 10);
+      }
+      while (parent.parent()[0] !== document) {
+        if (
+          parent.parent().css("z-index") !== "auto" &&
+          parseInt(parent.parent().css("z-index"), 10) > zindex
+        ) {
+          /* Get container rect. */
+          boxPos = parent[0].getBoundingClientRect();
+          break;
+        }
+        parent = parent.parent();
+      }
+      /* Update position. */
+      element.css({ top: top, left: left });
+      hoverPos = element[0].getBoundingClientRect();
+      /* Make sure the text isn't outside the bottom of the screen. */
+      if (hoverPos.top > window.innerHeight - hoverPos.height - 10) {
+        top -= hoverPos.top - (window.innerHeight - hoverPos.height - 10);
+      }
+      /* Make sure the text isn't outside the top of the screen. */
+      if (hoverPos.top < 4) {
+        top -= hoverPos.top - 4;
+      }
+      /* Make sure the text isn't outside the right of the screen. */
+      if (hoverPos.left > window.innerWidth - hoverPos.width - 26) {
+        left -= hoverPos.left - (window.innerWidth - hoverPos.width - 26);
+      }
+      /* Make sure the text isn't outside the left of the screen. */
+      if (hoverPos.left < 4) {
+        left -= hoverPos.left - 4;
+      }
+      /* Update position. */
+      element.css({ top: Math.round(top), left: Math.round(left) });
+      hoverPos = element[0].getBoundingClientRect();
+      if (boxPos) {
+        /* Fit within dialog boxes and the like. */
+        /* Make sure the text isn't outside the bottom of the box. */
+        if (hoverPos.top > boxPos.bottom - hoverPos.height - 10) {
+          top -= hoverPos.top - (boxPos.bottom - hoverPos.height - 10);
+        }
+        /* Make sure the text isn't outside the top of the box. */
+        if (hoverPos.top < boxPos.top + 4) {
+          top -= hoverPos.top - (boxPos.top + 4);
+        }
+        /* Make sure the text isn't outside the right of the box. */
+        if (hoverPos.left > boxPos.right - hoverPos.width - 26) {
+          left -= hoverPos.left - (boxPos.right - hoverPos.width - 26);
+        }
+        /* Make sure the text isn't outside the left of the box. */
+        if (hoverPos.left < boxPos.left + 4) {
+          left -= hoverPos.left - boxPos.left - 4;
+        }
+        /* Update position. */
+        element.css({ top: Math.round(top), left: Math.round(left) });
+      }
+    }
+  } else {
+    clearInterval(HTTIntervalID);
+    HTTIntervalID = setInterval(UpdateHoverTipTxt, 300);
+  }
+};
+/*  Waits for passage to be fully rendered before doing anything.  */
+var HTTIntervalID = 0;
+$(document).on(":passageend", function (ev) {
+  UpdateHoverTipTxt();
+});
+$(window).on("resize scroll", function (ev) {
+  clearInterval(HTTIntervalID);
+  HTTIntervalID = setInterval(UpdateHoverTipTxt, 300);
+});
+$("#ui-bar-toggle").on("click", function (ev) {
+  clearInterval(HTTIntervalID);
+  HTTIntervalID = setInterval(UpdateHoverTipTxt, 300);
+});
+/* <<hovertip>> macro */
+Macro.add("hovertip", {
+  tags: null,
+  handler: function () {
+    if (this.args.length > 0) {
+      var mw = "";
+      if (this.args.length > 1 && !isNaN(parseInt(this.args[1], 10))) {
+        mw = ' style="max-width: ' + parseInt(this.args[1], 10) + 'px;"';
+      }
+      if (State.temporary.HoverTipCount == undefined) {
+        State.temporary.HoverTipCount = 1;
+      } else {
+        State.temporary.HoverTipCount++;
+      }
+      while ($("#hoverTip" + State.temporary.HoverTipCount).length) {
+        /* Found an existing hoverTip. */
+        State.temporary.HoverTipCount++;
+      }
+      var output =
+        '<span id="hoverTip' +
+        State.temporary.HoverTipCount +
+        '" class="hoverTipTxt hoverTip" tabindex="0" ' +
+        'onmouseenter="UpdateHoverTipTxt();">' +
+        this.payload[0].contents +
+        '<span id="hoverTipTxt' +
+        State.temporary.HoverTipCount +
+        '" class="hoverBox hoverTail"' +
+        mw +
+        ">" +
+        this.args[0] +
+        "</span></span>";
+      $(this.output).wiki(output);
+    } else {
+      $(this.output).wiki(this.payload[0].contents);
+    }
+  },
+});
+/* hovertip v2.0 - End */
+/* twine-user-script #5: "palettes.js" */
 window.timePalette = [
   // HOT DOG // error
   {
@@ -1039,20 +1257,23 @@ State.setVar(&#39;$piezo&#39;,{
 })
 	
 
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StorySubtitle" tags="" position="225,100" size="100,100">&lt;em&gt;a culinary misadventure&lt;/em&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryAuthor" tags="" position="350,100" size="100,100">by Corey J. Kothenbeutel</tw-passagedata><tw-passagedata pid="4" name="Start" tags="" position="475,100" size="100,100">&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/slice_06.png?alt=media&amp;token=a0bd8784-886d-417b-aa17-a37aa305481e&quot;&gt;\
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StorySubtitle" tags="" position="225,100" size="100,100">&lt;em&gt;a culinary misadventure&lt;/em&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryAuthor" tags="" position="350,100" size="100,100">by Corey J. Kothenbeutel</tw-passagedata><tw-passagedata pid="4" name="Start" tags="" position="475,100" size="100,100">&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/abstract%2Fslice_06.png?alt=media&amp;token=1e2f3a0a-2a80-499c-9989-e5da19d5a004&quot;&gt;\
 
 Hello and thank you for taking some interest in my interactive fiction project, &lt;em&gt;Infinite Slice&lt;/em&gt;.
 
-&lt;&lt;linkappend &quot;//Infinite Slice//...&quot; t8n&gt;&gt; is an ambitious project that I set out to create for no real purpose other than as a creative outlet. Through the process of creating it I practiced in a handful of artistic and technical disciplines. 
+&lt;&lt;linkreplace &quot;About //Infinite Slice//...&quot; t8n&gt;&gt;//Infinite Slice// is a personal project that I set out to create for no real purpose other than as a creative outlet. Through the process of creating it I practiced in a handful of artistic and technical disciplines. 
 
-&lt;figure class=&quot;polaroid&quot; style=&quot;margin: auto;&quot;&gt;&lt;img class=&quot;polaroid-img&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/slice_03.png?alt=media&amp;token=4e282bee-74df-4cb1-9403-29cc02510ea6&quot;&gt;&lt;figcaption&gt;the author&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure class=&quot;polaroid&quot; style=&quot;margin: auto;&quot;&gt;&lt;img class=&quot;polaroid-img&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/misc%2FmeStylized2.png?alt=media&amp;token=ec77967e-ce5d-4755-8fe9-41dc062a5afc&quot;&gt;&lt;figcaption&gt;the author&lt;/figcaption&gt;&lt;/figure&gt;
 The story itself was actually started as another interactive fiction project back in 2018 when I was living in Taipei. Many of the core ideas and narrative aesthetic were influenced by my experience during that time. After returning to the United States in 2019 and the following global pandemic that followed, a few new ideas and themes were added as a result of said pandemic and my own adjustment back into my native culture.
 
 I adapted the story to include a few more elements of game design, web development, and generative art. The artwork and illustrations within the text are procedurally generated by scripts authored by me (unless otherwise noted). Additionally, most of the music included is written and produced by myself (unless otherwise noted).
 
-&lt;figure class=&quot;polaroid&quot; style=&quot;margin: auto;&quot;&gt;&lt;img class=&quot;polaroid-img&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/meStylized2.png?alt=media&amp;token=d6f044dc-2494-4bc3-a7da-0188ec863b52&quot;&gt;&lt;figcaption&gt;the author&lt;/figcaption&gt;&lt;/figure&gt;&lt;&lt;/linkappend&gt;&gt;\
+&lt;figure class=&quot;polaroid&quot; style=&quot;margin: auto;&quot;&gt;&lt;img class=&quot;polaroid-img&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/meStylized2.png?alt=media&amp;token=d6f044dc-2494-4bc3-a7da-0188ec863b52&quot;&gt;&lt;figcaption&gt;the author&lt;/figcaption&gt;&lt;/figure&gt;&lt;&lt;/linkreplace&gt;&gt;\
+
+
+[[How To Play]]
 &lt;hr&gt;
-[[How To Play]]</tw-passagedata><tw-passagedata pid="5" name="How To Play" tags="" position="600,100" size="100,100">There are just a few things to consider when embarking on this short adventure.
+[[START-&gt;Intro to Cognition]]</tw-passagedata><tw-passagedata pid="5" name="How To Play" tags="" position="600,100" size="100,100">There are just a few things to consider when embarking on this short adventure.
 
 &lt;&lt;linkappend &#39;The UI menu...&#39; t8n&gt;&gt; is accessed by clicking on the arrow to the top left of the screen. 
 
@@ -1312,13 +1533,20 @@ footnote(`&quot;It&#39;s not much, I&#39;ll admit, but having a little patch of 
 
 &lt;&lt;/linkreplace&gt;&gt;
 [[Do something else-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="19" name="Ling Afternoon First" tags="" position="1100,225" size="100,100">&lt;&lt;run footnote(`&quot;Ling is so carefree it&#39;s impressive. Too bad she&#39;s such a bum.&quot;`)&gt;&gt;
-The woman before Piezo had golden blonde hair and almond skin. Her hair was done up in a careless top knot that left much of its length hanging on the side of her head. 
+Her almond skin was stuck to the sofa upon which it laid and what golden blonde hair was not tied into a knot atop her head was frizzled and frayed in the lobby&#39;s heat. Contrasting further were her sky blue eyes, which sat meekly in the center of a face that time seemed to have given a free pass to. 
 
-As much as her hair and skin contrasted, her blue eyes added another level of juxtaposition to her overall look. They sit meekly in the middle of a face that time seemed to have given a free pass to. She appeared much younger than her age. 
+Ling&#39;s attention was paid entirely to the fan pouring a cool breeze over her. Beads of sweat rolled undiscriminatingly down every bit of her body. Between the fan and the heat, the look upon her face was paradoxically, and respectively, one of both satisfaction and misery. 
 
-Ling hovers between misery and satisfaction as the cool breeze from the fan blows beads of sweat back and forth across her face. The temperature in the building is unbearable during the day. She wears only a bra and underwear and is not ashamed to be seen so exposed. Her attention doesn&#39;t seem to be on anything in particular, just the brief relief provided by moving air.
+She wore a pink crop top and &lt;&lt;linkappend &quot;black underwear&quot; t8n&gt;&gt;.
+  &lt;&lt;if $piezo.gear.legs === null&gt;&gt;
+    Piezo
+    &lt;&lt;else&gt;&gt;
+    Ling has little shame in being seen so exposed. It&#39;s her world, we are just living in it.
+  &lt;&lt;/if&gt;&gt;
 
-With her eyes half closed, she seems to notice Piezo approach. She speaks without seeming to fully open her eyes.
+&lt;&lt;/linkappend&gt;&gt;
+
+It takes her a second to redirect her attention to Piezo. 
 &lt;&lt;if $piezo.gear.legs === null&gt;&gt;\
 &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
 Couldn&#39;t be bothered with pants either, huh?&lt;/div&gt;\
@@ -1469,18 +1697,18 @@ The lobby of &lt;em&gt;Infinite Slice&lt;/em&gt; is an interesting use of space.
   The lobby is just like it was this morning: empty.
   &lt;&lt;/if&gt;&gt;
   
-	&lt;&lt;/switch&gt;&gt;\
+&lt;&lt;/switch&gt;&gt;\
 
 Like the rest of the building, the lobby is in mild disrepair: dirt in the grout between the floor tiles, chipped paint on all the trim, and discoloration abound.
 
 At one end of the room is a sliding door. It is a double wide door that serves both as the entrance to the pizzeria but also as the building&#39;s back door which many of the residents use to access their flats. On the other end is the kitchen window with a cash register and countertop immediately in front of it.  Next to the window is a small black door. &lt;&lt;linkreplace &quot;A menu hangs over the register.&quot;&gt;&gt;
 
-&lt;div class=&quot;polaroid note&quot; style=&quot;padding: 5px;&quot;&gt;&lt;em&gt;Fresh recipes each day! 
-Prices and ingredients may vary. 
+&lt;div class=&quot;note polaroid&quot; style=&quot;padding: 5px;&quot;&gt;&lt;em&gt;Fresh recipes each day! 
+Prices and ingredients may vary. &lt;/em&gt;
 
 NO MODS! IF YOU DON&#39;T LIKE THE FOOD, 
 EAT SOMEWHERE ELSE! 
- - MANAGEMENT&lt;/em&gt;&lt;/div&gt;
+ - MANAGEMENT&lt;/div&gt;
 &lt;&lt;/linkreplace&gt;&gt;
 
 
@@ -1520,7 +1748,19 @@ A small interface panel on the wall controls the [[audio system-&gt;Kitchen Radi
 	[[Turn it on.|Kitchen Radio][$kitchenRadioOn = true]]
 &lt;&lt;/if&gt;&gt;\
 
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Dresser" tags="" position="850,350" size="100,100">&lt;&lt;script&gt;&gt;
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Bathroom" tags="" position="850,350" size="100,100">&lt;&lt;set $location = &quot;Piezo Bathroom&quot;&gt;&gt;\
+&lt;&lt;script&gt;&gt;
+updateLocation(State.getVar(&quot;$location&quot;))
+&lt;&lt;/script&gt;&gt;\
+
+&lt;&lt;if !$piezoBathroomLight&gt;&gt;
+Although the light from the ajoining bedroom provided a baseline of luminance, to make the most of the bathroom Piezo would have to flip on a light source.
+
+[[Turn it on.|Bathroom][$piezoBathroomLight = true]]
+&lt;&lt;script&gt;&gt;updateLocation(State.getVar(&quot;$location&quot;),State.getVar(&quot;$piezoBathroomLightOn&quot;),true)&lt;&lt;/script&gt;&gt;
+&lt;&lt;else&gt;&gt;
+its on
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Reflection" tags="" position="975,350" size="100,100"></tw-passagedata><tw-passagedata pid="29" name="Dresser" tags="" position="1100,350" size="100,100">&lt;&lt;script&gt;&gt;
 
 &lt;&lt;/script&gt;&gt;
 &lt;&lt;if $dresser.length &lt; 1&gt;&gt;&gt;\
@@ -1541,19 +1781,19 @@ setGear(temporary().item,&#39;$dresser&#39;);
 &lt;&lt;return&gt;&gt;
 &lt;&lt;script&gt;&gt;
 footnote(`Piezo had always kept a minimal amount of clothes that he would rotate through at least a couple times before washing.  He hated doing laundry.`,` `, ` `);
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="28" name="Piezo Room" tags="" position="975,350" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="30" name="Piezo Room" tags="" position="1225,350" size="100,100">&lt;&lt;set $location = &quot;Piezo Room&quot;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
-&lt;figure class=&quot;polaroid column&quot;&gt;&lt;img class=&quot;polaroid-img&quot; style=&quot;&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/piezoPoster_04.png?alt=media&amp;token=cfa7ae96-4c91-49c0-bca4-2bccaedbe0b0&quot;&gt;&lt;figcaption&gt;Poster on Piezo&#39;s wall.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure class=&quot;polaroid column&quot;&gt;&lt;img class=&quot;polaroid-img&quot; style=&quot;&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/abstract%2FpiezoPoster_03.png?alt=media&amp;token=3248fd91-3bcd-4cef-ba1e-6b70f0484007&quot;&gt;&lt;figcaption&gt;Poster on Piezo&#39;s wall.&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;&lt;if $day == 0&gt;&gt;\
-The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was brushing against the doorway. Piles of dirty clothes liter the floor. \
+The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was brushing against the doorway. Piles of dirty clothes litter the limited floor. \
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;if $locations[$locIndex].visits &gt; 3&gt;&gt;\
 		Same old room. Not getting any less cramped. 
 	&lt;&lt;else&gt;&gt;
 	&lt;&lt;/if&gt;&gt;\
-&lt;&lt;/if&gt;&gt;\
+&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $piezo.gear.body === null&gt;&gt;
 	Piezo wondered whether he should throw a shirt on.
 &lt;&lt;elseif $piezo.gear.legs === null&gt;&gt;
@@ -1563,22 +1803,24 @@ The narrow room had only just enough room to fit a bed into it. In fact, when Pi
 &lt;&lt;/if&gt;&gt;
 [[Dresser]]
 [[Under the mattress]]
-[[Sleep]]
-[[Hallway]]
 [[Window]]
 [[Radio]]
+[[Sleep]]
+[[Bathroom]]
+
+[[Hallway]]
 
 &lt;&lt;script&gt;&gt;
 footnote(`&quot;If I put something away, how will I ever find it!?&quot;`,`The smell isn&#39;t too bad right now.`,` `)
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="29" name="Under the mattress" tags="" position="1100,350" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="31" name="Under the mattress" tags="" position="100,475" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
 	Nothing here.
 	[[Piezo sets the mattress back down in frustration.-&gt;Piezo Room]]
 &lt;&lt;else&gt;&gt;
 	There&#39;s a little bit of money for a rainy day. Should Piezo grab it?
 	[[It&#39;s rainy enough.][$money += 237; $foundMattressMoney = true]]
 	[[Not yet.-&gt;Piezo Room]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="It&#39;s rainy enough." tags="" position="1225,350" size="100,100">[[Back to the room.-&gt;Piezo Room]]
-&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="Radio" tags="" position="100,475" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="It&#39;s rainy enough." tags="" position="225,475" size="100,100">[[Back to the room.-&gt;Piezo Room]]
+&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Radio" tags="" position="350,475" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
 
 &lt;&lt;if $piezoRoomRadioOn&gt;&gt;
 	It&#39;s tuned to a local radio station. There is a song playing.
@@ -1591,9 +1833,9 @@ footnote(`&quot;If I put something away, how will I ever find it!?&quot;`,`The s
 
 &lt;&lt;script&gt;&gt;
 footnote(` `,`Piezo bought this radio years ago. What it lacks in features it makes up for in looking like junk.`,`&quot;The clock works, so I can&#39;t get rid of it!&quot;`)
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="32" name="Sleep" tags="" position="225,475" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="34" name="Sleep" tags="" position="475,475" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
 [[Sleep For twenty four hours-&gt;Piezo Room][$timeCount += 24]]
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Window" tags="" position="350,475" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="Window" tags="" position="600,475" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
 The window is open. \
 	&lt;&lt;switch $timeName&gt;&gt;\
 	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\

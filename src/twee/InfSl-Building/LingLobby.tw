@@ -39,13 +39,20 @@
 
 :: Ling Afternoon First
 <<run footnote(`"Ling is so carefree it's impressive. Too bad she's such a bum."`)>>
-The woman before Piezo had golden blonde hair and almond skin. Her hair was done up in a careless top knot that left much of its length hanging on the side of her head. 
+Her almond skin was stuck to the sofa upon which it laid and what golden blonde hair was not tied into a knot atop her head was frizzled and frayed in the lobby's heat. Contrasting further were her sky blue eyes, which sat meekly in the center of a face that time seemed to have given a free pass to. 
 
-As much as her hair and skin contrasted, her blue eyes added another level of juxtaposition to her overall look. They sit meekly in the middle of a face that time seemed to have given a free pass to. She appeared much younger than her age. 
+Ling's attention was paid entirely to the fan pouring a cool breeze over her. Beads of sweat rolled undiscriminatingly down every bit of her body. Between the fan and the heat, the look upon her face was paradoxically, and respectively, one of both satisfaction and misery. 
 
-Ling hovers between misery and satisfaction as the cool breeze from the fan blows beads of sweat back and forth across her face. The temperature in the building is unbearable during the day. She wears only a bra and underwear and is not ashamed to be seen so exposed. Her attention doesn't seem to be on anything in particular, just the brief relief provided by moving air.
+She wore a pink crop top and <<linkappend "black underwear" t8n>>.
+  <<if $piezo.gear.legs === null>>
+    Piezo
+    <<else>>
+    Ling has little shame in being seen so exposed. It's her world, we are just living in it.
+  <</if>>
 
-With her eyes half closed, she seems to notice Piezo approach. She speaks without seeming to fully open her eyes.
+<</linkappend>>
+
+It takes her a second to redirect her attention to Piezo. 
 <<if $piezo.gear.legs === null>>\
 <div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
 Couldn't be bothered with pants either, huh?</div>\

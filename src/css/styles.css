@@ -1,9 +1,8 @@
-
 /* font import */
 @import url("https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Khand:wght@300&family=Open+Sans:wght@300&family=Press+Start+2P&family=Raleway:wght@100&family=Righteous&display=swap");
 
 /* Piezo handwriting font */
-@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
 
 * {
   font-family: "Open Sans Condensed", sans-serif;
@@ -39,6 +38,11 @@ figcaption {
   text-align: center;
 }
 
+hr {
+  background-color: #666666;
+  border: #666666 !important;
+}
+
 .passages {
   height: fit-content;
 }
@@ -46,7 +50,7 @@ figcaption {
 .passage {
   line-height: 1.25;
   padding-top: 0.5em;
-  color: #4a4a4a;
+  color: #666666;
   height: fit-content;
 }
 
@@ -127,6 +131,9 @@ figcaption {
 }
 
 .note {
+  max-width: 20em;
+  text-align: center;
+  margin: auto;
   font-family: "Rock Salt";
 }
 
@@ -240,3 +247,62 @@ figcaption {
   text-align: right;
   color: #cccccc;
 }
+
+/* hovertip v2.0 - Start */
+.hoverTip {
+  display: inline-block;
+  top: 4px;
+  border-width: 0px;
+  border-bottom: 2px dotted #666666; /* If you want dots under the hoverable text */
+}
+.hoverTipTxt {
+  position: relative;
+  vertical-align: text-bottom;
+  line-height: initial;
+}
+.hoverTipTxt .hoverBox {
+  position: absolute;
+  visibility: hidden;
+}
+.hoverTipTxt:hover .hoverBox,
+.hoverTipTxt:focus .hoverBox {
+  visibility: visible;
+}
+.hoverBox {
+  padding: 3px 10px;
+  width: intrinsic; /* Safari/WebKit uses a non-standard name */
+  width: -webkit-max-content; /* Chrome */
+  width: -moz-max-content; /* Firefox/Gecko */
+  width: max-content;
+  max-width: 330px;
+  line-height: initial;
+  text-align: left;
+  color: #666666;
+  background-color: black;
+  border: #7f7f7f solid 2px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  z-index: 100;
+}
+.hoverTail::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #666666 transparent transparent transparent;
+  z-index: 100;
+}
+.hoverBox a {
+  -webkit-transition-duration: unset;
+  -moz-transition-duration: unset;
+  -o-transition-duration: unset;
+  transition-duration: unset;
+}
+#ui-bar .hoverBox {
+  max-width: 230px;
+}
+/* hovertip v2.0 - End */

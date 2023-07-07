@@ -1,0 +1,16 @@
+:: Bathroom
+<<set $location = "Piezo Bathroom">>\
+<<script>>
+updateLocation(State.getVar("$location"))
+<</script>>\
+
+<<if !$piezoBathroomLight>>
+Although the light from the ajoining bedroom provided a baseline of luminance, to make the most of the bathroom Piezo would have to flip on a light source.
+
+[[Turn it on.|Bathroom][$piezoBathroomLight = true]]
+<<script>>updateLocation(State.getVar("$location"),State.getVar("$piezoBathroomLightOn"),true)<</script>>
+<<else>>
+its on
+<</if>>
+
+:: Reflection

@@ -1,17 +1,17 @@
 :: Piezo Room
-<<set $location = "Piezo's Room">>\
+<<set $location = "Piezo Room">>\
 <<script>>
 updateLocation(State.getVar("$location"))
 <</script>>\
-<figure class="polaroid column"><img class="polaroid-img" style="" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/piezoPoster_04.png?alt=media&token=cfa7ae96-4c91-49c0-bca4-2bccaedbe0b0"><figcaption>Poster on Piezo's wall.</figcaption></figure>
+<figure class="polaroid column"><img class="polaroid-img" style="" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/abstract%2FpiezoPoster_03.png?alt=media&token=3248fd91-3bcd-4cef-ba1e-6b70f0484007"><figcaption>Poster on Piezo's wall.</figcaption></figure>
 <<if $day == 0>>\
-The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was brushing against the doorway. Piles of dirty clothes liter the floor. \
+The narrow room had only just enough room to fit a bed into it. In fact, when Piezo would step off the foot of the bed his feet would land inside the ajoining bathroom. When he stepped off the side, he was brushing against the doorway. Piles of dirty clothes litter the limited floor. \
 <<else>>
 	<<if $locations[$locIndex].visits > 3>>\
 		Same old room. Not getting any less cramped. 
 	<<else>>
 	<</if>>\
-<</if>>\
+<</if>>
 <<if $piezo.gear.body === null>>
 	Piezo wondered whether he should throw a shirt on.
 <<elseif $piezo.gear.legs === null>>
@@ -21,10 +21,12 @@ The narrow room had only just enough room to fit a bed into it. In fact, when Pi
 <</if>>
 [[Dresser]]
 [[Under the mattress]]
-[[Sleep]]
-[[Hallway]]
 [[Window]]
 [[Radio]]
+[[Sleep]]
+[[Bathroom]]
+
+[[Hallway]]
 
 <<script>>
 footnote(`"If I put something away, how will I ever find it!?"`,`The smell isn't too bad right now.`,` `)

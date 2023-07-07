@@ -25,7 +25,7 @@ Ar-Engi - god of random numbers
 Imi - goddess of admiration, FOMO, and vanity
 
 CITY
-name = ''
+name = 'Cycus'
 
 Alley Fortuito - the name of the alley on which infinite slice is located. Famous as a party spot and late night hang.
 
