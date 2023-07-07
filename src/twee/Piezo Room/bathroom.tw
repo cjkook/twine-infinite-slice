@@ -1,5 +1,5 @@
 :: Bathroom
-<<set $location = "Piezo Bathroom">>\
+<<set $location = "Piezo's Bathroom">>\
 <<script>>
 updateLocation(State.getVar("$location"))
 <</script>>\
@@ -10,7 +10,32 @@ Although the light from the ajoining bedroom provided a baseline of luminance, t
 [[Turn it on.|Bathroom][$piezoBathroomLight = true]]
 <<script>>updateLocation(State.getVar("$location"),State.getVar("$piezoBathroomLightOn"),true)<</script>>
 <<else>>
-its on
+The flick of the switch flutters briefly in the reflective space. It is followed closely by the hum of the <<hovertip "Cycus is powered by a web of crystals around the city.">>Cycus Energy Network<</hovertip>> for a brief moment before the <<hovertip "A small holographic projector used to light dark places.">>holo-lamp<</hovertip>> nearby illuminates the space. 
+
+[[Look in the mirror.->Reflection]]
+
+
 <</if>>
 
 :: Reflection
+<div class="row">
+    
+    <figure class="polaroid column"><div class="column">
+    </div><img class="polaroid-img" style="height: 300px" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/characters%2FPIEZO.png?alt=media&token=3d9bf07d-1444-4566-988f-c603892f568a"><figcaption>Piezo d'Zeppibeet, local restauranteur.</figcaption></figure>
+
+    <div class="column">
+        blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah
+        blah blah
+        blah blah
+        blah blah
+        blah blah
+        blah blah
+        blah blah
+        blah blah
+        blah blah
+    </div>
+    <img class="portrait" style="background-color: #FEC5BB; float: right;" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/characters.pixel%2Fpiezo_iso.png?alt=media&token=f9dfad57-7cc5-46d6-bb95-c6cc6bdf5169"/>
+</div>
+
+
+

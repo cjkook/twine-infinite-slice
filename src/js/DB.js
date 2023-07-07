@@ -1,6 +1,6 @@
 window.locations = [
   {
-    name: "Piezo Room",
+    name: "Piezo's Room",
     isRadioOn: false,
     isInterior: true,
     isClean: false,

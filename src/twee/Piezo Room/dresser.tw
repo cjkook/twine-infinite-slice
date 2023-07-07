@@ -3,9 +3,10 @@
 
 <</script>>
 <<if $dresser.length < 1>>>\
-The dresser appears empty.  Laundry day must be looming.
+The dresser appears empty.  Laundry day must be looming. <div class="hint">Clothing accumulated and not equipped will return automatically to this dresser to be used later.</div>
 <<else>>
-After a moment opening the limited number of drawers available, Piezo concludes there are the following in the dresser:
+After a moment opening the limited number of drawers available, Piezo concludes there are the following in the <<linkappend "dresser:">><div class="hint">Clothing accumulated and not equipped will return automatically to this dresser to be used later.</div><</linkappend>>
+
 <<for _i, _item range $dresser>>\
 <<capture _item>>\
 <<linkreplace _item.name>>\

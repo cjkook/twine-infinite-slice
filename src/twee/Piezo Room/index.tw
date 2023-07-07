@@ -1,5 +1,5 @@
 :: Piezo Room
-<<set $location = "Piezo Room">>\
+<<set $location = "Piezo's Room">>\
 <<script>>
 updateLocation(State.getVar("$location"))
 <</script>>\

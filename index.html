@@ -265,11 +265,21 @@ hr {
   /* object-fit: contain; */
 }
 
+.pixel-art {
+  background-color: #666666;
+  border-radius: 100px;
+  position: fixed;
+  z-index: 1000;
+  left: 25%;
+  top:20%;
+  max-height: 150px;
+}
+
 .polaroid-img {
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  height: 337px;
+  /* height: 337px; */
   object-fit: cover;
   object-position: 100% 600;
   /* object-fit: contain; */
@@ -411,7 +421,7 @@ hr {
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "DB.js" */
 window.locations = [
   {
-    name: "Piezo Room",
+    name: "Piezo's Room",
     isRadioOn: false,
     isInterior: true,
     isClean: false,
@@ -921,8 +931,7 @@ window.updateLocation = (loc, property = null, val = null) => {
   State.setVar("$locIndex", index);
 };
 
-/* twine-user-script #3: "glossary.js" */
-/* twine-user-script #4: "index.js" */
+/* twine-user-script #3: "index.js" */
 let url =
   "https://coolors.co/palette/fec5bb-fcd5ce-fae1dd-f8edeb-e8e8e4-d8e2dc-ece4db-ffe5d9-ffd7ba-fec89a";
 
@@ -1170,7 +1179,7 @@ Macro.add("hovertip", {
   },
 });
 /* hovertip v2.0 - End */
-/* twine-user-script #5: "palettes.js" */
+/* twine-user-script #4: "palettes.js" */
 window.timePalette = [
   // HOT DOG // error
   {
@@ -1322,7 +1331,6 @@ A number of haphazard expansions had clearly been made to its foundation and var
 At the end of the building facing the alley, a narrow slice of bedroom. Some handful of stories up, the bedroom was someone&#39;s slice of the world. As light invaded the slits of his eyelids, a tiny slice of consciousness was injected into the recently slumbering mind. Piezo lay there for a few moments, occupying the often forgotten interrim between sleep and conscious reality. A tiny slice of limbo neatly caressed, physically by his eyelids, and metaphorically by the hint of concrete cognition.
 
 Piezo tried to remain adrift in this state but to no avail. He was awake.
-
 
 [[Get out of bed.-&gt;Piezo Room]]
 
@@ -1627,7 +1635,7 @@ footnote(`It was highly unlikely that Garbunkle would be found in his room, give
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
-&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/hallwayStairs_01.png?alt=media&amp;token=de3e42ee-12d0-4938-abe5-ed921927fb45&quot;&gt;\
+&lt;img class=&quot;banner&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/abstract%2FhallwayStairs_01.png?alt=media&amp;token=b823dc1d-19de-4365-bb06-43b9128c5b67&quot;&gt;\
 On this floor, there are three doors:
 [[Go to Garbunkle&#39;s door.-&gt;Garbunkle Door]]
 [[Go to Ling&#39;s door.-&gt;Ling Door]]
@@ -1748,7 +1756,7 @@ A small interface panel on the wall controls the [[audio system-&gt;Kitchen Radi
 	[[Turn it on.|Kitchen Radio][$kitchenRadioOn = true]]
 &lt;&lt;/if&gt;&gt;\
 
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Bathroom" tags="" position="850,350" size="100,100">&lt;&lt;set $location = &quot;Piezo Bathroom&quot;&gt;&gt;\
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Bathroom" tags="" position="850,350" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Bathroom&quot;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
@@ -1759,14 +1767,36 @@ Although the light from the ajoining bedroom provided a baseline of luminance, t
 [[Turn it on.|Bathroom][$piezoBathroomLight = true]]
 &lt;&lt;script&gt;&gt;updateLocation(State.getVar(&quot;$location&quot;),State.getVar(&quot;$piezoBathroomLightOn&quot;),true)&lt;&lt;/script&gt;&gt;
 &lt;&lt;else&gt;&gt;
-its on
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Reflection" tags="" position="975,350" size="100,100"></tw-passagedata><tw-passagedata pid="29" name="Dresser" tags="" position="1100,350" size="100,100">&lt;&lt;script&gt;&gt;
+The flick of the switch flutters briefly in the reflective space. It is followed closely by the hum of the &lt;&lt;hovertip &quot;Cycus is powered by a web of crystals around the city.&quot;&gt;&gt;Cycus Energy Network&lt;&lt;/hovertip&gt;&gt; for a brief moment before the &lt;&lt;hovertip &quot;A small holographic projector used to light dark places.&quot;&gt;&gt;holo-lamp&lt;&lt;/hovertip&gt;&gt; nearby illuminates the space. 
+
+[[Look in the mirror.-&gt;Reflection]]
+
+
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Reflection" tags="" position="975,350" size="100,100">&lt;div class=&quot;row&quot;&gt;
+    
+    &lt;figure class=&quot;polaroid column&quot;&gt;&lt;div class=&quot;column&quot;&gt;
+    &lt;/div&gt;&lt;img class=&quot;polaroid-img&quot; style=&quot;height: 300px&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/characters%2FPIEZO.png?alt=media&amp;token=3d9bf07d-1444-4566-988f-c603892f568a&quot;&gt;&lt;figcaption&gt;Piezo d&#39;Zeppibeet, local restauranteur.&lt;/figcaption&gt;&lt;/figure&gt;
+
+    &lt;div class=&quot;column&quot;&gt;
+        blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah
+        blah blah
+        blah blah
+        blah blah
+        blah blah
+        blah blah
+        blah blah
+        blah blah
+        blah blah
+    &lt;/div&gt;
+    &lt;img class=&quot;portrait&quot; style=&quot;background-color: #FEC5BB; float: right;&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/characters.pixel%2Fpiezo_iso.png?alt=media&amp;token=f9dfad57-7cc5-46d6-bb95-c6cc6bdf5169&quot;/&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="29" name="Dresser" tags="" position="1100,350" size="100,100">&lt;&lt;script&gt;&gt;
 
 &lt;&lt;/script&gt;&gt;
 &lt;&lt;if $dresser.length &lt; 1&gt;&gt;&gt;\
-The dresser appears empty.  Laundry day must be looming.
+The dresser appears empty.  Laundry day must be looming. &lt;div class=&quot;hint&quot;&gt;Clothing accumulated and not equipped will return automatically to this dresser to be used later.&lt;/div&gt;
 &lt;&lt;else&gt;&gt;
-After a moment opening the limited number of drawers available, Piezo concludes there are the following in the dresser:
+After a moment opening the limited number of drawers available, Piezo concludes there are the following in the &lt;&lt;linkappend &quot;dresser:&quot;&gt;&gt;&lt;div class=&quot;hint&quot;&gt;Clothing accumulated and not equipped will return automatically to this dresser to be used later.&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt;
+
 &lt;&lt;for _i, _item range $dresser&gt;&gt;\
 &lt;&lt;capture _item&gt;&gt;\
 &lt;&lt;linkreplace _item.name&gt;&gt;\
@@ -1781,7 +1811,7 @@ setGear(temporary().item,&#39;$dresser&#39;);
 &lt;&lt;return&gt;&gt;
 &lt;&lt;script&gt;&gt;
 footnote(`Piezo had always kept a minimal amount of clothes that he would rotate through at least a couple times before washing.  He hated doing laundry.`,` `, ` `);
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="30" name="Piezo Room" tags="" position="1225,350" size="100,100">&lt;&lt;set $location = &quot;Piezo Room&quot;&gt;&gt;\
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="30" name="Piezo Room" tags="" position="1225,350" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\

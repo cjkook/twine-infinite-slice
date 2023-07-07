@@ -3,7 +3,7 @@
 <<script>>
 updateLocation(State.getVar("$location"))
 <</script>>\
-<img class="banner" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/hallwayStairs_01.png?alt=media&token=de3e42ee-12d0-4938-abe5-ed921927fb45">\
+<img class="banner" src="https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/abstract%2FhallwayStairs_01.png?alt=media&token=b823dc1d-19de-4365-bb06-43b9128c5b67">\
 On this floor, there are three doors:
 [[Go to Garbunkle's door.->Garbunkle Door]]
 [[Go to Ling's door.->Ling Door]]
