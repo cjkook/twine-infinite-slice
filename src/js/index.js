@@ -58,6 +58,7 @@ window.update = () => {
   $("#oomph").val(State.getVar("$piezo").oomph);
 
   let inventory = State.getVar("$inventory");
+  // ! make inv
   $("#inventory").html();
 };
 

@@ -164,6 +164,10 @@ hr {
   border-radius: 800px;
 }
 
+/* .link-internal {
+
+} */
+
 .hint {
   margin: auto;
   margin-top: 0.5em;
@@ -174,7 +178,7 @@ hr {
   color: #6d6875;
   border-radius: 10px;
   padding: 2vh;
-  width: 50%;
+  width: 65%;
 }
 
 .hint:before {
@@ -239,9 +243,20 @@ hr {
   font-family: "Rock Salt";
 }
 
+
+
 .column {
   float: left;
-  width: 30.33%;
+  max-width: 30.33%;
+  padding: 1vh;
+  /* may have to remove for footnote edits */
+  /* margin: auto;  */
+}
+
+.column-2 {
+  float: left;
+  max-width: 60.33%;
+  min-width: 30.33%;
   padding: 1vh;
   /* may have to remove for footnote edits */
   /* margin: auto;  */
@@ -268,18 +283,17 @@ hr {
 .pixel-art {
   background-color: #666666;
   border-radius: 100px;
-  position: fixed;
   z-index: 1000;
-  left: 25%;
-  top:20%;
-  max-height: 150px;
+  max-height: 15vh;
+  display: block;
+  margin: auto;
+  width: fit-content;
 }
 
 .polaroid-img {
   box-sizing: border-box;
   width: 100%;
-  max-width: 100%;
-  /* height: 337px; */
+  height: 337px;
   object-fit: cover;
   object-position: 100% 600;
   /* object-fit: contain; */
@@ -287,12 +301,17 @@ hr {
 
 .polaroid {
   width: fit-content;
+  max-width: 30%;
   border: 1px #cccccc solid;
   padding: 3px;
-  margin: 1.5vh;
+  margin: 1vh;
   background-color: #ece4db;
 }
-
+@media only screen and (max-width: 900px) {
+  .column {max-width: fit-content;}
+  .column-2 {max-width: fit-content;}
+  .polaroid {max-width: fit-content;}
+}
 #story {
   color: #141414;
   background: white;
@@ -992,6 +1011,7 @@ window.update = () => {
   $("#oomph").val(State.getVar("$piezo").oomph);
 
   let inventory = State.getVar("$inventory");
+  // ! make inv
   $("#inventory").html();
 };
 
@@ -1356,10 +1376,10 @@ He wipes the moisture from his forehead and &lt;&lt;linkappend &quot;sets the bo
 &lt;&lt;if $piezo.gear.legs === null&gt;&gt;\
 &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
 For fugg&#39;s sake, there&#39;s always a fifty percent chance I show up here and you can&#39;t&#39;ve even been troubled to put some fuggin&#39; clothes on, eh?&lt;/div&gt;\
-  &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+  &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
     &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
     ...Oh, yeah...I suppose it would be decent of me to throw some clothes on at some point...&lt;/div&gt;\
-    &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+    &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
       &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
         Ya think?&lt;/div&gt;\ 
 
@@ -1375,16 +1395,16 @@ Ar-Engi smiles today, Piezo! Look at this cheese! &lt;/div&gt;\
 &lt;div class=&quot;hint&quot;&gt;There are a half dozen blocks of cheese inside. Specks of spices and herbs are mixed into the marvelous dairy slabs. It looks quite appetizing all on its own.&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt;
 &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
   Not bad. Where did you get this batch?&lt;/div&gt;\
-&lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+&lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
   &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
   A shipment came into the warehouse late last night before I closed up. Stuff looked a lot better than my current stock. Thought you would appreciate it.&lt;/div&gt;\
-  &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+  &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
     &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
     Definitely a step above what I usually get. I guess this is reason enough to open tonight, huh? This cheese is gonna be a hit.&lt;/div&gt;\
-    &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+    &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
       &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
         No doubt. You know I&#39;ll be in to give it a whirl.&lt;/div&gt;\
-        &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+        &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
           Choochi&#39;s cigarette has been exstinguished by the copious amount of steam emanating from the truck. Upon noticing this fact after he unsuccessfully attempts to puff from the small tube, he walks around the front of the truck and turns off the engine. He sparks the cigarette again and comes back to [[continue speaking-&gt;Meet Choochi 3]] with Piezo.
         &lt;&lt;/linkreplace&gt;&gt;
     &lt;&lt;/linkreplace&gt;&gt;
@@ -1395,16 +1415,16 @@ Ar-Engi smiles today, Piezo! Look at this cheese! &lt;/div&gt;\
     footnote(` `);&lt;&lt;/script&gt;&gt;\
 &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
 Whatcha thinkin&#39; for tonight? Got any insider info for me?&lt;/div&gt;\
-&lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+&lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
   &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
   Something simple. Something classic. Something timeless...&lt;/div&gt;\
-  &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+  &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
     &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
     ...&lt;/div&gt;\
-    &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+    &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
       &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
       ...&lt;/div&gt;\
-      &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+      &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
         &lt;div class=&quot;mid-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Together&lt;/small&gt;&lt;/em&gt;
         Pepperoni!&lt;/div&gt;
         [[Continue-&gt;Meet Choochi 4]]
@@ -1420,24 +1440,24 @@ Choochi replaces the lid to the box and reties the cord. He passes the box to Pi
 &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
 Well, the expensive bit is out of the way. The cheese is on the house today if you can manage to save me a slice later. What else do you need to source?&lt;/div&gt;\
 
-&lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+&lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
   &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
   I&#39;ve got nothing so far. I still need sauce, dough, and pepperoni.&lt;/div&gt;\
-  &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+  &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
     &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
     I know I don&#39;t need to explain to you that the cheapest solution is to gather and produce the ingredients yourself, but if you&#39;re in a time crunch, all those things are usually available in Gaewonda market.&lt;/div&gt;
     &lt;&lt;script&gt;&gt; 
     footnote(`Gaewonda Plaza is the cultural, commercial, and geographic center of Cycus. All the best shopping, bars, and entertainment are in that neighborhood. It&#39;s also where one can find the busiest market in the city.`);&lt;&lt;/script&gt;&gt;\
-    &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+    &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
       &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
       Remember the recipe for dough?&lt;/div&gt;
-      &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+      &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
         &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
           Only shidd I can bother to remember most days. Flour, water, yeast.&lt;/div&gt;\
-          &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+          &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
             &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Choochi&lt;/small&gt;&lt;/em&gt;
               And tha&#39; sauce?&lt;/div&gt;\
-              &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+              &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
                 &lt;div class=&quot;right-chat&quot;&gt;
                   Mashed tomas and spices, baby!&lt;/div&gt;\
 
@@ -1540,98 +1560,125 @@ footnote(`&quot;It&#39;s not much, I&#39;ll admit, but having a little patch of 
 &lt;&lt;linkreplace &quot;Talk to her&quot; t8n&gt;&gt;
 
 &lt;&lt;/linkreplace&gt;&gt;
-[[Do something else-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="19" name="Ling Afternoon First" tags="" position="1100,225" size="100,100">&lt;&lt;run footnote(`&quot;Ling is so carefree it&#39;s impressive. Too bad she&#39;s such a bum.&quot;`)&gt;&gt;
+[[Do something else-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="19" name="Ling Afternoon First" tags="" position="1100,225" size="100,100">&lt;&lt;run footnote(`&quot;Ling is so carefree it&#39;s impressive.&quot;`)&gt;&gt;
 Her almond skin was stuck to the sofa upon which it laid and what golden blonde hair was not tied into a knot atop her head was frizzled and frayed in the lobby&#39;s heat. Contrasting further were her sky blue eyes, which sat meekly in the center of a face that time seemed to have given a free pass to. 
 
 Ling&#39;s attention was paid entirely to the fan pouring a cool breeze over her. Beads of sweat rolled undiscriminatingly down every bit of her body. Between the fan and the heat, the look upon her face was paradoxically, and respectively, one of both satisfaction and misery. 
 
 She wore a pink crop top and &lt;&lt;linkappend &quot;black underwear&quot; t8n&gt;&gt;.
   &lt;&lt;if $piezo.gear.legs === null&gt;&gt;
-    Piezo
+    Piezo takes a moment to admire the fact that the two could be open enough with each other to forego clothing in each other&#39;s presence.
     &lt;&lt;else&gt;&gt;
-    Ling has little shame in being seen so exposed. It&#39;s her world, we are just living in it.
+    Ling has little shame in being seen so exposed. //It&#39;s her world, we are just living in it//, Piezo thought.
   &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;/linkappend&gt;&gt;
 
 It takes her a second to redirect her attention to Piezo. 
 &lt;&lt;if $piezo.gear.legs === null&gt;&gt;\
-&lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
-Couldn&#39;t be bothered with pants either, huh?&lt;/div&gt;\
+  &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+    Couldn&#39;t be bothered with pants either, huh?&lt;/div&gt;\
+  &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;&lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
+    Just a little freedom before a hard day&#39;s work, ya know?&lt;/div&gt;\
+    [[Continue-&gt;Ling Afternoon First 2]]
+  &lt;&lt;/linkreplace&gt;&gt;
 &lt;&lt;else&gt;&gt;
+  &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+    Oh, hey.&lt;/div&gt;\
+  &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;&lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
+    That&#39;s one way to beat the heat.&lt;/div&gt;\
+    [[Continue-&gt;Ling Afternoon First 2]]
+  &lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Ling Afternoon First 2" tags="" position="1225,225" size="100,100">&lt;&lt;script&gt;&gt;
+  footnote(` `,` `,` `);
+&lt;&lt;/script&gt;&gt;\
 &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
-Oh, hey.&lt;/div&gt;\
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;\
-  &lt;div class=&quot;left-chat&quot;&gt;
-  What&#39;s shakin&#39;? Did you hear about there&#39;s another driftbit this week?&lt;/div&gt;\
-  &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
-  Another? What&#39;s this one called?&lt;/div&gt;\
-  &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;\
-    &lt;&lt;script&gt;&gt; 
-    footnote(`Floating islands, coloquially called &#39;driftbits&#39;, occasionally cross paths with Cycus.`, `When driftbits do happen by, Cycus locals will make trips over to the isle. Sometimes to exploit the natural resources, sometimes just as a quick getaway from the city.`);&lt;&lt;/script&gt;&gt;\
-    &lt;div class=&quot;left-chat&quot;&gt;
-    Just some strip of green. Can&#39;t recall the name. Might be worth a hop over for some variety, ya know?&lt;/div&gt;
-    &lt;div class=&quot;left-chat&quot;&gt;
-    Think you&#39;ll open up shop tonight? I could use the cash.&lt;/div&gt;\
-    &lt;div class=&quot;right-chat&quot;&gt;
-    I probably should. Not a whole lot of money on my end either.&lt;/div&gt;\
-    &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
+Ya hear about there&#39;s another &lt;&lt;hovertip &quot;Driftbits are small unclaimed floating islands that dot the skyscape of the world above the fog.&quot;&gt;&gt;driftbit&lt;&lt;/hovertip&gt;&gt; this week?&lt;/div&gt;\
+&lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
+...Big deal? There&#39;s a few every week.&lt;/div&gt;\
+&lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;\
+  &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+  Might be worth a hop over for some variety, ya know? Maybe get some fresh ingredients for the shop?&lt;/div&gt;\
+  &lt;&lt;script&gt;&gt;
+  footnote(`&lt;em&gt;She&#39;s right...Any cash I can keep in my pocket the better.&lt;/em&gt;`,` `,` `);
+  &lt;&lt;/script&gt;&gt;\
+  &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+    &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+  Think you&#39;ll open up shop tonight? I could use the cash.&lt;/div&gt;\
+    &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
       &lt;div class=&quot;right-chat&quot;&gt;
-      Anything going on tonight?&lt;/div&gt;\
-      &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-        &lt;&lt;switch $dayEvents[$day].dayName&gt;&gt;
-        &lt;&lt;case &quot;Monra&quot; &quot;Tonra&quot;&gt;&gt;
-        &lt;div class=&quot;left-chat&quot;&gt;
-        I dunno. Drink at TangPingSki&#39;s? It&#39;s $dayEvents[$day].dayName, so...meh.&lt;/div&gt;\
-        &lt;&lt;case &quot;Wenra&quot; &quot;Thumra&quot;&gt;&gt;
-        &lt;div class=&quot;left-chat&quot;&gt;
-        That new girl is gonna be dancing over at Fortuito. Ya know, Ciccia&#39;s friend? The cute one? Might be kinda fun after we close up here.&lt;/div&gt;\
-        &lt;&lt;case &quot;Friyaya&quot; &quot;Settum&quot; &quot;Summet&quot;&gt;&gt;
-        &lt;div class=&quot;left-chat&quot;&gt;
-        It&#39;s the fuggin&#39; weekend baby! You know I&#39;m going out.&lt;/div&gt;\
-        &lt;&lt;/switch&gt;&gt;
+  I probably should. Not a whole lot of money on my end either.&lt;/div&gt;\
+      &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+        &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+          &lt;div class=&quot;right-chat&quot;&gt;
+          Anything going on tonight?&lt;/div&gt;\
+          &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+            &lt;&lt;switch $dayEvents[$day].dayName&gt;&gt;
+            &lt;&lt;case &quot;Monra&quot;&gt;&gt;
+              &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+                Miel&#39;s first night dancing at Fortuito. We gotta be there to show some love, ya know?
+              &lt;/div&gt;\
+            &lt;&lt;case &quot;Tonra&quot;&gt;&gt;
+              &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+                Probably best to stay in. With what&#39;s going on...
+              &lt;/div&gt;\
+            &lt;&lt;case &quot;Wenra&quot; &quot;Thumra&quot;&gt;&gt;
+            &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+            I dunno. Drink at TangPingSki&#39;s? Can&#39;t say Fortuito Alley is going to be very busy this week.&lt;/div&gt;\
+            &lt;&lt;case &quot;Friyaya&quot; &quot;Settum&quot; &quot;Summet&quot;&gt;&gt;
+            &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+            It&#39;s the fuggin&#39; weekend baby! You know I&#39;m going out.&lt;/div&gt;\
+            &lt;&lt;/switch&gt;&gt;
 
-        &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-          Ling rolls over on the sofa and cocks her head to look at Piezo. Her bra barely covered her nipples and each breast dropping to rest on the sides of her ribcage. Her underwear was no more modest on the front than on the back. This pair was riding very high on her thigh, approaching even abdomen level.
-
-          Piezo was no stranger to his scantily-clad friend&#39;s behavior nor attire, but he couldn&#39;t deny this stirred something in him briefly. 
-
-          Ling seemed to notice this pause and opened her eyes to look at him.
-
-          &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-            &lt;div class=&quot;left-chat&quot;&gt;
-              Haha! Piezo, you perv!&lt;/div&gt;\
-              &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-                &lt;&lt;run footnote(`Ling, while not a dancer at the club herself, maintained very close bonds with the dancers at the club, &lt;em&gt;Fortuito 144&lt;/em&gt;.`, `&quot;I know I&#39;d be good at it. It&#39;s just not something I am interested in right now.&quot; - Ling`);&gt;&gt;
-                &lt;div class=&quot;right-chat&quot;&gt;
-                Looking good, girl! You get that underwear from the girls at Fortuito? When you gonna start dancing there?&lt;/div&gt;\
-                &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-                  &lt;div class=&quot;left-chat&quot;&gt;
-                  In your dreams!&lt;/div&gt;\
-                  &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-                    &lt;div class=&quot;right-chat&quot;&gt;
-                      C&#39;mon! You know I&#39;d come watch...with admissions comped.&lt;/div&gt;\
-                    &lt;&lt;linkreplace &quot;Continue&quot; t8n&gt;&gt;
-                      The two ended their exchange with smiles. Piezo really enjoyed Ling&#39;s company. She always knew where the good parties were and how to have a good time. 
-                      &lt;&lt;set $lingAfternoonFirst = true&gt;&gt;
-                      [[Return-&gt;Lobby]]
-                    &lt;&lt;/linkreplace&gt;&gt;
-                  &lt;&lt;/linkreplace&gt;&gt;
-                  
-                &lt;&lt;/linkreplace&gt;&gt;
-              &lt;&lt;/linkreplace&gt;&gt;
+            
           &lt;&lt;/linkreplace&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
       &lt;&lt;/linkreplace&gt;&gt;
     &lt;&lt;/linkreplace&gt;&gt;
   &lt;&lt;/linkreplace&gt;&gt;
-&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Garbunkle Door" tags="" position="1225,225" size="100,100">Garbunkle&#39;s door is brown and non-descript. Dust acculumation on the doorknob indicates it hasn&#39;t been opened in a while.
+  
+  
+  
+&lt;&lt;/linkreplace&gt;&gt;
+
+
+
+/* &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+        Ling rolls over on the sofa and cocks her head to look at Piezo. Her bra barely covered her nipples and each breast dropping to rest on the sides of her ribcage. Her underwear was no more modest on the front than on the back. This pair was riding very high on her thigh, approaching even abdomen level.
+
+        Piezo was no stranger to his scantily-clad friend&#39;s behavior nor attire, but he couldn&#39;t deny this stirred something in him briefly. 
+
+        Ling seemed to notice this pause and opened her eyes to look at him.
+
+        &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+          &lt;div class=&quot;left-chat&quot;&gt;
+            Haha! Piezo, you perv!&lt;/div&gt;\
+            &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+              &lt;&lt;run footnote(`Ling, while not a dancer at the club herself, maintained very close bonds with the dancers at the club, &lt;em&gt;Fortuito 144&lt;/em&gt;.`, `&quot;I know I&#39;d be good at it. It&#39;s just not something I am interested in right now.&quot; - Ling`);&gt;&gt;
+              &lt;div class=&quot;right-chat&quot;&gt;
+              Looking good, girl! You get that underwear from the girls at Fortuito? When you gonna start dancing there?&lt;/div&gt;\
+              &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+                &lt;div class=&quot;left-chat&quot;&gt;
+                In your dreams!&lt;/div&gt;\
+                &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+                  &lt;div class=&quot;right-chat&quot;&gt;
+                    C&#39;mon! You know I&#39;d come watch...with admissions comped.&lt;/div&gt;\
+                  &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+                    The two ended their exchange with smiles. Piezo really enjoyed Ling&#39;s company. She always knew where the good parties were and how to have a good time. 
+                    &lt;&lt;set $lingAfternoonFirst = true&gt;&gt;
+                    [[Return-&gt;Lobby]]
+                  &lt;&lt;/linkreplace&gt;&gt;
+                &lt;&lt;/linkreplace&gt;&gt;
+                
+              &lt;&lt;/linkreplace&gt;&gt;
+            &lt;&lt;/linkreplace&gt;&gt;
+        &lt;&lt;/linkreplace&gt;&gt;
+      &lt;&lt;/linkreplace&gt;&gt; */</tw-passagedata><tw-passagedata pid="21" name="Garbunkle Door" tags="" position="100,350" size="100,100">Garbunkle&#39;s door is brown and non-descript. Dust acculumation on the doorknob indicates it hasn&#39;t been opened in a while.
 
 &lt;&lt;return&gt;&gt;
 &lt;&lt;script&gt;&gt;
 footnote(`It was highly unlikely that Garbunkle would be found in his room, given his lack of needing sleep.`);
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="21" name="Hallway" tags="" position="100,350" size="100,100">&lt;&lt;set $location = &#39;Hallway&#39;&gt;&gt;\
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="22" name="Hallway" tags="" position="225,350" size="100,100">&lt;&lt;set $location = &#39;Hallway&#39;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
@@ -1651,11 +1698,11 @@ Additionally, there are two sets of stairs:
 \
 &lt;&lt;script&gt;&gt;
 footnote(`Most of this building is residential but the bottom floor is the location of Piezo&#39;s hole in the wall pizzeria, &lt;em&gt;Infinite Slice.&lt;/em&gt;`,` `,` `)
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="First Venture to the Garden" tags="" position="225,350" size="100,100">[[Rooftop Garden]]
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="First Venture to the Garden" tags="" position="350,350" size="100,100">[[Rooftop Garden]]
 
 &lt;&lt;script&gt;&gt;
 footnote(`Most of this building is residential but the first floor is the location of Piezo&#39;s hole in the wall pizzeria, &lt;em&gt;Infinite Slice.&lt;/em&gt;`,`A layer of mildew cakes the walls of this drab stairway.`,` `)
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Ling Door" tags="" position="350,350" size="100,100">Ling&#39;s door is bright pink and stands as the only beacon of color in the otherwise neutral hallway. A few of her jackets hang just to the side of the doorframe. 
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Ling Door" tags="" position="475,350" size="100,100">Ling&#39;s door is bright pink and stands as the only beacon of color in the otherwise neutral hallway. A few of her jackets hang just to the side of the doorframe. 
 
 &lt;&lt;switch $timeName&gt;&gt;\
 	&lt;&lt;case &quot;morning&quot;&gt;&gt;\
@@ -1672,7 +1719,7 @@ footnote(`Most of this building is residential but the first floor is the locati
 
 &lt;&lt;script&gt;&gt;
 footnote(temporary().f1);
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="24" name="Lobby" tags="" position="475,350" size="100,100">&lt;&lt;set $location = &quot;Infinite Slice Lobby&quot;&gt;&gt;\
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="25" name="Lobby" tags="" position="600,350" size="100,100">&lt;&lt;set $location = &quot;Infinite Slice Lobby&quot;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
@@ -1726,7 +1773,7 @@ EAT SOMEWHERE ELSE!
 
 &lt;&lt;script&gt;&gt;
 footnote(temporary().f1,temporary().f2)
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="25" name="Infinite Slice Kitchen" tags="" position="600,350" size="100,100">&lt;&lt;set $location = &#39;Infinite Slice Kitchen&#39;&gt;&gt;\
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="26" name="Infinite Slice Kitchen" tags="" position="725,350" size="100,100">&lt;&lt;set $location = &#39;Infinite Slice Kitchen&#39;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 footnote(`Though Ling, Garbunkle, and the girls from Fortuito would occasionally come and help Piezo during service as delivery drivers or cashiers, there was only enough room in the kitchen for one.`,`Monotonous work.`,` `);
@@ -1746,7 +1793,7 @@ A small interface panel on the wall controls the [[audio system-&gt;Kitchen Radi
   Piezo will need to start prepping in the afternoon if he is to open this &lt;&lt;linkappend &quot;evening.&quot; t8n&gt;&gt;&lt;div class=&quot;hint&quot;&gt;Due to the amount of prep work involved in opening the shop, Piezo needs to start in the afternoon if he wants to serve any food that evening. If he chooses to open, a significant amount of time will pass and oomph will be consumed. In return, variable amounts of money will be acquired based on the type of food served.&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt;\
 	&lt;&lt;/switch&gt;&gt;
 
-[[Exit back to the lobby-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="26" name="Kitchen Radio" tags="" position="725,350" size="100,100">The kitchen radio was something Piezo spared no expense to obtain when he opened Infinite Slice. Though it would fail to compete with the sound system across the alley at Fortuito 144, it was plenty loud for the restaurant and a few pedestrians just outside.\
+[[Exit back to the lobby-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="27" name="Kitchen Radio" tags="" position="850,350" size="100,100">The kitchen radio was something Piezo spared no expense to obtain when he opened Infinite Slice. Though it would fail to compete with the sound system across the alley at Fortuito 144, it was plenty loud for the restaurant and a few pedestrians just outside.\
 
 &lt;&lt;if $kitchenRadioOn&gt;&gt;
 	Faint clicks reverberate off the kitchen&#39;s reflective walls as the speakers receive power. The room begins humming with the sound of music. 
@@ -1756,7 +1803,7 @@ A small interface panel on the wall controls the [[audio system-&gt;Kitchen Radi
 	[[Turn it on.|Kitchen Radio][$kitchenRadioOn = true]]
 &lt;&lt;/if&gt;&gt;\
 
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Bathroom" tags="" position="850,350" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Bathroom&quot;&gt;&gt;\
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Bathroom" tags="" position="975,350" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Bathroom&quot;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
@@ -1765,31 +1812,39 @@ updateLocation(State.getVar(&quot;$location&quot;))
 Although the light from the ajoining bedroom provided a baseline of luminance, to make the most of the bathroom Piezo would have to flip on a light source.
 
 [[Turn it on.|Bathroom][$piezoBathroomLight = true]]
+
+[[Return to bedroom.-&gt;Piezo Room]]
+&lt;&lt;script&gt;&gt;
+footnote(` `);
+&lt;&lt;/script&gt;&gt;\
 &lt;&lt;script&gt;&gt;updateLocation(State.getVar(&quot;$location&quot;),State.getVar(&quot;$piezoBathroomLightOn&quot;),true)&lt;&lt;/script&gt;&gt;
 &lt;&lt;else&gt;&gt;
-The flick of the switch flutters briefly in the reflective space. It is followed closely by the hum of the &lt;&lt;hovertip &quot;Cycus is powered by a web of crystals around the city.&quot;&gt;&gt;Cycus Energy Network&lt;&lt;/hovertip&gt;&gt; for a brief moment before the &lt;&lt;hovertip &quot;A small holographic projector used to light dark places.&quot;&gt;&gt;holo-lamp&lt;&lt;/hovertip&gt;&gt; nearby illuminates the space. 
+The flick of the switch flutters briefly in the reflective space. It is followed closely by the hum of the &lt;&lt;hovertip &quot;CAT-C is powered by a web of crystals, each sprinkled eons ago in every neighborhood.&quot;&gt;&gt;CAT-C Energy Network&lt;&lt;/hovertip&gt;&gt; for a brief moment before the &lt;&lt;hovertip &quot;A small holographic projector used to light dark places.&quot;&gt;&gt;holo-lamp&lt;&lt;/hovertip&gt;&gt; nearby illuminates the space. 
 
 [[Look in the mirror.-&gt;Reflection]]
+[[Wash face.-&gt;]]
+[[Brush teeth.-&gt;]]
+[[Turn the light off.|Bathroom][$piezoBathroomLight = false]]
 
+[[Return to bedroom.-&gt;Piezo Room]]
+&lt;&lt;script&gt;&gt;
+footnote(`Much like the room before, this one could use a scrubdown at some point.`,` `,` `);
+&lt;&lt;/script&gt;&gt;\
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Reflection" tags="" position="1100,350" size="100,100">&lt;div class=&quot;row&quot;&gt;\
+    &lt;div class=&quot;column-2&quot;&gt;
+        The man staring back at Piezo was slender and spry in build. Short in stature, yet there was a ruggedness about him that could not solely be the result of his disheveled appearance. The hair that hung over his brow was dark brown, yet most of the rest of his hair was a stark white color. This peculiarity, in addition to his yellow irises, were immediate indications of a &lt;&lt;hovertip &quot;Foggers are the native people of the //Land Below the Fog// and are often the targets of cruel discrimination outside of free cities such as CAT-C.&quot;&gt;&gt;fogger&lt;&lt;/hovertip&gt;&gt; &lt;&lt;linkappend &quot;lineage.&quot;&gt;&gt;
+        &lt;div class=&quot;hint&quot;&gt;Having been born on the floating isle of Tor and growing up in &lt;&lt;hovertip &quot;Circada Atem Tor City, referred to by locals as &#39;//CAT-C//&#39;, is a thriving metropolis with a rich and storied history. It is known to be a free haven for those of all walks of life. The physical city predates its organic inhabitants by perhaps thousands of years.&quot;&gt;&gt;CAT-C&lt;&lt;/hovertip&gt;&gt;, Piezo felt little by way of connection to the peoples who lived below the fog. When Fogger natives would visit his pizzeria, he found that they shared little common ground.&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt; 
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Reflection" tags="" position="975,350" size="100,100">&lt;div class=&quot;row&quot;&gt;
-    
-    &lt;figure class=&quot;polaroid column&quot;&gt;&lt;div class=&quot;column&quot;&gt;
-    &lt;/div&gt;&lt;img class=&quot;polaroid-img&quot; style=&quot;height: 300px&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/characters%2FPIEZO.png?alt=media&amp;token=3d9bf07d-1444-4566-988f-c603892f568a&quot;&gt;&lt;figcaption&gt;Piezo d&#39;Zeppibeet, local restauranteur.&lt;/figcaption&gt;&lt;/figure&gt;
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
 
-    &lt;div class=&quot;column&quot;&gt;
-        blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah
-        blah blah
-        blah blah
-        blah blah
-        blah blah
-        blah blah
-        blah blah
-        blah blah
-        blah blah
+        &lt;hr style=&quot;width:50%; margin: auto;&quot;&gt;
+        &quot;You don&#39;t look too bad, champ,&quot; Piezo remarked to himself in the mirror, cocking his head to the side to briefly examine his profile.
+
+        [[Stop looking at the reflection.-&gt;Bathroom]]
     &lt;/div&gt;
-    &lt;img class=&quot;portrait&quot; style=&quot;background-color: #FEC5BB; float: right;&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/characters.pixel%2Fpiezo_iso.png?alt=media&amp;token=f9dfad57-7cc5-46d6-bb95-c6cc6bdf5169&quot;/&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="29" name="Dresser" tags="" position="1100,350" size="100,100">&lt;&lt;script&gt;&gt;
+    &lt;figure class=&quot;polaroid column&quot;&gt;&lt;img class=&quot;polaroid-img&quot; style=&quot;height: 250px&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/characters%2FPIEZO.png?alt=media&amp;token=3d9bf07d-1444-4566-988f-c603892f568a&quot;&gt;&lt;figcaption&gt;Piezo d&#39;Zeppibeet, local restauranteur.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/div&gt;
+&lt;img class=&quot;pixel-art&quot; style=&quot;background-color: #FEC5BB;&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/characters.pixel%2Fpiezo_iso.png?alt=media&amp;token=f9dfad57-7cc5-46d6-bb95-c6cc6bdf5169&quot;/&gt;</tw-passagedata><tw-passagedata pid="30" name="Dresser" tags="" position="1225,350" size="100,100">&lt;&lt;script&gt;&gt;
 
 &lt;&lt;/script&gt;&gt;
 &lt;&lt;if $dresser.length &lt; 1&gt;&gt;&gt;\
@@ -1811,7 +1866,7 @@ setGear(temporary().item,&#39;$dresser&#39;);
 &lt;&lt;return&gt;&gt;
 &lt;&lt;script&gt;&gt;
 footnote(`Piezo had always kept a minimal amount of clothes that he would rotate through at least a couple times before washing.  He hated doing laundry.`,` `, ` `);
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="30" name="Piezo Room" tags="" position="1225,350" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="31" name="Piezo Room" tags="" position="100,475" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
@@ -1842,15 +1897,15 @@ The narrow room had only just enough room to fit a bed into it. In fact, when Pi
 
 &lt;&lt;script&gt;&gt;
 footnote(`&quot;If I put something away, how will I ever find it!?&quot;`,`The smell isn&#39;t too bad right now.`,` `)
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="31" name="Under the mattress" tags="" position="100,475" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="32" name="Under the mattress" tags="" position="225,475" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
 	Nothing here.
 	[[Piezo sets the mattress back down in frustration.-&gt;Piezo Room]]
 &lt;&lt;else&gt;&gt;
 	There&#39;s a little bit of money for a rainy day. Should Piezo grab it?
 	[[It&#39;s rainy enough.][$money += 237; $foundMattressMoney = true]]
 	[[Not yet.-&gt;Piezo Room]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="It&#39;s rainy enough." tags="" position="225,475" size="100,100">[[Back to the room.-&gt;Piezo Room]]
-&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="Radio" tags="" position="350,475" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="It&#39;s rainy enough." tags="" position="350,475" size="100,100">[[Back to the room.-&gt;Piezo Room]]
+&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="Radio" tags="" position="475,475" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
 
 &lt;&lt;if $piezoRoomRadioOn&gt;&gt;
 	It&#39;s tuned to a local radio station. There is a song playing.
@@ -1863,9 +1918,9 @@ footnote(`&quot;If I put something away, how will I ever find it!?&quot;`,`The s
 
 &lt;&lt;script&gt;&gt;
 footnote(` `,`Piezo bought this radio years ago. What it lacks in features it makes up for in looking like junk.`,`&quot;The clock works, so I can&#39;t get rid of it!&quot;`)
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="34" name="Sleep" tags="" position="475,475" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="35" name="Sleep" tags="" position="600,475" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
 [[Sleep For twenty four hours-&gt;Piezo Room][$timeCount += 24]]
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="Window" tags="" position="600,475" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="Window" tags="" position="725,475" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
 The window is open. \
 	&lt;&lt;switch $timeName&gt;&gt;\
 	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\

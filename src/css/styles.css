@@ -62,6 +62,10 @@ hr {
   border-radius: 800px;
 }
 
+/* .link-internal {
+
+} */
+
 .hint {
   margin: auto;
   margin-top: 0.5em;
@@ -72,7 +76,7 @@ hr {
   color: #6d6875;
   border-radius: 10px;
   padding: 2vh;
-  width: 50%;
+  width: 65%;
 }
 
 .hint:before {
@@ -137,9 +141,20 @@ hr {
   font-family: "Rock Salt";
 }
 
+
+
 .column {
   float: left;
-  width: 30.33%;
+  max-width: 30.33%;
+  padding: 1vh;
+  /* may have to remove for footnote edits */
+  /* margin: auto;  */
+}
+
+.column-2 {
+  float: left;
+  max-width: 60.33%;
+  min-width: 30.33%;
   padding: 1vh;
   /* may have to remove for footnote edits */
   /* margin: auto;  */
@@ -166,18 +181,17 @@ hr {
 .pixel-art {
   background-color: #666666;
   border-radius: 100px;
-  position: fixed;
   z-index: 1000;
-  left: 25%;
-  top:20%;
-  max-height: 150px;
+  max-height: 15vh;
+  display: block;
+  margin: auto;
+  width: fit-content;
 }
 
 .polaroid-img {
   box-sizing: border-box;
   width: 100%;
-  max-width: 100%;
-  /* height: 337px; */
+  height: 337px;
   object-fit: cover;
   object-position: 100% 600;
   /* object-fit: contain; */
@@ -185,12 +199,17 @@ hr {
 
 .polaroid {
   width: fit-content;
+  max-width: 30%;
   border: 1px #cccccc solid;
   padding: 3px;
-  margin: 1.5vh;
+  margin: 1vh;
   background-color: #ece4db;
 }
-
+@media only screen and (max-width: 900px) {
+  .column {max-width: fit-content;}
+  .column-2 {max-width: fit-content;}
+  .polaroid {max-width: fit-content;}
+}
 #story {
   color: #141414;
   background: white;

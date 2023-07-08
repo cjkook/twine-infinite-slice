@@ -18,10 +18,10 @@ He wipes the moisture from his forehead and <<linkappend "sets the box down." t8
 <<if $piezo.gear.legs === null>>\
 <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
 For fugg's sake, there's always a fifty percent chance I show up here and you can't've even been troubled to put some fuggin' clothes on, eh?</div>\
-  <<linkreplace "Continue" t8n>>
+  <<linkreplace "▼" t8n>>
     <div class="right-chat"><em><small>Piezo</small></em>
     ...Oh, yeah...I suppose it would be decent of me to throw some clothes on at some point...</div>\
-    <<linkreplace "Continue" t8n>>
+    <<linkreplace "▼" t8n>>
       <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
         Ya think?</div>\ 
 
@@ -40,16 +40,16 @@ Choochi pulls a rather large knife from his belt and cuts the cord securing the 
 <div class="hint">There are a half dozen blocks of cheese inside. Specks of spices and herbs are mixed into the marvelous dairy slabs. It looks quite appetizing all on its own.</div><</linkappend>>
 <div class="right-chat"><em><small>Piezo</small></em>
   Not bad. Where did you get this batch?</div>\
-<<linkreplace "Continue" t8n>>
+<<linkreplace "▼" t8n>>
   <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
   A shipment came into the warehouse late last night before I closed up. Stuff looked a lot better than my current stock. Thought you would appreciate it.</div>\
-  <<linkreplace "Continue" t8n>>
+  <<linkreplace "▼" t8n>>
     <div class="right-chat"><em><small>Piezo</small></em>
     Definitely a step above what I usually get. I guess this is reason enough to open tonight, huh? This cheese is gonna be a hit.</div>\
-    <<linkreplace "Continue" t8n>>
+    <<linkreplace "▼" t8n>>
       <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
         No doubt. You know I'll be in to give it a whirl.</div>\
-        <<linkreplace "Continue" t8n>>
+        <<linkreplace "▼" t8n>>
           Choochi's cigarette has been exstinguished by the copious amount of steam emanating from the truck. Upon noticing this fact after he unsuccessfully attempts to puff from the small tube, he walks around the front of the truck and turns off the engine. He sparks the cigarette again and comes back to [[continue speaking->Meet Choochi 3]] with Piezo.
         <</linkreplace>>
     <</linkreplace>>
@@ -63,16 +63,16 @@ He puffs with a certain admiration of the tobacco before asking of Piezo:
     footnote(` `);<</script>>\
 <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
 Whatcha thinkin' for tonight? Got any insider info for me?</div>\
-<<linkreplace "Continue" t8n>>
+<<linkreplace "▼" t8n>>
   <div class="right-chat"><em><small>Piezo</small></em>
   Something simple. Something classic. Something timeless...</div>\
-  <<linkreplace "Continue" t8n>>
+  <<linkreplace "▼" t8n>>
     <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
     ...</div>\
-    <<linkreplace "Continue" t8n>>
+    <<linkreplace "▼" t8n>>
       <div class="right-chat"><em><small>Piezo</small></em>
       ...</div>\
-      <<linkreplace "Continue" t8n>>
+      <<linkreplace "▼" t8n>>
         <div class="mid-chat"><em><small>Together</small></em>
         Pepperoni!</div>
         [[Continue->Meet Choochi 4]]
@@ -92,24 +92,24 @@ Choochi replaces the lid to the box and reties the cord. He passes the box to Pi
 <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
 Well, the expensive bit is out of the way. The cheese is on the house today if you can manage to save me a slice later. What else do you need to source?</div>\
 
-<<linkreplace "Continue" t8n>>
+<<linkreplace "▼" t8n>>
   <div class="right-chat"><em><small>Piezo</small></em>
   I've got nothing so far. I still need sauce, dough, and pepperoni.</div>\
-  <<linkreplace "Continue" t8n>>
+  <<linkreplace "▼" t8n>>
     <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
     I know I don't need to explain to you that the cheapest solution is to gather and produce the ingredients yourself, but if you're in a time crunch, all those things are usually available in Gaewonda market.</div>
     <<script>> 
     footnote(`Gaewonda Plaza is the cultural, commercial, and geographic center of Cycus. All the best shopping, bars, and entertainment are in that neighborhood. It's also where one can find the busiest market in the city.`);<</script>>\
-    <<linkreplace "Continue" t8n>>
+    <<linkreplace "▼" t8n>>
       <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
       Remember the recipe for dough?</div>
-      <<linkreplace "Continue" t8n>>
+      <<linkreplace "▼" t8n>>
         <div class="right-chat"><em><small>Piezo</small></em>
           Only shidd I can bother to remember most days. Flour, water, yeast.</div>\
-          <<linkreplace "Continue" t8n>>
+          <<linkreplace "▼" t8n>>
             <div class="left-chat"><em><small style="text-align:left;">Choochi</small></em>
               And tha' sauce?</div>\
-              <<linkreplace "Continue" t8n>>
+              <<linkreplace "▼" t8n>>
                 <div class="right-chat">
                   Mashed tomas and spices, baby!</div>\
 

@@ -38,93 +38,120 @@
 [[Do something else->Lobby]]
 
 :: Ling Afternoon First
-<<run footnote(`"Ling is so carefree it's impressive. Too bad she's such a bum."`)>>
+<<run footnote(`"Ling is so carefree it's impressive."`)>>
 Her almond skin was stuck to the sofa upon which it laid and what golden blonde hair was not tied into a knot atop her head was frizzled and frayed in the lobby's heat. Contrasting further were her sky blue eyes, which sat meekly in the center of a face that time seemed to have given a free pass to. 
 
 Ling's attention was paid entirely to the fan pouring a cool breeze over her. Beads of sweat rolled undiscriminatingly down every bit of her body. Between the fan and the heat, the look upon her face was paradoxically, and respectively, one of both satisfaction and misery. 
 
 She wore a pink crop top and <<linkappend "black underwear" t8n>>.
   <<if $piezo.gear.legs === null>>
-    Piezo
+    Piezo takes a moment to admire the fact that the two could be open enough with each other to forego clothing in each other's presence.
     <<else>>
-    Ling has little shame in being seen so exposed. It's her world, we are just living in it.
+    Ling has little shame in being seen so exposed. //It's her world, we are just living in it//, Piezo thought.
   <</if>>
 
 <</linkappend>>
 
 It takes her a second to redirect her attention to Piezo. 
 <<if $piezo.gear.legs === null>>\
-<div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
-Couldn't be bothered with pants either, huh?</div>\
+  <div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
+    Couldn't be bothered with pants either, huh?</div>\
+  <<linkreplace "▼" t8n>><div class="right-chat"><em><small>Piezo</small></em>
+    Just a little freedom before a hard day's work, ya know?</div>\
+    [[Continue->Ling Afternoon First 2]]
+  <</linkreplace>>
 <<else>>
-<div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
-Oh, hey.</div>\
+  <div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
+    Oh, hey.</div>\
+  <<linkreplace "▼" t8n>><div class="right-chat"><em><small>Piezo</small></em>
+    That's one way to beat the heat.</div>\
+    [[Continue->Ling Afternoon First 2]]
+  <</linkreplace>>
 <</if>>
-<<linkreplace "Continue" t8n>>\
-  <div class="left-chat">
-  What's shakin'? Did you hear about there's another driftbit this week?</div>\
-  <div class="right-chat"><em><small>Piezo</small></em>
-  Another? What's this one called?</div>\
-  <<linkreplace "Continue" t8n>>\
-    <<script>> 
-    footnote(`Floating islands, coloquially called 'driftbits', occasionally cross paths with Cycus.`, `When driftbits do happen by, Cycus locals will make trips over to the isle. Sometimes to exploit the natural resources, sometimes just as a quick getaway from the city.`);<</script>>\
-    <div class="left-chat">
-    Just some strip of green. Can't recall the name. Might be worth a hop over for some variety, ya know?</div>
-    <div class="left-chat">
-    Think you'll open up shop tonight? I could use the cash.</div>\
-    <div class="right-chat">
-    I probably should. Not a whole lot of money on my end either.</div>\
-    <<linkreplace "Continue" t8n>>
+
+:: Ling Afternoon First 2
+<<script>>
+  footnote(` `,` `,` `);
+<</script>>\
+<div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
+Ya hear about there's another <<hovertip "Driftbits are small unclaimed floating islands that dot the skyscape of the world above the fog.">>driftbit<</hovertip>> this week?</div>\
+<div class="right-chat"><em><small>Piezo</small></em>
+...Big deal? There's a few every week.</div>\
+<<linkreplace "▼" t8n>>\
+  <div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
+  Might be worth a hop over for some variety, ya know? Maybe get some fresh ingredients for the shop?</div>\
+  <<script>>
+  footnote(`<em>She's right...Any cash I can keep in my pocket the better.</em>`,` `,` `);
+  <</script>>\
+  <<linkreplace "▼" t8n>>
+    <div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
+  Think you'll open up shop tonight? I could use the cash.</div>\
+    <<linkreplace "▼" t8n>>
       <div class="right-chat">
-      Anything going on tonight?</div>\
-      <<linkreplace "Continue" t8n>>
-        <<switch $dayEvents[$day].dayName>>
-        <<case "Monra" "Tonra">>
-        <div class="left-chat">
-        I dunno. Drink at TangPingSki's? It's $dayEvents[$day].dayName, so...meh.</div>\
-        <<case "Wenra" "Thumra">>
-        <div class="left-chat">
-        That new girl is gonna be dancing over at Fortuito. Ya know, Ciccia's friend? The cute one? Might be kinda fun after we close up here.</div>\
-        <<case "Friyaya" "Settum" "Summet">>
-        <div class="left-chat">
-        It's the fuggin' weekend baby! You know I'm going out.</div>\
-        <</switch>>
+  I probably should. Not a whole lot of money on my end either.</div>\
+      <<linkreplace "▼" t8n>>
+        <<linkreplace "▼" t8n>>
+          <div class="right-chat">
+          Anything going on tonight?</div>\
+          <<linkreplace "▼" t8n>>
+            <<switch $dayEvents[$day].dayName>>
+            <<case "Monra">>
+              <div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
+                Miel's first night dancing at Fortuito. We gotta be there to show some love, ya know?
+              </div>\
+            <<case "Tonra">>
+              <div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
+                Probably best to stay in. With what's going on...
+              </div>\
+            <<case "Wenra" "Thumra">>
+            <div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
+            I dunno. Drink at TangPingSki's? Can't say Fortuito Alley is going to be very busy this week.</div>\
+            <<case "Friyaya" "Settum" "Summet">>
+            <div class="left-chat"><em><small style="text-align:left;">Ling</small></em>
+            It's the fuggin' weekend baby! You know I'm going out.</div>\
+            <</switch>>
 
-        <<linkreplace "Continue" t8n>>
-          Ling rolls over on the sofa and cocks her head to look at Piezo. Her bra barely covered her nipples and each breast dropping to rest on the sides of her ribcage. Her underwear was no more modest on the front than on the back. This pair was riding very high on her thigh, approaching even abdomen level.
-
-          Piezo was no stranger to his scantily-clad friend's behavior nor attire, but he couldn't deny this stirred something in him briefly. 
-
-          Ling seemed to notice this pause and opened her eyes to look at him.
-
-          <<linkreplace "Continue" t8n>>
-            <div class="left-chat">
-              Haha! Piezo, you perv!</div>\
-              <<linkreplace "Continue" t8n>>
-                <<run footnote(`Ling, while not a dancer at the club herself, maintained very close bonds with the dancers at the club, <em>Fortuito 144</em>.`, `"I know I'd be good at it. It's just not something I am interested in right now." - Ling`);>>
-                <div class="right-chat">
-                Looking good, girl! You get that underwear from the girls at Fortuito? When you gonna start dancing there?</div>\
-                <<linkreplace "Continue" t8n>>
-                  <div class="left-chat">
-                  In your dreams!</div>\
-                  <<linkreplace "Continue" t8n>>
-                    <div class="right-chat">
-                      C'mon! You know I'd come watch...with admissions comped.</div>\
-                    <<linkreplace "Continue" t8n>>
-                      The two ended their exchange with smiles. Piezo really enjoyed Ling's company. She always knew where the good parties were and how to have a good time. 
-                      <<set $lingAfternoonFirst = true>>
-                      [[Return->Lobby]]
-                    <</linkreplace>>
-                  <</linkreplace>>
-                  
-                <</linkreplace>>
-              <</linkreplace>>
+            
           <</linkreplace>>
         <</linkreplace>>
       <</linkreplace>>
     <</linkreplace>>
   <</linkreplace>>
+  
+  
+  
 <</linkreplace>>
 
 
 
+/* <<linkreplace "▼" t8n>>
+        Ling rolls over on the sofa and cocks her head to look at Piezo. Her bra barely covered her nipples and each breast dropping to rest on the sides of her ribcage. Her underwear was no more modest on the front than on the back. This pair was riding very high on her thigh, approaching even abdomen level.
+
+        Piezo was no stranger to his scantily-clad friend's behavior nor attire, but he couldn't deny this stirred something in him briefly. 
+
+        Ling seemed to notice this pause and opened her eyes to look at him.
+
+        <<linkreplace "▼" t8n>>
+          <div class="left-chat">
+            Haha! Piezo, you perv!</div>\
+            <<linkreplace "▼" t8n>>
+              <<run footnote(`Ling, while not a dancer at the club herself, maintained very close bonds with the dancers at the club, <em>Fortuito 144</em>.`, `"I know I'd be good at it. It's just not something I am interested in right now." - Ling`);>>
+              <div class="right-chat">
+              Looking good, girl! You get that underwear from the girls at Fortuito? When you gonna start dancing there?</div>\
+              <<linkreplace "▼" t8n>>
+                <div class="left-chat">
+                In your dreams!</div>\
+                <<linkreplace "▼" t8n>>
+                  <div class="right-chat">
+                    C'mon! You know I'd come watch...with admissions comped.</div>\
+                  <<linkreplace "▼" t8n>>
+                    The two ended their exchange with smiles. Piezo really enjoyed Ling's company. She always knew where the good parties were and how to have a good time. 
+                    <<set $lingAfternoonFirst = true>>
+                    [[Return->Lobby]]
+                  <</linkreplace>>
+                <</linkreplace>>
+                
+              <</linkreplace>>
+            <</linkreplace>>
+        <</linkreplace>>
+      <</linkreplace>> */
