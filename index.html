@@ -1526,35 +1526,12 @@ updateLocation(State.getVar(&quot;$location&quot;))
 footnote(`&quot;It&#39;s not much, I&#39;ll admit, but having a little patch of nature only a few stories up isn&#39;t terrible.&quot;&lt;br&gt;&lt;br&gt;-Piezo`,`&quot;My own personal tanning salon.&quot;&lt;br&gt;&lt;br&gt;-Ling`,` `)
 &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="Ling Afternoon Lobby" tags="" position="975,225" size="100,100">&lt;&lt;switch $dayEvents[$day].dayName&gt;&gt;
   &lt;&lt;case &quot;Monra&quot;&gt;&gt;
-    Her top is a micro bikini bra that barely covers her nipples. Her bottom appears to be a high thigh thong from a different set. 
+    I&#39;ll just let her keep cooling off.
   &lt;&lt;case &quot;Tonra&quot;&gt;&gt;
-    Today Ling is sporting a tube top and a pair of booty shorts. She sits cross-legged with each arm on her knees. 
-    &lt;&lt;run footnote(`&quot;Does she thing she is meditating? I know she&#39;s just thinking about food.&quot;`)&gt;&gt;
   &lt;&lt;case &quot;Wenra&quot;&gt;&gt;
-    Ling wears a teal, long-sleeved sweater crop top and some pink cotton panties. She slurps her bowl of ramen and sweats profusely in the afternoon heat.
   &lt;&lt;case &quot;Thumra&quot;&gt;&gt;
-    Ling stands up to greet Piezo as he approaches. She has some gym shorts on and a bikini top. She shifts her weight to one side and puts her hand on her hip. 
-
-    &quot;Hey, Piezo.&quot;\
-
-    &lt;&lt;run footnote(`&quot;You&#39;re not fooling me. I know you didn&#39;t go to the gym.&quot;`)&gt;&gt;
   &lt;&lt;case &quot;Friyaya&quot;&gt;&gt;
-    &lt;&lt;run footnote(`&quot;She&#39;s actually wearing this in front of me. She really just doesn&#39;t give a fugg.&quot;`)&gt;&gt;\
-    Ling&#39;s small, dark nipples peak out of her red mesh crop top, seemingly taunting Piezo into looking at them. 
-    
-    She holds a book and is facing away from Piezo so he can stare uninterrupted, if he so chooses.
-
-    CHANGE TO CHOICE
-    &lt;&lt;linkreplace &quot;Look just a little while longer&quot; t8n&gt;&gt;
-      &lt;&lt;run footnote(`&quot;This is bold, even for her.&quot;`)&gt;&gt;\
-      Even though the room was, as a whole, very stuffy and hot, being in front of the fan had caused Lings nipples to poke through the mesh tank top. While her hair blew about wildly, her nipples had almost locked her shirt in place. They really were great nipples, Piezo thought to himself.
-    &lt;&lt;/linkreplace&gt;&gt;
-    &lt;&lt;linkreplace &quot;Probably shouldn&#39;t stare&quot; t8n&gt;&gt;
-
-    &lt;&lt;/linkreplace&gt;&gt;
   &lt;&lt;case &quot;Settum&quot; &quot;Summet&quot;&gt;&gt;
-    Ling&#39;s hair and an ugly gray sweater cover her face and upper body as she lies face down on the sofa, a bucket immediately under her face. 
-    &quot;I&#39;m never drinking again,&quot; she says to Piezo without solicitation.
 &lt;&lt;/switch&gt;&gt;
 
 &lt;&lt;linkreplace &quot;Talk to her&quot; t8n&gt;&gt;
@@ -1604,41 +1581,43 @@ Ya hear about there&#39;s another &lt;&lt;hovertip &quot;Driftbits are small unc
   &lt;&lt;/script&gt;&gt;\
   &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
     &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
-  Think you&#39;ll open up shop tonight? I could use the cash.&lt;/div&gt;\
+  Think you&#39;ll open up tonight? I could use the cash.&lt;/div&gt;\
     &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
-      &lt;div class=&quot;right-chat&quot;&gt;
-  I probably should. Not a whole lot of money on my end either.&lt;/div&gt;\
+    &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
+    I probably should. Not a whole lot of money on my end either.&lt;/div&gt;\
       &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+      &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
+      Anything going on tonight?&lt;/div&gt;\
         &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
-          &lt;div class=&quot;right-chat&quot;&gt;
-          Anything going on tonight?&lt;/div&gt;\
+          &lt;&lt;switch $dayEvents[$day].dayName&gt;&gt;
+          &lt;&lt;case &quot;Monra&quot;&gt;&gt;
+          &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+            Miel&#39;s first night dancing at &lt;&lt;hovertip &quot;Fortuito Alley gets its name from the popular dance club //Fortuito 144//. It is known for its sublime holo-shows, cerebral musical arts, and intoxicating dancers.&quot;&gt;&gt;Fortuito&lt;&lt;/hovertip&gt;&gt;. We gotta be there to show some love, ya know?
+          &lt;/div&gt;\
           &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
-            &lt;&lt;switch $dayEvents[$day].dayName&gt;&gt;
-            &lt;&lt;case &quot;Monra&quot;&gt;&gt;
-              &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
-                Miel&#39;s first night dancing at Fortuito. We gotta be there to show some love, ya know?
-              &lt;/div&gt;\
-            &lt;&lt;case &quot;Tonra&quot;&gt;&gt;
-              &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
-                Probably best to stay in. With what&#39;s going on...
-              &lt;/div&gt;\
-            &lt;&lt;case &quot;Wenra&quot; &quot;Thumra&quot;&gt;&gt;
-            &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
-            I dunno. Drink at TangPingSki&#39;s? Can&#39;t say Fortuito Alley is going to be very busy this week.&lt;/div&gt;\
-            &lt;&lt;case &quot;Friyaya&quot; &quot;Settum&quot; &quot;Summet&quot;&gt;&gt;
-            &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
-            It&#39;s the fuggin&#39; weekend baby! You know I&#39;m going out.&lt;/div&gt;\
-            &lt;&lt;/switch&gt;&gt;
+            &lt;div class=&quot;right-chat&quot;&gt;&lt;em&gt;&lt;small&gt;Piezo&lt;/small&gt;&lt;/em&gt;
+            Of course. I&#39;ll be there right after I close up tonight.&lt;/div&gt;\
 
-            
+            [[]]
           &lt;&lt;/linkreplace&gt;&gt;
+          &lt;&lt;case &quot;Tonra&quot;&gt;&gt;
+          &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+            Probably best to stay in. With what&#39;s going on...
+          &lt;/div&gt;\
+          &lt;&lt;linkreplace &quot;▼&quot; t8n&gt;&gt;
+            Piezo nods in silent and solemn agreement.
+          &lt;&lt;/linkreplace&gt;&gt;
+          &lt;&lt;case &quot;Wenra&quot; &quot;Thumra&quot;&gt;&gt;
+          &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+          I dunno. Drink at TangPingSki&#39;s? Can&#39;t say Fortuito Alley is going to be very busy this week.&lt;/div&gt;\
+          &lt;&lt;case &quot;Friyaya&quot; &quot;Settum&quot; &quot;Summet&quot;&gt;&gt;
+          &lt;div class=&quot;left-chat&quot;&gt;&lt;em&gt;&lt;small style=&quot;text-align:left;&quot;&gt;Ling&lt;/small&gt;&lt;/em&gt;
+          It&#39;s the fuggin&#39; weekend baby! You know I&#39;m going out.&lt;/div&gt;\
+          &lt;&lt;/switch&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
       &lt;&lt;/linkreplace&gt;&gt;
     &lt;&lt;/linkreplace&gt;&gt;
   &lt;&lt;/linkreplace&gt;&gt;
-  
-  
-  
 &lt;&lt;/linkreplace&gt;&gt;
 
 
@@ -1673,7 +1652,37 @@ Ya hear about there&#39;s another &lt;&lt;hovertip &quot;Driftbits are small unc
               &lt;&lt;/linkreplace&gt;&gt;
             &lt;&lt;/linkreplace&gt;&gt;
         &lt;&lt;/linkreplace&gt;&gt;
-      &lt;&lt;/linkreplace&gt;&gt; */</tw-passagedata><tw-passagedata pid="21" name="Garbunkle Door" tags="" position="100,350" size="100,100">Garbunkle&#39;s door is brown and non-descript. Dust acculumation on the doorknob indicates it hasn&#39;t been opened in a while.
+      &lt;&lt;/linkreplace&gt;&gt; */
+/* &lt;&lt;case &quot;Monra&quot;&gt;&gt;
+    Her top is a micro bikini bra that barely covers her nipples. Her bottom appears to be a high thigh thong from a different set. 
+  &lt;&lt;case &quot;Tonra&quot;&gt;&gt;
+    Today Ling is sporting a tube top and a pair of booty shorts. She sits cross-legged with each arm on her knees. 
+    &lt;&lt;run footnote(`&quot;Does she thing she is meditating? I know she&#39;s just thinking about food.&quot;`)&gt;&gt;
+  &lt;&lt;case &quot;Wenra&quot;&gt;&gt;
+    Ling wears a teal, long-sleeved sweater crop top and some pink cotton panties. She slurps her bowl of ramen and sweats profusely in the afternoon heat.
+  &lt;&lt;case &quot;Thumra&quot;&gt;&gt;
+    Ling stands up to greet Piezo as he approaches. She has some gym shorts on and a bikini top. She shifts her weight to one side and puts her hand on her hip. 
+
+    &quot;Hey, Piezo.&quot;\
+
+    &lt;&lt;run footnote(`&quot;You&#39;re not fooling me. I know you didn&#39;t go to the gym.&quot;`)&gt;&gt;
+  &lt;&lt;case &quot;Friyaya&quot;&gt;&gt;
+    &lt;&lt;run footnote(`&quot;She&#39;s actually wearing this in front of me. She really just doesn&#39;t give a fugg.&quot;`)&gt;&gt;\
+    Ling&#39;s small, dark nipples peak out of her red mesh crop top, seemingly taunting Piezo into looking at them. 
+    
+    She holds a book and is facing away from Piezo so he can stare uninterrupted, if he so chooses.
+
+    CHANGE TO CHOICE
+    &lt;&lt;linkreplace &quot;Look just a little while longer&quot; t8n&gt;&gt;
+      &lt;&lt;run footnote(`&quot;This is bold, even for her.&quot;`)&gt;&gt;\
+      Even though the room was, as a whole, very stuffy and hot, being in front of the fan had caused Lings nipples to poke through the mesh tank top. While her hair blew about wildly, her nipples had almost locked her shirt in place. They really were great nipples, Piezo thought to himself.
+    &lt;&lt;/linkreplace&gt;&gt;
+    &lt;&lt;linkreplace &quot;Probably shouldn&#39;t stare&quot; t8n&gt;&gt;
+
+    &lt;&lt;/linkreplace&gt;&gt;
+  &lt;&lt;case &quot;Settum&quot; &quot;Summet&quot;&gt;&gt;
+    Ling&#39;s hair and an ugly gray sweater cover her face and upper body as she lies face down on the sofa, a bucket immediately under her face. 
+    &quot;I&#39;m never drinking again,&quot; she says to Piezo without solicitation. */</tw-passagedata><tw-passagedata pid="21" name="Garbunkle Door" tags="" position="100,350" size="100,100">Garbunkle&#39;s door is brown and non-descript. Dust acculumation on the doorknob indicates it hasn&#39;t been opened in a while.
 
 &lt;&lt;return&gt;&gt;
 &lt;&lt;script&gt;&gt;
