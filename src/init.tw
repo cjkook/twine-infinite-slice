@@ -33,14 +33,25 @@ State.setVar('$dresser',[
 
 // set piezo character object
 State.setVar('$piezo',{
-	oomph: 100,
+	stats: {
+		oomph: 100,
+		cool: 0, // base stat
+		comfort: 0, // base stat
+		skill: 0, // base stat
+		magic: 0, // base stat
+		coolGear: 0, // stat being modified from gear
+		comfortGear: 0, // stat being modified from gear
+		skillGear: 0, // stat being modified from gear
+		magicGear: 0, // stat being modified from gear
+	},
+	
 	gear: {
 		head: null,
 		body: null,
 		legs: null,
 		feet: null,
 		leftHand: null,
-		rightHand: null
+		rightHand: null,
 	},
 	foodInventory: [],
 	inventory: [],

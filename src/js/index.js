@@ -46,7 +46,10 @@ window.advance = (time = 0.025, oomph = 0.25) => {
 
   // handle oomph
   let piezo = State.getVar("$piezo");
-  piezo.oomph -= oomph;
+  console.log(piezo)
+  // ! comfort stat
+  // oomph = oomph*(1-piezo.comfort)
+  piezo.stats.oomph -= oomph;
   State.setVar("$piezo", piezo);
   console.log(piezo);
 };
@@ -55,7 +58,7 @@ window.advance = (time = 0.025, oomph = 0.25) => {
 window.update = () => {
   $("#money").html(`$${State.getVar("$money")}`);
   $("#location-text").html(`${State.getVar("$location")}`);
-  $("#oomph").val(State.getVar("$piezo").oomph);
+  $("#oomph").val(State.getVar("$piezo").stats.oomph);
 
   let inventory = State.getVar("$inventory");
   // ! make inv

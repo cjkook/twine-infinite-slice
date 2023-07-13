@@ -150,6 +150,7 @@ window.gearDB = [
   {
     name: "old sneakers",
     type: "feet",
+    comfort: .05,
     description: "Not an attractive set of kicks."
   },
   {

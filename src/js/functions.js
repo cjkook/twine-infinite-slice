@@ -44,7 +44,7 @@ window.makeDayEvents = () => {
       isFinished: false,
       dayNumber: i + 1,
       infSliceOpened: false, // did piezo open the store?
-      dayName: dayList[i%6]
+      dayName: dayList[i % 6],
     };
   }
   return arr;
@@ -56,9 +56,15 @@ window.footnote = (t1, t2 = " ", t3 = " ") => {
   if (!document.getElementById("footnote")) {
     $('<div id="footnote" class="footnote row"></div>').appendTo("#story");
     $('<hr class="footnote-hr">').prependTo("#footnote");
-    $('<span id="footnote-a" class="column w3-rest"></span>').appendTo("#footnote");
-    $('<span id="footnote-b" class="column w3-rest"></span>').appendTo("#footnote");
-    $('<span id="footnote-c" class="column w3-rest"></span>').appendTo("#footnote");
+    $('<span id="footnote-a" class="column w3-rest"></span>').appendTo(
+      "#footnote"
+    );
+    $('<span id="footnote-b" class="column w3-rest"></span>').appendTo(
+      "#footnote"
+    );
+    $('<span id="footnote-c" class="column w3-rest"></span>').appendTo(
+      "#footnote"
+    );
   }
 
   if (t1 != " ") $("#footnote-a").html(`<em>${t1}</em>`);
@@ -135,30 +141,28 @@ window.getTimeName = (time) => {
 
 // add item to inventory
 window.addItem = (item) => {
-  let player = State.getVar("$piezo")
+  let player = State.getVar("$piezo");
   let inventory = player.inventory;
-  inventory.push(item)
-  State.setVar("$piezo", player)
-}
+  inventory.push(item);
+  State.setVar("$piezo", player);
+};
 
 // add food item to inventory
 window.addFood = (item) => {
-  let player = State.getVar("$piezo")
+  let player = State.getVar("$piezo");
   let inventory = player.foodInventory;
-  inventory.push(item)
-  State.setVar("$piezo", player)
-  console.log(State.getVar("$piezo"))
-  
-}
+  inventory.push(item);
+  State.setVar("$piezo", player);
+  console.log(State.getVar("$piezo"));
+};
 
 // add key item to inventory
 window.addKeyItem = (item) => {
-  let player = State.getVar("$piezo")
+  let player = State.getVar("$piezo");
   let inventory = player.keyItems;
-  inventory.push(item)
-  State.setVar("$piezo", player)
-}
-
+  inventory.push(item);
+  State.setVar("$piezo", player);
+};
 
 // add gear to equipment, return
 window.setGear = (gear, inv) => {
@@ -167,6 +171,7 @@ window.setGear = (gear, inv) => {
   let inventory = State.getVar(inv);
   let type = gear.type;
   let hintText = " ";
+  let stats = ["cool", "skill", "comfort", "magic"];
 
   // check if player already wearing the item
   if (player.gear[type]) {
@@ -178,6 +183,28 @@ window.setGear = (gear, inv) => {
   else {
     player.gear[type] = gear;
   }
+
+  // clear gear stats
+  for (const i in stats) {
+    let adjusted = `${stats[i]}Gear`;
+    player.stats[adjusted] = 0;
+    // console.log(player.stats[adjusted])
+    
+  }
+
+  // add stats
+  stats.forEach((stat) => {
+    for (const property in player.gear) {
+      if (player.gear[property] != null) {
+        if (player.gear[property].hasOwnProperty(stat)) {
+          let value = player.gear[property][stat];
+          console.log(`has ${stat}`);
+          let adjusted = `${stat}Gear`;
+          player.stats[adjusted] += value;
+        }
+      }
+    }
+  });
 
   // remove item from chest
   inventory.splice(
@@ -197,7 +224,7 @@ window.setGear = (gear, inv) => {
   $("#equipment").html(gearText);
 
   // update story variables
-  console.log(player);
+  // console.log(player.stats);
   State.setVar("$piezo", player);
   State.setVar("$dresser", dresser);
   State.setVar(inv, inventory);
@@ -229,8 +256,7 @@ window.checkLocationCharacters = (loc, t) => {
 window.updateLocation = (loc, property = null, val = null) => {
   let locations = State.getVar("$locations") || window.locations;
   let index = locations.findIndex((l) => l.name == loc);
-  console.log(locations)
-  console.log(index, property, val)
+
   // add if new location
   if (index < 0) {
     locations.push({
@@ -244,11 +270,10 @@ window.updateLocation = (loc, property = null, val = null) => {
   if (!property) {
     locations[index].visits++;
   } else {
-    locations[index]['property'] = val;
+    locations[index]["property"] = val;
   }
 
   // update story variable
   State.setVar("$locations", locations);
   State.setVar("$locIndex", index);
 };
-
