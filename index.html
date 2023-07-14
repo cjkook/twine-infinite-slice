@@ -611,12 +611,13 @@ window.foodItems = [
     type: "base",
   },
   {
-    name: "tomatoes",
+    name: "tomas",
     price: 30,
-    type: "raw",
+    type: "base",
+    prepable: ["mashed", "sliced"]
   },
   {
-    name: "tomato sauce",
+    name: "toma sauce",
     price: 80,
     type: "processed",
   },
@@ -634,51 +635,50 @@ window.foodItems = [
   {
     name: "cheese",
     price: 100,
-    type: "processed",
+    type: "base",
+  },
+  {
+    name: "herbed cheese",
+    price: 130,
+    type: "base",
   },
   {
     name: "hot peppers",
     price: 45,
-    type: "raw",
+    type: "base",
   },
   {
     name: "broccoli",
     price: 25,
-    type: "raw",
+    type: "base",
   },
   {
     name: "olives",
     price: 65,
-    type: "raw",
+    type: "base",
   },
   {
     name: "onions",
     price: 35,
-    type: "raw",
+    type: "base",
   },
 ];
 
 window.dishes = [
   {
     name: "cheese pizza",
-    ingredients: ["cheese", "tomato sauce", "pizza dough"],
-    price: 200,
-    type: "final",
-    wow: 0.2,
+    ingredients: ["shredded cheese", "toma sauce", "pizza dough"],
+    type: "dish",
   },
   {
     name: "mushroom pizza",
-    ingredients: ["cheese", "tomato sauce", "pizza dough", "mushrooms"],
-    price: 240,
-    type: "final",
-    wow: 0.22,
+    ingredients: ["shredded cheese", "toma sauce", "pizza dough", "mushrooms"],
+    type: "dish",
   },
   {
     name: "grilled tomatoes",
     ingredients: ["tomatoes"],
-    price: 80,
     type: "final",
-    wow: 0.05,
   },
 ];
 
@@ -850,7 +850,16 @@ window.addItem = (item) => {
 window.addFood = (item) => {
   let player = State.getVar("$piezo");
   let inventory = player.foodInventory;
-  inventory.push(item);
+
+  // search DB for object to add
+  window.foodItems.forEach((obj) => {
+    if (obj.name === item) {
+      inventory.push(obj);
+      
+      console.log(`added ${obj.name}`);
+    }
+  });
+
   State.setVar("$piezo", player);
   console.log(State.getVar("$piezo"));
 };
@@ -888,7 +897,6 @@ window.setGear = (gear, inv) => {
     let adjusted = `${stats[i]}Gear`;
     player.stats[adjusted] = 0;
     // console.log(player.stats[adjusted])
-    
   }
 
   // add stats
@@ -1025,7 +1033,6 @@ window.advance = (time = 0.025, oomph = 0.25) => {
 
   // handle oomph
   let piezo = State.getVar("$piezo");
-  console.log(piezo)
   // ! comfort stat
   // oomph = oomph*(1-piezo.comfort)
   piezo.stats.oomph -= oomph;
@@ -1079,6 +1086,9 @@ if (!document.getElementById("background")) {
 if (!document.getElementById("location-text")) {
   $('<div id="location-text"></div>').prependTo($("#story"));
 }
+
+
+
 
 /* HOVERTIP */
 /* hovertip v2.0 - Start */
@@ -1228,7 +1238,60 @@ Macro.add("hovertip", {
   },
 });
 /* hovertip v2.0 - End */
-/* twine-user-script #4: "palettes.js" */
+/* twine-user-script #4: "kitchenFunctions.js" */
+window.getPreps = (player) => {
+  let flour,
+    water,
+    yeast = false;
+  let prepables = [];
+  let foods = player.foodInventory;
+  foods.forEach((food) => {
+    if (food.name === "flour") {
+      flour = true;
+    }
+    if (food.name === "water") {
+      water = true;
+    }
+    if (food.name === "yeast") {
+      yeast = true;
+    }
+    if (food.prepable != undefined) {
+      console.log("hit");
+      prepables.push(food);
+    }
+  });
+  // update prepables and dough capability
+  if (flour && water && yeast) {
+    State.setVar("$canMakeDough", true);
+  }
+  player.prepables = prepables;
+  State.setVar("$piezo", player);
+};
+
+window.resetPreps = () => {
+  let player = State.getVar("$piezo");
+  player.prepables = [];
+  State.setVar("$canMakeDough", false);
+  State.setVar("$piezo", player);
+};
+
+window.makeDough = (player) => {
+  let foods = player.foodInventory;
+  let needed = ["flour", "water", "yeast"]
+  for (let i = 0; i <= needed.length-1; i++) {
+    foods.forEach((food, index) => {
+      if (food.name === needed[i]) {
+        foods.splice(index, 1);
+      }
+    });
+  }
+
+  addFood("pizza dough");
+  console.log(foods);
+  // remove flag
+  State.setVar("$canMakeDough", false);
+};
+/* twine-user-script #5: "palettes.js" */
 window.timePalette = [
   // HOT DOG // error
   {
@@ -1268,7 +1331,7 @@ window.timePalette = [
 ];
 </script><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;set $day = 0&gt;&gt;\
 &lt;&lt;set $timeCount = 6&gt;&gt;\
-&lt;&lt;set $money = 0&gt;&gt;\
+&lt;&lt;set $money = 120&gt;&gt;\
 &lt;&lt;set $foundMattressMoney = false&gt;&gt;\
 &lt;&lt;set $location = &#39;Welcome&#39;&gt;&gt;\
 &lt;&lt;set $locations = []&gt;&gt;
@@ -1825,9 +1888,9 @@ footnote(temporary().f1,temporary().f2)
 &lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="26" name="Infinite Slice Kitchen" tags="" position="725,350" size="100,100">&lt;&lt;set $location = &#39;Infinite Slice Kitchen&#39;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
-footnote(`Though Ling, Garbunkle, and the girls from Fortuito would occasionally come and help Piezo during service as delivery drivers or cashiers, there was only enough room in the kitchen for one.`,`Monotonous work.`,` `);
+footnote(`Though Ling, Miel, and the girls from Fortuito would occasionally come and help Piezo during service as delivery drivers or cashiers, there was only enough room in the kitchen for one.`,`Monotonous work.`,` `);
 &lt;&lt;/script&gt;&gt;\
-Working space was at a premium in the kitchen of &lt;em&gt;Infinite Slice&lt;/em&gt;. A rather large pizza oven claimed the lion&#39;s share of the space. When it was fired up the entire kitchen was a sweatbox. Just below the kitchen window was a small work space for topping slices before being served. Piezo&#39;s knife lay on the cutting board. &lt;&lt;linkreplace &quot;A handwritten note is next to it.&quot; t8n&gt;&gt;&lt;div class=&quot;note polaroid&quot;&gt;&lt;&lt;set $sawKitchenNoteDayOne = true&gt;&gt;
+Working space was at a premium in the kitchen of &lt;em&gt;Infinite Slice&lt;/em&gt;. A rather large pizza oven claimed the lion&#39;s share of the space. When it was fired up the entire kitchen was a sweatbox. Just below the kitchen window was a small work space for topping slices before being served. Piezo&#39;s pie slicer lay on the cutting board. &lt;&lt;linkreplace &quot;A handwritten note is next to it.&quot; t8n&gt;&gt;&lt;div class=&quot;note polaroid&quot;&gt;&lt;&lt;set $sawKitchenNoteDayOne = true&gt;&gt;
 Choochi dropoff today. Maybe pepperoni tonite? Easy classic.&lt;/div&gt;&lt;&lt;/linkreplace&gt;&gt;
 
 Along the back wall was a storage shelf. &lt;&lt;linkappend &quot;There is no refrigerator.&quot; t8n&gt;&gt;&lt;div class=&quot;hint&quot;&gt;Ingredients will have to be either used or discarded each day.&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt;\
@@ -1842,7 +1905,10 @@ A small interface panel on the wall controls the [[audio system-&gt;Kitchen Radi
   Piezo will need to start prepping in the afternoon if he is to open this &lt;&lt;linkappend &quot;evening.&quot; t8n&gt;&gt;&lt;div class=&quot;hint&quot;&gt;Due to the amount of prep work involved in opening the shop, Piezo needs to start in the afternoon if he wants to serve any food that evening. If he chooses to open, a significant amount of time will pass and oomph will be consumed. In return, variable amounts of money will be acquired based on the type of food served.&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt;\
 	&lt;&lt;/switch&gt;&gt;
 
-[[Exit back to the lobby-&gt;Lobby]]</tw-passagedata><tw-passagedata pid="27" name="Kitchen Radio" tags="" position="850,350" size="100,100">The kitchen radio was something Piezo spared no expense to obtain when he opened Infinite Slice. Though it would fail to compete with the sound system across the alley at Fortuito 144, it was plenty loud for the restaurant and a few pedestrians just outside.\
+[[Exit back to the lobby-&gt;Lobby]]
+
+&lt;hr&gt;
+[[Prepare ingredients...-&gt;Prepare]]</tw-passagedata><tw-passagedata pid="27" name="Kitchen Radio" tags="" position="850,350" size="100,100">The kitchen radio was something Piezo spared no expense to obtain when he opened Infinite Slice. Though it would fail to compete with the sound system across the alley at Fortuito 144, it was plenty loud for the restaurant and a few pedestrians just outside.\
 
 &lt;&lt;if $kitchenRadioOn&gt;&gt;
 	Faint clicks reverberate off the kitchen&#39;s reflective walls as the speakers receive power. The room begins humming with the sound of music. 
@@ -1852,7 +1918,29 @@ A small interface panel on the wall controls the [[audio system-&gt;Kitchen Radi
 	[[Turn it on.|Kitchen Radio][$kitchenRadioOn = true]]
 &lt;&lt;/if&gt;&gt;\
 
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Bathroom" tags="" position="975,350" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Bathroom&quot;&gt;&gt;\
+
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Prepare" tags="" position="975,350" size="100,100">&lt;&lt;script&gt;&gt;
+
+// test values
+addFood(&quot;water&quot;)
+addFood(&quot;tomas&quot;)
+addFood(&quot;flour&quot;)
+addFood(&quot;yeast&quot;)
+
+getPreps(State.getVar(&quot;$piezo&quot;))
+footnote(`Preparing ingredients takes time.`,`Monotonous work.`,` `);
+&lt;&lt;/script&gt;&gt;\
+
+Piezo lays out his tools and ingredients, carefully inspecting each before pondering what to prepare first...
+
+&lt;&lt;if $canMakeDough&gt;&gt;
+    &lt;&lt;hovertip &quot;This will take ~1 hour.&quot;&gt;&gt;&lt;&lt;linkreplace &quot;Prepare dough. (This will take ~1 hour.)&quot;&gt;&gt;Piezo makes the dough.
+    &lt;&lt;script&gt;&gt;makeDough(State.getVar(&quot;$piezo&quot;))&lt;&lt;/script&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;&lt;&lt;/hovertip&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+[[Don&#39;t prepare anything.|Prep Reset]]</tw-passagedata><tw-passagedata pid="29" name="Prep Reset" tags="" position="1100,350" size="100,100">&lt;&lt;script&gt;&gt;
+resetPreps()
+&lt;&lt;/script&gt;&gt;\
+Piezo places his utensils and ingredients away.</tw-passagedata><tw-passagedata pid="30" name="Bathroom" tags="" position="1225,350" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Bathroom&quot;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
@@ -1879,7 +1967,7 @@ The flick of the switch flutters briefly in the reflective space. It is followed
 &lt;&lt;script&gt;&gt;
 footnote(`Much like the room before, this one could use a scrubdown at some point.`,` `,` `);
 &lt;&lt;/script&gt;&gt;\
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="Reflection" tags="" position="1100,350" size="100,100">&lt;div class=&quot;row&quot;&gt;\
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="Reflection" tags="" position="100,475" size="100,100">&lt;div class=&quot;row&quot;&gt;\
     &lt;div class=&quot;column-2&quot;&gt;
         The man staring back at Piezo was slender and spry in build. Short in stature, yet there was a ruggedness about him that could not solely be the result of his disheveled appearance. The hair that hung over his brow was dark brown, yet most of the rest of his hair was a stark white color. This peculiarity, in addition to his yellow irises, were immediate indications of a &lt;&lt;hovertip &quot;Foggers are the native people of the //Land Below the Fog// and are often the targets of cruel discrimination outside of free cities such as CAT-C.&quot;&gt;&gt;fogger&lt;&lt;/hovertip&gt;&gt; &lt;&lt;linkappend &quot;lineage.&quot;&gt;&gt;
         &lt;div class=&quot;hint&quot;&gt;Having been born on the floating isle of Tor and growing up in &lt;&lt;hovertip &quot;Circada Atem Tor City, referred to by locals as &#39;//CAT-C//&#39;, is a thriving metropolis with a rich and storied history. It is known to be a free haven for those of all walks of life. The physical city predates its organic inhabitants by perhaps thousands of years.&quot;&gt;&gt;CAT-C&lt;&lt;/hovertip&gt;&gt;, Piezo felt little by way of connection to the peoples who lived below the fog. When Fogger natives would visit his pizzeria, he found that they shared little common ground.&lt;/div&gt;&lt;&lt;/linkappend&gt;&gt; 
@@ -1893,7 +1981,7 @@ footnote(`Much like the room before, this one could use a scrubdown at some poin
     &lt;/div&gt;
     &lt;figure class=&quot;polaroid column&quot;&gt;&lt;img class=&quot;polaroid-img&quot; style=&quot;height: 250px&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/characters%2FPIEZO.png?alt=media&amp;token=3d9bf07d-1444-4566-988f-c603892f568a&quot;&gt;&lt;figcaption&gt;Piezo d&#39;Zeppibeet, local restauranteur.&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;/div&gt;
-&lt;img class=&quot;pixel-art&quot; style=&quot;background-color: #FEC5BB;&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/characters.pixel%2Fpiezo_iso.png?alt=media&amp;token=f9dfad57-7cc5-46d6-bb95-c6cc6bdf5169&quot;/&gt;</tw-passagedata><tw-passagedata pid="30" name="Dresser" tags="" position="1225,350" size="100,100">&lt;&lt;script&gt;&gt;
+&lt;img class=&quot;pixel-art&quot; style=&quot;background-color: #FEC5BB;&quot; src=&quot;https://firebasestorage.googleapis.com/v0/b/infinite-slice.appspot.com/o/characters.pixel%2Fpiezo_iso.png?alt=media&amp;token=f9dfad57-7cc5-46d6-bb95-c6cc6bdf5169&quot;/&gt;</tw-passagedata><tw-passagedata pid="32" name="Dresser" tags="" position="225,475" size="100,100">&lt;&lt;script&gt;&gt;
 
 &lt;&lt;/script&gt;&gt;
 &lt;&lt;if $dresser.length &lt; 1&gt;&gt;&gt;\
@@ -1915,7 +2003,7 @@ setGear(temporary().item,&#39;$dresser&#39;);
 &lt;&lt;return&gt;&gt;
 &lt;&lt;script&gt;&gt;
 footnote(`Piezo had always kept a minimal amount of clothes that he would rotate through at least a couple times before washing.  He hated doing laundry.`,` `, ` `);
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="31" name="Piezo Room" tags="" position="100,475" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="33" name="Piezo Room" tags="" position="350,475" size="100,100">&lt;&lt;set $location = &quot;Piezo&#39;s Room&quot;&gt;&gt;\
 &lt;&lt;script&gt;&gt;
 updateLocation(State.getVar(&quot;$location&quot;))
 &lt;&lt;/script&gt;&gt;\
@@ -1946,15 +2034,15 @@ The narrow room had only just enough room to fit a bed into it. In fact, when Pi
 
 &lt;&lt;script&gt;&gt;
 footnote(`&quot;If I put something away, how will I ever find it!?&quot;`,`The smell isn&#39;t too bad right now.`,` `)
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="32" name="Under the mattress" tags="" position="225,475" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="34" name="Under the mattress" tags="" position="475,475" size="100,100">&lt;&lt;if $foundMattressMoney&gt;&gt;
 	Nothing here.
 	[[Piezo sets the mattress back down in frustration.-&gt;Piezo Room]]
 &lt;&lt;else&gt;&gt;
 	There&#39;s a little bit of money for a rainy day. Should Piezo grab it?
 	[[It&#39;s rainy enough.][$money += 237; $foundMattressMoney = true]]
 	[[Not yet.-&gt;Piezo Room]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="It&#39;s rainy enough." tags="" position="350,475" size="100,100">[[Back to the room.-&gt;Piezo Room]]
-&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="Radio" tags="" position="475,475" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="It&#39;s rainy enough." tags="" position="600,475" size="100,100">[[Back to the room.-&gt;Piezo Room]]
+&lt;&lt;run footnote(&quot;Added $237 to Piezo&#39;s wallet.&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="Radio" tags="" position="725,475" size="100,100">There isn&#39;t much to this radio. The time is &lt;&lt;= $time&gt;&gt;.
 
 &lt;&lt;if $piezoRoomRadioOn&gt;&gt;
 	It&#39;s tuned to a local radio station. There is a song playing.
@@ -1967,9 +2055,9 @@ footnote(`&quot;If I put something away, how will I ever find it!?&quot;`,`The s
 
 &lt;&lt;script&gt;&gt;
 footnote(` `,`Piezo bought this radio years ago. What it lacks in features it makes up for in looking like junk.`,`&quot;The clock works, so I can&#39;t get rid of it!&quot;`)
-&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="35" name="Sleep" tags="" position="600,475" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
+&lt;&lt;/script&gt;&gt;\</tw-passagedata><tw-passagedata pid="37" name="Sleep" tags="" position="850,475" size="100,100">[[Sleep For three hours-&gt;Piezo Room][$timeCount += 3]]
 [[Sleep For twenty four hours-&gt;Piezo Room][$timeCount += 24]]
-&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="Window" tags="" position="725,475" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
+&lt;&lt;return&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="Window" tags="" position="975,475" size="100,100">&lt;&lt;if $piezoRoomWindowOpen&gt;&gt;\
 The window is open. \
 	&lt;&lt;switch $timeName&gt;&gt;\
 	&lt;&lt;case &quot;morning&quot; &quot;afternoon&quot;&gt;&gt;\

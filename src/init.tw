@@ -1,7 +1,7 @@
 :: StoryInit
 <<set $day = 0>>\
 <<set $timeCount = 6>>\
-<<set $money = 0>>\
+<<set $money = 120>>\
 <<set $foundMattressMoney = false>>\
 <<set $location = 'Welcome'>>\
 <<set $locations = []>>

@@ -2,9 +2,9 @@
 <<set $location = 'Infinite Slice Kitchen'>>\
 <<script>>
 updateLocation(State.getVar("$location"))
-footnote(`Though Ling, Garbunkle, and the girls from Fortuito would occasionally come and help Piezo during service as delivery drivers or cashiers, there was only enough room in the kitchen for one.`,`Monotonous work.`,` `);
+footnote(`Though Ling, Miel, and the girls from Fortuito would occasionally come and help Piezo during service as delivery drivers or cashiers, there was only enough room in the kitchen for one.`,`Monotonous work.`,` `);
 <</script>>\
-Working space was at a premium in the kitchen of <em>Infinite Slice</em>. A rather large pizza oven claimed the lion's share of the space. When it was fired up the entire kitchen was a sweatbox. Just below the kitchen window was a small work space for topping slices before being served. Piezo's knife lay on the cutting board. <<linkreplace "A handwritten note is next to it." t8n>><div class="note polaroid"><<set $sawKitchenNoteDayOne = true>>
+Working space was at a premium in the kitchen of <em>Infinite Slice</em>. A rather large pizza oven claimed the lion's share of the space. When it was fired up the entire kitchen was a sweatbox. Just below the kitchen window was a small work space for topping slices before being served. Piezo's pie slicer lay on the cutting board. <<linkreplace "A handwritten note is next to it." t8n>><div class="note polaroid"><<set $sawKitchenNoteDayOne = true>>
 Choochi dropoff today. Maybe pepperoni tonite? Easy classic.</div><</linkreplace>>
 
 Along the back wall was a storage shelf. <<linkappend "There is no refrigerator." t8n>><div class="hint">Ingredients will have to be either used or discarded each day.</div><</linkappend>>\
@@ -21,6 +21,9 @@ A small interface panel on the wall controls the [[audio system->Kitchen Radio]]
 
 [[Exit back to the lobby->Lobby]]
 
+<hr>
+[[Prepare ingredients...->Prepare]]
+
 :: Kitchen Radio
 The kitchen radio was something Piezo spared no expense to obtain when he opened Infinite Slice. Though it would fail to compete with the sound system across the alley at Fortuito 144, it was plenty loud for the restaurant and a few pedestrians just outside.\
 
@@ -31,5 +34,6 @@ The kitchen radio was something Piezo spared no expense to obtain when he opened
 <<else>>\
 	[[Turn it on.|Kitchen Radio][$kitchenRadioOn = true]]
 <</if>>\
+
 
 <<return>>

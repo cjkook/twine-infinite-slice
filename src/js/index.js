@@ -46,7 +46,6 @@ window.advance = (time = 0.025, oomph = 0.25) => {
 
   // handle oomph
   let piezo = State.getVar("$piezo");
-  console.log(piezo)
   // ! comfort stat
   // oomph = oomph*(1-piezo.comfort)
   piezo.stats.oomph -= oomph;
@@ -100,6 +99,9 @@ if (!document.getElementById("background")) {
 if (!document.getElementById("location-text")) {
   $('<div id="location-text"></div>').prependTo($("#story"));
 }
+
+
+
 
 /* HOVERTIP */
 /* hovertip v2.0 - Start */

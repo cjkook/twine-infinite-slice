@@ -1,0 +1,26 @@
+:: Prepare
+<<script>>
+
+// test values
+addFood("water")
+addFood("tomas")
+addFood("flour")
+addFood("yeast")
+
+getPreps(State.getVar("$piezo"))
+footnote(`Preparing ingredients takes time.`,`Monotonous work.`,` `);
+<</script>>\
+
+Piezo lays out his tools and ingredients, carefully inspecting each before pondering what to prepare first...
+
+<<if $canMakeDough>>
+    <<hovertip "This will take ~1 hour.">><<linkreplace "Prepare dough. (This will take ~1 hour.)">>Piezo makes the dough.
+    <<script>>makeDough(State.getVar("$piezo"))<</script>><</linkreplace>><</hovertip>>
+<</if>>
+[[Don't prepare anything.|Prep Reset]]
+
+:: Prep Reset
+<<script>>
+resetPreps()
+<</script>>\
+Piezo places his utensils and ingredients away. 

@@ -151,7 +151,16 @@ window.addItem = (item) => {
 window.addFood = (item) => {
   let player = State.getVar("$piezo");
   let inventory = player.foodInventory;
-  inventory.push(item);
+
+  // search DB for object to add
+  window.foodItems.forEach((obj) => {
+    if (obj.name === item) {
+      inventory.push(obj);
+      
+      console.log(`added ${obj.name}`);
+    }
+  });
+
   State.setVar("$piezo", player);
   console.log(State.getVar("$piezo"));
 };
@@ -189,7 +198,6 @@ window.setGear = (gear, inv) => {
     let adjusted = `${stats[i]}Gear`;
     player.stats[adjusted] = 0;
     // console.log(player.stats[adjusted])
-    
   }
 
   // add stats

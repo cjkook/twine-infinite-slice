@@ -171,12 +171,13 @@ window.foodItems = [
     type: "base",
   },
   {
-    name: "tomatoes",
+    name: "tomas",
     price: 30,
-    type: "raw",
+    type: "base",
+    prepable: ["mashed", "sliced"]
   },
   {
-    name: "tomato sauce",
+    name: "toma sauce",
     price: 80,
     type: "processed",
   },
@@ -194,51 +195,50 @@ window.foodItems = [
   {
     name: "cheese",
     price: 100,
-    type: "processed",
+    type: "base",
+  },
+  {
+    name: "herbed cheese",
+    price: 130,
+    type: "base",
   },
   {
     name: "hot peppers",
     price: 45,
-    type: "raw",
+    type: "base",
   },
   {
     name: "broccoli",
     price: 25,
-    type: "raw",
+    type: "base",
   },
   {
     name: "olives",
     price: 65,
-    type: "raw",
+    type: "base",
   },
   {
     name: "onions",
     price: 35,
-    type: "raw",
+    type: "base",
   },
 ];
 
 window.dishes = [
   {
     name: "cheese pizza",
-    ingredients: ["cheese", "tomato sauce", "pizza dough"],
-    price: 200,
-    type: "final",
-    wow: 0.2,
+    ingredients: ["shredded cheese", "toma sauce", "pizza dough"],
+    type: "dish",
   },
   {
     name: "mushroom pizza",
-    ingredients: ["cheese", "tomato sauce", "pizza dough", "mushrooms"],
-    price: 240,
-    type: "final",
-    wow: 0.22,
+    ingredients: ["shredded cheese", "toma sauce", "pizza dough", "mushrooms"],
+    type: "dish",
   },
   {
     name: "grilled tomatoes",
     ingredients: ["tomatoes"],
-    price: 80,
     type: "final",
-    wow: 0.05,
   },
 ];
 
